@@ -1,0 +1,103 @@
+#!/bin/sh
+
+ulimit -c 100000
+
+:<<BLOCK
+This is the script for starting cwf process
+
+Starting parameter is distinguished by biz_name 
+
+Two kinds of cwf processes:
+  The first kind is unix domain socket
+  The second kind is ipv4 socket
+
+The configuration file must be set in the directory of ${CWF_ROOT}/etc
+
+BLOCK
+
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 <biz_name>";
+  exit 3;
+fi
+
+BIZ=$1
+echo "biz_name:${BIZ}"
+
+CWF_ROOT=$(cd "$(dirname "$0")"/../; pwd)
+cd ${CWF_ROOT}
+
+BIZ_OLD_RUNNING=`ps aux | grep "actions/${BIZ} " | grep -v grep | grep -v start_cwf | wc -l`
+if [ "${BIZ_OLD_RUNNING}" != "0" ]; then
+  echo "error: ${BIZ} is already running, please stop it first"
+  exit 2;
+fi
+
+BIZ_LIB_DIR="${CWF_ROOT}/libs"
+BIZ_ETC_DIR="${CWF_ROOT}/etc"
+BIZ_DIST_ACTION_DIR="${CWF_ROOT}/dist_actions"
+BIZ_ACTION_DIR="${CWF_ROOT}/actions"
+BIZ_LOG_DIR="${CWF_ROOT}/logs"
+BIZ_BIN_DIR="${CWF_ROOT}/bin"
+
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${BIZ_LIB_DIR}
+
+if [ ! -d ${BIZ_LIB_DIR} ]; then
+  echo "error: ${BIZ_LIB_DIR} not exist, please check it out"
+  exit 2;
+fi
+
+if [ ! -d ${BIZ_ACTION_DIR} ]; then
+  echo "error: ${BIZ_ACTION_DIR} not exist, please check it out"
+  exit 2;
+fi
+
+BIZ_BINARY="${BIZ_ACTION_DIR}/${BIZ}"
+BIZ_DIST_BINARY="${BIZ_DIST_ACTION_DIR}/${BIZ}"
+if [ ! -x ${BIZ_BINARY} ]; then
+  echo "error: ${BIZ_BINARY} binary file not exist, please check it out"
+  exit 2;
+fi
+
+md5sum ${BIZ_BINARY}
+if [ $? -eq "0" ]
+then
+  ACT_SUM=`md5sum ${BIZ_BINARY} | awk '{print $1}'`
+fi
+md5sum ${BIZ_DIST_BINARY}
+if [ $? -eq "0" ]
+then
+  DIST_SUM=`md5sum ${BIZ_DIST_BINARY} | awk '{print $1}'`
+  if [ "$ACT_SUM" != "$DIST_SUM" ]
+  then
+    echo "warn: md5 not match, it's dangerous"
+  fi
+fi
+
+BIZ_IPV4_CONF="${BIZ_ETC_DIR}/${BIZ}.ipv4.conf"
+BIZ_SOCK_CONF="${BIZ_ETC_DIR}/${BIZ}.sock.conf"
+
+if [ ! -s ${BIZ_IPV4_CONF} ]; then
+  echo "error: ${BIZ_IPV4_CONF} is not exist, please check it out"
+  exit 2;
+fi
+if [ ! -s ${BIZ_SOCK_CONF} ]; then
+  echo "error: ${BIZ_SOCK_CONF} is not exist, please check it out"
+  exit 2;
+fi
+
+echo "ipv4 starting..."
+LD_LIBRARY_PATH=${BIZ_LIB_DIR} ${BIZ_BINARY} `cat ${BIZ_IPV4_CONF}` -l ${BIZ_LOG_DIR} -d ${CWF_ROOT}
+echo "unix domain socket starting..."
+ldd ${BIZ_BINARY}
+
+if [ ! -d ${HOME}/socks ]; then
+  echo "warn: dir ${HOME}/socks not exist, now make it"
+  mkdir ${HOME}/socks
+fi
+
+LD_LIBRARY_PATH=${BIZ_LIB_DIR} ${BIZ_BINARY} `cat ${BIZ_SOCK_CONF}` -l ${BIZ_LOG_DIR} -d ${CWF_ROOT} -s ${HOME}/socks/${BIZ}.sock
+chmod 770 ${HOME}/socks/${BIZ}.sock
+
+cd -
+

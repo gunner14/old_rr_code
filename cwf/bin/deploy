@@ -1,0 +1,50 @@
+#!/bin/bash
+
+:<<BLOCK
+The script is used to deploy cwf process 
+
+main steps:
+step 1: svn up dist_actions dir,because to deploy the lastest version of executable program
+step 2: if it's the first time to deploy, the script makes actions dir for exe which is copied from dist_actions dir.
+        else it checks exe md5 values between actions dir and dist_actions dir. 
+        because the exe in actions dir is not the lastest one in svn, 
+        it needs deployer copy the lastest exe from dist_actions dir to actions dir and this script wouldn't do this! 
+BLOCK
+
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 <biz_name>";
+  exit 3;
+fi
+
+BIZ=$1
+echo "biz_name:${BIZ}"
+
+CWF_ROOT=$(cd "$(dirname "$0")"/../; pwd)
+ACTIONS_DIR=${CWF_ROOT}/actions
+DIST_ACTIONS_DIR=${CWF_ROOT}/dist_actions
+
+svn up ${DIST_ACTIONS_DIR}
+
+if [ ! -d ${ACTIONS_DIR} ]; then
+	mkdir ${ACTIONS_DIR}
+fi
+
+if [ ! -f ${DIST_ACTIONS_DIR}/${BIZ} ]; then
+  echo -e "\e[31minvalid biz_name:${BIZ}"
+  exit 
+fi
+
+DIST_SUM=`md5sum ${DIST_ACTIONS_DIR}/$1 | awk '{print $1}'`
+
+if [ -f ${ACTIONS_DIR}/${BIZ} ]; then
+  ACT_SUM=`md5sum  ${ACTIONS_DIR}/${BIZ} | awk '{print $1}'`
+  if [ ${DIST_SUM} != ${ACT_SUM} ]; then
+    echo "Checksum doesn't match. But don't worry, it won't be overwritten!"
+  fi
+else
+  cp ${DIST_ACTIONS_DIR}/${BIZ} ${ACTIONS_DIR}
+fi
+
+echo "deploy ${BIZ} done!"
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "Usage: $0 <ip> <k5login_trusts>"
+  exit 1;
+fi
+
+SERVER=$1
+ACCT=cwf
+IDS=$2
+
+
+ssh root@${SERVER} "if [ -f /etc/debian_version ];then id ${ACCT} || adduser -g nginx --disabled-password --home /data/${ACCT} ${ACCT};fi"
+ssh root@${SERVER} "if [ -f /etc/redhat-release ];then id ${ACCT} || adduser -g nginx -m -d /data/${ACCT} ${ACCT};fi"
+ssh root@${SERVER} "if [ ! -f /data/${ACCT}/.k5login ]; then touch /data/${ACCT}/.k5login; fi"
+
+for ID in $IDS
+do
+	ssh root@${SERVER} "grep \"^${ID}\" ~${ACCT}/.k5login || echo ${ID} >> ~${ACCT}/.k5login"
+done
+
+ssh root@${SERVER} "mkdir -p /var/lib/nginx/socks;chown -R nginx:nginx /var/lib/nginx/socks;chmod g+w /var/lib/nginx/socks;ln -s /var/lib/nginx/socks /data/cwf/"

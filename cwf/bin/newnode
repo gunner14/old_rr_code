@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# != 1 ]; then
+	echo "Usage: $0 <ip>"
+        exit
+fi
+
+SVN_PATH="svn://deploy-svn.xce.d.xiaonei.com/cwf"
+DISK_PATH="cwf"
+
+echo "----building new cwf server: $1"
+ssh cwf@$1 "cd ~/ && if [ ! -d $DISK_PATH ]; then svn co $SVN_PATH $DISK_PATH; else echo $DISK_PATH already exists; fi;"
