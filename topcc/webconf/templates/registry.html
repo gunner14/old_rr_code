@@ -1,0 +1,61 @@
+<html>
+  <head> 
+  <title> {{title}} </title>
+  <script src="{{ static_url("gen_validatorv4.js") }} type="text/javascript"></script>
+  </head>
+  <body>
+  <form method="post" name="regform" id = "regform" action="/registry">
+  {{ xsrf_form_html() }}
+  {% if errmsg %}
+  <p><font color="red"> {{ escape(errmsg) }} </font></p>
+  {% end %}
+  <dl>
+  <dt><label for="name">真实姓名:</label></dt>
+  <dd><input type="text" name="name" id = "name" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dt><label for="name">业务部门:</label></dt>
+  <dd><input type="text" name="department" id = "department" class="inputtext" /></dd>
+  </dl>
+  <dl> 
+  <dt><label for="email">注册邮箱:</label></dt>
+  <dd><input type="text" name="email" id = "email" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dt><label for="username">输入帐号:</label></dt>
+  <dd><input type="text" name="username" id = "username" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dt><label for="pwd">创建密码:</label></dt>
+  <dd><input type="password" name="password" id = "password" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dt><label for="pwd">重复密码:</label></dt>
+  <dd><input type="password" name="password2" id = "password2" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dd>
+  <input type="submit" value="立即注册" />
+  </dd>
+  </dl>
+  </form>
+  <script  type="text/javascript">
+  var frmvalidator = new Validator("regform");
+  frmvalidator.addValidation("name","req");
+  frmvalidator.addValidation("department","req");
+  frmvalidator.addValidation("email","req");
+  frmvalidator.addValidation("username","req");
+  frmvalidator.addValidation("password","req");
+  frmvalidator.addValidation("password2","req");
+  
+  frmvalidator.addValidation("email","email");
+  frmvalidator.addValidation("email","maxlen=50");
+  
+  frmvalidator.addValidation("username","maxlen=32");
+  frmvalidator.addValidation("password","maxlen=32");
+  frmvalidator.addValidation("password2","maxlen=32");
+  frmvalidator.addValidation("password2","eqelmnt=password", 
+  "The confirmed password is not the same as password");
+  </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{title}}</title>
+<link rel = "stylesheet" href="{{ static_url("service.css") }}" type="text/css" />
+{% block head %}
+{% include "top.html" %}
+{% end %}
+
+<script language="javascript">
+function delete_confirm() 
+{ 
+return (confirm("确认删除？"))
+} 
+</script>
+</head>
+
+<body>
+<table width="100%" border="1">
+    <caption>
+  {% if isadmin %}
+    所有上传业务
+    {% else %}
+    我的上传业务
+    {% end %}
+  </caption>
+  <tr>
+    <td>编号</td>
+    <td>pagetype</td>
+   <td colspan="2">操作</td> 
+  </tr>
+  
+  {% set index = 0 %}
+  {% for (serviceid, servicename) in services.iteritems() %}
+  {% set formview = "formview" + str(serviceid) %}
+  {% set formdel = "formdel" + str(serviceid) %}
+  {% set formmod = "formmod" + str(serviceid) %}
+  {% set index = index + 1 %}
+  <tr>
+    <td>{{index}}</td>
+    <td>{{servicename}}</td>
+    <td>
+    <form name={{formview}} method="post" action = "/view">
+    <input type="hidden" name="serviceid" value={{serviceid}} />
+    <input type="submit" name="Submit" value="查看" />
+    </form>
+    </td>
+    
+    <!--
+    <td>
+    <form name={{formmod}} method="post" action = "/modify">
+    <input type="hidden" name="serviceid" value={{serviceid}} />
+    <input type="submit" name="Submit" value="修改" />
+    </form>
+    </td>
+    -->
+    
+    <td>
+    <form name={{formdel}} method="post" onsubmit = "return delete_confirm()" action = "/delete">
+    <input type="hidden" name="serviceid" value={{serviceid}} />
+    <input type="submit" name="Submit" value="删除" />
+    </form>
+    </td>
+  </tr>
+  {% end %}
+</table>
+<br />
+<br />
+<table width="100%" border="1">
+<tr>
+<td width = "12%">
+<a href="/service">申请上传业务</a>
+</td>
+{% if isadmin %}
+<td width = "12%">
+<form action = "/genconfs" method="post" >
+<input type="submit" name="Submit" value="下载配置文件" />
+</form>
+</td>
+<td width = "76%">
+<form action = "/import" method="post" enctype="multipart/form-data">
+<label for="service">service:</label>
+<input type="file" name="service" />
+<label for="template">template:</label>
+<input type="file" name="template" />
+<input type="submit" name="Submit" value="导入配置文件" />
+</form>
+</td>
+{% end %}
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,90 @@
+#!/bin/bash
+
+#author –zengyuxing newday.jesse@gmail.com
+
+DiffVersion()
+{
+  local R1
+  local R2
+  R1=`echo $VERSION|awk -F$SPLIT {‘print $1′}`
+  R2=`echo $VERSION|awk -F$SPLIT {‘print $2′}`
+  echo “R1=$R1;R2=$R2″
+  if [ -z $R1 ]; then
+    R1=“HEAD”
+    R2=“BASE”
+    fi
+    if [ $R1 ] && [ $R2 ]; then
+      if [ "${R1//[0-9]}” ]; then
+        echo “Error:$R1:error format version info,should be a number”
+        exit 2
+        fi
+
+        if [ "${R2//[0-9]}” ]; then
+          echo “Error:$R2:error format version info,should be a number”
+          exit 2
+          fi
+          fi
+          if [ -z $R2 ]; then
+            R2=“HEAD”
+            fi
+            svn cat -r $R1 $FILENAME > $DIRNAME/.$DIFFNAME.diff.$R1
+            svn cat -r $R2 $FILENAME > $DIRNAME/.$DIFFNAME.diff.$R2
+            vimdiff $DIRNAME/.$DIFFNAME.diff.$R1 $DIRNAME/.$DIFFNAME.diff.$R2
+            rm -rf $DIRNAME/.$DIFFNAME.diff.$R1 $DIRNAME/.$DIFFNAME.diff.$R2
+}
+
+MyDiff()
+{
+  case $PARAMTER in -r)
+  echo “diff with different version”
+  DiffVersion
+  ;;
+  -n)
+  echo “diff the last two versions”$FILENAME
+  version=“`svn log $FILENAME|/bin/grep -e “r[0-9]\{1\}“|sed s/r//|awk {‘print $1′}|head -2`”
+  VERSION=“`echo $version|sed s/\” \”/:/ `”
+  SPLIT=“:”
+  DiffVersion
+  ;;
+  -p)
+  echo “diff between working and the second of last versions “$FILENAME
+  version=“`svn log $FILENAME|/bin/grep -e “r[0-9]\{1\}“|sed s/r//|awk {‘print $1′}|head -2`”
+  VERSION=“`echo $version|sed s/\” \”/:/ `”
+  SPLIT=“:”
+  T2=`echo $VERSION|awk -F$SPLIT {‘print $2′}`
+  svn cat -r $T2 $FILENAME > $DIRNAME/.$DIFFNAME.diff.$T2
+  vimdiff $FILENAME $DIRNAME/.$DIFFNAME.diff.$T2
+  rm -rf $DIRNAME/.$DIFFNAME.diff.$T2
+  ;;
+  *)
+  echo “unsupport paramter”
+  exit 1
+  ;;
+  esac
+}
+
+REGEX1=“^[0-9]$”
+REGEX2=“^[0-9]$”
+PROG=`basename $0`
+if [ $# -lt 1 ]; then
+  echo “Usage:$PROG filename [-r] [version1:version2] [-n]“
+  echo “      -n diff the last two versions”
+  else
+    DIFFNAME=`basename $1`
+    DIRNAME=`dirname $1`
+    FILENAME=$1
+    if [ -z $DIRNAME ]; then
+      $DIRNAME= ‘.’
+      fi
+      if [ -z $2 ]; then
+        svn cat -r HEAD $FILENAME > $DIRNAME/.$DIFFNAME.HEAD.diff
+        vimdiff $FILENAME $DIRNAME/.$DIFFNAME.HEAD.diff
+        rm -rf $DIRNAME/.$DIFFNAME.HEAD.diff
+        else
+#if have -r paramter
+          PARAMTER=$2
+          VERSION=$3
+          SPLIT=“:”
+          MyDiff
+          fi
+          fi

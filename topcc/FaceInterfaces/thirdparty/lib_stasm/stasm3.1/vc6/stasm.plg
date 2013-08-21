@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: stasm - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP56.tmp" with contents
+[
+/nologo /MTd /W3 /GX /ZI /Od /I "." /I "C:\OpenCV2.1\include\opencv" /I "..\regex" /I "..\gsl" /I "..\gsl\gsl" /I "..\image" /I "..\jpeg" /I "..\mat" /I "..\rowley" /I "..\stasm" /I "..\tasm" /I "..\png" /I "..\png\pnglib" /I "..\png\zlib" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "HAVE_CONFIG_H" /D "STDC_HEADERS" /D "REGEX_MALLOC" /Fp"Debug/stasm.pch" /YX /Fo"Debug/" /Fd"Debug/" /c 
+"D:\projects\人脸识别\asm\stasm3.1\image\imequalize.cpp"
+"D:\projects\人脸识别\asm\stasm3.1\stasm\main.cpp"
+"D:\projects\人脸识别\asm\stasm3.1\stasm\stasm.cpp"
+"D:\projects\人脸识别\asm\stasm3.1\stasm\tab.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP56.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP57.tmp" with contents
+[
+user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ..\gsl\lib_ms\mini_gslML.lib ..\gsl\lib_ms\gslcblasML.lib ..\jpeg\lib_ms\libjpeg.lib ..\png\pnglib\libpng.lib ..\png\zlib\zlib.lib C:\OpenCV2.1\lib\cv210.lib C:\OpenCV2.1\lib\cxcore210.lib C:\OpenCV2.1\lib\highgui210.lib setargv.obj /nologo /subsystem:console /incremental:yes /pdb:"Debug/stasm.pdb" /debug /machine:I386 /nodefaultlib:"LIBCD" /nodefaultlib:"LIBC" /out:"Debug/stasm.exe" /pdbtype:sept 
+".\Debug\asmsearch.obj"
+".\Debug\atface.obj"
+".\Debug\err.obj"
+".\Debug\ezfont.obj"
+".\Debug\find.obj"
+".\Debug\follow.obj"
+".\Debug\forward.obj"
+".\Debug\imequalize.obj"
+".\Debug\imfile.obj"
+".\Debug\imgiven.obj"
+".\Debug\imshape.obj"
+".\Debug\imutil.obj"
+".\Debug\imwrite.obj"
+".\Debug\initasm.obj"
+".\Debug\initnet.obj"
+".\Debug\jpegutil.obj"
+".\Debug\landmarks.obj"
+".\Debug\list.obj"
+".\Debug\main.obj"
+".\Debug\mat.obj"
+".\Debug\matvec.obj"
+".\Debug\mchol.obj"
+".\Debug\mrand.obj"
+".\Debug\pngutil.obj"
+".\Debug\prof.obj"
+".\Debug\readasm.obj"
+".\Debug\readconf.obj"
+".\Debug\readpng.obj"
+".\Debug\regex.obj"
+".\Debug\release.obj"
+".\Debug\rgbimutil.obj"
+".\Debug\rowley.obj"
+".\Debug\rowleyhand.obj"
+".\Debug\safe_alloc.obj"
+".\Debug\search.obj"
+".\Debug\shapefile.obj"
+".\Debug\shapemodel.obj"
+".\Debug\sparsemat.obj"
+".\Debug\startshape.obj"
+".\Debug\stasm.obj"
+".\Debug\tab.obj"
+".\Debug\tclHash.obj"
+".\Debug\util.obj"
+".\Debug\violajones.obj"
+".\Debug\vjhand.obj"
+".\Debug\wrbmp.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP57.tmp"
+<h3>Output Window</h3>
+Compiling...
+imequalize.cpp
+main.cpp
+stasm.cpp
+tab.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+stasm.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

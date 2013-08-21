@@ -1,0 +1,181 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: facelandmark - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP936.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\regex" /I "..\gsl" /I "..\gsl\gsl" /I "..\image" /I "..\jpeg" /I "..\mat" /I "..\rowley" /I "..\stasm" /I "..\tasm" /I "..\png" /I "..\png\pnglib" /I "..\png\zlib" /D "NDEBUG" /D "WIN32" /D "_MBCS" /D "_LIB" /D "HAVE_CONFIG_H" /D "STDC_HEADERS" /D "REGEX_MALLOC" /FR"Release/" /Fp"Release/facelandmark.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\asmsearch.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\atface.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\err.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\image\ezfont.c"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\vc6\facelandmark.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\find.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\follow.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\forward.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\image\imfile.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\imshape.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\image\imutil.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\image\imwrite.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\initasm.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\initnet.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\landmarks.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\mat\mat.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\mat\matvec.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\mat\mchol.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\tasm\mrand.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\prof.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\readasm.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\readconf.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\regex\regex.c"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\release.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\image\rgbimutil.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\rowley.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\rowleyhand.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\safe_alloc.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\search.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\shapefile.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\shapemodel.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\sparsemat.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\startshape.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\rowley\tclHash.c"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\util.cpp"
+"D:\projects\人脸识别\asm\lib_stasm\stasm3.1\stasm\vjhand.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP936.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP937.tmp" with contents
+[
+/nologo /out:"Release\facelandmark.lib" 
+".\Release\asmsearch.obj"
+".\Release\atface.obj"
+".\Release\err.obj"
+".\Release\ezfont.obj"
+".\Release\facelandmark.obj"
+".\Release\find.obj"
+".\Release\follow.obj"
+".\Release\forward.obj"
+".\Release\imfile.obj"
+".\Release\imshape.obj"
+".\Release\imutil.obj"
+".\Release\imwrite.obj"
+".\Release\initasm.obj"
+".\Release\initnet.obj"
+".\Release\landmarks.obj"
+".\Release\mat.obj"
+".\Release\matvec.obj"
+".\Release\mchol.obj"
+".\Release\mrand.obj"
+".\Release\prof.obj"
+".\Release\readasm.obj"
+".\Release\readconf.obj"
+".\Release\regex.obj"
+".\Release\release.obj"
+".\Release\rgbimutil.obj"
+".\Release\rowley.obj"
+".\Release\rowleyhand.obj"
+".\Release\safe_alloc.obj"
+".\Release\search.obj"
+".\Release\shapefile.obj"
+".\Release\shapemodel.obj"
+".\Release\sparsemat.obj"
+".\Release\startshape.obj"
+".\Release\tclHash.obj"
+".\Release\util.obj"
+".\Release\vjhand.obj"
+"..\gsl\lib_ms\gslcblasML.lib"
+"..\gsl\lib_ms\mini_gslML.lib"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP937.tmp"
+<h3>Output Window</h3>
+Compiling...
+asmsearch.cpp
+atface.cpp
+err.cpp
+ezfont.c
+facelandmark.cpp
+find.cpp
+follow.cpp
+forward.cpp
+imfile.cpp
+imshape.cpp
+imutil.cpp
+imwrite.cpp
+initasm.cpp
+initnet.cpp
+landmarks.cpp
+mat.cpp
+matvec.cpp
+mchol.cpp
+mrand.cpp
+prof.cpp
+readasm.cpp
+readconf.cpp
+regex.c
+release.cpp
+rgbimutil.cpp
+rowley.cpp
+rowleyhand.cpp
+safe_alloc.cpp
+search.cpp
+shapefile.cpp
+shapemodel.cpp
+sparsemat.cpp
+startshape.cpp
+tclHash.c
+util.cpp
+vjhand.cpp
+Creating library...
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP938.tmp" with contents
+[
+/nologo /o"Release/facelandmark.bsc" 
+".\Release\asmsearch.sbr"
+".\Release\atface.sbr"
+".\Release\err.sbr"
+".\Release\ezfont.sbr"
+".\Release\facelandmark.sbr"
+".\Release\find.sbr"
+".\Release\follow.sbr"
+".\Release\forward.sbr"
+".\Release\imfile.sbr"
+".\Release\imshape.sbr"
+".\Release\imutil.sbr"
+".\Release\imwrite.sbr"
+".\Release\initasm.sbr"
+".\Release\initnet.sbr"
+".\Release\landmarks.sbr"
+".\Release\mat.sbr"
+".\Release\matvec.sbr"
+".\Release\mchol.sbr"
+".\Release\mrand.sbr"
+".\Release\prof.sbr"
+".\Release\readasm.sbr"
+".\Release\readconf.sbr"
+".\Release\regex.sbr"
+".\Release\release.sbr"
+".\Release\rgbimutil.sbr"
+".\Release\rowley.sbr"
+".\Release\rowleyhand.sbr"
+".\Release\safe_alloc.sbr"
+".\Release\search.sbr"
+".\Release\shapefile.sbr"
+".\Release\shapemodel.sbr"
+".\Release\sparsemat.sbr"
+".\Release\startshape.sbr"
+".\Release\tclHash.sbr"
+".\Release\util.sbr"
+".\Release\vjhand.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP938.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+facelandmark.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

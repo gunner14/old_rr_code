@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>{{ escape(handler.settings["web_title"]) }}</title>
+    <link rel="stylesheet" href="{{ static_url("blog.css") }}" type="text/css"/>
+    <link rel="alternate" href="/feed" type="application/atom+xml" title="{{ escape(handler.settings["web_title"]) }}
+     "/>{% block head %}{% end %}
+  </head>
+  <body>
+    <div id="body">
+      <div id="header">
+        <div style="float:right">
+          {% if current_user %}
+            <a href="/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
+          {% else %}
+            {{ _('<a href="%(url)s">Sign in</a> to /edit') % {"url": "/login?next=" + url_escape(request.uri)} }}
+          {% end %}
+        </div>
+        <h1><a href="/">{{ escape(handler.settings["web_title"]) }}</a></h1>
+      </div>
+      <div id="content">{% block body %}{% end %}</div>
+    </div>
+    {% block bottom %}{% end %}
+
+
+
+    <div id="body">
+    <form action="/" method="post" onsubmit="alert('确认要提交数据吗？');return true" >
+    <table>
+      请填入申请信息
+     <tr>
+      <td>
+        pagetype:<input type="text" name="pagetype" value="">
+      </td>
+      <td>
+        注释: <input type="text" name="notation" value="">
+      </td>
+      <td>
+        savesubdir: <input type="text" name="savesubdir" value="">
+      </td>
+     <tr>
+    
+     <tr>
+      <td>markpath: <input type="text" name="markpath" value=""></td>
+      <td>if check comment:<select name="checkcomment" style="width:90px">
+        <option value="true">true</option>
+        <option value="false">false</option></select></td>
+      <td>是否处理exif:<select name="handleexif" style="width:90px">
+        <option value="true">true</option>
+        <option value="false">false</option></select></td>
+     </tr>
+     
+     <tr>
+      <td>是否水印:<select name="watermark" style="width:90px">
+        <option value="true">true</option>
+        <option value="false">false</option></select></td>
+      <td>验票类型:<select name="tickettype" style="width:90px">
+        <option value="none">none</option>
+        <option value="tmorph">tmorph</option> 
+        <option value="fix">fix</option>
+        <option value="cookie">cookie</option>
+        <option value="urlmorph">urlmorph</option> 
+        <option value="trans">trans</option>
+        <option value="json">json</option></select></td>
+      <td>返回数据类型:<select name="outputtype" style="width:90px">
+        <option value="json">json</option>
+        <option value="iframe">iframe</option> 
+        <option value="iframe2">iframe2</option>
+        <option value="jsonp">jsonp</option></select></td>
+     </tr>
+
+     <tr>
+     <td> 票据串:<input type="text" name="ticketsuffix" value=""></td>
+     <td>自动旋转:<select name="autorotate" style="width:90px">
+        <option value="true">true</option>
+        <option value="false">false</option></select></td>
+     <td> domain:<input type="text" name="domain" value=""></td>
+   
+   </tr>
+
+   </table> 
+   <p></p>
+
+   <p></p>   
+   <table>  
+     <p>请输入图片尺寸信息：</p>
+
+     <tr>
+      <td style="width:100px"> 宽: <input type="text" name="width1" style="width:40px" value="0"></td>
+      <td style="width:100px" > 高: <input type="text" name="height1" style="width:40px" value="0"></td>
+      <td style="width:170px" >质量(0-100)<input type="text" name="quality1" style="width:40px " value="85"></td>
+      <td style="width:100px" >剪切:<select name ="crop1" style="width:50px">
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+      <td style="width:165px" >png不转jpg:<select name="samepngtype1"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:165px" >gif不转jpg:<select name="samegiftype1"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:100px" >锐化<select name ="sharpen1" style="width:50px" >
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+     </tr> 
+     <tr>
+      <td style="width:100px"> 宽: <input type="text" name="width2" style="width:40px" value="0"></td>
+      <td style="width:100px" > 高: <input type="text" name="height2" style="width:40px" value="0"></td>
+      <td style="width:170px" >质量(0-100)<input type="text" name="quality2" style="width:40px " value="85"></td>
+      <td style="width:100px" >剪切:<select name ="crop2" style="width:50px">
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+      <td style="width:165px" >png不转jpg:<select name="samepngtype2"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:165px" >gif不转jpg:<select name="samegiftype2"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:100px" >锐化<select name ="sharpen2" style="width:50px" >
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+     </tr> 
+     <tr>
+      <td style="width:100px"> 宽: <input type="text" name="width3" style="width:40px" value="0"></td>
+      <td style="width:100px" > 高: <input type="text" name="height3" style="width:40px" value="0"></td>
+      <td style="width:170px" >质量(0-100)<input type="text" name="quality3" style="width:40px " value="85"></td>
+      <td style="width:100px" >剪切:<select name ="crop3" style="width:50px">
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+      <td style="width:165px" >png不转jpg:<select name="samepngtype3"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:165px" >gif不转jpg:<select name="samegiftype3"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:100px" >锐化<select name ="sharpen3" style="width:50px" >
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+     </tr> 
+
+     <tr>
+      <td style="width:100px"> 宽: <input type="text" name="width4" style="width:40px" value="0"></td>
+      <td style="width:100px" > 高: <input type="text" name="height4" style="width:40px" value="0"></td>
+      <td style="width:170px" >质量(0-100)<input type="text" name="quality4" style="width:40px " value="85"></td>
+      <td style="width:100px" >剪切:<select name ="crop4" style="width:50px">
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+      <td style="width:165px" >png不转jpg:<select name="samepngtype4"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:165px" >gif不转jpg:<select name="samegiftype4"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:100px" >锐化<select name ="sharpen4" style="width:50px" >
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+     </tr> 
+     <tr>
+      <td style="width:100px"> 宽: <input type="text" name="width5" style="width:40px" value="0"></td>
+      <td style="width:100px" > 高: <input type="text" name="height5" style="width:40px" value="0"></td>
+      <td style="width:170px" >质量(0-100)<input type="text" name="quality5" style="width:40px " value="85"></td>
+      <td style="width:100px" >剪切:<select name ="crop5" style="width:50px">
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+      <td style="width:165px" >png不转jpg:<select name="samepngtype5"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:165px" >gif不转jpg:<select name="samegiftype5"  style="width:50px">
+        <option style="width:50px" value="false">false</option>
+        <option style="width:50px" value="true">true</option></select></td>
+      <td style="width:100px" >锐化<select name ="sharpen5" style="width:50px" >
+        <option value="false">false</option>
+        <option value="true">true</option></td>
+     </tr> 
+
+     </table>
+     <p></p>
+    <p><input type="radio" checked="checked" name="fileformat" value="images" />图片上传</p>
+
+     <input type="checkbox" name="jpg" />jpg
+     <input type="checkbox" name="bmp" />bmp
+     <input type="checkbox" name="png" />png
+     <input type="checkbox" name="gif" />gif
+     <input type="checkbox" name="jpeg" />jpeg
+    
+    <p><input type="radio"  name="fileformat" value="others" />非图片上传</p>
+
+     <input type="checkbox" name="mp3" />mp3
+     <input type="checkbox" name="ogg" />ogg
+     <input type="checkbox" name="avi" />avi
+     <input type="checkbox" name="allext"/>.*(所有格式)
+ 
+     <p></p>
+      最小宽度: <input type="text" name="minwidth" value="1">
+      最小高度: <input type="text" name="minheight" value="1">
+      最大文件数: <input type="text" name="maxfilesize" value="15">
+
+      <p></p>
+    
+     <input type="submit" value="提交">
+   </form>
+   </div>
+   </body>
+</html>

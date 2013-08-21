@@ -1,0 +1,23 @@
+--- source/common/uloc.c	2009-06-24 15:20:23.000000000 -0700
++++ source/common/uloc.c	2010-08-16 12:04:02.616794000 -0700
+@@ -481,7 +481,7 @@
+  */
+ static const CanonicalizationMap CANONICALIZE_MAP[] = {
+     { "",               "en_US_POSIX", NULL, NULL }, /* .NET name */
+-    { "C",              "en_US_POSIX", NULL, NULL }, /* POSIX name */
++    { "c",              "en_US_POSIX", NULL, NULL }, /* POSIX name */
+     { "posix",          "en_US_POSIX", NULL, NULL }, /* POSIX name (alias of C) */
+     { "art_LOJBAN",     "jbo", NULL, NULL }, /* registered name */
+     { "az_AZ_CYRL",     "az_Cyrl_AZ", NULL, NULL }, /* .NET name */
+--- source/test/intltest/loctest.cpp	2009-06-26 09:49:55.000000000 -0700
++++ source/test/intltest/loctest.cpp	2010-08-16 12:01:33.411736000 -0700
+@@ -2037,6 +2037,9 @@
+         const char *getNameID;   /* expected getName() result */
+         const char *canonicalID; /* expected canonicalize() result */
+     } testCases[] = {
++        { "", "", "en_US_POSIX" },
++        { "C", "c", "en_US_POSIX" },
++        { "POSIX", "posix", "en_US_POSIX" },
+         { "ca_ES_PREEURO-with-extra-stuff-that really doesn't make any sense-unless-you're trying to increase code coverage",
+           "ca_ES_PREEURO_WITH_EXTRA_STUFF_THAT REALLY DOESN'T MAKE ANY SENSE_UNLESS_YOU'RE TRYING TO INCREASE CODE COVERAGE",
+           "ca_ES_PREEURO_WITH_EXTRA_STUFF_THAT REALLY DOESN'T MAKE ANY SENSE_UNLESS_YOU'RE TRYING TO INCREASE CODE COVERAGE"},

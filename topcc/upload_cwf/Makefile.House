@@ -1,0 +1,49 @@
+CC=g++ -ggdb -Wall
+KXENV_HOME=../../..
+BASE_LIB=$(KXENV_HOME)/lib
+KX_LIB=$(BASE_LIB)/kxLib
+BASE_INCLUDE=$(KXENV_HOME)/include
+KX_INCLUDE=$(BASE_INCLUDE)/kxInclude
+INCLUDE=-I$(KX_INCLUDE) -I$(BASE_INCLUDE) -I$(KX_INCLUDE)/util  -I$(KX_INCLUDE)/IMCrawler -I$(KX_INCLUDE)/RecogImage -I$(KX_INCLUDE)/DownloadCentre  -I$(BASE_INCLUDE)/ImageMagick  -I..
+SYSLIB=-L/usr/local/mysql/lib/mysql/ -lmysqlclient -ldl -lpthread -llog4cxx `Magick++-config --cppflags --cxxflags --ldflags --libs`
+OURLIB= $(KX_LIB)/crawler.a  ../Common/common.a  $(KX_LIB)/cutword.a $(KX_LIB)/util.a $(BASE_LIB)/boostLib/libboost_regex-gcc-1_33_1.a $(BASE_LIB)/boostLib/libboost_serialization-gcc-1_33_1.a $(BASE_LIB)/boostLib/libboost_date_time-gcc-mt-1_33_1.a $(KX_LIB)/libDC.a $(KX_LIB)/RecogImage.a
+DLL=-shared
+CXXFILES_NOT_MAIN=houseextractor.cpp  fuzzysearch.cpp houseagencydetector.cpp bbssaver.cpp
+.SUFFIXES: .o .cpp
+.cpp.o:
+	$(CC) -c -DTEST_NEW_WORD_BREAK $(INCLUDE) $< -o $@
+
+#------------------用于生成IMCrawler------------------------
+CXXFILES=${CXXFILES_NOT_MAIN} main.cpp
+OFILES   = $(CXXFILES:.cpp=.o)
+all:IMCrawler lib CrawlerTest
+IMCrawler:subdirs $(OFILES) ${OURLIB}
+	$(CC) $(SYSLIB) -o $@ ${OFILES} ${OURLIB}
+	cp -f $@ ~/Kooxoo/bin
+	echo -e "生成可执行文件:$@\n"
+subdirs:
+	cd ../../util && make 
+	cd ../Common && make
+	cd ../../IMCrawler && make -f Makefilelib
+clean:
+	rm -f *.o
+	rm -f IMCrawler
+
+#------------------用于生成lib------------------------
+OFILES_NOT_MAIN  = $(CXXFILES:.cpp=.o)
+lib:secondhouse.a
+secondhouse.a:$(OFILES_NOT_MAIN) ${OURLIB}
+	ar rcv $@ $(OFILES_NOT_MAIN)
+	mkdir -p ${KX_INCLUDE}/Extractor/House
+	cp -p -f *.h  ${KX_INCLUDE}/Extractor/House
+	cp $@ ${KX_LIB}
+	echo -e "生成库文件:$@\n"
+
+#------------------用于CrawlerTest------------------------
+CXXFILES_TEST=${CXXFILES_NOT_MAIN} crawlertest.cpp crawlertestmain.cpp
+OFILES_TEST = $(CXXFILES_TEST:.cpp=.o)
+CrawlerTest:$(OFILES_TEST) ${OURLIB}
+	$(CC) $(SYSLIB) -o $@ ${OFILES_TEST} ${OURLIB}
+	cp -f $@ ~/Kooxoo/bin
+	echo -e "生成测试文件:$@\n"
+

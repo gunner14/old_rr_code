@@ -1,0 +1,10 @@
+
+<div>
+  <h1>upload service</h1>
+  {% if current_user %}
+  <div style="float:right">
+  {{escape(handler.get_secure_cookie('name')) }}
+  <a href="/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
+  </div>
+  {% end %}
+</div>

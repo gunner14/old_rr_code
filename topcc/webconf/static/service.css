@@ -1,0 +1,17 @@
+head {
+  backgroud-color:#3b5998;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 12%;
+	margin-right: 12%;
+	margin-bottom: 12%;
+}
+
+td {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+th {
+	font-family: Arial, Helvetica, sans-serif;
+}

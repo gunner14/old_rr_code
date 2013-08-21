@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{title}}</title>
+<link href="{{ static_url("service.css") }}" rel="stylesheet" type="text/css" />
+{% block head %}
+{% include "top.html" %}
+{% end %}
+</head>
+
+<body>
+<table width="80%" border="1" align="center">
+    <caption>
+      申请信息
+    </caption>
+    <tr>
+      <td><label>pagetype: {{ info['pagetype']}}
+      </label></td>
+      <td><label>Owner: {{ info['owner']}}
+      </label></td>
+      <tr>
+    <tr>
+      <td><label>业务部门: {{ info['ownerdepartment']}}
+      </label></td>
+      <td><label>Email: {{ info['owneremail']}}
+      </label></td>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr>
+      <td colspan = "2"><label>业务简介: {{ info['servicecomment']}}
+      </label></td>
+      </tr>
+      <tr>
+      <td><label>验票类型: {{ info['tickettype']}}
+      </label></td>
+      <td><label>票后缀: {{ info['ticketsuffix']}}
+      </label></td>
+      </tr>
+      <tr>
+      <td><label>输出类型: {{ info['outputtype']}}
+      </label></td>
+      <td><label>接受扩展名: {{ info['exts']}}</label></td>
+      </tr>
+      <tr>
+      <td colspan="2"><label>处理图片: {{ info['handleimages']}}
+      </label></td>
+    </tr>
+</table>
+</body>
+</html>

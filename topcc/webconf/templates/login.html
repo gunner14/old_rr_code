@@ -1,0 +1,27 @@
+<html>
+  <head> 
+  <title> {{title}} </title>
+  </head>
+  <body>
+  <form method="post" name="loginform" action="/login">
+  {{ xsrf_form_html() }}
+  {% if errmsg %}
+  <p><font color="red"> {{ escape(errmsg) }} </font></p>
+  {% end %}
+  <dl>
+  <dt><label for="username">帐号:</label></dt>
+  <dd><input type="text" name="username" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dt><label for="pwd">密码:</label></dt>
+  <dd><input type="password" name="password" class="inputtext" /></dd>
+  </dl>
+  <dl>
+  <dd>
+  <input type="submit" value="Login" />
+  </dd>
+  </dl>
+  </form>
+  <a href="registry"> Create an account </a>
+  </body>
+</html>

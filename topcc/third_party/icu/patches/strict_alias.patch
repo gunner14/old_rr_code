@@ -1,0 +1,183 @@
+Index: source/common/putil.c
+===================================================================
+--- source/common/putil.c	(revision 28300)
++++ source/common/putil.c	(working copy)
+@@ -191,7 +191,6 @@
+     return (char*)(d + 1) - n;
+ #endif
+ }
+-#endif
+ 
+ static char*
+ u_bottomNBytesOfDouble(double* d, int n)
+@@ -202,7 +201,23 @@
+     return (char*)d;
+ #endif
+ }
++#endif   /* !IEEE_754 */
+ 
++#if IEEE_754
++static UBool
++u_signBit(double d) {
++    uint8_t hiByte;
++#if U_IS_BIG_ENDIAN
++    hiByte = *(uint8_t *)&d;
++#else
++    hiByte = *(((uint8_t *)&d) + sizeof(double) - 1);
++#endif
++    return (hiByte & 0x80) != 0;
++}
++#endif
++
++
++
+ #if defined (U_DEBUG_FAKETIME)
+ /* Override the clock to test things without having to move the system clock.
+  * Assumes POSIX gettimeofday() will function
+@@ -468,20 +483,17 @@
+ uprv_fmax(double x, double y)
+ {
+ #if IEEE_754
+-    int32_t lowBits;
+-
+     /* first handle NaN*/
+     if(uprv_isNaN(x) || uprv_isNaN(y))
+         return uprv_getNaN();
+ 
+     /* check for -0 and 0*/
+-    lowBits = *(uint32_t*) u_bottomNBytesOfDouble(&x, sizeof(uint32_t));
+-    if(x == 0.0 && y == 0.0 && (lowBits & SIGN))
++    if(x == 0.0 && y == 0.0 && u_signBit(x))
+         return y;
+ 
+ #endif
+ 
+-    /* this should work for all flt point w/o NaN and Infpecial cases */
++    /* this should work for all flt point w/o NaN and Inf special cases */
+     return (x > y ? x : y);
+ }
+ 
+@@ -489,15 +501,12 @@
+ uprv_fmin(double x, double y)
+ {
+ #if IEEE_754
+-    int32_t lowBits;
+-
+     /* first handle NaN*/
+     if(uprv_isNaN(x) || uprv_isNaN(y))
+         return uprv_getNaN();
+ 
+     /* check for -0 and 0*/
+-    lowBits = *(uint32_t*) u_bottomNBytesOfDouble(&y, sizeof(uint32_t));
+-    if(x == 0.0 && y == 0.0 && (lowBits & SIGN))
++    if(x == 0.0 && y == 0.0 && u_signBit(y))
+         return y;
+ 
+ #endif
+@@ -517,16 +526,13 @@
+ uprv_trunc(double d)
+ {
+ #if IEEE_754
+-    int32_t lowBits;
+-
+     /* handle error cases*/
+     if(uprv_isNaN(d))
+         return uprv_getNaN();
+     if(uprv_isInfinite(d))
+         return uprv_getInfinity();
+ 
+-    lowBits = *(uint32_t*) u_bottomNBytesOfDouble(&d, sizeof(uint32_t));
+-    if( (d == 0.0 && (lowBits & SIGN)) || d < 0)
++    if(u_signBit(d))    /* Signbit() picks up -0.0;  d<0 does not. */
+         return ceil(d);
+     else
+         return floor(d);
+Index: source/tools/toolutil/pkg_genc.c
+===================================================================
+--- source/tools/toolutil/pkg_genc.c	(revision 28107)
++++ source/tools/toolutil/pkg_genc.c	(working copy)
+@@ -623,14 +623,22 @@
+ #ifdef CAN_GENERATE_OBJECTS
+ static void
+ getArchitecture(uint16_t *pCPU, uint16_t *pBits, UBool *pIsBigEndian, const char *optMatchArch) {
+-    int64_t buffer[256];
++    union {
++        char        bytes[2048];
++#ifdef U_ELF
++        Elf32_Ehdr  header32;
++        /* Elf32_Ehdr and ELF64_Ehdr are identical for the necessary fields. */
++#elif defined(U_WINDOWS)
++        IMAGE_FILE_HEADER header;
++#endif
++    } buffer;
++
+     const char *filename;
+     FileStream *in;
+     int32_t length;
+ 
+ #ifdef U_ELF
+-    /* Pointer to ELF header. Elf32_Ehdr and ELF64_Ehdr are identical for the necessary fields. */
+-    const Elf32_Ehdr *pHeader32;
++
+ #elif defined(U_WINDOWS)
+     const IMAGE_FILE_HEADER *pHeader;
+ #else
+@@ -668,26 +676,25 @@
+         fprintf(stderr, "genccode: unable to open match-arch file %s\n", filename);
+         exit(U_FILE_ACCESS_ERROR);
+     }
+-    length=T_FileStream_read(in, buffer, sizeof(buffer));
++    length=T_FileStream_read(in, buffer.bytes, sizeof(buffer.bytes));
+ 
+ #ifdef U_ELF
+     if(length<sizeof(Elf32_Ehdr)) {
+         fprintf(stderr, "genccode: match-arch file %s is too short\n", filename);
+         exit(U_UNSUPPORTED_ERROR);
+     }
+-    pHeader32=(const Elf32_Ehdr *)buffer;
+     if(
+-        pHeader32->e_ident[0]!=ELFMAG0 ||
+-        pHeader32->e_ident[1]!=ELFMAG1 ||
+-        pHeader32->e_ident[2]!=ELFMAG2 ||
+-        pHeader32->e_ident[3]!=ELFMAG3 ||
+-        pHeader32->e_ident[EI_CLASS]<ELFCLASS32 || pHeader32->e_ident[EI_CLASS]>ELFCLASS64
++        buffer.header32.e_ident[0]!=ELFMAG0 ||
++        buffer.header32.e_ident[1]!=ELFMAG1 ||
++        buffer.header32.e_ident[2]!=ELFMAG2 ||
++        buffer.header32.e_ident[3]!=ELFMAG3 ||
++        buffer.header32.e_ident[EI_CLASS]<ELFCLASS32 || buffer.header32.e_ident[EI_CLASS]>ELFCLASS64
+     ) {
+         fprintf(stderr, "genccode: match-arch file %s is not an ELF object file, or not supported\n", filename);
+         exit(U_UNSUPPORTED_ERROR);
+     }
+ 
+-    *pBits= pHeader32->e_ident[EI_CLASS]==ELFCLASS32 ? 32 : 64; /* only 32 or 64: see check above */
++    *pBits= buffer.header32.e_ident[EI_CLASS]==ELFCLASS32 ? 32 : 64; /* only 32 or 64: see check above */
+ #ifdef U_ELF64
+     if(*pBits!=32 && *pBits!=64) {
+         fprintf(stderr, "genccode: currently only supports 32-bit and 64-bit ELF format\n");
+@@ -700,20 +707,21 @@
+     }
+ #endif
+ 
+-    *pIsBigEndian=(UBool)(pHeader32->e_ident[EI_DATA]==ELFDATA2MSB);
++    *pIsBigEndian=(UBool)(buffer.header32.e_ident[EI_DATA]==ELFDATA2MSB);
+     if(*pIsBigEndian!=U_IS_BIG_ENDIAN) {
+         fprintf(stderr, "genccode: currently only same-endianness ELF formats are supported\n");
+         exit(U_UNSUPPORTED_ERROR);
+     }
+     /* TODO: Support byte swapping */
+ 
+-    *pCPU=pHeader32->e_machine;
++    *pCPU=buffer.header32.e_machine;
+ #elif defined(U_WINDOWS)
+     if(length<sizeof(IMAGE_FILE_HEADER)) {
+         fprintf(stderr, "genccode: match-arch file %s is too short\n", filename);
+         exit(U_UNSUPPORTED_ERROR);
+     }
+-    pHeader=(const IMAGE_FILE_HEADER *)buffer;
++    /* TODO: Use buffer.header.  Keep aliasing legal.  */
++    pHeader=(const IMAGE_FILE_HEADER *)buffer.bytes;
+     *pCPU=pHeader->Machine;
+     /*
+      * The number of bits is implicit with the Machine value.

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{title}}</title>
+  <script src="{{ static_url("table_dynamic_row.js") }} type="text/javascript"></script>
+  <script src="{{ static_url("gen_validatorv4.js") }} type="text/javascript"></script>
+<link href="{{ static_url("service.css") }}" rel="stylesheet" type="text/css" />
+{% block head %}
+{% include "top.html" %}
+{% if errmsg %}
+<p><font color="red"> {{ escape(errmsg) }} </font></p>
+{% end %}
+{% end %}
+
+<style type="text/css">
+#detail {color: green; }
+</style>
+<script language="javascript">
+function onAddRow() {
+  AddRow();
+  var rowIDTxt = findObj("handleImgTBLastRow",document);
+  var rowID = parseInt(rowIDTxt.value);
+  rowID = rowID - 1;
+  var frmvalidator = new Validator("serviceform");
+  frmvalidator.addValidation("imgwidth" + rowID, "num");
+  frmvalidator.addValidation("imgwidth" + rowID, "lt=1025");
+  frmvalidator.addValidation("imgheight" + rowID, "num");
+  frmvalidator.addValidation("imgheight" + rowID, "lt=10241");
+  frmvalidator.addValidation("imgquality" + rowID, "num");
+  frmvalidator.addValidation("imgquality" + rowID, "gt=40");
+  frmvalidator.addValidation("imgquality" + rowID, "lt=101");
+}
+</script>
+</head>
+
+<body>
+<form name="serviceform" id="serviceform" method="post" action="">
+  <table width="100%" border="1">
+    <caption>
+      申请信息
+    </caption>
+    <tr>
+    <td colspan = "4"><label id = "detail">以下各项，不清楚的保持默认值即可，如有疑问，可以询问管理员再作决定</label></td>
+    </tr>
+    <tr>
+      <td width="273"><label>pagetype(<font color="red">*</font>)
+          <input type="text" name="pagetype" id="pagetype" />
+      </label></td>
+      <td colspan="3"><label id = "detail">为上传业务取个有意义的英文名字，比如小站的flash上传就可以取个“xiaozhanflash”</label></td>
+    </tr>
+    <tr>
+          <td width="273"><label>业务说明(<font color="red">*</font>)
+          <input type="text" name="servicecomment" id="servicecomment" />
+      </label></td>
+      <td colspan="3"><label id = "detail">简要描述业务，比如“小站flash上传”，“逛街客户端图片上传”</label></td>
+    </tr>
+    <tr>
+      <td width="153"><label>验票类型
+          <select name="ticketselect" size="1">
+            <option>none</option>
+            <option>fix</option>
+            <option selected="selected">cookie</option>
+            <option>tmorph</option>
+            <option>trans</option>
+            <option>urlmorph</option>
+          </select>
+        </select>
+      </label></td>
+      <td colspan="3"><label id = "detail">选择一种身份认证方式</label></td>
+    </tr>
+    <tr>
+      <td><label>savesubdir
+          <input type="text" name="savesubdir" />
+      </label></td>
+      <td>&nbsp;</td>
+      <td valign="middle"><p>
+        <label>
+        <input type="checkbox" name="checkcomment" />
+        checkcomment</label>
+      </p>        
+      <label></label></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><label>
+      <input type="checkbox" name="watermark" />
+      添加水印</label></td>
+      <td>&nbsp;</td>
+      <td><label>markpath
+          <input type="text" name="markpath"  />
+      </label></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><label>
+      <input type="checkbox" name="handleexif" checked="checked" />
+      处理exif</label></td>
+      <td>&nbsp;</td>
+      <td><label>
+        <input name="autorotate" type="checkbox" checked="checked" />
+      自动旋转</label></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><label>返回类型
+          <select name="outputselect" size="1">
+            <option>json</option>
+            <option>iframe</option>
+            <option>iframe2</option>
+          </select>
+        </select>
+      </label></td>
+      <td>&nbsp;</td>
+      <td><label>domain
+          <input type="text" name="domain"  />
+      </label></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="1" id="handleImgTB">
+  <caption>
+    处理图片
+  </caption>
+  <tr>
+    <td width="6%"><label>图片前缀</label></td>
+    <td width="14%"><label>宽</label></td>
+    <td width="14%"><label>高</label></td>
+    <td width="19%"><label>质量</label></td>
+    <td width="9%"><label>裁剪</label></td>
+    <td width="10%"><label>保持png</label></td>
+    <td width="9%"><label>保持gif</label></td>
+    <td width="8%"><label>锐化</label></td>
+    <td width="8%"><label></label></td>
+  </tr>
+</table>
+<div>
+  <input type="button" name="addRowBT" value="添加图片尺寸" onclick="onAddRow()" />
+  <input name='handleImgTBLastRow' type='hidden' id='handleImgTBLastRow' value="1" />
+  <select name="imgTypeSel" id="imgTypeSel" >  
+   <option value="0">large</option> 
+   <option value="1">main</option>
+   <option value="2">head</option>
+   <option value="3">tiny</option>
+   <option value="4">xlarge</option> 
+  </select>
+</div>
+
+<table width="100%" border="1">
+  <caption>
+    其它
+  </caption>
+  <tr>
+    <td><label>
+      <input name="uploadtype" type="radio" value = "image" checked="checked" />
+      图片</label></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><label>
+      <input name="jpg" type="checkbox"  checked="checked" />
+      jpg</label></td>
+    <td><label>
+      <input name="bmp" type="checkbox"  checked="checked" />
+      bmp</label></td>
+    <td><label>
+      <input name="png" type="checkbox"  checked="checked" />
+      png</label></td>
+    <td><label>
+      <input name="gif" type="checkbox"  checked="checked" />
+      gif</label></td>
+    <td><label>
+      <input name="jpeg" type="checkbox"  checked="checked" />
+      jpeg</label></td>
+  </tr>
+  <tr>
+    <td><label>
+      <input type="radio" name="uploadtype" value="music" />
+      音乐
+    </label></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><label>
+      <input type="checkbox" name="mp3" checked="checked"  />
+      mp3</label></td>
+    <td><label>
+      <input type="checkbox" name="ogg" checked="checked"  />
+      ogg</label></td>
+    <td><label>
+      <input type="checkbox" name="avi"  />
+      avi</label></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><label>
+      <input type="radio" name="uploadtype" value="attach" />
+      附件</label></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td><label>最小宽度
+        <input type="text" name="minwidth" value = "1" />
+    </label></td>
+    <td><label>最小高度
+        <input type="text" name="minheight" value = "1" />
+    </label></td>
+    <td><label>最大文件尺寸
+        <input type="text" name="maxfilesize" value = "15" />
+    </label></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input type="submit" name="Submit" value="提交" />
+</form>
+  <script  type="text/javascript">
+  var frmvalidator = new Validator("serviceform");
+  frmvalidator.addValidation("pagetype","req");
+  frmvalidator.addValidation("pagetype","alnum");
+  frmvalidator.addValidation("servicecomment","req");
+  frmvalidator.addValidation("servicecomment","maxlen=512");
+  frmvalidator.addValidation("minwidth","num");
+  frmvalidator.addValidation("minwidth","gt=0");
+  frmvalidator.addValidation("minwidth","lt=1025");
+  frmvalidator.addValidation("minheight","num");
+  frmvalidator.addValidation("minheight","gt=0");
+  frmvalidator.addValidation("minheight","lt=10241");
+  frmvalidator.addValidation("maxfilesize","num");
+  frmvalidator.addValidation("maxfilesize","lt=16");
+
+  </script>
+</body>
+</html>

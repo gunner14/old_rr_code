@@ -1,0 +1,208 @@
+[album]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=720,720,large,0,88,0,1,30,0|200,600,main,0,80,0,0,60,0|50,50,tiny,1,80,0,0,720,0|100,300,head,0,80,0,0,1440,0|1024,10240,xlarge,0,88,0,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[album3g]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=2048,1536,large,0,88,1,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+#tuxiu
+[albumtuxiu]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=450,1350,large,0,92,0,0,30,1|230,690,main,0,92,0,0,360,1|135,450,head,0,92,0,0,360,1|50,50,tiny,1,92,0,0,360,0|450,10240,xlarge,0,92,0,1,30,1
+minwidth=1
+minheight=1
+maxfilesize=15
+
+#LBS recommend
+[albumlbsrecommend]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=720,0,large,0,90,0,0,30,1|300,0,main,0,80,0,0,360,1|200,0,head,0,80,0,0,360,1|80,0,tiny,0,80,0,0,360,0|1024,0,xlarge,0,88,0,1,30,1
+minwidth=1
+minheight=1
+maxfilesize=15
+
+#handle head tiny image, (50x50), (400x400)
+#gif is required to convert to jpg
+[albumthumbnail]
+savegroups=hdn121,/bigpool/photos/hdn121 | hdn221,/bigpool/photos/hdn221 | hdn321,/bigpool/photos/hdn321 | hdn421,/bigpool/photos/hdn421 | hdn521,/bigpool/photos/hdn521
+handleimages=58,58,tiny,1,90,0,0,30,0|450,450,flex,1,90,0,0,30,0
+minwidth=50
+minheight=50
+maxfilesize=15
+exts=jpg,jpeg,bmp,png,gif
+
+#handle convert photo to head tiny image
+#gif is required to convert to jpg
+#max size must be (58, 58)
+[photo2head]
+savegroups=hdn121,/bigpool/photos/hdn121 | hdn221,/bigpool/photos/hdn221 | hdn321,/bigpool/photos/hdn321 | hdn421,/bigpool/photos/hdn421 | hdn521,/bigpool/photos/hdn521
+# height '0' is derived from java code
+handleimages=50,50,tiny,1,90,0,0,30,0 | 400,400,flex,1,90,0,0,30,0 | 600,0,large,0,88,0,0,30,0 | 200,0,main,0,80,0,0,60,0 | 100,0,head,0,80,0,0,120,0
+minwidth=50
+minheight=50
+maxfilesize=15
+exts=jpg,jpeg,bmp,png,gif
+
+# head rotate
+# similar to photo rotate, except different save address
+[headrotate]
+savegroups=hdn121,/bigpool/photos/hdn121 | hdn221,/bigpool/photos/hdn221 | hdn321,/bigpool/photos/hdn321 | hdn421,/bigpool/photos/hdn421 | hdn521,/bigpool/photos/hdn521
+handleimages=50,50,tiny,1,90,0,0,30,0 | 400,400,flex,1,90,0,0,30,0 | 600,900,large,0,88,0,0,30,0 | 200,0,main,0,80,0,0,60,0 | 100,0,head,0,80,0,0,120,0
+minwidth=50
+minheight=50
+maxfilesize=15
+exts=jpg,jpeg,bmp,png,gif
+
+[albumstatewall]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=800,600,large,0,88,0,1,30,0|200,150,main,0,80,0,0,60,0|120,90,tiny,1,80,0,0,720,0|1024,768,xlarge,0,88,0,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[orgalbum]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=720,720,large,0,88,0,1,30,0|200,600,main,0,80,0,0,60,0|50,50,tiny,1,80,0,0,720,0|100,300,head,0,80,0,0,1440,0|1024,10240,xlarge,0,88,0,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[webgameq]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=2048,2048,original,0,90,1,1,30,0|200,600,main,0,80,0,0,60,0|100,300,head,0,80,0,0,60,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[origimage]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=2048,2048,original,0,95,1,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[gouwu_head]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=2048,2048,original,0,90,0,0,10,0|210,630,large,0,88,0,0,30,0|100,300,main,0,88,0,0,30,0|50,50,head,1,80,0,0,60,0|30,30,tiny,1,80,0,0,60,0
+minwidth=16
+minheight=16
+maxfilesize=15
+
+[gouwu_goods]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=450,1350,large,0,90,0,0,30,0|180,540,main,0,80,0,0,360,0|135,450,head,0,80,0,0,360,0|50,50,tiny,1,80,0,0,360,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[gouwu_goods_json]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=450,1350,large,0,90,0,0,30,0|320,640,main1,0,85,0,0,360,1|210,630,main2,0,85,0,0,60,1|100,300,head,0,80,0,0,60,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[gouwu_fun]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=107,140,head,1,85,0,0,30,0|50,50,tiny,1,85,0,0,360,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[profile_skin]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=1440,900,skin,0,85,0,0,30,0|200,600,main,0,80,0,0,360,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[xiaozhan_photo]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=1024,1024,large,0,90,0,1,30,0|200,600,main,0,85,0,0,360,0|100,300,head,0,80,0,0,360,0|50,50,tiny,1,80,0,0,360,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[txzx_image]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=260,190,window,0,90,0,1,10,0|720,900,main,0,85,0,0,10,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[blog_image]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=580,1740,large,0,90,0,0,60,0|100,300,head,0,80,0,0,360,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[jiexi_image]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=660,1800,large,0,100,0,0,30,0|170,170,main,1,88,0,0,30,0|140,140,head,1,80,0,0,60,0|50,50,tiny,1,80,0,0,360,0|980,2048,xlarge,0,100,0,0,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[jiexi_blog]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=660,1800,large,0,85,0,0,30,0|170,170,main,1,88,0,0,30,0|140,140,head,1,80,0,0,60,0|50,50,tiny,1,80,0,0,360,0|980,2048,xlarge,0,88,0,0,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[hot_dance]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=720,720,large,0,88,0,0,10,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[phone_cover]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=1024,2048,top,0,88,0,0,10,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+[attachment]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+maxfilesize=50
+exts=*
+
+[music]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+maxfilesize=15
+exts=mp3,ogg
+
+#个人主页挂件发布新鲜事
+[gjxxsvippendant]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=250,100,main,0,88,1,1,30,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+#wiki电影导入
+[wiki_input]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=135,1350,large,0,88,0,0,10,0|1000,100,head,0,88,0,0,10,0|50,50,tiny,1,88,0,0,10,0
+minwidth=1
+minheight=1
+maxfilesize=15
+
+#social cam
+[albumsocialcam]
+savegroups=fmn056,/bigpool/fmn056 | fmn057,/bigpool/fmn057 | fmn058,/bigpool/fmn058 | fmn059,/bigpool/fmn059 | fmn060,/bigpool/fmn060 | fmn061,/bigpool/fmn061 | fmn062,/bigpool/fmn062 | fmn063,/bigpool/fmn063 | fmn064,/bigpool/fmn064 | fmn065,/bigpool/fmn065 | fmn066,/bigpool/fmn066,gif
+handleimages=720,0,large,0,90,0,0,30,1|300,0,main,0,80,0,0,360,1|200,0,head,0,80,0,0,360,1|80,0,tiny,0,80,0,0,360,0|1024,0,xlarge,0,88,0,1,30,1
+minwidth=1
+minheight=1
+maxfilesize=15
+

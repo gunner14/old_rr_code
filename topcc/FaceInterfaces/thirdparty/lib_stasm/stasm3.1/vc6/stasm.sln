@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "facelandmark", "facelandmark.vcproj", "{D6088024-9128-4A8F-AD4C-6C116F5DEF02}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testlib", "testlib.vcproj", "{34572B47-ED63-4F17-8CD3-755600F7FC86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6088024-9128-4A8F-AD4C-6C116F5DEF02}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D6088024-9128-4A8F-AD4C-6C116F5DEF02}.Debug|Win32.Build.0 = Debug|Win32
+		{D6088024-9128-4A8F-AD4C-6C116F5DEF02}.Release|Win32.ActiveCfg = Release|Win32
+		{D6088024-9128-4A8F-AD4C-6C116F5DEF02}.Release|Win32.Build.0 = Release|Win32
+		{34572B47-ED63-4F17-8CD3-755600F7FC86}.Debug|Win32.ActiveCfg = Debug|Win32
+		{34572B47-ED63-4F17-8CD3-755600F7FC86}.Debug|Win32.Build.0 = Debug|Win32
+		{34572B47-ED63-4F17-8CD3-755600F7FC86}.Release|Win32.ActiveCfg = Release|Win32
+		{34572B47-ED63-4F17-8CD3-755600F7FC86}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

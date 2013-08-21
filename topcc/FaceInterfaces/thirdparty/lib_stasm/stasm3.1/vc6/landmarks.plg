@@ -1,0 +1,65 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: landmarks - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3E0.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ..\gsl\lib_ms\mini_gslML.lib ..\gsl\lib_ms\gslcblasML.lib ..\jpeg\lib_ms\libjpeg.lib ..\png\pnglib\libpng.lib ..\png\zlib\zlib.lib C:\OpenCV2.1\lib\cv210.lib C:\OpenCV2.1\lib\cxcore210.lib C:\OpenCV2.1\lib\highgui210.lib /nologo /dll /incremental:yes /pdb:"Debug/landmarks.pdb" /debug /machine:I386 /nodefaultlib:"LIBCD" /nodefaultlib:"LIBC" /out:"Debug/landmarks.dll" /implib:"Debug/landmarks.lib" /pdbtype:sept 
+".\Debug\stasm_dll.obj"
+".\Debug\err.obj"
+".\Debug\mat.obj"
+".\Debug\util.obj"
+".\Debug\initnet.obj"
+".\Debug\violajones.obj"
+".\Debug\find.obj"
+".\Debug\imutil.obj"
+".\Debug\forward.obj"
+".\Debug\search.obj"
+".\Debug\release.obj"
+".\Debug\imfile.obj"
+".\Debug\pngutil.obj"
+".\Debug\jpegutil.obj"
+".\Debug\follow.obj"
+".\Debug\readpng.obj"
+".\Debug\tclHash.obj"
+".\Debug\wrbmp.obj"
+".\Debug\mchol.obj"
+".\Debug\safe_alloc.obj"
+".\Debug\asmsearch.obj"
+".\Debug\prof.obj"
+".\Debug\sparsemat.obj"
+".\Debug\shapemodel.obj"
+".\Debug\initasm.obj"
+".\Debug\readasm.obj"
+".\Debug\landmarks.obj"
+".\Debug\readconf.obj"
+".\Debug\startshape.obj"
+".\Debug\rowleyhand.obj"
+".\Debug\vjhand.obj"
+".\Debug\matvec.obj"
+".\Debug\shapefile.obj"
+".\Debug\mrand.obj"
+".\Debug\atface.obj"
+".\Debug\imgiven.obj"
+".\Debug\rowley.obj"
+".\Debug\rgbimutil.obj"
+".\Debug\ezfont.obj"
+".\Debug\imshape.obj"
+".\Debug\regex.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3E0.tmp"
+<h3>Output Window</h3>
+Linking...
+   Creating library Debug/landmarks.lib and object Debug/landmarks.exp
+
+
+
+<h3>Results</h3>
+landmarks.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
