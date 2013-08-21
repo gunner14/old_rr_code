@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- 基本配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-interceptors-menu</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei-commons-interceptors-menu</name>
+
+	<!-- 引用校内POM -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>weibo.li</name>
+			<email>weibo.li@renren-inc.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置(只添加本项目特有的) -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose>applicationContext</Rose>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<!-- 第三方依赖，不需要指定版本号，不需要写scope -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose</artifactId>
+		</dependency>
+
+		<!-- 对校内的依赖，需要指定版本号，以及可能的scope -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-menu</artifactId>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		- web.xml是webapp应用的入口配置。很显然我们都知道，web.xml指的就是webapp/WEB-INF/下的web.xml.
+		-
+		使用Rose框架，除了jar的引入，只需要在web.xml中配置RoseFilter即可(或许这是唯一的和Rose框架本身相关的配置了)。
+		- 您可以使用Rose提供的web.xml模板，或者将模板中的RoseFilter配置copy到您的web.xml中即可。 -
+		(需要保证RoseFilter的mapping配置是放到filter最后的)。 - -
+		另外还有一项工作需要您配合下，因为Rose要自动扫描您编写的Controller以及Domain实体类，所以您的war包就不要打压缩包了。
+		- :) 可以吗? 当然一般情况下，即使您打压缩包了，容器也会自动进行解压缩，如果能保证确实是这样也没问题。 - -
+		此外，Rose提供的web.xml模板还提供了log4j的配置模版，但默认是*未启用*的， - 我想大多少情况下，您应该是需要的吧？ 那就
+		"ctrl + F"找到配置为Log4jConfigListener的<listener>吧， -
+		把Log4jConfigListener配置解除注释，并在/WEB-INF/下搞个log4j.properties一切都很完美了(JBoss除外)。
+		- - 小小请求:如无必要，请不要使用'格式化'命令format本文件，您会发现这样做之后将变得很难看。 - - by Rose 1.0
+	-->
+<web-app>
+
+	<!--
+		- 可以将这个参数调整为true，使得Log4jConfigListener能将webapp的根地址配置到系统属性中。 -
+		使得必要的时候，可以在log4j属性文件中使用${xxx}的形式代表webapp的根地址。 - Qieqie:
+		我建议这里就保持false就好了，不建议log4j日志文件地址配置在相对webapp的地址 - (除非是一下Demo应用)
+	-->
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!--
+		- 如果上面的log4jExposeWebAppRoot参数配置为true，Log4jConfigListener -
+		将把webapp根地址设置作为系统的一个属性，属性名通过本配置设置。 -
+		如果上面的log4jExposeWebAppRoot保持配置成false，这个参数几乎等于无用。
+	-->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>rosedemo.root</param-value>
+	</context-param>
+
+	<!--
+		- 这个参数告诉Log4jConfigListener Log4J的属性文件位置。 -
+		Qieqie:我建议我们把log4j的配置文件就按照这样的地址存放，如无必要就保持这种惯例即可。
+	-->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+
+	<!--
+		- 这个就是Log4jConfigListener配置，它可以读取上面配置的log4jConfigLocation等信息， -
+		配置Log4J信息以及进行webapp根地址的暴露(暴露使其成为一个System属性，参见上面的 -
+		log4jExposeWebAppRoot配置)
+	-->
+	<!--
+		- !!如果您使用JBoss作为应用服务器，请把这个配置注释掉，使它不生效，JBoss已经提供了全局的Log4J配置了。 -
+		其它情况，您可以打开以下注释(Rose默认为注释掉的)，使它生效。
+	-->
+	<!-- -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+
+
+	<!--
+		-
+		RoseFilter是Rose的最主要配置,也是Rose框架本身的唯一配置了，大多少情况下，按照Rose提供web.xml中配置方式拷贝过来即可，不需要修改。
+		- 默认情况下RoseFilter会过滤所有的请求，对请求进行识别，对应该由Controller处理的进行分派，不应该由Controller
+		- 处理的则让它简单通过，通往它该去的地方。 - 这里最重要的2点就是： - 1)要保持dispatcher含有FORWARD; -
+		2)要保证filter-mapping是所有filter-mapping的最后一个 -
+		另外，从Servlet2.5开始，您可以通过配置多个url-pattern明确只让RoseFilter过滤指定请求，而不是所有请求， -
+		做的好的情况下，我们觉得这是可行的，但我们不建议这样做(很认真地说)。 -
+		如果不是一些特殊原因，您坚持配置特有url-mapping(特别是来自‘性能’的考虑)的后果咋舌您将失去(我认为)很大的灵活性， -
+		而带来好处基本上等于无(性能不会有任何提升)。
+	-->
+	<filter>
+		<filter-name>roseFilter</filter-name>
+		<filter-class>net.paoding.rose.RoseFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>roseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+</web-app>

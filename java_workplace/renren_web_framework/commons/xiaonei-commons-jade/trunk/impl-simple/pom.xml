@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<groupId>com.xiaonei</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-jade-impl-simple</artifactId>
+	<name>xiaonei-commons-jade-impl-simple</name>
+	<version>1.0-SNAPSHOT</version>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>liaohan</name>
+			<email>han.liao@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置(只添加本项目特有的) -->
+	<build>
+		<plugins>
+			<!-- 写入  Rose: applicationContext 属性
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose>applicationContext</Rose>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			-->
+		</plugins>
+	</build>
+
+	<!-- 依赖配置  -->
+	<dependencies>
+		<!-- 第三方依赖, 不需要指定版本号, 不需要写 scope -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose-jade</artifactId>
+			<version>0.9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

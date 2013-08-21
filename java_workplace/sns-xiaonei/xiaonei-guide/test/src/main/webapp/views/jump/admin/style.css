@@ -1,0 +1,64 @@
+a:link { text-decoration: none;color: green}
+a:active { text-decoration:blink}
+a:hover { text-decoration:none;color: red}
+a:visited { text-decoration: none;color: green}
+
+TD {FONT-SIZE: 8pt;font-family: "Verdana";}
+
+.butter{FONT-SIZE:12px;}
+
+.td1{line-height:25px;background-color:#ffffff;color:#2655A7;font-weight:bold;}
+
+.td2{line-height:15px;background-color:#005EAC;color:#ffffff;font-weight:bold;}
+
+.td3{line-height:13px;background-color:#DCEEFC;color:#2655A7;}
+
+.td4{line-height:13px;background-color:#ffffff;color:#2655A7;}
+
+.td5{line-height:15px;background-color:#639EB8;color:#FFFF00;font-weight:bold;font-stretch:narrower;letter-spacing:-1px;font-family:tahoma;}
+
+.blue {color:#2655A7;text-decoration:none;font-weight:bold;}
+
+.blue:link{color:#0000FF;text-decoration:underline;font-weight:normal;}
+
+.blue:visited{color:#0000FF;text-decoration:underline;font-weight:normal;}
+
+.blue:hover{color:#ff0000;text-decoration:underline;font-weight:normal;}
+
+.tdhover{
+
+      line-height:13px;
+
+      color:#ffffff;
+
+      cursor: auto;
+
+      background-color: #639EB8;
+
+}
+
+.tdselected{
+
+      line-height:13px;
+
+      background-color:#FFFF00;
+
+      color:#000000;
+
+      font-weight: bolder;
+
+}
+
+input.smallInput{
+	width:100%;
+	border:1 solid black;
+	FONT-SIZE: 9pt; 
+	FONT-STYLE: normal; 
+	FONT-VARIANT: normal; 
+	FONT-WEIGHT: normal; 
+	HEIGHT: 18px; 
+	LINE-HEIGHT: normal
+}
+/*td1:��������ʽ;td2:ҳ����⼰��������;td3:�������ɫ;td4:�����ǳɫ;td5:�����ǳ��ɫ����;butter:��ť��ʽblue:�����Ŀ������ʽ*/
+
+ 

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+. ${PWD}/nginx_conf/bussiness_parameter.conf
+
+NGINX_CONFIG_DIR="nginx_conf.d"
+[[ -d ${NGINX_CONFIG_DIR} ]] || mkdir $NGINX_CONFIG_DIR  
+
+for file in ${default_file}
+do
+	cp ${PWD}/nginx_conf/${file} ${NGINX_CONFIG_DIR}
+done
+
+for domain in ${domain_list}
+do
+	./nginx_conf/default_config_generator ${domain}
+done
+
+echo -e "\e[1;31mDo you want \e[1;34msync nginx_conf.d to web\e[0m \e[1;31mcontinue? [yes/no] \e[0m \c"
+read sync;
+#sync="yes"
+if [ ${sync} == "yes" ]
+then
+	echo "Sync_all ..."
+	if [ ! -d "nginx_conf.d" ]
+	then
+		echo "Dir: nginx_conf.d is not exist!"
+		exit -1
+	fi
+
+	for i in ${machine_list}
+	do
+		TARGET=www$i.xce
+		echo www$i.xce
+		./sync_nginx_confs $TARGET
+	done
+else
+	echo "Not sync default-nginx-config!"
+fi

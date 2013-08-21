@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="infoForm"	type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="gender" type="java.lang.String" />
+			<form-property name="homeprovince" type="java.lang.String" />
+			<form-property name="homecityname" type="java.lang.String" />
+			<form-property name="homecitycode" type="java.lang.String" />
+			<form-property name="workprovince" type="java.lang.String" />
+			<form-property name="workcityname" type="java.lang.String" />
+			<form-property name="workcitycode" type="java.lang.String" />
+			<form-property name="degree" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="dorm" type="java.lang.String" />
+			<form-property name="otherdepartment" type="java.lang.String" />
+			<form-property name="otherdorm" type="java.lang.String" />
+			<form-property name="universityid" type="java.lang.String" />
+			<form-property name="universityname" type="java.lang.String" />
+			<form-property name="universityyear" type="java.lang.String" />
+			<form-property name="highschoolyear" type="java.lang.String" />
+			<form-property name="highschoolclass1" type="java.lang.String" />
+			<form-property name="highschoolclass2" type="java.lang.String" />
+			<form-property name="highschoolclass3" type="java.lang.String" />
+			<form-property name="juniorhighschoolname" type="java.lang.String" />
+			<form-property name="juniorhighschoolyear" type="java.lang.String" />
+			<form-property name="elementaryschoolname" type="java.lang.String" />
+			<form-property name="elementaryschoolyear" type="java.lang.String" />
+			<form-property name="highSchoolCode" type="java.lang.String" />
+			<form-property name="highSchoolName" type="java.lang.String" />
+			<form-property name="custom_class_text_1" type="java.lang.String" />
+			<form-property name="custom_class_text_2" type="java.lang.String" />
+			<form-property name="custom_class_text_3" type="java.lang.String" />
+			<form-property name="hometownname" type="java.lang.String" />
+			<form-property name="hometownprovince" type="java.lang.String" />
+			<form-property name="hometowncode" type="java.lang.String" />
+			<form-property name="headUrl" type="java.lang.String" />
+			<form-property name="largeUrl" type="java.lang.String" />
+			<form-property name="tinyUrl" type="java.lang.String" />
+			<form-property name="mainUrl" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="regForm" type="com.xiaonei.reg.register.form.RegForm" />
+		<form-bean name="regCommForm" type="com.xiaonei.reg.register.form.RegCommForm" />
+		<form-bean name="regInviteForm"	type="com.xiaonei.reg.register.form.RegInviteForm" />
+		<form-bean name="regShortInviteForm"	type="com.xiaonei.reg.register.form.RegShortInviteForm" />
+		<form-bean name="regShortCommonForm"	type="com.xiaonei.reg.register.form.RegShortCommonForm" />
+		<form-bean name="regProfilePageForm"	type="com.xiaonei.reg.register.form.RegProfilePageForm" />
+		<form-bean name="regDogForm" type="com.xiaonei.reg.register.form.RegDogForm" />
+		<form-bean name="regEduForm" type="com.xiaonei.reg.register.form.RegEduForm" />
+		<form-bean name="mDxFiFom"	type="com.xiaonei.reg.guide.form.MobileDXFillInfoForm" />
+		<form-bean name="mGzFiFom"	type="com.xiaonei.reg.guide.form.MobileGZFillInfoForm" />
+		<form-bean name="mBlFiFom"	type="com.xiaonei.reg.guide.form.MobileBLFillInfoForm" />
+		<form-bean name="mStageFillForm"	type="com.xiaonei.reg.guide.form.MobileStageFillinfoForm" />
+		<form-bean name="4399BlFiFom"	type="com.xiaonei.reg.guide.form.FillInfo4399BLForm" />
+		<form-bean name="4399UnFiFom"	type="com.xiaonei.reg.guide.form.Fillinfo4399UnForm" />
+		<form-bean name="4399HsFiFom"	type="com.xiaonei.reg.guide.form.Fillinfo4399HsForm" />
+		<form-bean name="shortFormFillInfoUnivForm"	type="com.xiaonei.reg.guide.form.ShortFormFillInfoUnivForm" />
+		<form-bean name="shortFormFillInfoHsForm"	type="com.xiaonei.reg.guide.form.ShortFormFillInfoHsForm" />
+		<form-bean name="shortFormFillInfoMajorForm"	type="com.xiaonei.reg.guide.form.ShortFormFillInfoMajorForm" />
+		<form-bean name="regIDCommonForm"	type="com.xiaonei.reg.register.form.RegIDCommonForm" />
+		<form-bean name="regPureIDCommonForm"	type="com.xiaonei.reg.register.form.RegPureIDCommonForm" />
+	</form-beans>
+	<global-forwards>
+		<forward name="initcommonreg" path="/xn6205.do" redirect="false" />
+		<forward name="initinvitereg" path="/xn6105.do" redirect="false" />
+		<forward name="initinviteapp" path="/initinvitereg.do"	redirect="false" />
+	</global-forwards>
+	<action-mappings>
+		<action path="/GetFriendCue"	type="com.xiaonei.platform.component.friends.action.AjaxGetFriendCueAction"	scope="request" />
+		<action path="/guideClickStat"	type="com.xiaonei.reg.guide.action.GuideClickStatAction" scope="request" />
+		<action path="/GetDept" type="com.dodoyo.action.GetDeptForLayerAction"	scope="request" />
+		<action path="/GetDep" type="com.dodoyo.action.GetDepAction"	scope="request">
+			<forward name="succ" path="/pages/getDep.jsp" />
+		</action>
+		
+		<!--s
+			************************************guide*********************************
+		-->
+		<action path="/guide-route" type="com.xiaonei.reg.guide.action.GuideRouteAction" scope="request" >
+			<forward name="guide" path="/guide.do" redirect="true" />
+			<forward name="guidePre" path="/guidePre.do" redirect="true" />
+			<forward name="guidebl" path="/guidebl.do" redirect="true" />
+			<forward name="guidehs" path="/guidehs.do" redirect="true" />
+			<forward name="guidedx" path="/guidedx.do" redirect="true" />
+			<forward name="fillinfomg" path="/fillinfomg.do" redirect="true" />
+			<forward name="fillinfomd" path="/fillinfomd.do" redirect="true" />
+			<forward name="fillinfomb" path="/fillinfomb.do" redirect="true" />
+			<forward name="fillinfost" path="/fillinfost.do" redirect="true" />
+			<forward name="verifymail" path="/verifymail.do" redirect="true" />
+			<forward name="quick-fillinfo-bl" path="/quick-fillinfo-bl.do" redirect="true" />
+			<forward name="quick-fillinfo-un" path="/quick-fillinfo-un.do" redirect="true" />
+			<forward name="quick-fillinfo-hs" path="/quick-fillinfo-hs.do" redirect="true" />
+			<forward name="portraitbl" path="/portraitbl.do" redirect="true" />
+			<forward name="fillinfodx" path="/fillinfodx.do" redirect="true" />
+			<forward name="fillinfohs" path="/fillinfohs.do" redirect="true" />
+			<forward name="fillinfobl" path="/fillinfobl.do" redirect="true" />
+			<forward name="regimportmsn" path="/reqimportmsn.do" redirect="true" />
+			<forward name="regimportmsnbl" path="/regimportmsnbl.do" redirect="true" />
+			<forward name="regimportmsndx" path="/regimportmsndx.do" redirect="true" />
+			<forward name="previewdx" path="/previewdx.do" redirect="true" />
+			<forward name="previewhs" path="/previewhs.do" redirect="true" />
+		</action>
+		<!-- guide -->
+		<!-- <action path="/guide" type="com.xiaonei.reg.guide.action.GuideAction"	scope="request" >-->
+		<action path="/guideApp" forward="/guidexf.do" />
+		<action path="/guideSocial" forward="/guidexf.do" />		
+		<action path="/guidePre" type="com.xiaonei.reg.guide.action.GuidePreAction"
+			scope="request" >
+			<forward name="regToFarm" path="/pages/register/regToFarm.jsp" redirect="false" />
+			<forward name="regToDog" path="/pages/register/regToDog.jsp" redirect="false" />
+		</action>
+		<!-- bl_guide -->
+		<action path="/guidebl" type="com.xiaonei.reg.guide.action.BLGuideAction" scope="request" >
+			<forward name="ok" path="/pages/register/guide_bl.jsp" />
+		</action>
+		<!-- hs_guide -->
+		<action path="/guidehs" type="com.xiaonei.reg.guide.action.HSGuideAction" scope="request" >
+			<forward name="ok" path="/pages/register/guide_hs.jsp" />
+			<forward name="mntOfEdu" path="/pages/register/guide_hs_mntOfEdu.jsp" />
+		</action>
+		<!-- dx_guide -->
+		<action path="/guidedx" type="com.xiaonei.reg.guide.action.DXGuideAction" scope="request" >
+			<forward name="ok" path="/pages/register/guide_dx.jsp" />
+		</action>
+		<!-- mobile_gz_fillinfo -->
+		<action path="/fillinfomg" type="com.xiaonei.reg.guide.action.MobileGzFillinfoAction" name="mGzFiFom" scope="request" >
+			<forward name="init" path="/pages/register/mobile_fillinfo_gz.jsp"></forward>
+			<forward name="succ" path="/verifymail.do" redirect="true"></forward>
+		</action>
+		<!-- mobile_dx_fillinfo -->
+		<action path="/fillinfomd" type="com.xiaonei.reg.guide.action.MobileDxFillinfoAction" name="mDxFiFom" scope="request" >
+			<forward name="init" path="/pages/register/mobile_fillinfo_dx.jsp"></forward>
+			<forward name="succ" path="/verifymail.do" redirect="true"></forward>
+		</action>
+		<!-- mobile_bl_fillinfo -->
+		<action path="/fillinfomb" type="com.xiaonei.reg.guide.action.MobileBlFillinfoAction" name="mBlFiFom" scope="request" >
+			<forward name="init" path="/pages/register/mobile_fillinfo_bl.jsp"></forward>
+			<forward name="succ" path="/verifymail.do" redirect="true"></forward>
+		</action>
+		<!-- mobile_stage_fillinfo -->
+		<action path="/fillinfost" type="com.xiaonei.reg.guide.action.MobileStageFillinfoAction" name="mStageFillForm" scope="request">
+			<forward name="init" path="/pages/register/mobile_fillinfo_stage.jsp" />
+			<forward name="succ-gz" path="/fillinfomg.do" redirect="true" />
+			<forward name="succ-dx" path="/fillinfomd.do" redirect="true" />
+			<forward name="succ-bl" path="/fillinfomb.do" redirect="true" />
+		</action>
+		<!-- mobile_verifymail -->
+		<action path="/verifymail" type="com.xiaonei.reg.guide.action.MobileVerifyMailAction" scope="request" >
+			<forward name="init" path="/pages/register/verify-email.jsp" />
+		</action>
+		<!-- mobile_verifymail_activate_mail -->
+		<action path="/mobile-activate-mail" type="com.xiaonei.reg.guide.action.MobileActivateMail" scope="request"  />
+		<!-- 4399 quick reg fillinfo bl-->
+		<action path="/quick-fillinfo-bl" type="com.xiaonei.reg.guide.action.AD4399FillinfoBlAction" name="4399BlFiFom" scope="request" >
+			<forward name="init" path="/pages/register/4399_fillinfo_bl.jsp" />
+			<forward name="succ" path="/pages/register/regToDog.jsp" />
+		</action>
+		<!-- 4399 quick reg fillinfo un-->
+		<action path="/quick-fillinfo-un" type="com.xiaonei.reg.guide.action.AD4399FillinfoUnAction" name="4399UnFiFom" scope="request" >
+			<forward name="init" path="/pages/register/4399_fillinfo_dx.jsp" />
+			<forward name="succ" path="/pages/register/regToDog.jsp" />
+		</action>
+		<!-- 4399 quick reg fillinfo hs-->
+		<action path="/quick-fillinfo-hs" type="com.xiaonei.reg.guide.action.AD4399FillinfoHsAction" name="4399HsFiFom" scope="request" >
+			<forward name="init" path="/pages/register/4399_fillinfo_gz.jsp" />
+			<forward name="succ" path="/pages/register/regToDog.jsp" />
+		</action>
+		<!-- add by  seraph start-->
+		<!-- seraph, plz completing ur comments!!!!!! thx. -->
+		<action path="/portraitbl" type="com.xiaonei.reg.guide.action.BLPortraitAction" scope="request" >
+			<forward name="succ" path="/pages/register/portraitbl.jsp" />
+			<forward name="skip" path="/guide.do" />
+		</action>
+		<action path="/fillinfodx" type="com.xiaonei.reg.guide.action.DXFillinfoAction" name="infoForm" scope="request" validate="false">
+			<forward name="succ" path="/pages/register/dxinfo.jsp" />
+		</action>
+		<action path="/fillinfohs" type="com.xiaonei.reg.guide.action.HSFillinfoAction" name="infoForm" scope="request" validate="false">
+			<forward name="succ" path="/pages/register/gzinfo.jsp" />
+			<forward name="cz" path="/pages/register/czinfo.jsp" />
+			<forward name="jx" path="/pages/register/jxinfo.jsp" />
+		</action>
+		<action path="/fillinfobl" type="com.xiaonei.reg.guide.action.BLFillinfoAction" name="infoForm" scope="request" validate="false">
+			<forward name="succ" path="/pages/register/blinfo.jsp" />
+		</action>
+		<action path="/fillinfo-sf" type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" scope="request" >
+			<forward name="succ" path="/pages/register/shortforminfo.jsp" />
+		</action>
+		<action path="/fillinfo-sf-g3" type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" name="shortFormFillInfoUnivForm" scope="request" >
+			<forward name="succ" path="/pages/register/shortforminfo_g3.jsp" />
+		</action>
+		<action path="/fillinfo-univ-sf" type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" name="shortFormFillInfoUnivForm" scope="request" >
+			<forward name="succ" path="/pages/register/shortforminfo.jsp" />
+		</action>
+		<action path="/fillinfo-hs-sf" type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" name="shortFormFillInfoHsForm" scope="request" >
+			<forward name="succ" path="/pages/register/shortforminfo.jsp" />
+		</action>
+		<action path="/fillinfo-major-sf" type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" name="shortFormFillInfoMajorForm" scope="request" >
+			<forward name="succ" path="/pages/register/shortforminfo.jsp" />
+		</action>
+		<action path="/regimportmsn" type="com.xiaonei.reg.guide.action.ShowImportMsnAction" scope="request" >
+			<forward name="dx" path="/regimportmsndx.do" />
+			<forward name="bl" path="/regimportmsnbl.do" />
+		</action>
+		<action path="/regimportmsnbl" type="com.xiaonei.reg.guide.action.BLRegImportMsnAction" scope="request" >
+			<forward name="succ" path="/pages/register/showimportmsnbl.jsp" />
+		</action>
+		<action path="/regimportmsndx" type="com.xiaonei.reg.guide.action.DXRegImportMsnAction" scope="request" >
+			<forward name="succ" path="/pages/register/showimportmsndx.jsp" />
+		</action>
+		<action path="/importmsn" type="com.xiaonei.reg.guide.action.RegImportMsnShortAction" scope="request" >
+			<forward name="succ" path="/pages/register/showimportmsnshort.jsp" />
+		</action>
+		<action path="/previewdx" type="com.xiaonei.reg.guide.action.DXPreviewAction" scope="request" >
+			<forward name="succ" path="/pages/register/dxpreview.jsp" />
+		</action>
+		<action path="/previewhs" type="com.xiaonei.reg.guide.action.HSPreviewAction"
+			scope="request" >
+			<forward name="succ" path="/pages/register/gzpreview.jsp" />
+		</action>
+		<action path="/preview-sf" type="com.xiaonei.reg.guide.action.ShortFormHSPreviewAction" scope="request" >
+			<forward name="succ" path="/pages/register/shortformgzpreview.jsp" />
+		</action>
+		<action path="/requestFriend" type="com.xiaonei.reg.guide.action.RequestMultiplyFriendAction" scope="request" />
+		<action path="/AjaxShowHowManyPeopleInMyGroup" type="com.xiaonei.reg.guide.action.AjaxShowHowManyPeopleInMyGroup" scope="request"  />
+		<action path="/AjxShoHow" forward="/AjaxShowHowManyPeopleInMyGroup.do"  />
+		<action path="/AjaxGetUserProfileInfo" type="com.xiaonei.reg.register.action.init.ajax.GetUserProfileInfo" />
+		<action path="/dispatchview" type="com.xiaonei.reg.guide.action.DispatchViewAction" scope="request"  />
+		<!-- ajax check form -->
+		<action path="/AjaxRegisterEmailAuth" type="com.xiaonei.reg.register.action.AjaxRegisterEmailAction" scope="request" />
+		<action path="/AjaxRegisterNameAuth" type="com.xiaonei.reg.register.action.AjaxRegisterNameAction" scope="request" />
+		<action path="/AjaxRegisterAuth" type="com.xiaonei.reg.register.action.AjaxRegisterAuthAction" scope="request" />
+		<action path="/TianliAjax" type="com.xiaonei.reg.register.action.TianliAjaxAction" scope="request"  />
+		
+		<!-- suggest -->
+		<action path="/suggest/Suggest" type="com.xiaonei.platform.component.suggest.SuggestAction" scope="request" />
+		<!-- web services active for admin -->
+		<action path="/WS/activeForAdmin" type="com.xiaonei.reg.register.action.WSActivateForAdminAction" >
+			<forward name="ok" path="/pages/register/wsActivateForAdmin.jsp" />
+		</action>
+		<action path="/WSActivate" forward="/WS/activate.do" />
+		<action path="/WS/activate" type="com.xiaonei.reg.register.action.WSActivateForMailAction" />
+		<!-- web services reg of audit-->
+		<action path="/WS/regOfAudit" type="com.xiaonei.reg.register.action.WSAuditRegisterAction" />
+		<!-- web services reg of web mobile -->
+		<action path="/WS/regOfWM" type="com.xiaonei.reg.register.action.WSregForWebMobileAction" />
+		<action path="/getonlinefriendscount" type="com.xiaonei.platform.component.friends.action.GetOnLineFriendsCount" >
+			<forward name="succ" path="/inc/onlinefriends.jsp" />
+		</action>
+		<!-- xfeed from kangwei -->
+		<action path="/readNews" type="com.xiaonei.platform.component.feed.helper.ReadXNewsfeedAjax" />
+		<action path="/retrieveNews" type="com.xiaonei.platform.component.feed.helper.RetrieveXNewsfeedAjax" />
+		<action path="/dispatchreadone" type="com.dodoyo.dispatch.action.DispatchReadOneAction" scope="request" />
+		<!-- for doing -->
+		<action path="/newrandcode" type="com.xiaonei.platform.component.security.action.GetRandCodeForAjaxAction" scope="request" />
+		<!-- close safe warn notice -->
+
+		<!-- chu zhong fillinfo -->
+		<action path="/fillinfocz" type="com.xiaonei.reg.guide.action.CZFillinfoAction" name="infoForm" scope="request" validate="false">
+			<forward name="succ" path="/pages/register/gzinfo.jsp" />
+			<forward name="cz" path="/pages/register/czinfo.jsp" />
+			<forward name="jx" path="/pages/register/jxinfo.jsp" />
+		</action>
+
+		<action path="/fillinfojx" type="com.xiaonei.reg.guide.action.JXFillinfoAction" name="infoForm" scope="request" validate="false">
+			<forward name="succ" path="/pages/register/gzinfo.jsp" />
+			<forward name="cz" path="/pages/register/czinfo.jsp" />
+			<forward name="jx" path="/pages/register/jxinfo.jsp" />
+		</action>
+
+
+	</action-mappings>
+	<controller locale="false" />
+	<!-- ================================ Message Resources Definitions -->
+	<message-resources parameter="application" />
+</struts-config>

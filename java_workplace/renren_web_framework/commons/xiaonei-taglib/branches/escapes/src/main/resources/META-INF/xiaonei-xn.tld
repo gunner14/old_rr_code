@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--CTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" </sp-->
+<taglib>
+	<tlibversion>1.2</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>xn</shortname>
+	<!-- <uri>http://www.xiaonei.com/tags-xn</uri> -->
+	<uri>http://www.renren.com/tags-xn</uri>
+	<tag>
+		<name>escapesHTML</name>
+		<tagclass>com.xiaonei.platform.taglib.escapes.EscapesHTML</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>escapesJS</name>
+		<tagclass>com.xiaonei.platform.taglib.escapes.EscapesJS</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

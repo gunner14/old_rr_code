@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <meta name="Description" content="人人网 校内是一个真实的社交网络，联络你和你周围的朋友。 加入人人网校内你可以:联络朋友，了解他们的最新动态；和朋友分享相片、音乐和电影；找到老同学，结识新朋友；用照片和日志记录生活,展示自我。" />
+        <meta name="Keywords" content="Xiaonei,Renren,校内,大学,同学,同事,白领,个人主页,博客,相册,群组,社区,交友,聊天,音乐,视频,校园,人人,人人网" />
+        <link href="http://s.xnimg.cn/favicon-rr.ico?ver=2" rel="shortcut icon" type="image/x-icon" />
+        <link href="http://xnimg.cn/renren_logo_apple.png" rel="apple-touch-icon" />
+        <link href="/webmonitor/css/webmonitor.css" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript" src="/webmonitor/js/jquery-1.3.2.min.js">
+        </script>
+        <script type="text/javascript"  src="/webmonitor/js/webmonitor.js">
+        </script>
+       <title>人人网 校内 - XNMonitor </title>
+    </head>
+    <body id="security" class="security width-auto">
+        <div id="header" class="clearfix">
+            <h1 class="logo">
+                <a title="XNMonitor" href="http://monitor.d.xiaonei.com/">
+                    <img src="http://xnimg.cn/webmonitor/img/logo.png" />
+                </a>
+            </h1>
+            <div class="menu-body clearfix">
+                <ul class="main-menu">
+                </ul>
+                <ul class="sub-menu">
+					<!--
+                    <li>
+                        <a href="#">汪祖方(zufang.wang@opi-corp.com)</a>
+                    </li>
+                    <li>
+                        <a href="#">退出</a>
+                    </li>
+					-->
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <div class="monitor box">
+                <div class="box-hd">
+                    <strong class="title">
+                        <a href="/http/overtime/listOvertime" >HTTP监控</a>
+                        <a href="/db/sql_Jrobin/listBiz">SQL 监控</a>
+                        <a href="/http/error/errInfo"class="current" >404/500</a>
+						<a href="/http/error/httpErr" >404/500图形</a>
+						<a href="/im/im/imInfoList">IM状况</a>
+                    </strong>
+                </div>
+                <div class="box-bd">
+                    <h3>
+                        <form>
+                            开始时间：
+                            <select name="byear">
+                                #foreach ($item in [2009..2022])
+                                    <option value="${item}" 
+                                        #if($timeParam.byear == $item)
+                                            selected="true"
+                                        #end
+/>${item}
+                                #end
+                            </select>
+                            年
+                            <select name="bmonth">
+                                #foreach ($item in [1..12])
+                                    <option value="${item}" 
+                                        #if($timeParam.bmonth == $item)
+                                            selected="true"
+                                        #end
+/>${item}
+                                #end
+                            </select>
+                            月
+                            <select name="bday">
+                                #foreach ($item in [1..31])
+                                    <option value="${item}" 
+                                        #if($timeParam.bday == $item)
+                                            selected="true"
+                                        #end
+/>${item}
+                                #end
+</option>
+</select>
+日
+<select name="bhour">
+    #foreach ($item in [0..23])
+        <option value="${item}" 
+            #if($timeParam.bhour == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+:
+<select name="bminute">
+    #foreach ($item in [0..59])
+        <option value="${item}" 
+            #if($timeParam.bminute == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+:
+<select name="bsecond">
+    #foreach ($item in [0..59])
+        <option value="${item}" 
+            #if($timeParam.bsecond == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+～
+结束时间：
+<select name="eyear">
+    #foreach ($item in [2009..2022])
+        <option value="${item}" 
+            #if($timeParam.eyear == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+年
+<select name="emonth">
+    #foreach ($item in [1..12])
+        <option value="${item}" 
+            #if($timeParam.emonth == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</select>
+月
+<select name="eday">
+        #foreach ($item in [1..31])
+            <option value="${item}" 
+                #if($timeParam.eday == $item)
+                    selected="true"
+                #end
+/>${item}
+        #end
+</select>
+日
+<select name="ehour">
+    #foreach ($item in [0..23])
+        <option value="${item}" 
+            #if($timeParam.ehour == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+        </option>
+</select>
+:
+<select name="eminute">
+    #foreach ($item in [0..59])
+        <option value="${item}" 
+            #if($timeParam.eminute == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+:
+<select name="esecond">
+    #foreach ($item in [0..59])
+        <option value="${item}" 
+            #if($timeParam.esecond == $item)
+                selected="true"
+            #end
+/>${item}
+    #end
+</option>
+</select>
+<br />
+域名(逗号分隔)：<input type="text" name ="domains" 
+    #if(!$domains)
+        value =""
+        #else
+            value="$domains"
+    #end  
+/>
+</li>
+错误类型:<select name="errTypes" onchange="submit()"
+    <option value="404"
+        #if($errTypes=="404")
+            selected=true
+        #end
+        >404</option>
+        <option value="500"
+            #if($errTypes=="500")
+                selected=true
+            #end
+            >500</option>
+            <option value="404,500"
+                #if($errTypes=="404,500")
+                    selected=true
+                #end
+                >404和500</option>
+</option>
+</option>
+</select>
+<input type="submit" value="查询" class="input-btn" />
+</form>
+</h3>
+<br />
+<br />
+<div class="box-content">
+    <table class="commen-table" id="commenTable">
+        <tr>
+            <th>发生错误的URL</th>
+            <th>前一个URL</th>
+            <th>错误发生的次数</th>
+            <th>错误发生的服务器</th>
+            <th>错误类型</th>
+        </tr>
+        #foreach ($item in ${errInfoList})
+            <tr>
+                <td>${item.curURL}</td>
+                <td>${item.preURL}</td>
+                <td>${item.counter}</td>
+                <td>${item.errServer}</td>
+                <td>${item.errType}</td>
+                <td>
+                    <a href="errInfoFullUrl?curUrl=${item.curURL}&preUrl=${item.preURL}&errType=${item.errType}&errServer=${item.errServer}&byear=${timeParam.byear}&bmonth=${timeParam.bmonth}&bday=${timeParam.bday}&bhour=${timeParam.bhour}&bminute=${timeParam.bminute}&bsecond=${timeParam.bsecond}&ehour=${timeParam.ehour}&eminute=${timeParam.eminute}&esecond=${timeParam.esecond}&eyear=${timeParam.eyear}&emonth=${timeParam.emonth}&eday=${timeParam.eday}">详情</a>
+                </td>
+            </tr>
+        #end
+    </table>
+    <script type="text/javascript">
+        var oTr = document.getElementById("commenTable").getElementsByTagName("tr");
+        for(var i=0,len=oTr.length;i<len;i++){
+            (function(i){
+            oTr[i].onmouseover = function(){
+            this.className = "hover";
+            }
+            oTr[i].onmouseout = function(){
+            this.className = "";
+            }
+            })(i)
+            }
+</script>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+    <div class="copyright">
+        <span class="links">
+            <a href="http://page.renren.com/600002246">关于</a>
+            <span class="pipe">|</span>
+            <a href="http://dev.renren.com">开放平台</a>
+            <span class="pipe">|</span>
+            <a href="http://mobile.renren.com/home.do?psf=40002">手机人人网</a>
+            <span class="pipe">|</span>
+            <a href="http://renren.com/info/jobs.jsp">招聘</a>
+            <span class="pipe">|</span>
+            <a href="http://support.renren.com/GetGuestbookList.do">客服</a>
+            <span class="pipe">|</span>
+            <a href="http://renren.com/info/Help.do">帮助</a>
+            <span class="pipe">|</span>
+            <a href="http://renren.com/info/PrivacyClaim.do">隐私声明</a>
+            <span class="pipe">|</span>
+            <a href="http://renren.com/info/Link.do">友情链接</a>
+            <span class="pipe">|</span>
+            <a href="http://www.kaixin.com/">开心网</a>
+        </span>
+        <span>千橡公司 <span title="revision8586; SJSWT44-49.opi.com">©</span>
+            2009</span>
+    </div>
+</div>
+</body>
+</html>

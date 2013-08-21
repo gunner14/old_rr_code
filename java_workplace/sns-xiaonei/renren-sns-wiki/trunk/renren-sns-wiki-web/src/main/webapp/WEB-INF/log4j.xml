@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<logger name="com.renren.sns.wiki" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="wikiAppender" />
+	</logger>
+	
+	<logger name="com.renren.sns.wiki.service" additivity="false">
+		<level value="info" />
+		<appender-ref ref="wikiAppender" />
+	</logger>
+	
+	<!-- 记录有问题的feed -->
+	<logger name="errorfeedlog" additivity="false">
+		<level value="error" />
+		<appender-ref ref="errorFeedLog" />
+	</logger>
+	
+	<!-- wiki远程日志 -->
+	<logger name="wikiremotelog" additivity="false">
+		<level value="info" />
+		<appender-ref ref="asyncRemoteAppender" />
+	</logger>
+	
+	<!-- delegator perf4j log -->
+	<logger name="delegatorPerf" additivity="false">
+		<level value="info" />
+		<appender-ref ref="delegatorPerfAppender" />
+	</logger>
+	
+	<!-- controller perf4j log -->
+	<logger name="controllerPerf" additivity="false">
+		<level value="info" />
+		<appender-ref ref="controllerPerfAppender" />
+	</logger>
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}:%m %n==> %l%n" />
+		</layout>
+	</appender>
+
+	<appender name="wikiAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xiaonei_wiki.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+	
+	<appender name="errorFeedLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xiaonei_wiki_error_feed.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%m]%n" />
+		</layout>
+	</appender>
+	
+	<!-- Perf4J appenders -->
+    <!--
+       This AsyncCoalescingStatisticsAppender groups StopWatch log messages
+       into GroupedTimingStatistics messages which it sends on the
+       file appender defined below
+    -->
+    <appender name="delegatorPerfAppender"
+              class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice" value="60000" />
+        <appender-ref ref="delegatorAppender" />
+    </appender>
+	
+	<appender name="delegatorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/wiki_delegator.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+	
+	<!-- Perf4J appenders for controller -->
+    <!--
+       This AsyncCoalescingStatisticsAppender groups StopWatch log messages
+       into GroupedTimingStatistics messages which it sends on the
+       file appender defined below
+    -->
+    <appender name="controllerPerfAppender"
+              class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice" value="60000" />
+        <appender-ref ref="perfAppender" />
+    </appender>
+	
+	<appender name="perfAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/wiki_performance.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+	
+	<!-- wiki remote log appender -->
+	<appender name="remoteAppender" class="com.renren.sns.wiki.utils.remotelog.NameSocketAppender">
+		<param name="remoteHost" value="10.3.25.27" />
+		<param name="port" value="9660" />
+		<param name="locationInfo" value="true" />
+	</appender>
+	
+	<!-- async wiki remote log appender -->
+	<appender name="asyncRemoteAppender" class="org.apache.log4j.AsyncAppender">
+		<param name="bufferSize" value="100000" />
+		<param name="blocking" value="false" />
+		<appender-ref ref="remoteAppender" />
+	</appender>
+
+	<root>
+		<level value="warn" />
+		<appender-ref ref="wikiAppender" />
+		<appender-ref ref="stdout" />
+	</root>
+</log4j:configuration>

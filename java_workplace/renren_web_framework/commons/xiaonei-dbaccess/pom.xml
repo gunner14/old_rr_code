@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- 基本配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-dbaccess</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>xiaonei-commons-dbaccess</name>
+	<url>http://repos.d.xiaonei.com</url>
+
+	<!-- 引用校内POM -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 当前维护者 -->
+	<developers>
+		<developer>
+			<name>游桂成</name>
+			<email>guicheng.you@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置 -->
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-adapter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-dbjavapool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+	</dependencies>
+</project>

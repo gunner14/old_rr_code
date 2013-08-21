@@ -1,0 +1,11 @@
+option java_package = "com.renren.xoa.commons.test";
+option java_outer_classname = "RizhiProtos";
+
+message Rizhi {
+  required int32 ownerId = 1;
+  required string title = 2;
+  optional string content = 3;
+}
+message RizhiList {
+  repeated Rizhi rizhis = 1;
+}

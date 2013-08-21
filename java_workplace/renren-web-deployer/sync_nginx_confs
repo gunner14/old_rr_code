@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+  ehco "Usage: $0 <target_ip>"
+fi
+
+scp nginx_conf.d/* root@$1:/etc/nginx/conf.d/
+ssh root@$1 "service nginx reload"
+

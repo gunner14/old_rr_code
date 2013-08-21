@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="feedformnew" type="com.dodoyo.feedmanager.form.FeedForm" />
+		<form-bean name="templateform" type="com.dodoyo.feedmanager.form.TemplateForm" />
+		<form-bean name="displayform" type="com.dodoyo.feedmanager.form.DisplayFrom" />
+		<form-bean name="feedpublishform" type="com.dodoyo.feedmanager.form.PublishForm" />
+	</form-beans>
+
+	<global-forwards>
+		<forward name="fail" path="/feedmanager/listfeed.do" />
+	</global-forwards>
+	<action-mappings>
+		<!-- wei.kang@opi-corp.com feed config -->
+		<action path="/feedmanager/publish" type="com.dodoyo.feedmanager.action.PublishFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/feedmanager/display.do" />
+		</action>
+		<action path="/feedmanager/display" type="com.dodoyo.feedmanager.action.DisplayFeedAction"
+			name="displayform" scope="request">
+			<forward name="succ" path="/pages/feedmanager/display.jsp" />
+		</action>
+		<action path="/feedmanager/display2"
+			type="com.dodoyo.feedmanager.action.DisplayMiniFeedAction" name="displayform"
+			scope="request">
+			<forward name="succ" path="/pages/feedmanager/display2.jsp" />
+		</action>
+		<action path="/feedmanager/savefeed" type="com.dodoyo.feedmanager.action.SaveFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/feedmanager/listfeed.do" />
+		</action>
+		<action path="/feedmanager/addfeed" type="com.dodoyo.feedmanager.action.AddFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/pages/feedmanager/addfeed.jsp" />
+		</action>
+		<action path="/feedmanager/listfeed" type="com.dodoyo.feedmanager.action.ListFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/pages/feedmanager/list.jsp" />
+		</action>
+		<action path="/feedmanager/showfeed" type="com.dodoyo.feedmanager.action.ShowFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/pages/feedmanager/update.jsp" />
+		</action>
+		<action path="/feedmanager/updatefeed" type="com.dodoyo.feedmanager.action.UpdateFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/feedmanager/listfeed.do" />
+		</action>
+		<action path="/feedmanager/deletefeed" type="com.dodoyo.feedmanager.action.DeleteFeedAction"
+			name="feedformnew" scope="request">
+			<forward name="succ" path="/feedmanager/listfeed.do" />
+		</action>
+		<action path="/feedmanager/listtemplate" type="com.dodoyo.feedmanager.action.ListTemplateAction"
+			name="templateform" scope="request">
+			<forward name="succ" path="/pages/feedmanager/listtemplate.jsp" />
+		</action>
+		<action path="/feedmanager/savetemplate" type="com.dodoyo.feedmanager.action.SaveTemplateAction"
+			name="templateform" scope="request">
+			<forward name="succ" path="/feedmanager/listtemplate.do" />
+		</action>
+		<action path="/feedmanager/addtemplate" parameter="/pages/feedmanager/addtemplate.jsp"
+			name="templateform" type="org.apache.struts.actions.ForwardAction" />
+
+		<action path="/feedmanager/showtemplate" type="com.dodoyo.feedmanager.action.ShowTemplateAction"
+			name="templateform" scope="request">
+			<forward name="succ" path="/pages/feedmanager/updatetemplate.jsp" />
+		</action>
+		<action path="/feedmanager/updatetemplate"
+			type="com.dodoyo.feedmanager.action.UpdateTemplateAction" name="templateform"
+			scope="request">
+			<forward name="succ" path="/feedmanager/listtemplate.do" />
+		</action>
+		<action path="/feedmanager/deletetemplate"
+			type="com.dodoyo.feedmanager.action.DeleteTemplateAction" name="templateform"
+			scope="request">
+			<forward name="succ" path="/feedmanager/listtemplate.do" />
+		</action>
+
+		<action path="/feedprivacy" type="com.dodoyo.feed.privacy.action.ListPrivacyAction">
+			<forward name="succ" path="/pages/feed/feedprivacy.jsp" />
+		</action>
+		<action path="/updatefeedprivacy"
+			type="com.dodoyo.feed.privacy.action.UpdateFeedSendAction">
+			<forward name="succ" path="/feedprivacy.do" />
+		</action>
+		<!-- wei.kang@opi-corp.com feed config over-->
+		<!--read feed-->
+		<action path="/readMini"
+			type="com.xiaonei.platform.component.feed.helper.ReadXMinifeedAjax" />
+		<action path="/readNews"
+			type="com.xiaonei.platform.component.feed.helper.ReadXNewsfeedAjax" />
+		<action path="/retrieveNews"
+			type="com.xiaonei.platform.component.feed.helper.RetrieveXNewsfeedAjax" />
+		<action path="/retrieveMini"
+			type="com.xiaonei.platform.component.feed.helper.RetrieveXMinifeedAjax" />
+		<!--read feed over -->
+		<action path="/retrieveMorePic"
+			type="com.xiaonei.platform.component.feed.helper.RetrieveMorePicAjax" />
+		<!--feed comments-->
+		<action path="/feedcommentdelete"
+			type="com.xiaonei.platform.component.feed.helper.FeedDeleteCommentAjax" />
+		<action path="/feedcommentreply"
+			type="com.xiaonei.platform.component.feed.helper.FeedReplyAjax" />
+		<action path="/feedcommentretrieve"
+			type="com.xiaonei.platform.component.feed.helper.FeedRetrieveCommentAjax" />
+		<!--feed comments over-->
+		<!--feed filter-->
+		<action path="/feedretrieve" type="com.dodoyo.feed.action.HomeRetrieveXNewsfeedAjax" />
+		<action path="/ajaxfeedpage"
+			type="com.xiaonei.reg.guide.action.GuideAjaxFeedPageAction">
+			<forward name="succ" path="/pages/guide/feed/guide_ajax_pages.jsp" />
+		</action>
+		<!--feed filter over-->
+		<action path="/retrievefeedid" type="com.xiaonei.platform.component.xfeed.helper.ajax.RetrieveFeedByID" /> 
+	</action-mappings>
+</struts-config>
+

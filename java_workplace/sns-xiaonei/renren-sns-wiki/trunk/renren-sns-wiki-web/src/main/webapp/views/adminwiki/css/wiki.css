@@ -1,0 +1,61 @@
+﻿html{color:#333;background:#FFF;direction:ltr;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
+body { font-size: 9pt; font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif }
+h2{font-size: 14pt;font-weight: bold;}
+a{color:#369;text-decoration:none; }
+a:hover {color:#369;text-decoration:underline;}
+#wiki-adminheader{margin-bottom: 20px}
+table{width: 95%; min-width:600px;margin: 0;}
+th {
+font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+color: #333;
+border-right: 1px solid #999;
+border-bottom: 1px solid #999;
+border-top: 1px solid #999;
+letter-spacing: 2px;
+text-transform: uppercase;
+text-align: left;
+padding: 2px 6px 2px 6px;
+background: #f5f5f5  no-repeat;
+}
+tr:hover { background: #eee	; } 
+td {
+border-right: 1px solid #999;
+border-bottom: 1px solid #999;
+font-size:12px;
+padding: 2px 6px 2px 6px;
+color: #333;
+}
+.right-con li{
+float:left;
+line-height:30px;
+margin:5px;
+}
+.clearfix:after {content: "\20"; display: block;clear: both}
+.mb15{ margin-bottom:15px;}
+.pagehead{ height:33px; background:url("http://a.xnimg.cn/apps/wiki/images/admin/headbg.png") repeat-x 0 0 transparent;}
+.headcenter{ width:980px; margin:0 auto;}
+.pagecontent{ width:980px; margin:0 auto; height:1%\9;}
+.left-con{ width:159px; border-right:2px solid #d9dce2; padding-top:30px; height:500px; float:left;  }
+.left-con li{ padding:10px 0 10px 20px;}
+.left-con li a{ color:#333; font-size:14px; text-decoration:none;}
+.left-con li.curselect{ background-color:#397ece;}
+.left-con li.curselect a{ color:#FFF; font-weight:bold;}
+.right-con{ margin-left:20px; float:left; padding-top: 35px; }
+.edit-area label{ text-align:right; margin-right:7px; float:left; width:50px; line-height:30px; }
+.edit-area p{ margin-bottom:10px;}
+.edit-area  input{ padding:3px; border:1px solid #d6ddeb; height: 20px; width:170px; vertical-align:middle;}
+.edit-area .sightranklist{ width: 130px; border: 1px solid #D6DDEB; padding: 3px; height: 30px; width:178px;}
+.edit-area .width330{ width:330px;}
+.right-con .haveborder{ padding: 0 120px 25px 0; margin-bottom: 25px; border-bottom: 1px solid #D6DDEB;}
+.txtintro{ padding:3px; width:330px; resize: none; border: 1px solid #D6DDEB; height:80px; overflow: auto\9;}
+#wikiid{ line-height:30px;}
+.txtprompt{ color:#7d7d7d; margin-left:10px;}
+.edit-area .putin{ width: 70px; height: 29px; border: none; background:url("http://a.xnimg.cn/apps/wiki/images/admin/submit-bg.png") no-repeat 0 0 transparent; font-size:0; cursor:pointer; margin-left:55px;}
+.edit-area .inputid{ color:#7D7D7D; width:330px; vertical-align: middle;}
+.edit-area .putinId{ width:93px; height:29px; background:url("http://a.xnimg.cn/apps/wiki/images/admin/setmngbg.png") no-repeat 0 0 transparent; border:none; margin-left:10px; font-size:0; vertical-align: middle; cursor:pointer;}
+.cur-num{ margin: 0 5px;}
+.userlist{ height:1%\9; width:600px;}
+.userlist li{ float:left; width:50px; margin: 0 35px 35px 0;}
+.headerimg{ display:block; text-align:center; width:50px; margin-bottom:5px;}
+.headername{ display:block; text-align:center; width:50px; overflow:hidden; white-space:nowrap; text-decoration:none; color:#333;}
+a.headername:hover{ text-decoration:underline;}

@@ -1,0 +1,26 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "org_adminadd"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a class="avatar" href="http://org.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<#list f_from_name as n>
+			<a target="_blank" stats="NF_People" href="http://org.renren.com/${f_from_id[n_index]}&ref=${vType}&feed=${argu}">${n}</a>
+		</#list>
+		成为
+		<a href="http://org.renren.com/${f_club_id[0]}?ref=${vType}&feed=${argu}" target="_blank">${f_club_name[0]}</a> 
+		俱乐部的管理员
+
+	</h3>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- http://www.xiaonei.com/ -->
+<cross-domain-policy>
+  <allow-access-from domain="*.xiaonei.com" />
+  <allow-access-from domain="xiaonei.com" />
+  <allow-access-from domain="*.renren.com" />
+  <allow-access-from domain="renren.com" />
+  <allow-access-from domain="*.kaixin.com" />
+  <allow-access-from domain="kaixin.com" />
+  <allow-access-from domain="*.xnimg.cn" />
+  <allow-access-from domain="xnimg.cn" />
+</cross-domain-policy>

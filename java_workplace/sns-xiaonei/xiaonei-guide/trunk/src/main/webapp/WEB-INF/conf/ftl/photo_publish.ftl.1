@@ -1,0 +1,9 @@
+<#assign num = 0/>
+<#list f_album_count as c>
+	<#assign num=num+c?number>
+</#list>
+<#if num == 1>
+<#include "1|2|1">
+<#elseif (num > 1)>
+<#include "1|3|1">
+</#if>

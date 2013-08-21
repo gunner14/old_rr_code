@@ -1,0 +1,38 @@
+#!/bin/bash
+
+BINARY_DIR=binary
+PACKED_TOMCAT_NAME=packed-tomcat-6.0.29.tar.bz2
+PACKED_TOMCAT=$BINARY_DIR/$PACKED_TOMCAT_NAME
+JDK_BIN_NAME=jdk-6u20-linux-x64.bin
+JDK_NAME=jdk1.6.0_20
+JDK=$BINARY_DIR/$JDK_BIN_NAME
+
+if [ ! -f "$PACKED_TOMCAT" ]
+then
+  echo "Packed Tomcat binary not exists!"
+  exit 1;
+fi
+
+if [ ! -f "$JDK" ]
+then
+  echo "Jdk binary not exists!"
+  exit 2;
+fi
+
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 <target_ip>"
+  exit 3;
+fi
+
+TARGET=$1
+
+rsync -rtlp $PACKED_TOMCAT web@$TARGET:~/
+rsync -rtlp $JDK web@$TARGET:~/
+
+ssh web@$TARGET "tar xf $PACKED_TOMCAT_NAME"
+ssh web@$TARGET "mkdir -p run/logs; cd apache-tomcat && rm -rf logs; ln -s \$HOME/run/logs"
+ssh web@$TARGET "echo yes|./jdk-6u20-linux-x64.bin"
+
+ssh web@$TARGET "ln -s jdk1.6.0_20 java"
+

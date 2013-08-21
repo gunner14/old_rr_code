@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-2.5.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-lazy-init="false">
+
+	
+
+
+	<bean class="com.xiaonei.passport.web.BeanFactory" lazy-init="false" />
+	
+	<context:component-scan base-package="com.xiaonei.passport.web.controllers" />
+	<context:component-scan base-package="com.xiaonei.passport.web.event">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	<context:component-scan base-package="com.xiaonei.passport.web.passport">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	<context:component-scan base-package="com.xiaonei.passport.web.domain">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	<context:component-scan base-package="com.xiaonei.passport.web.ticket">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>	
+	
+	
+	
+	<!--启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean id="annotationMapper"
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<bean class="com.xiaonei.passport.web.interceptor.RequestTokenInterceptor" />
+				<!--<bean class="com.xiaonei.passport.web.interceptor.PassportInterceptor" />
+				--><bean class="com.xiaonei.passport.web.interceptor.NoCacheInterceptor" />
+				<bean class="com.xiaonei.passport.web.interceptor.DomainIdentifiedInterceptor" />
+			</list>
+		</property>
+	</bean>
+</beans>

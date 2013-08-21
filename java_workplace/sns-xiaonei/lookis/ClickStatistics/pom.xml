@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei.click</groupId>
+	<artifactId>statistics</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>archiva.internal</id>
+			<name>Internal Release Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>renren.internal</id>
+			<name>Internal 3rd Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/thirdparty/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose</artifactId>
+			<version>0.9.5-release</version>
+		</dependency>
+		<dependency>
+			<groupId>net.spy</groupId>
+			<artifactId>memcached</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.10</version>
+		</dependency>
+	</dependencies>
+</project>

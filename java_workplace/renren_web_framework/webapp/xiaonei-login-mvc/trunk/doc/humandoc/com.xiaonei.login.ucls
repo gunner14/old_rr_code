@@ -1,0 +1,305 @@
+<class-diagram version="0.9.86" automaticImage="PNG" icons="true" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <package corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers" binary="false">    
+    <position x="1552" y="65" width="-1" height="-1"/>  
+  </package>  
+  <package corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client" binary="false">    
+    <position x="18" y="956" width="-1" height="-1"/>  
+  </package>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.ClientLoginAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/ClientLoginAction.java" 
+    binary="false">    
+    <position x="184" y="1099" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.TosAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/TosAction.java" binary="false">    
+    <position x="711" y="1051" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.Config" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/Config.java" binary="false">    
+    <position x="1111" y="1251" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.ApiLoginErrorCode" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/ApiLoginErrorCode.java" 
+    binary="false">    
+    <position x="1364" y="1131" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.ApiLoginUtil" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/ApiLoginUtil.java" binary="false">    
+    <position x="1696" y="1083" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.ToolBarLoginAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/ToolBarLoginAction.java" 
+    binary="false">    
+    <position x="2713" y="1075" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.LoginInsideAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/LoginInsideAction.java" 
+    binary="false">    
+    <position x="2181" y="1099" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.client.LoginOutsideAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/client/LoginOutsideAction.java" 
+    binary="false">    
+    <position x="3245" y="1099" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <package corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.util" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/util" binary="false">    
+    <position x="30" y="1596" width="-1" height="-1"/>  
+  </package>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.util.StatUtil" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/util/StatUtil.java" binary="false">    
+    <position x="52" y="1744" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.util.LoginUtil" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/util/LoginUtil.java" binary="false">    
+    <position x="403" y="1816" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <package corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.task" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/task" binary="false">    
+    <position x="46" y="2118" width="-1" height="-1"/>  
+  </package>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.task.FlyerTask" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/task/FlyerTask.java" binary="false">    
+    <position x="167" y="2216" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.task.FeedTask" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/task/FeedTask.java" binary="false">    
+    <position x="27" y="2216" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.task.LogTask" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/task/LogTask.java" binary="false">    
+    <position x="336" y="2232" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <package corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http" binary="false">    
+    <position x="34" y="56" width="-1" height="-1"/>  
+  </package>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.WebLoginAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/WebLoginAction.java" binary="false">    
+    <position x="331" y="648" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.SetTicketAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/SetTicketAction.java" binary="false">    
+    <position x="26" y="148" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.TransferAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/TransferAction.java" binary="false">    
+    <position x="177" y="148" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.ReLoginAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/ReLoginAction.java" binary="false">    
+    <position x="557" y="148" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.AbstractStructAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/AbstractStructAction.java" 
+    binary="false">    
+    <position x="356" y="530" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.LogoutAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/LogoutAction.java" binary="false">    
+    <position x="700" y="148" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.RedirectLoginAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/RedirectLoginAction.java" 
+    binary="false">    
+    <position x="342" y="742" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.ConvertLoginAction" 
+    project="xiaonei-new-login" file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/ConvertLoginAction.java" 
+    binary="false">    
+    <position x="858" y="148" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.http.LoginAction" project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/LoginAction.java" binary="false">    
+    <position x="368" y="284" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.TransferController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/TransferController.java" binary="false">    
+    <position x="1566" y="205" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.LogoutController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/LogoutController.java" binary="false">    
+    <position x="1852" y="213" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.SetTicketController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/SetTicketController.java" binary="false">    
+    <position x="2596" y="205" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.WebLoginController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/WebLoginController.java" binary="false">    
+    <position x="2210" y="443" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.ReLoginController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/ReLoginController.java" binary="false">    
+    <position x="2913" y="205" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.RedirectLoginController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/RedirectLoginController.java" binary="false">    
+    <position x="2108" y="593" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.login.controllers.base.LoginController" 
+    project="xiaonei-new-login" 
+    file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/base/LoginController.java" binary="false">    
+    <position x="2201" y="253" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization>    
+    <source project="xiaonei-new-login" name="com.xiaonei.login.controllers.WebLoginController" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/WebLoginController.java" binary="false"/>    
+    <target project="xiaonei-new-login" name="com.xiaonei.login.controllers.base.LoginController" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/base/LoginController.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-new-login" name="com.xiaonei.login.http.AbstractStructAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/AbstractStructAction.java" binary="false"/>    
+    <target project="xiaonei-new-login" name="com.xiaonei.login.http.LoginAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/LoginAction.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-new-login" name="com.xiaonei.login.http.RedirectLoginAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/RedirectLoginAction.java" binary="false"/>    
+    <target project="xiaonei-new-login" name="com.xiaonei.login.http.WebLoginAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/WebLoginAction.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-new-login" name="com.xiaonei.login.controllers.RedirectLoginController" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/RedirectLoginController.java" binary="false"/>    
+    <target project="xiaonei-new-login" name="com.xiaonei.login.controllers.WebLoginController" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/controllers/WebLoginController.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-new-login" name="com.xiaonei.login.http.WebLoginAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/WebLoginAction.java" binary="false"/>    
+    <target project="xiaonei-new-login" name="com.xiaonei.login.http.AbstractStructAction" 
+      file="/xiaonei-new-login/src/main/java/com/xiaonei/login/http/AbstractStructAction.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

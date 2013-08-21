@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-lazy-init="false">
+
+	<bean class="com.xiaonei.jade.dbplugin.listener.DataMonitorWrapper" scope="prototype">
+		<property name="plugin" ref="jadedbplugin.plugin"></property>
+	</bean>
+	
+	<bean id="jadedbplugin.plugin" class="com.xiaonei.jade.dbplugin.listener.DataMonitorPlugin">
+		<property name="dataMonitorListener" ref="jadedbplugin.listener"></property>
+	</bean>
+
+	<bean id="jadedbplugin.listener"
+		class="com.xiaonei.jade.dbplugin.listener.impl.DataMonitorListenerImpl">
+		<property name="writer" ref="jadedbplugin.writer"></property>
+		<property name="configJudge" ref="jadedbplugin.config.configJudge"></property>
+	</bean>
+
+	<bean id="jadedbplugin.writer"
+		class="com.xiaonei.jade.dbplugin.writer.impl.DataMonitorWriterProvider"></bean>
+
+	<bean id="jadedbplugin.config.configJudge"
+		class="com.xiaonei.jade.dbplugin.configuration.PropertiesConfigJudgeImpl">
+		<property name="monitorProperties" ref="jadedbplugin.monitorProperties"></property>
+	</bean>
+
+	<bean id="jadedbplugin.monitorProperties"
+		class="com.xiaonei.jade.dbplugin.configuration.PropertiesFactoryBean">
+	</bean>
+
+
+</beans>

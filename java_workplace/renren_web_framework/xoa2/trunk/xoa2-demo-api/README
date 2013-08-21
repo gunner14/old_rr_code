@@ -1,0 +1,16 @@
+This is a demo of how to define a thrift service.
+
+1. The IDL is
+   src/main/thrift/twitter.thrift
+
+2. The "I" interface is
+   src/main/java/com/renren/xoa2/demo/twitter/ITwitterService.java
+
+3. All the other code whill generate by thrift, see the pom.xml for maven-thrift-plugin for detail.
+
+Related module:
+1. xoa2-demo: the service module
+2. xoa2-demo-client: the client module
+
+Contactor:
+        yuwei.mu@renren-inc.com/yuan.liu1@renren-inc.com

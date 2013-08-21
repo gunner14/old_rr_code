@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<email>
+
+	<!-- Normal Invite -->
+	<content id="0">
+		<appid>0</appid>
+		<template>def</template>
+		<title><![CDATA[你有一条未处理的好友请求]]></title>
+		<body><![CDATA[#name#请求成为你的好友,点击下面链接接受#name#的请求: ]]></body>
+		<source_id>21281</source_id>
+		<disc>22021281</disc>
+		<rt>38</rt>
+		<link><![CDATA[http://wwv.kaixin.com/kx2.do]]></link>
+	</content>
+	<!-- content id="0">
+		<appid>0</appid>
+		<template>def</template>
+		<title><![CDATA[#name#已经和你明确关系]]></title>
+		<body><![CDATA[#name#已经明确和你的关系，点击下面链接确认：]]></body>
+		<source_id>21371</source_id>
+		<disc>22021371</disc>
+		<rt>21</rt>
+		<link><![CDATA[http://wwv.kaixin.com/kx2.do]]></link>
+	</content -->
+	
+	<content id="-1">
+		<appid>0</appid>
+		<template>def</template>
+		<title><![CDATA[你有一条未处理的好友请求]]></title>
+		<body><![CDATA[#name#请求成为你的好友,点击下面链接接受#name#的请求: ]]></body>
+		<source_id>31315</source_id>
+		<disc>23031315</disc>
+		<rt>40</rt>
+		<link><![CDATA[http://wwv.kaixin.com/kx2.do]]></link>
+	</content>
+	
+	<!-- content id="-1">
+		<appid>0</appid>
+		<template>def</template>
+		<title><![CDATA[#name#已经和你明确关系]]></title>
+		<body><![CDATA[#name#已经明确和你的关系，点击下面链接确认：]]></body>
+		<source_id>31369</source_id>
+		<disc>23031369</disc>
+		<rt>22</rt>
+		<link><![CDATA[http://wwv.kaixin.com/kx2.do]]></link>
+	</content -->
+	
+	<content id="10000">
+		<appid>0</appid>
+		<template>def</template>
+		<title>你有一条未处理的好友请求test-service</title>
+		<body><![CDATA[#name#已经加你为好友，点击下面链接确认test-service:]]></body>
+		<source_id>31999</source_id>
+		<disc>22031999</disc>
+		<rt>999</rt>
+		<link> <![CDATA[http://wwv.kaixin.com/kx2.do]]></link>
+	</content>
+</email>

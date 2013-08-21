@@ -1,0 +1,21 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" target="_blank" stats="NF_People">${f_from_name[0]}</a>
+		<a href="http://i.renren.com/click.action?from=40040&amp;url=%2F" class="vip-icon" target="_blank"><img lala="http://s.xnimg.cn/imgpro/icons/vip_s.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="VIP" class="vip"/></a>
+		更换了大头贴头像
+	</h3>
+	<div class="content">
+		<a target="_blank" href="${f_photo_url[0]}&ref=${vType}"><img class="photo" lala="${ (f_photo_image[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);"/></a>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

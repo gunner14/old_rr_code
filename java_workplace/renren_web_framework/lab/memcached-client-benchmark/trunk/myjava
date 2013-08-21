@@ -1,0 +1,20 @@
+#!/bin/sh
+
+_CLASSPATH=$CLASSPATH
+for i in ./lib/*.jar
+do
+    _CLASSPATH=$_CLASSPATH:"$i"
+done
+
+#for i in /opt/resin/lib/my*.jar
+#do
+    _CLASSPATH=$_CLASSPATH:"$i"
+#done
+
+#echo $_CLASSPATH
+echo ================================================
+
+
+_CLASSPATH=bin:$_CLASSPATH
+
+/opt/j2sdk/bin/java -Xms256M -Xmx1024M -classpath $_CLASSPATH "$@"

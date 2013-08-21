@@ -1,0 +1,27 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "orguser_gossip"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a class="avatar" href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}" stats="NF_People" target="_blank">${f_from_name[0]}</a> 在 
+		<a href="${f_gossip_owner_url[0]}&ref=${vType}&feed=${argu}" target="_blank">${f_gossip_owner_name[0]}</a>
+		的留言板留言了
+	</h3>
+	<#if f_gossip_digest?exists && f_gossip_digest[0] != "">
+		<div class="content">
+			<#if f_gossip_digest?exists && f_gossip_digest[0] != ""><div class="pagecomment">${f_gossip_digest[0]}</div></#if>
+		</div>
+	</#if>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

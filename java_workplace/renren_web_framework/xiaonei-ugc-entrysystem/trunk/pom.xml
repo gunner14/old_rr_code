@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 基本配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-ugc-entrysystem</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei-ugc-entrysystem</name>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>zhiliang.wang</name>
+			<email>zhiliang.wang@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva.internal</id>
+			<name>Internal Release Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>archiva.snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- 构建配置 -->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+		</testResources>
+		<plugins>
+			<!-- 使用1.6级别编译；代码为UTF-8编码；只编译指定的位置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<verbose>true</verbose>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<sourcepath>${project.basedir}/src/main/java</sourcepath>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose>applicationContext</Rose>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<includes>src/main/java</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+

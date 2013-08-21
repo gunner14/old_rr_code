@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--CTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" </sp-->
+<taglib>
+	<tlibversion>1.2</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>xncode</shortname>
+	<uri>http://www.xiaonei.com/xncode</uri>
+	<tag>
+		<name>security</name>
+		<tagclass>com.xiaonei.platform.core.opt.adminPermission.taglib.SecurityTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>userId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>functionId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>right</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

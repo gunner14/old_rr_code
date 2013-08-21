@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite
+        PUBLIC "-//tuckey.org//DTD UrlRewrite 3.1//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.1.dtd">
+<urlrewrite>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^//(.+)$</from>
+		<to type="redirect">/$1</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/mobile-activate-mail\.do$</from>
+		<to type="redirect">http://guide.renren.com/mobile-activate-mail.do</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/(fillinfo|portrait|showCitySchool\.do)$</from>
+		<to type="redirect">http://guide.renren.com/$1</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/(xn5201\.do|xn5101\.do|xn5102\.do|initmsntabreg\.do)$</from>
+		<to type="forward">/init/xn6205</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/(xn\d+{4,})\.do$</from>
+		<to type="forward">/init/$1</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/(.+-reg)\.do$</from>
+		<to type="forward">/sb/$1</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/([A|a]jax.+)\.do$</from>
+		<to type="forward">/ajax/$1</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/acu\.do$</from>
+		<to type="forward">/ajax/acu</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/([R|r]egister)\.do$</from>
+		<to type="forward">/rr/register</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/activate\.do$</from>
+		<to type="forward">/rr/activate</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/[R|r]eactivate\.do$</from>
+		<to type="forward">/rr/reactivate</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/http$</from>
+		<to type="forward">init/xn6205</to>
+	</rule>
+	<!-- kaixin register begin -->
+	<rule>
+		<condition name="host" operator="equal">reg.kaixin.com</condition>
+		<from>^/([R|r]egister)\.do$</from>
+		<to type="forward">/kx/register</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.kaixin.com</condition>
+		<from>^/activate\.do$</from>
+		<to type="forward">/kx/activate</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.kaixin.com</condition>
+		<from>^/[R|r]eactivate\.do$</from>
+		<to type="forward">/rr/reactivate</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">reg.kaixin.com</condition>
+		<from>^/http$</from>
+		<to type="forward">/kx8201.do</to>
+	</rule>
+	<!-- kaixin end -->
+	<rule>
+		<from>^/Guide.do$</from>
+		<to type="forward">/guide.do</to>
+	</rule>
+	<rule>
+		<from>^/fillinfo.do$</from>
+		<to type="forward">/guide.do</to>
+	</rule>
+	<rule>
+		<from>^/loginlessix.do$</from>
+		<to type="forward">/guide.do</to>
+	</rule>
+	<rule>
+		<from>^/auditHs.do$</from>
+		<to type="forward">/init/xn6205</to>
+	</rule>
+	<rule>
+		<from>^/auditUniv.do$</from>
+		<to type="forward">/init/xn6205</to>
+	</rule>
+	<rule>
+		<from>^/undefined$</from>
+		<to type="forward">/guide.do</to>
+	</rule>
+	<rule>
+		<condition name="host" operator="equal">guide.renren.com</condition>
+		<from>^/;$</from>
+		<to type="forward">/guide</to>
+	</rule>
+	<!-- END -->
+	<rule>
+		<condition name="host" operator="equal">reg.renren.com</condition>
+		<from>^/(.+)\.do$</from>
+		<to type="forward">/$1</to>
+	</rule>
+	<!-- END -->
+	<rule>
+		<from>^/(xn\d{4,})\.do%3Bjsessionid(=|%3D)(\w)+(\?|#)?(.*)$</from>
+		<to>/init/$1</to>
+	</rule>
+</urlrewrite>

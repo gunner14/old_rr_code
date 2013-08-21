@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-app_2_4.xsd"
+	version="2.4">
+	<servlet>
+		<servlet-name>log</servlet-name>
+		<servlet-class>com.xiaonei.tools.logger.HttpErrorLogServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>log</servlet-name>
+		<url-pattern>/rl.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>imreport</servlet-name>
+		<servlet-class>com.xiaonei.tools.logger.IMReportServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>imreport2</servlet-name>
+		<servlet-class>com.xiaonei.tools.logger.IMReportServlet2
+		</servlet-class>
+	</servlet>
+	<servlet>
+	<servlet-name>imreportcommand</servlet-name>
+	<servlet-name>com.xiaonei.tools.logger.IMReportServletCommand</servlet-name>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>imreport</servlet-name>
+		<url-pattern>/imreport.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>imreport2</servlet-name>
+		<url-pattern>/imreport2.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	<servlet-name>imreportcommand</servlet-name>
+	<url-pattern>/imreportcommand.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>

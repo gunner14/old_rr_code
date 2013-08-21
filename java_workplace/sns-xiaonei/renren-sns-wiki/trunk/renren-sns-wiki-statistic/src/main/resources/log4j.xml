@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<logger name="com.renren.sns.wiki" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="file" />
+	</logger>
+	
+	<logger name="com.renren.sns.wiki.stat" additivity="false">
+		<level value="info" />
+		<appender-ref ref="file" />
+	</logger>
+	
+	<logger name="net.paoding.rose" additivity="false">
+		<level value="error" />
+		<appender-ref ref="DataAccessFile" />
+	</logger>
+	
+	<logger name="com.xiaonei.jade" additivity="false">
+		<level value="error" />
+		<appender-ref ref="DataAccessFile" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="error" />
+		<appender-ref ref="DataAccessFile" />
+	</logger>
+	
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%-5p:%m %n==> %l%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/wiki_statistic.log" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+
+	<appender name="DataAccessFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/stat_rose.log" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} [%t] [%p] %c: %m%n" />
+		</layout>
+	</appender>
+	
+	<root>
+		<level value="error" />
+		<appender-ref ref="file" />
+	</root>
+	
+</log4j:configuration>

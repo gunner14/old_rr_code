@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--CTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" </sp-->
+<taglib>
+	<tlibversion>1.2</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>tags-profile</shortname>
+	<!-- <uri>http://www.xiaonei.com/tags-profile</uri> -->
+	<uri>http://www.renren.com/tags-profile</uri>
+	<tag>
+		<name>fillEducationInfoMsgDiv</name>
+		<tagclass>com.xiaonei.platform.taglib.profile.FillEducationInfoMsgDivTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>userId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

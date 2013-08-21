@@ -1,0 +1,165 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>校内web监控</title>
+</head>
+<body>
+    <b2>Http 监控概况</b2>
+	<br>
+    <a href="/y/db/sql/generalInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">sql慢查询概况</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/error/geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">404/500概况</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/error/details?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">404/500详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/overtime/geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">Url超时概括</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+	<form>
+	开始时间：
+	<select name="byear">
+		#foreach ($item in [2009..2022])
+			<option value="${item}" 
+		#if($timeParam.byear == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>
+	年
+	<select name="bmonth">
+		#foreach ($item in [1..12])
+			<option value="${item}" 
+		#if($timeParam.bmonth == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+		
+    </select>月
+	<select name="bday">
+		#foreach ($item in [1..31])
+			<option value="${item}" 
+		#if($timeParam.bday == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+    </select>日
+	<select name="bhour">
+		#foreach ($item in [0..23])
+			<option value="${item}" 
+		#if($timeParam.bhour == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="bminute">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.bminute == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="bsecond">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.bsecond == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>
+	
+	～
+	结束时间：
+	<select name="eyear">
+		
+		#foreach ($item in [2009..2022])
+			<option value="${item}" 
+		#if($timeParam.eyear == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+    </select>
+	年
+	<select name="emonth">
+		#foreach ($item in [1..12])
+			<option value="${item}" 
+		#if($timeParam.emonth == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>月
+	<select name="eday">
+		#foreach ($item in [1..31])
+			<option value="${item}" 
+		#if($timeParam.eday == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>日
+	<select name="ehour">
+		#foreach ($item in [0..23])
+			<option value="${item}" 
+		#if($timeParam.ehour == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="eminute">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.eminute == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="esecond">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.esecond == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>
+	<input type="submit" value="查看"/>
+    </form>
+<table>
+		<tr>
+			<td align="center">域名</a></td>
+			<td align="center"><a href=geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday&domain=${item.domain}&sorttype=http404>404错误数目</a></td>
+			<td align="center"><a href=geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday&domain=${item.domain}&sorttype=http500>500错误数目</a></td>
+		</tr>
+	#foreach ($item in ${geneInfoList})
+		<tr>
+			<td align="center"><a href=details?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday&domain=${item.domain}>${item.domain}</a></td>
+			<td align="center">${item.count404}</td>
+			<td align="center">${item.count500}</td>
+            <td align="center"><a href=genemonthInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday&domain=${item.domain}>30天详情</a></td>
+		</tr>
+	#end
+	#set($name = "wangzhiliang")
+	#if(!$name)
+		
+		
+		
+		#else
+			
+	#end
+</table>
+</body>
+</html>

@@ -1,0 +1,16 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" stats="NF_People" target="_blank">${f_from_name[0]}</a> 发表帖子 <a href="${f_thread_url[0]}&ref=${vType}" target="_blank">${f_thread_title[0]}</a>
+	</h3>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

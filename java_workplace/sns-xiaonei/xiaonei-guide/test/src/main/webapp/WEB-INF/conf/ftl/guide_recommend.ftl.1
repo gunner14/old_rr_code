@@ -1,0 +1,22 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" stats="NF_People" target="_blank">${f_from_name[0]}</a>
+		<span class="user-group">(${f_userinfo_network[0]})</span>注册了人人
+	</h3>
+	<div class="content">
+		<#if f_userinfo_comment?? && f_userinfo_comment[0] != "">
+			<p class="comment"><q>${f_userinfo_comment[0]}</q></p>
+		</#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+		<span class="duration"><@format>${f_time[0]}</@format></span>
+		<a class="addfriend_action" onclick="showRequestFriendDialog('${f_from_id[0]}','${f_from_name[0]}','${f_from_tinyimg[0]}',false,'addFriendFromFeed')" href="javascript:void(0);"><img lala="http://s.xnimg.cn/imgpro/bg/knowit.png" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);"/></a> </div>
+	</div>
+	<#include "1|1|1">
+</li>
+</#compress>

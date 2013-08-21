@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="500File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/500File.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="|%d{yyyy-MM-dd|HH:mm:ss:SSS}|%t|%c{1}|%m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="coreFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/coreFile.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %t %x - %m %n" />
+		</layout>
+	</appender>
+
+	
+	<appender name="xceStatFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/xceStat.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %t %x - %m %n" />
+		</layout>
+	</appender>
+	<appender name="xceLogFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/xceLog.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %t %x - %m %n" />
+		</layout>
+	</appender>
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/facebook.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="xceloggerlogFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/xceloggerlog.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout"></layout>
+	</appender>
+
+	<appender name="xceNewLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/ocelog.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="rec404File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/404.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="imptFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/important.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1}logger.removeAllAppenders();
+logger.addAppender(appender);
+			 - %m%n" />
+		</layout>
+	</appender>
+	<appender name="errFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/log/error.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="cacheFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/cache.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="MySQLFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/MySQL.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout"></layout>
+	</appender>
+	<appender name="DataAccessFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/dataAccessMgr.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %-5p:%n==>%m%n" />
+		</layout>
+	</appender>
+	<appender name="AppLoginOutsideFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/appLoginOutside.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n" />
+		</layout>
+	</appender>
+	<appender name="xnLogDebugFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/xnLogDebug.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="loginIpFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/loginLog.log" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n" />
+		</layout>
+	</appender>
+
+
+
+	<!-- remote log -->
+	<appender name="remote" class="com.xiaonei.xce.log.log4j.XceAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="|%d{yyyy-MM-dd|HH:mm:ss:SSS}|%t|%c{1}|%m%n" />
+		</layout>
+	</appender>
+	<appender name="remote_appender" class="com.xiaonei.xce.log.log4j.XceAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n" />
+		</layout>
+		<param name="CommunicatorInitArgs" value="Ice.Override.ConnectTimeout=70" />
+		<param name="LoggerEndpoints" value="M:udp -h 10.22.202.169 -p 9000" />
+	</appender>
+	<!-- remote personnal info fin click stat log -->
+
+	<!-- app request center statistics-->
+
+
+	<appender name="spring" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/home/wangtai2/apache-tomcat-6.0.32/logs/spring.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %p %l - %m %n" />
+		</layout>
+		<param name="maxFileSize" value="300MB" />
+		<param name="maxBackupIndex" value="3" />
+	</appender>
+	
+
+	<logger name="xnlog.404" additivity="true">
+		<level value="OFF" />
+		<appender-ref ref="rec404File" />
+	</logger>
+	<logger name="xnlog.500" additivity="true">
+		<level value="ERROR" />
+		<appender-ref ref="500File" />
+		<!-- 
+		<appender-ref ref="Socket" />
+		 -->
+	</logger>
+
+	<logger name="com.renren.passport" additivity="true">
+		<level value="ERROR" />
+		<appender-ref ref="loginIpFile" />
+	</logger>
+	
+	<logger name="com.xiaonei.passport" additivity="true">
+		<level value="ERROR" />
+		<appender-ref ref="loginIpFile" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="true">
+		<level value="error" />
+		<appender-ref ref="spring" />
+	</logger>
+
+	<root>
+		<level value="error" />
+		<appender-ref ref="file" />
+	</root>
+
+</log4j:configuration>

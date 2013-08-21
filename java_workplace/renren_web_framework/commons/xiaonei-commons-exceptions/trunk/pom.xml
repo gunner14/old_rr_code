@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- 基本配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-exceptions</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei-commons-exceptions</name>
+
+	<!-- 引用校内POM -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>wangzhiliang</name>
+			<email>zhiliang.wang@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置(只添加本项目特有的) -->
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<!-- 第三方依赖，不需要指定版本号，不需要写scope -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+		</dependency>
+
+		<!-- 对校内的依赖，需要指定版本号，以及可能的scope -->
+
+	</dependencies>
+</project>

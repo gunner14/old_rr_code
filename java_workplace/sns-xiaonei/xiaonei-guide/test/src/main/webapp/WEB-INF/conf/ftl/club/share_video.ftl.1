@@ -1,0 +1,30 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "org_sharevideo"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a class="avatar" href="http://org.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<#list f_from_name as n>
+			<a target="_blank" href="http://org.renren.com/${f_from_id[n_index]}?ref=${vType}&feed=${argu}">${n}</a>
+		</#list> 
+		分享视频 <a target="_blank" href="http://org.renren.com/share/list?pid=${f_from_id[0]}&ref=${vType}&feed=${argu}&share_id=${f_share_id[0]}#${f_share_id[0]}">${f_share_video_title[0]}</a>
+	</h3>
+	<div class="content">
+		<div class="video" style="background-image: url(${f_share_video_image[0]});">
+			<a href="http://org.renren.com/share/list?pid=${f_from_id[0]}&ref=${vType}&feed=${argu}&share_id=${f_share_id[0]}#${f_share_id[0]}" target="_blank">播放</a>
+		</div>
+		<#if f_share_comment?exists && f_share_comment[0] != ""><p class="comment"><q>${f_share_comment[0]}</q></p></#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<a href="http://org.renren.com/share/list?pid=${f_from_id[0]}&ref=${vType}&feed=${argu}&share_id=${f_share_id[0]}#${f_share_id[0]}" target="_blank">评论该分享</a>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

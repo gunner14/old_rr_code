@@ -1,0 +1,12 @@
+
+1  解压环境包base-env.tar.gz
+& tar -xzvf base-env.tar.gz
+
+2  执行
+& source ./base-env/env.sh
+
+3. 通过python xoa_admin.py  
+       python xoa_monitor.py 
+   来执行python脚本
+
+

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0"?>
+<!-- http://www.xiaonei.com/ -->
+<cross-domain-policy>
+  <allow-access-from domain="*.xnimg.cn" />
+</cross-domain-policy>

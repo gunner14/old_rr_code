@@ -1,0 +1,12 @@
+超级用户 ：
+	您好！
+	有新的注册申请,注册信息为：
+	用户名：${registerUser.name}
+	邮件：${registerUser.mail}
+	附注：$!registerUser.remark
+	
+	目前尚有${count}申请尚未处理，麻烦登陆处理。点击下面链接快速进入：
+	$url
+	
+										系统
+										$date

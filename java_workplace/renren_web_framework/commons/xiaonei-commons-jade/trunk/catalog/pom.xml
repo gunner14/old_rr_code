@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<groupId>com.xiaonei</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-jade-catalog</artifactId>
+	<name>xiaonei-commons-jade-catalog</name>
+	<version>1.0-SNAPSHOT</version>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>liaohan</name>
+			<email>han.liao@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置(只添加本项目特有的) -->
+	<build>
+		<plugins></plugins>
+	</build>
+
+	<!-- 依赖配置  -->
+	<dependencies>
+		<!-- 第三方依赖, 不需要指定版本号, 不需要写 scope -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-jade-impl-xceadapter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-jade-impl-simple</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-dbjavapool</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-scheduler>
+    <duplication-number value="3"/>
+    <service-time value="100"/>
+    <service-idle-timeout value="200"/>
+    <service-conf-path value="xoa.xml"/>
+</xoa-scheduler>

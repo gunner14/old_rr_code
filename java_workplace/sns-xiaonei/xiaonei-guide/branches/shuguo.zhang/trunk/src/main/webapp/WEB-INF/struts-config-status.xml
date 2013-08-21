@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean name="replyForm" type="com.xiaonei.platform.component.doing.action.ReplyForm"/>
+        <form-bean name="getReplyOfDoingForm" type="com.xiaonei.platform.component.doing.action.GetReplyOfDoingForm"/>
+    </form-beans>
+    <!-- ================================= Global Exception Definitions -->
+    <global-exceptions/>
+
+    <!-- =================================== Global Forward Definitions -->
+    <global-forwards>
+        <forward name="doinghome" path="/getdoing.do"/>
+    </global-forwards>
+    <!-- =================================== Action Mapping Definitions -->
+    <action-mappings>
+        <!-- 手机状态 -->
+        <!-- 获取tsc，已经废弃 -->
+        <action path="/doing/doing" type="com.xiaonei.platform.component.doing.action.DoingAction" scope="request"/>
+        <!-- 更新状态 -->
+        <action path="/doing/update" type="com.xiaonei.platform.component.doing.action.UpdateAction" scope="request"/>
+        <!-- 回复 -->
+        <action path="/doing/reply" type="com.xiaonei.platform.component.doing.action.ReplyAction" name="replyForm"
+                validate="false" scope="request"/>
+        <!-- 获取回复列表 -->
+        <action path="/doing/getReply" type="com.xiaonei.platform.component.doing.action.GetReplyOfDoingAction"
+                name="getReplyOfDoingForm" validate="false" scope="request"/>
+
+        <!-- 删除回复 -->
+        <action path="/doing/deleteReply" type="com.xiaonei.platform.component.doing.action.DeleteReplyAction"
+                scope="request"/>
+
+
+    </action-mappings>
+</struts-config>

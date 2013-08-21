@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<email>
+
+	<!-- Normal Invite -->
+	<!--
+		content id="0"> <appid>0</appid> <template>def</template>
+		<title>有人想跟你秘密联系</title>
+		<body><![CDATA[最近#name#在偷偷地打听你的消息，点击下面链接查看：]]></body>
+		<source_id>21525</source_id> <disc>22021525</disc> <rt>3</rt> <link>
+		<![CDATA[http://wwv.renren.com/xn2.do]]></link> </content
+	-->
+	<content id="0">
+		<appid>0</appid>
+		<template>def</template>
+		<title>你有一条未处理的好友请求</title>
+		<body><![CDATA[#name#已经加你为好友，点击下面链接确认:]]></body>
+		<source_id>21527</source_id>
+		<disc>22021527</disc>
+		<rt>3</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+
+	<content id="1">
+		<appid>0</appid>
+		<template>msntab</template>
+		<title>友情提示，你的好友#name#刚刚创建了新的相册</title>
+		<body><![CDATA[Hi，你的好友#name#刚创建了新的相册，你看看，怎么样？点此链接查看 ]]></body>
+		<source_id>10624</source_id>
+		<disc>22010624</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+
+	<!-- 通讯录使用Start -->
+	<content id="2002">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>10782</source_id>
+		<disc>22010782</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<content id="2003">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>10782</source_id>
+		<disc>22010782</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<content id="2004">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>10782</source_id>
+		<disc>22010782</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<content id="2005">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>10782</source_id>
+		<disc>22010782</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<content id="2006">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>10782</source_id>
+		<disc>22010782</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<!-- 通讯录使用End -->
+
+	<!-- 引导导人的模板Start -->
+	<content id="3001">
+		<appid>0</appid>
+		<template>def</template>
+		<title>你有一条未处理的好友请求</title>
+		<body><![CDATA[#name#已经加你为好友，点击下面链接确认:]]></body>
+		<source_id>80363</source_id>
+		<disc>22080363</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<!-- 引导导人的模板End -->
+
+	<!-- FriendFinder的模板Start -->
+	<content id="4001">
+		<appid>0</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>80366</source_id>
+		<disc>22080366</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<!-- FriendFinderEnd -->
+	<!-- renren party -->
+	<content id="110992">
+		<appid>110992</appid>
+		<template>adrbk</template>
+		<title>来自#name#的好友请求，请您处理！</title>
+		<body><![CDATA[#name#已经加你为好友，向你开放了他的名片、相片和日记。点击确认：]]></body>
+		<source_id>80368</source_id>
+		<disc>22080368</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<!-- bailing vip -->
+	<content id="5001">
+		<appid>0</appid>
+		<template>bailingvip</template>
+		<title>你有一条未处理的好友申请，请处理</title>
+		<body><![CDATA[#name#加你为好友并向你开放了他/她的相片、日记。点击确认：]]></body>
+		<source_id>80371</source_id>
+		<disc>22010901</disc>
+		<rt>1</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+
+	<!--
+		content id="-1"> <appid>0</appid> <template>def</template>
+		<title>有人想跟你秘密联系</title>
+		<body><![CDATA[最近#name#在偷偷地打听你的消息，点击下面链接查看：]]></body>
+		<source_id>31529</source_id> <disc>22031529</disc> <rt>4</rt> <link>
+		<![CDATA[http://wwv.renren.com/xn2.do]]></link> </content
+	-->
+	<content id="-1">
+		<appid>0</appid>
+		<template>def</template>
+		<title>你有一条未处理的好友请求</title>
+		<body><![CDATA[#name#已经加你为好友，点击下面链接确认:]]></body>
+		<source_id>31531</source_id>
+		<disc>22031531</disc>
+		<rt>4</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+	<content id="10000">
+		<appid>0</appid>
+		<template>def</template>
+		<title>你有一条未处理的好友请求test-service</title>
+		<body><![CDATA[#name#已经加你为好友，点击下面链接确认test-service:]]></body>
+		<source_id>31999</source_id>
+		<disc>22031999</disc>
+		<rt>999</rt>
+		<link> <![CDATA[http://wwv.renren.com/xn2.do]]></link>
+	</content>
+</email>

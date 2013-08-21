@@ -1,0 +1,2030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: xiang.ye@opi-corp.com
+-->
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" applicationComplete="init()" backgroundColor="0xffffff" width="480" height="360" xmlns:ui="com.renren.ui.*" >
+	<mx:Script>
+		<![CDATA[
+			import com.renren.module.BwCheck;
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 用于测试html页面的js与flash之间的调用是否通畅
+			 * 参数:	测试字符串
+			 * 功能:	打印到flash上的log区
+			 */
+			public function webtalkTesting(testString:String):void {
+				log(testString+"\n");
+			}
+			/**
+			 * 页面点击发起呼叫的入口
+			 * 参数:	被叫用户信息
+			 * 功能:	如果当前正处于不可中断的过程中,则不响应;
+			 * 		如果当前正在与"同一个id"通话,则不响应(这是一次多余请求);
+			 * 		如果当前正在跟"另一个id"通话,则弹出确认页面,询问是否要切换聊天对象.
+			 * 		如果当前正处于"ready"状态,则发起通话
+			 */
+			public function webtalkConnecting(
+				newXnRemoteUserId:String,
+				newXnRemoteUserName:String,
+				newXnRemoteTinyUrl:String,
+				newXnRemoteMainUrl:String ):void {
+				log("[webtalkConnecting]new_remote_userid_"+newXnRemoteUserId+"_username_"+newXnRemoteUserName+ "\n");
+				
+				if( localstatus.istalking ){
+					if( localstatus.iscaller() && newXnRemoteUserId==outgoingitem.userid ){
+						return;
+					}else if( localstatus.isreciever() && newXnRemoteUserId==incomingitem.userid ){
+						return;
+					}
+					localstatus.refresh(newXnRemoteUserId);
+					
+				}else if( localstatus.isready() ){
+					call(newXnRemoteUserId);
+					
+				}else{//State==Init/Calling/Connecting/Ringing
+					return;
+				}
+			}
+			/**
+			 * 用户确认要中断当前通话而发起另一个呼叫是调用
+			 * 功能:	挂断当前通话,发起对initxnremoteid的呼叫
+			 */
+			private function refresh():void{
+				log("[refresh]...\n");
+				if( localstatus.istalking ){
+					hangup();
+				}else{//State==Init/Calling/Connecting/Ringing
+					reset("[refresh]...\n",PlayerNoteStatusMsgEmpty);
+				}
+				call( localstatus.poprefreshingid() );
+			}
+			/**
+			 * 用户确认不想中断当前通话时调用
+			 * 功能:	消息呼叫另一个人,继续当前通话
+			 */
+			private function goon():void{
+				log("[goon]i_dont_want_to_refresh\n");
+				if( localstatus.istalking ){
+					localstatus.playerin();
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 等待html页面上的js装载完成以便激活flash自身的功能
+			 * 功能:	循环查询html页面上的jsReady信号(当js装载完成时会得到一个true)
+			 */
+			private function registerJsFun():void{
+				if(ExternalInterface.available){
+					try{
+						var containerReady:Boolean=isContainerReady();
+						if(containerReady){
+							setupcallbacks();
+							initedwork(localstatus.popinitingid());
+						}else{
+							var readyTimer:Timer=new Timer(100);
+							readyTimer.addEventListener(TimerEvent.TIMER,initTimerHandler);
+							readyTimer.start();
+						}
+					}catch(error:Error){}
+				}else{}
+			}
+			/**
+			 * 用这个方法探测页面是否转载完成
+			 * 功能:	未完成时页面会返回false,已完成时返回true
+			 */
+			private function isContainerReady():Boolean{
+				var result:Boolean=Boolean(ExternalInterface.call("isjsreadyByWebtalkSWF"));
+				return result;
+			}
+			/**
+			 * 每次查询时用这个函数鉴定查询结果
+			 * 功能:	如果html页面上的js已经就绪,则结束探测html页面,并且开始进行initedwork发出初始呼叫
+			 * tips: localstatus.popinitingid()表示的是打开当前页面时就已经指定要发起的一个呼叫id
+			 */
+			private function initTimerHandler(event:TimerEvent):void{
+				var isReady:Boolean=isContainerReady();
+				if(isReady){
+					Timer(event.target).stop();
+					setupcallbacks();
+					initedwork(localstatus.popinitingid());
+				}
+			}
+			/**
+			 * 向html页面装载flash方法
+			 * 功能:	让页面可调用webtalkConnecting和webtalkTesting方法
+			 */
+			private function setupcallbacks():void{
+				log("[setupcallbacks]...\n");
+				try{
+					ExternalInterface.addCallback("webtalkTesting", webtalkTesting);
+					ExternalInterface.addCallback("webtalkConnecting", webtalkConnecting);
+					log("[setupcallbacks]done\n");
+				}catch(e:SecurityError){
+					log("[setupcallbacks]SecurityError:"+e.toString());
+				}catch(e:Error){
+					log("[setupcallbacks]Error:"+e.toString());
+				}
+				try{
+					ExternalInterface.call("setswfreadyByWebtalkSWF");
+					ExternalInterface.call("initByWebtalkSWF");
+				}catch(e:Error){
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 由registerJsFun发起呼叫的入口
+			 * 参数:	被叫用户ID
+			 * 功能:	区分主动进入准备响铃/被动进入准备响铃/被动进入准备呼出
+			 * 		三种状态,前两种将进行查询(用refreshingauto区分响应状态条),后一种
+			 */
+			public function initedwork(remoteId:String):void {
+				log("[initedwork]remote_id_"+remoteId+"\n");
+				
+				if( remoteId=="-1" ){//用户主动打开了webtalk页面,此时先查询是否有呼入信息
+					localstatus.refreshingauto = true;
+					localstatus.ready(false,PlayerNoteStatusMsgEmpty,true);
+				}else if( remoteId=="0" ){//用户通过被叫通知进入当前页面,此时再次查询呼入信息
+					localstatus.refreshingauto = false;
+					localstatus.ready(false,PlayerNoteStatusMsgEmpty,true);
+				}else{// xnremoteid!="-1" && xnremoteid!="0"//用户通过主叫入口进入了当前页面,此时发起一个默认呼叫
+					call( remoteId );
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 提示区可能出现的各种文案
+			 */
+			private const PlayerNoteStatusMsgEmpty:String=				"";
+			private const PlayerNoteStatusMsgLogoutErr:String=			"请先登录或者重新打开窗口";
+			private const PlayerNoteStatusMsgPrivate:String=			"您无权限发起此次视频邀请";
+			private const PlayerNoteStatusMsgBusy:String=				"对方占线";
+			private const PlayerNoteStatusMsgTimeout:String=			"对方无应答";
+			private const PlayerNoteStatusMsgCancel:String	=			"视频邀请已取消";
+			
+			private const PlayerNoteStatusMsgRejected:String=			"对方拒绝了您的邀请";
+			private const PlayerNoteStatusMsgRemoteErr:String=			"对方网络连接出现问题,呼叫取消";
+			private const PlayerNoteStatusMsgReject:String=			"您拒绝了对方的邀请";
+			
+			private const PlayerNoteStatusMsgNoCall:String	=			"当前请求列表为空";
+			private const PlayerNoteStatusMsgBeCanceled:String	=		"视频邀请已被取消";
+			private const PlayerNoteStatusMsgConnecting:String=		"视频连接中...";
+			
+			private const PlayerNoteStatusMsgHangup:String=			"视频通话已挂断";
+			
+			private const PlayerNoteStatusMsgServerErr:String=			"服务器凌乱中，请重新打开";
+			private const PlayerNoteStatusMsgConnectErr:String=		"网络凌乱中，请稍候再试";
+			private const PlayerNoteStatusMsgUnknownErr:String=		"发生了一些由外星文明导致的未知凌乱";
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 嵌入flash的图片
+			 */
+			import mx.controls.Image;
+			[Embed(source="icon/playerBackground.png")]
+			[Bindable]
+			private var playerbackground:Class;
+			[Embed(source="icon/micOnIcon.png")]
+			[Bindable]
+			private var miconicon:Class;
+			[Embed(source="icon/micOffIcon.png")]
+			[Bindable]
+			private var micofficon:Class;
+			[Embed(source="icon/cameraOnIcon.png")]
+			[Bindable]
+			private var cameraonicon:Class;
+			[Embed(source="icon/cameraOffIcon.png")]
+			[Bindable]
+			private var cameraofficon:Class;
+			[Embed(source="icon/hangupIcon.png")]
+			[Bindable]
+			private var hangupicon:Class;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 带宽检测
+			 */
+			import org.red5.flash.bwcheck.app.BandwidthDetectionApp;
+			/**
+			 * 远端视频对象(用来展示对方的视频流)
+			 */
+			private var remotevideo:Video = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 本地通话状态管理器,如
+			 */
+			import com.renren.module.LocalStatus;
+			[Bindable] private var localstatus:LocalStatus = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 设备管理器
+			 */
+			import com.renren.module.LocalEquip;
+			[Bindable] private var localequip:LocalEquip = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 本地信息对象
+			 */
+			import com.renren.module.LocalItem;
+			[Bindable] private var localitem:LocalItem = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 呼入信息对象(也就是呼叫了我的那个人)
+			 */
+			import com.renren.module.IncomingItem;
+			[Bindable] private var incomingitem:IncomingItem = new IncomingItem("0","白色小包纸","0","0","0",0,0,"0","0")
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 呼出信息对象(也就是我要呼叫的那个人)
+			 */
+			import com.renren.module.OutgoingItem;
+			[Bindable] private var outgoingitem:OutgoingItem = new OutgoingItem("0","白色小包纸","0","0");
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 协议服务器的计时连接器
+			 * 作用:用来做四种定时轮询: 轮询是否有人呼叫我,轮询我的呼出是否有响应,报告当前正在通话,轮询对方是否还在呼叫我
+			 */
+			import com.renren.net.webserver.ProtocalTimer;
+			private var protocaltimer:ProtocalTimer = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 协议服务器接口类
+			 */
+			import com.renren.net.webserver.ProtocalAdapter;
+			import com.renren.net.webserver.ProtocalErrorEvent;
+			import com.renren.net.webserver.ProtocalListEvent;
+			import com.renren.net.webserver.ProtocalInfoEvent;
+			private var protocaladapter:ProtocalAdapter = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 视频服务器接口类,有两种:
+			 * rtmfp服务器是直连服务器(目前是cumulus)
+			 * rtmp服务器是中转服务器(目前是red5)
+			 */
+			import com.renren.net.videoserver.VideoAdapter;
+			import com.renren.net.videoserver.RtmfpAdapter;
+			import com.renren.net.videoserver.RtmpAdapter;
+			private var rtmfpadapter:RtmfpAdapter = null;
+			private var rtmpadapter:RtmpAdapter = null;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 客户端数据收集(用来收集用户体验问卷和客户端log等)
+			 */
+			[Bindable] private var eiqboolt:Boolean=true;
+			[Bindable] private var eiqboolf:Boolean=true;
+			[Bindable] private var eiqboolq:Boolean=true;
+			
+			private const PlayerEiqDoing:int=0;
+			private const PlayerEiqDone:int=1;
+			[Bindable] private var PlayerEiqIndex:int;
+			
+			private var eiq_res:String="[eiq_null]";
+			
+			//report type
+			private const ReportTypeEIQ:int = 0;//to send report
+			private const ReportTypeDEBUG:int = 1;
+			private const ReportTypeERR:int = 2;
+			
+			import mx.events.SliderEvent;
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 通话链接管理器
+			 */
+			import com.renren.module.Vctrl;
+			[Bindable] private var vctrl:Vctrl = new Vctrl();
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 当rtmfp视频通道关闭时触发
+			 * 功能:	结束通话或呼叫,并向服务器汇报
+			 */
+			private function vs_rtmfp_close(e:Event):void{
+				if( vctrl.is_rtmfp_talking() ){
+					behangup();
+				}
+			}
+			/**
+			 * 当rtmp断定视频通道关闭时触发
+			 * 功能:	结束通话或呼叫,并向服务器汇报
+			 */
+			private function vs_rtmp_close(e:Event):void{
+				if( vctrl.is_rtmp_talking() ){
+					behangup();
+				}
+			}
+			/**
+			 * 用于测试
+			 *
+			 */
+			private function vc_unkown_fail(e:Event):void
+			{
+				log("[time out test********]...\n");
+				
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			/**
+			 * 初始化函数
+			 * 功能:	初始化
+			 */
+			private function init():void
+			{
+				//允许跨域和被跨域访问,否则会出现js和flash之间无法通讯的问题
+				Security.allowDomain("*");
+				Security.allowInsecureDomain("*");
+				
+				//允许自适应窗口大小,否则会出现遮挡以及flash窗口不能自适应大小的情况
+				stage.scaleMode=StageScaleMode.EXACT_FIT;
+				
+				//这个参数是从html页面上传进来的,里面带有本地信息(我),和是否要发起对某人呼叫的相关信息
+				var param:Object = stage.loaderInfo.parameters;
+				if (
+					param["xnLocalId"]
+					&& param["xnLocalName"]
+					&& param["xnLocalTinyUrl"]
+					&& param["xnLocalMainUrl"]
+				){//获取最基本的本地信息
+					
+					var xnlocalid:String = String(param["xnLocalId"]);
+					var xnlocalname:String = String(param["xnLocalName"]);
+					log("[init]local_id_"+xnlocalid
+						+"_name_"+xnlocalname
+						+"\n");
+					if ( param["xnLocalRtmfpUrl"] && param["xnLocalRtmpUrl"] ){
+						var xnlocalrtmfpurl:String = String(param["xnLocalRtmfpUrl"]);
+						var xnlocalrtmpurl:String = String(param["xnLocalRtmpUrl"]);
+						if( xnlocalrtmfpurl!="0" || xnlocalrtmpurl!="0" ){
+							log("[init]video_url_done\n");
+							
+							var xnlocaltinyurl:String = String(param["xnLocalTinyUrl"]);
+							var xnlocalmainurl:String = String(param["xnLocalMainUrl"]);
+							//如果有本地信息,localitem会被创建,否则的话,通话将无法发起
+							//这是一个关键点
+							localitem=new LocalItem(
+								xnlocalid,
+								xnlocalname,
+								xnlocaltinyurl,
+								xnlocalmainurl,
+								"http://webtalk.renren.com/webtalk",
+								xnlocalrtmfpurl,
+								xnlocalrtmpurl
+							);
+						}else{
+							log("[init]bad_video_url\n");
+						}
+					}else{
+						log("[init]no_video_url\n");
+					}
+				}else{
+					log("[init]no_local_info\n");
+				}
+				
+				//看,必须要有localitem,才有可能进行协议服务器和视频服务器的初始化
+				if( localitem ){
+					//仅当本地信息周全时才会初始化以下这些对象:
+					//protocaladapter: 用来与协议服务器交互
+					//protocaltimer: 用来与协议服务器交换状态
+					//rtmfpadapter: 用来与直连视频服务器交互
+					//rtmpadapter: 用来与中转视频服务器交互
+					
+					vctrl.addEventListener("vc_c_succ", call_1_succ );
+					vctrl.addEventListener("vc_c_rtmfp", call_1_rtmfp );
+					vctrl.addEventListener("vc_c_rtmp", call_1_rtmp );
+					vctrl.addEventListener("vc_c_timeout", call_0_timeout );
+					
+					//vs_c_rtmfp是不需要的,由onPeerConnect取代
+					vctrl.addEventListener("vs_c_rtmp", call_4_rtmp );
+					
+					vctrl.addEventListener("vc_r_rtmfp", accept_2_rtmfp );
+										//vctrl.addEventListener("vc_r_rtmfp", accept_1_rtmfp_timeout );//测试用
+					vctrl.addEventListener("vc_r_rtmfp_timeout", accept_1_rtmfp_timeout );
+					vctrl.addEventListener("vc_r_rtmp", accept_2_rtmp );
+					vctrl.addEventListener("vc_r_rtmp_timeout", accept_1_rtmp_timeout );
+					
+					//vs_r_rtmfp是不需要的,由onPeerConnect取代
+					vctrl.addEventListener("vs_r_rtmp", accept_6_rtmp );
+					vctrl.addEventListener("vs_r_rtmfp_timeout", accept_3_rtmfp_timeout );
+					vctrl.addEventListener("vs_r_rtmp_timeout", accept_3_rtmp_timeout );
+					
+					vctrl.addEventListener("vs_rtmfp_close", vs_rtmfp_close );
+					vctrl.addEventListener("vs_rtmp_close", vs_rtmp_close );
+					
+					vctrl.addEventListener("vc_unkown_fail", vc_unkown_fail );
+					
+					protocaladapter = new ProtocalAdapter();
+					protocaladapter.addEventListener("InfoSucc", call_0_ret);
+					protocaladapter.addEventListener("CallSucc", call_2_ret);
+					protocaladapter.addEventListener("CallFail", call_2_ret);
+					protocaladapter.addEventListener("AcceptSucc", accept_3_ret);
+					protocaladapter.addEventListener("AcceptFail", accept_3_ret);
+					protocaladapter.addEventListener("CancelSucc", Eventcancel_or_timeout);
+					protocaladapter.addEventListener("TimeoutSucc", Eventcancel_or_timeout);
+					protocaladapter.addEventListener("RejectSucc", Eventreject);
+					protocaladapter.addEventListener("BeHangupSucc", Eventbehangup);
+					protocaladapter.addEventListener("ReportSucc", Eventreport);
+					protocaladapter.addEventListener("LogoutErr", Errlogout);
+					protocaladapter.addEventListener("ServerErr", Errserver);
+					protocaladapter.addEventListener("ConnectErr", Errconnect);
+					protocaladapter.addEventListener("ServerWarn", Warnserver);
+					protocaladapter.addEventListener("ConnectWarn", Warnconnect);
+					protocaladapter.addEventListener("FailedSucc", Eventfailedreported);
+					protocaladapter.addEventListener("BwCheckSucc", EventbwcheckComplete);
+					
+					protocaltimer = new ProtocalTimer(
+						localitem.weburl("listing"),
+						localitem.weburl("holding"),
+						localitem.weburl("ringing"),
+						localitem.weburl("talking")
+					);
+					protocaltimer.addEventListener("ListingSucc", Eventlisting);
+					protocaltimer.addEventListener("HoldingWait", Eventholding);
+					protocaltimer.addEventListener("HoldingMiss", Eventholding);
+					protocaltimer.addEventListener("HoldingErr", Eventholding);
+					protocaltimer.addEventListener("RingingWait", Eventringing);
+					protocaltimer.addEventListener("RingingMiss", Eventringing);
+					protocaltimer.addEventListener("RingingErr", Eventringing);
+					protocaltimer.addEventListener("TalkingSucc", Eventtalking);
+					protocaltimer.addEventListener("LogoutErr", Errlogout);
+					protocaltimer.addEventListener("ServerErr", Errserver);
+					protocaltimer.addEventListener("ConnectErr", Errconnect);
+					protocaltimer.addEventListener("ServerWarn", Warnserver);
+					protocaltimer.addEventListener("ConnectWarn", Warnconnect);
+				}
+				
+				//本地状态机
+				localstatus=new LocalStatus(incomingitem,outgoingitem,protocaltimer);
+				
+				//看,必须要有localitem,才有可能进行协议服务器和视频服务器的初始化
+				if( localitem ){
+					rtmfpadapter = new RtmfpAdapter(vctrl,localstatus,localitem);
+					rtmfpadapter.close();
+					rtmpadapter = new RtmpAdapter(vctrl,localstatus,localitem);
+					rtmpadapter.close();
+				}
+				
+				//版本控制,只有10以上的能支持视频对话以及rtmfp协议
+				log("[init]player_" + Capabilities.version + "\n");
+				var ver:Number = Number( Capabilities.version.slice(  Capabilities.version.indexOf(" ")+1, Capabilities.version.indexOf(",") ) );
+				if( ver>=10 ){
+					//如果版本通过,则初始化设备管理模块
+					localequip=new LocalEquip("videoPhoneSettings");
+					localequip.init(PlayerSmallVideoDisplay,function():void{
+						var videoadapter:VideoAdapter;
+						switch( vctrl.VTalkingType ){
+							case vctrl.VTalkingTypeRtmfp:
+								videoadapter=rtmfpadapter;
+								break;
+							case vctrl.VTalkingTypeRtmp:
+								videoadapter=rtmpadapter;
+								break;
+							default:
+								break;
+						}
+						attachaudio(videoadapter);
+						attachvideo(videoadapter);
+					}
+					);
+					localequip.CameractrlEnable();
+					localequip.MicctrlEnable();
+				}else{
+					log("[init]low_player_version\n");
+				}
+				
+				if( localitem ){
+					var initingremoteid:String = "-1";
+					if ( param["xnRemoteId"] )
+					{
+						initingremoteid = String(param["xnRemoteId"]);
+					}
+					localstatus.init(PlayerNoteStatusMsgEmpty,initingremoteid);
+					registerJsFun();
+				}else{
+					log("[init]no_base_func\n");
+					localstatus.ready(false,PlayerNoteStatusMsgEmpty,false);
+				}
+				
+				//bandWidthDetect();  //检测带宽 2011.11.14
+			}
+			
+			/**
+			 * 检测带宽
+			 * 功能:	检测 service to client 及 client to service 带宽
+			 * 		
+			 */
+			
+			private var caller_receiver:String = "";
+			private var bwcheck:BwCheck = null;
+			public function bandWidthDetect(rtmpurl:String):void
+			{
+				bwcheck = new BwCheck(protocaladapter,localitem);
+				var bandWidthApp:BandwidthDetectionApp = new BandwidthDetectionApp(bwcheck);
+				
+				bandWidthApp.serverApplication = "bwcheck";
+				bandWidthApp.clientServerService = "bwCheckService.onClientBWCheck";
+				bandWidthApp.serverClientService = "bwCheckService.onServerClientBWCheck";				
+				bandWidthApp.connect(rtmpurl);
+				
+			}
+			
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 重置
+			 * 功能:	让所有的模块进入ready状态,其作用相当于"挂断"/"取消",然后"准备"
+			 * 		涉及到的模块:
+			 * 			vctrl / rtmfpadapter / rtmpadapter
+			 * 			localequip / remotevideo
+			 * 			localstatus
+			 */
+			private function reset(why:String,msg:String):void
+			{
+				log("[reset]for_"+why);
+				
+				vctrl.reset();
+				if(rtmfpadapter)rtmfpadapter.close();
+				if(rtmpadapter)rtmpadapter.close();
+				
+				if(localequip){
+					localequip.CameractrlEnable();
+					localequip.MicctrlEnable();
+				}
+				remotevideo=null;
+				
+				if( msg==PlayerNoteStatusMsgEmpty ){
+					localstatus.ready(false,PlayerNoteStatusMsgEmpty,true);
+				}else if( msg==PlayerNoteStatusMsgLogoutErr ){
+					localstatus.ready(false,PlayerNoteStatusMsgLogoutErr,false);
+				}else{
+					localstatus.ready(true,msg,true);
+				}
+				try{
+					ExternalInterface.call("resetByWebtalkSWF");
+				}catch(e:Error){
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 视频流输出绑定
+			 * 参数:	要绑定到的连接通道
+			 * 功能:	将本地视频流绑定到指定的连接通道上
+			 */
+			private function attachaudio(videoadapter:VideoAdapter):void
+			{
+				log("[attachaudio]attach_audio\n");
+				if(videoadapter){
+					videoadapter.attachoutaudio(localequip.avmic);
+				}
+			}
+			/**
+			 * 音频流输出绑定
+			 * 参数:	要绑定到的连接通道
+			 * 功能:	将本地音频流绑定到指定的连接通道上
+			 */
+			private function attachvideo(videoadapter:VideoAdapter):void
+			{
+				log("[attachvideo]attach_video\n");
+				if(videoadapter){
+					videoadapter.attachoutcamera(localequip.avcamera);
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 协议服务器登出异常
+			 * 原因:用户从网站上退出登录
+			 * 功能:	重置,然后中止基本功能
+			 */
+			private function Errlogout(e:ProtocalErrorEvent):void
+			{
+				reset("[Errlogout]"+e.description+"\n",PlayerNoteStatusMsgLogoutErr);
+				localitem=null;
+			}
+			/**
+			 * 协议服务器数据异常
+			 * 原因:程序bug
+			 * 功能:	重置
+			 */
+			private function Errserver(e:ProtocalErrorEvent):void
+			{
+				reset("[Errserver]"+e.description+"\n",PlayerNoteStatusMsgServerErr);
+			}
+			/**
+			 * 协议服务器连接异常
+			 * 原因:网络问题
+			 * 功能:	重置
+			 */
+			private function Errconnect(e:ProtocalErrorEvent):void
+			{
+				reset("[Errconnect]"+e.description+"\n",PlayerNoteStatusMsgConnectErr);
+			}
+			/**
+			 * 协议服务器数据警告
+			 * 原因:并不是所有数据异常都需要中断目前对话,比方说通话中的talking轮询
+			 * 功能:	log
+			 */
+			private function Warnserver(e:ProtocalErrorEvent):void
+			{
+				log("[Warnserver]" + e.description + "\n");
+			}
+			/**
+			 * 协议服务器连接警告
+			 * 原因:并不是所有网络异常都需要中断目前对话,比方说通话中的talking轮询
+			 * 功能:	log
+			 */
+			private function Warnconnect(e:ProtocalErrorEvent):void
+			{
+				log("[Warnconnect]" + e.description + "\n");
+			}
+			
+			/**
+			 * "视频连接建立失败"成功汇报给协议服务器的回调
+			 */
+			private function Eventfailedreported(e:Event):void
+			{
+				report(ReportTypeERR); //失败的时候调用 report 记录 log 信息
+				reset("[Eventfailedreported]...\n",PlayerNoteStatusMsgConnectErr);
+				
+			}
+			private function EventbwcheckComplete(e:Event):void
+			{
+				log("[EventbwcheckComplete]...\n");
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 发起呼叫,由用户或者程序
+			 * 功能:	如果本地信息异常则退出
+			 */
+			private function call(userid:String):void
+			{
+				if(!localitem){
+					log("[call]no_local_info\n");
+					return;
+				}
+				log("[call]start\n");
+				call_0_info(userid);
+			}
+			
+			/**
+			 * 功能:	查询被叫方信息,包括名字头像以及是否空闲等
+			 */
+			private function call_0_info(userid:String):void
+			{
+				log("[call_0_info]"+localitem.userid+"_to_"+ userid + "\n");
+				caller_receiver = localitem.userid+"_to_"+ userid;
+				protocaladapter.info(localitem.weburl("info"), userid);
+			}
+			/**
+			 * 功能:	查询被叫方信息的返回结果
+			 * tips:由call_0_info引起的InfoSucc事件触发
+			 */
+			private function call_0_ret(e:Event):void
+			{
+				var event:ProtocalInfoEvent=e as ProtocalInfoEvent;
+				log("[call_0_ret]" + e.type
+					+"_userid_"+event.userid
+					+"_username_"+event.username
+					+"_status_"+event.status
+					+"_permission_"+event.permission
+					+"\n");
+				if (event.status == "FREE")//对方空闲
+				{
+					outgoingitem.userid=event.userid;
+					outgoingitem.username=event.username;
+					outgoingitem.tinyurl=event.tinyurl;
+					outgoingitem.mainurl=event.mainurl;
+					call_0_vc();
+				}else{//if (even.status == "BUSY")
+					reset("[call_0_ret]"+event.status+"\n",PlayerNoteStatusMsgBusy);
+				}
+			}
+			/**
+			 * 功能:	同时尝试建立rtmfp和rtmp视频通道
+			 */
+			private function call_0_vc():void
+			{
+				rtmfpadapter.close();
+				rtmpadapter.close();
+				localstatus.connect(true,PlayerNoteStatusMsgConnecting);
+				rtmfpadapter.open(localitem.rtmfpurl);
+				rtmpadapter.open(localitem.rtmpurl);
+				log("[call_0_vc]rtmfp_rtmp_connecting\n");
+				vctrl.rtmfpStage=0;
+				vctrl.rtmpStage=0;
+				vctrl.rtmpS_C_Kbytes=0; //初始 rtmpS_C_Kbytes = 0
+				vctrl.rtmpC_S_Kbytes=0;  //初始 rtmpC_S_Kbytes = 0
+				vctrl.ready_caller(); 
+				rtmfpadapter.vc();
+				rtmpadapter.vc();				
+			}
+			/**
+			 * 功能:	rtmfp和rtmp的视频通道都建立失败的回调
+			 * tips:由call_0_vc引起的vc_c_timeout事件触发
+			 */
+			private function call_0_timeout(e:Event):void{
+				log("[accept_1_rtmp_timeout]rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				protocaladapter.failed(
+					localitem.weburl("failed"),
+					outgoingitem.userid,
+					true,
+					localitem.rtmfpurl,
+					localitem.rtmpurl,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					incomingitem,
+					localstatus.holdingdeadline+10,
+					Capabilities.version
+				);
+				bwcheck.setAction(caller_receiver,"call_failed",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl); //呼叫失败
+			}
+			/**
+			 * 功能:	rtmfp和rtmp的视频通道都已经建立的回调
+			 * tips:由call_0_vc引起的vc_c_succ事件触发
+			 */
+			private function call_1_succ(e:Event):void{
+				log("[call_1_succ]...\n");
+				vctrl.rtmfpStage++;  //rtmfpStage=1 为正确
+				vctrl.rtmpStage++;  //rtmpStage=1 为正确
+				call_2_rtmfp();
+				call_2_rtmp();
+				call_2_call();
+			}
+			/**
+			 * 功能:	rtmfp视频通道建立成功,rtmp通道建立失败的回调
+			 * tips:由call_0_vc引起的vc_c_rtmfp事件触发
+			 */
+			private function call_1_rtmfp(e:Event):void{
+				log("[call_1_rtmfp]...\n");
+				vctrl.rtmfpStage++; //rtmfpStage=1 为正确
+				call_2_rtmfp();
+				call_2_call();
+			}
+			/**
+			 * 功能:	rtmfp视频通道建立失败,rtmp通道建立失败的回调
+			 * tips:由call_0_vc引起的vc_c_rtmp事件触发
+			 */
+			private function call_1_rtmp(e:Event):void{
+				log("[call_1_rtmp]...\n");
+				vctrl.rtmpStage++; //rtmpStage=1 为正确
+				call_2_rtmp();
+				call_2_call();
+			}
+			/**
+			 * 功能:	准备好rtmfp视频流
+			 */
+			private function call_2_rtmfp():void
+			{
+				var o:Object=new Object;
+				o.onPeerConnect=call_3_rtmfp;
+				
+				if( rtmfpadapter.publishrtmfpoutstream("CO"+localitem.userid,o) ){
+					vctrl.rtmfpStage++; //rtmfpStage = 2  为正确
+					log("[call_2_rtmfp]publish_CO"+localitem.userid+"\n");
+					
+				}else{
+					log("[call_2_rtmfp]err_publish_CO"+localitem.userid+"\n");
+				}
+			}
+			/**
+			 * 功能: 对方已play成功,并且流已publish,本方可以play了
+			 * tips: 当对方play本方的rtmfp流成功时系统会调用此接口
+			 */
+			private function call_3_rtmfp(callee:NetStream):Boolean
+			{
+				log("[call_3_rtmfp]farID_"+callee.farID+"\n");
+				rtmfpadapter.farID=callee.farID;
+				var i:Object=new Object;
+				i.onIm=function(name:String, text:String):void
+				{
+					receiveim(name,text);
+				};
+				if( rtmfpadapter.playrtmfpinstream(callee.farID,"RO"+localitem.userid,localequip.speakervolume,i) ){
+					vctrl.rtmfpStage++; //rtmfpStage = 3  为正确
+					
+					remotevideo=new Video();
+					remotevideo.width=PLAYER_WIDTH;
+					remotevideo.height=PLAYER_HEIGHT;
+					remotevideo.attachNetStream(rtmfpadapter.instream);
+					PlayerBigVideoDisplay.addChild(remotevideo);
+					
+					attachaudio(rtmfpadapter);
+					attachvideo(rtmfpadapter);
+					
+					vctrl.rtmfp_talking();
+					rtmpadapter.close();
+					localstatus.talk(rtmfpadapter.instream,true);
+					
+					log("[call_3_rtmfp]connected\n");
+					
+					var callerDes:String = localitem.userid+"-"+outgoingitem.userid+"_"+"CO"+localitem.userid+"_true"+"_"+rtmfpadapter.getrtmfppeer();
+					var receiverDes:String = localitem.userid+"-"+outgoingitem.userid+"_"+"RO"+localitem.userid+"_false"+"_"+rtmfpadapter.farID;
+					
+					//记录连接成功后 caller,id和peer对应关系
+					protocaladapter.recordCurrPeerUserIDs(localitem.weburl("recordCurrPeerUserIDs"),
+						localitem.userid+"_"+rtmfpadapter.getCumulusServer(),
+						callerDes,
+					    true);
+					//记录连接成功后 receiver,id和peer对应关系
+					protocaladapter.recordCurrPeerUserIDs(localitem.weburl("recordCurrPeerUserIDs"),
+						outgoingitem.userid+"_"+rtmfpadapter.getCumulusServer(),
+						receiverDes,
+						true);
+					   
+					
+					return true;
+				}else{
+					log("[call_3_rtmfp]err_playing_RO"+localitem.userid+"\n");
+					return false;
+				}
+				
+			}
+			
+			/**
+			 * 功能:	publish rtmp视频流
+			 */
+			private function call_2_rtmp():void
+			{
+				var i:Object=new Object;
+				i.onIm=function(name:String, text:String):void
+				{
+					receiveim(name,text);
+				}
+				
+				if( rtmpadapter.playrtmpinstream("RO"+localitem.userid,localequip.speakervolume,i) ){
+					log("[call_2_rtmp]play_RO"+localitem.userid+"\n");
+					vctrl.rtmpStage++;  //rtmpStage = 2 为正确
+				}else{
+					log("[call_2_rtmp]err_play_RO"+localitem.userid+"\n");
+				}
+			}
+			
+			
+			/**
+			 * 功能:	play rtmp视频流
+			 */
+			private function call_3_rtmp():Boolean
+			{
+				if( rtmpadapter.publishrtmpoutstream("CO"+localitem.userid) ){
+					log("[call_3_rtmp]publish_CO"+localitem.userid+"\n");
+					vctrl.rtmpStage++;  //rtmpStage = 3 为正确
+					attachaudio(rtmpadapter);
+					attachvideo(rtmpadapter);
+					log("[test_call_rtmp]publish");
+					
+					return true;
+				}else{
+					log("[call_3_rtmp]err_publish_CO"+localitem.userid+"\n");
+					return false;
+				}
+			}
+			/**
+			 * 功能:	rtmp视频流建立的回调
+			 * tips:由call_2_rtmp中本方的play监听到对方publish引起的vs_rtmp事件触发
+			 */
+			private function call_4_rtmp(e:Event):void
+			{
+				//report(ReportTypeDEBUG); //用于收集 caller 的 rtmp 情况 
+                
+				if( call_3_rtmp() ){
+					vctrl.rtmpStage++;  //rtmpStage = 4 为正确
+					
+					remotevideo=new Video();
+					remotevideo.width=PLAYER_WIDTH;
+					remotevideo.height=PLAYER_HEIGHT;
+					remotevideo.attachNetStream(rtmpadapter.instream);
+					PlayerBigVideoDisplay.addChild(remotevideo);
+					
+					vctrl.rtmp_talking();
+					rtmfpadapter.close();
+					localstatus.talk(rtmpadapter.instream,true);
+					log("[call_4_rtmp]connected\n");
+					bwcheck.setAction(caller_receiver,"beaccept_succ",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl); //呼叫失败
+					return;
+				}else{
+					protocaladapter.failed(
+						localitem.weburl("failed"),
+						outgoingitem.userid,
+						true,
+						localitem.rtmfpurl,
+						localitem.rtmpurl,
+						vctrl.rtmfpStage,
+						vctrl.rtmpStage,
+						incomingitem,
+						localstatus.holdingdeadline+10,
+						Capabilities.version
+					);
+					bwcheck.setAction(caller_receiver,"call_failed",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl); //呼叫失败
+					return;
+				}
+			};
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 功能:	如果rtmfp或rtmp有任何一种视频流准备成功,就向协议服务器发送真正的呼叫请求
+			 */
+			private function call_2_call():void
+			{
+				var rtmfppeer_str:String=(vctrl.rtmfpStage==2)?rtmfpadapter.getrtmfppeer():"0";
+				
+				if( vctrl.rtmfpStage!=2 &&  vctrl.rtmpStage!=2 ) //视频通话彻底失败
+				{
+					log("[call_2_call]failed_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+					// 通知协议服务器连接失败
+					protocaladapter.failed(
+						localitem.weburl("failed"),
+						outgoingitem.userid,
+						true,
+						localitem.rtmfpurl,
+						localitem.rtmpurl,
+						vctrl.rtmfpStage,
+						vctrl.rtmpStage,
+						incomingitem,
+						localstatus.holdingdeadline+10,
+						Capabilities.version
+					);
+					bwcheck.setAction(caller_receiver,"call_failed",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl); //呼叫失败
+					return;
+				}
+				
+				localstatus.call();
+				log("[call_2_call]call_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"_peerid_"+rtmfppeer_str+"\n");
+				protocaladapter.call(
+					localitem.weburl("call"),
+					outgoingitem.userid,
+					rtmfppeer_str,
+					localstatus.holdingtimeout,
+					localstatus.holdingdeadline+10,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					localitem.rtmfpurl,
+					localitem.rtmpurl
+				);
+				bwcheck.setAction(caller_receiver,"call_succ",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl); //呼叫成功	
+			
+			}
+			/**
+			 * 功能:	就向协议服务器发送真正的呼叫请求成功的回调
+			 * tips:由call_2_call引起的CallSucc和CallFail事件触发
+			 */
+			private function call_2_ret(e:Event):void
+			{
+				log("[call_2_ret]"+e.type+"\n");
+				if (e.type == "CallSucc"){
+					try{
+						ExternalInterface.call("outgoingByWebtalkSWF",outgoingitem.userid,outgoingitem.username,outgoingitem.tinyurl);
+					}catch(e:Error){
+					}
+				}else{
+					reset("[call_2_ret]"+e.type,PlayerNoteStatusMsgServerErr);
+				}
+			}
+			/**
+			 * 删除peer及user id 2011-12-30
+			 */
+			public function movePeerUserIDs():void
+			{
+				var callerDes:String = localitem.userid+"-"+outgoingitem.userid+"_"+"CO"+localitem.userid+"_true"+"_"+rtmfpadapter.getrtmfppeer();
+				var receiverDes:String = localitem.userid+"-"+outgoingitem.userid+"_"+"RO"+localitem.userid+"_false"+"_"+rtmfpadapter.farID;
+				
+			   protocaladapter.recordCurrPeerUserIDs(localitem.weburl("recordCurrPeerUserIDs"),
+				   localitem.userid+"_"+rtmfpadapter.getCumulusServer(),
+				   callerDes,
+				   false
+			       );
+			   protocaladapter.recordCurrPeerUserIDs(localitem.weburl("recordCurrPeerUserIDs"),
+				   outgoingitem.userid+"_"+rtmfpadapter.getCumulusServer(),
+				   receiverDes,
+				   false
+			       );
+			
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 呼叫保持的轮询的回调
+			 */
+			private function Eventholding(e:Event):void
+			{
+				if (e.type == "HoldingMiss"){
+					reset("[Eventholding]"+e.type+"\n",PlayerNoteStatusMsgRejected);
+				}else if (e.type == "HoldingErr")	{
+					reset("[Eventholding]"+e.type+"\n",PlayerNoteStatusMsgRemoteErr);
+				}else{ //if (e.type == "HoldingWait")
+					if( localstatus.holdingtime >= localstatus.holdingdeadline ){
+						//呼叫超时而取消呼叫
+						timeout("[Eventholding]timeout_"+localstatus.holdingdeadline+"\n",PlayerNoteStatusMsgTimeout);
+					}
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 取消呼叫
+			 * 功能:	放弃一次呼叫
+			 */
+			private function cancel(why:String,msg:String):void
+			{
+				reset("[cancel]for_"+why,msg);
+				protocaladapter.cancel(localitem.weburl("cancel"),localstatus.holdingdeadline+5);
+				bwcheck.setAction(caller_receiver,"caller_cancel",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl);
+			}
+			/**
+			 * 呼叫方超时而取消呼叫
+			 * 
+			 */
+			private function timeout(why:String,msg:String):void
+			{
+				reset("[cancel]for_"+why,msg);
+				protocaladapter.timeout(localitem.weburl("timeout"),localstatus.holdingdeadline+5);
+				bwcheck.setAction(caller_receiver,"caller_timeout",vctrl.rtmfpStage,vctrl.rtmpStage,localitem.rtmpurl);
+			}
+			private function Eventcancel_or_timeout(e:Event):void
+			{
+				log("[Eventcancel_or_timeout]"+e.type+"\n");
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 查询是否有呼入的回调
+			 * 功能:	如果有呼入,则调用ring函数进入响铃操作
+			 */
+			private function Eventlisting(e:Event):void
+			{
+				var event:ProtocalListEvent=e as ProtocalListEvent;
+				if( event.users.length >0 ){
+					log("[Eventlisting]"+event.type+"_length_"+event.users.length + "\n");
+					var item:IncomingItem = IncomingItem( event.users[0] );
+					ring(
+						item.userid,
+						item.username,
+						item.tinyurl,
+						item.mainurl,
+						item.peer,
+						item.rtmfpok,
+						item.rtmpok,
+						item.rtmfpurl,
+						item.rtmpurl
+					);
+				}else{
+					if( !localstatus.refreshingauto ){
+						localstatus.readystatus(PlayerNoteStatusMsgEmpty);
+						localstatus.refreshingauto=true;
+					}
+				}
+			}
+			/**
+			 * 当有呼入时响铃,由Eventlisting函数触发
+			 * 功能:	如果本地信息异常则退出
+			 */
+			private function ring(userid:String,username:String,tinyurl:String,mainurl:String,peer:String,rtmfpok:int,rtmpok:int,rtmfpurl:String,rtmpurl:String):void
+			{
+				if ( userid!="0" )
+				{
+					incomingitem.userid=userid;
+					incomingitem.username=username;
+					incomingitem.tinyurl=tinyurl;
+					incomingitem.mainurl=mainurl;
+					incomingitem.peer=peer;
+					incomingitem.rtmfpok=rtmfpok;
+					incomingitem.rtmpok=rtmpok;
+					incomingitem.rtmfpurl=rtmfpurl;
+					incomingitem.rtmpurl=rtmpurl;
+					
+					localstatus.ring();
+					try{
+						ExternalInterface.call("incomingByWebtalkSWF",incomingitem.userid,incomingitem.username,incomingitem.tinyurl);
+					}catch(e:Error){
+					}
+					log("[ring]"+incomingitem.userid+"_to_"+ localitem.userid + "\n");
+					caller_receiver = incomingitem.userid+"_to_"+ localitem.userid;
+				}else{
+					reset("[ring]no_remote_info\n",PlayerNoteStatusMsgNoCall);
+				}
+			}
+			/**
+			 * 查询呼入是否正在继续的回调
+			 */
+			private function Eventringing(e:Event):void
+			{
+				if (e.type == "RingingMiss"){
+					try{
+						ExternalInterface.call("igotincomingByWebtalkSWF");
+					}catch(e:Error){
+					}
+					reset("[Eventringing]"+e.type+"\n",PlayerNoteStatusMsgBeCanceled);
+				}else if (e.type == "RingingErr")	{
+					try{
+						ExternalInterface.call("igotincomingByWebtalkSWF");
+					}catch(e:Error){
+					}
+					reset("[Eventringing]"+e.type+"\n",PlayerNoteStatusMsgServerErr);
+				}else{ //if (e.type == "RingingWait")
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 拒绝对方的呼叫
+			 */
+			private function reject():void
+			{
+				log("[reject]"+incomingitem.userid+"\n");
+				try{
+					ExternalInterface.call("igotincomingByWebtalkSWF");
+				}catch(e:Error){
+				}
+				localstatus.ringpause();
+				protocaladapter.reject(localitem.weburl("reject"),incomingitem.userid,localstatus.holdingdeadline+5);
+			}
+			/**
+			 * 拒绝呼叫成功的回调
+			 */
+			private function Eventreject(e:Event):void
+			{
+				reset("[Eventreject]...\n",PlayerNoteStatusMsgReject);
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 同意视频通话请求
+			 * 功能:	接听对方的呼叫
+			 */
+			private function accept():void
+			{
+				log("[accept]"+incomingitem.userid+"\n");
+				try{
+					ExternalInterface.call("igotincomingByWebtalkSWF");
+				}catch(e:Error){
+				}
+				rtmfpadapter.close();
+				rtmpadapter.close();
+				localstatus.connect(false,PlayerNoteStatusMsgConnecting);
+				vctrl.rtmfpStage=0; //初始 rtmfpStage = 0
+				vctrl.rtmpStage=0;  //初始 rtmpStage = 0
+				vctrl.rtmpS_C_Kbytes=0; //初始 rtmpS_C_Kbytes = 0
+				vctrl.rtmpC_S_Kbytes=0;  //初始 rtmpC_S_Kbytes = 0
+				accept_1_rtmfp(); // and by tangxm
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 功能:	如果主叫方的rtmfp是ok的,则尝试建立rtmfp通道
+			 * 		否则走rtmp流程
+			 */
+			private function accept_1_rtmfp():void
+			{
+				if(incomingitem.rtmfpok){
+					log("[accept_1_rtmfp]incoming.ok\n");
+					vctrl.rtmfpStage++;  //rtmfpStage=1 为正确
+					vctrl.ready_receiver_rtmfp();
+					rtmfpadapter.open(incomingitem.rtmfpurl);			
+					rtmfpadapter.vc();
+				}else{
+					log("[accept_1_rtmfp]incoming.!ok\n");
+					accept_1_rtmp();
+					//rtmpadapter.checkID_from_red5(incomingitem.userid);
+				}
+			}
+			/**
+			 * 功能:	rtmfp通道建立失败,走rtmp流程
+			 */
+			private function accept_1_rtmfp_timeout(e:Event):void{
+				log("[accept_1_rtmfp_timeout]...\n");
+				accept_1_rtmp();
+				//rtmpadapter.checkID_from_red5(incomingitem.userid);
+			}
+			/**
+			 * 功能:	rtmfp通道建立成功,尝试rtmfp流
+			 * 		如果尝试不成功,走rtmp流程
+			 * tips:由accept_1_rtmfp引起的vc_r_rtmfp事件触发
+			 */
+			private function accept_2_rtmfp(e:Event):void{
+				log("[accept_2_rtmfp]...\n");
+				vctrl.rtmfpStage++; //rtmfpStage=2为正确
+				if( accept_3_rtmfp() ){
+					//到达这里，只能说明本地vs操作都成功了
+					//但是并不表示跟对方的流已经接通
+					//而是在等api的通知
+					//现在其实是在vstimer的过程中，要么超时，要么成功
+				}else{
+					accept_1_rtmp();
+					//rtmpadapter.checkID_from_red5(incomingitem.userid);
+				}
+			}
+			/**
+			 * 功能:	尝试publish rtmfp流
+			 * 		如果成功,就向尝试play rtmfp流
+			 * 		如果尝试不成功,走rtmp流程
+			 */
+			private function accept_3_rtmfp():Boolean
+			{
+				var o:Object=new Object;
+				
+				o.onPeerConnect=accept_5_rtmfp;
+				
+				vctrl.vs_rtmfp_timer_start();
+				
+				if( rtmfpadapter.publishrtmfpoutstream("RO"+incomingitem.userid,o) ){
+					vctrl.rtmfpStage++; //rtmfpStage=3为正确
+					attachaudio(rtmfpadapter);
+					attachvideo(rtmfpadapter);
+					log("[accept_3_rtmfp]publish_RO"+incomingitem.userid+"\n");
+				} else{
+					vctrl.vs_rtmfp_timer_stop();
+					log("[accept_3_rtmfp]err_publish_RO"+incomingitem.userid+"\n");
+					return false;
+				}
+				return accept_4_rtmfp();
+			}
+			/**
+			 * 功能:	尝试play rtmfp流
+			 * 		如果成功,就向协议服务器发送真正的应答确认
+			 * 		如果尝试不成功,走rtmp流程
+			 */
+			private function accept_4_rtmfp():Boolean
+			{
+				var i:Object=new Object;
+				i.onIm=function(name:String, text:String):void
+				{
+					receiveim(name,text);
+				}
+				
+				if( rtmfpadapter.playrtmfpinstream(incomingitem.peer,"CO"+incomingitem.userid,localequip.speakervolume,i) ){
+					vctrl.rtmfpStage++; //rtmfpStage=4为正确
+					log("[accept_4_rtmfp]playing_CO"+incomingitem.userid+"\n");
+				}else{
+					vctrl.vs_rtmfp_timer_stop();
+					log("[accept_4_rtmfp]err_playing_CO"+incomingitem.userid+"\n");
+					return false;
+				}
+				return true;
+			}
+			/**
+			 * 功能:	尝试rtmfp流超时,走失败流程
+			 * tips:由accept_3_rtmfp引起的vs_r_rtmfp_timeout事件触发
+			 */
+			private function accept_3_rtmfp_timeout(e:Event):void{
+				log("[accept_3_rtmfp_timeout]...\n");
+				accept_1_rtmp();
+				//rtmpadapter.checkID_from_red5(incomingitem.userid);
+			}
+			/**
+			 * 功能: 对方已play成功了
+			 * tips: 当对方play本方的rtmfp流成功时系统会调用此接口
+			 */
+			private function accept_5_rtmfp(caller:NetStream):Boolean
+			{
+				log("[accept_5_rtmfp]connect_farID_"+caller.farID+"\n");
+				vctrl.vs_rtmfp_timer_stop();
+				vctrl.rtmfpStage++;   //在这算是真正连接成功，双方已开始通话, rtmfpStage = 5
+				
+				remotevideo=new Video();
+				remotevideo.width=PLAYER_WIDTH;
+				remotevideo.height=PLAYER_HEIGHT;
+				remotevideo.attachNetStream(rtmfpadapter.instream);
+				PlayerBigVideoDisplay.addChild(remotevideo);
+				
+				vctrl.rtmfp_talking();
+				rtmpadapter.close();
+				localstatus.talk(rtmfpadapter.instream,false);
+				log("[accept_5_rtmfp]accept_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				protocaladapter.accept(
+					localitem.weburl("accept"),
+					incomingitem.userid,
+					rtmfpadapter.getrtmfppeer(),
+					localstatus.talkingtimeout,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					incomingitem.rtmfpok,
+					incomingitem.rtmpok,
+					incomingitem.rtmfpurl,
+					incomingitem.rtmpurl
+				);
+				return true;
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 功能:	如果主叫方的rtmp是ok的,则尝试建立rtmp通道
+			 * 		否则走失败流程
+			 */
+			private function accept_1_rtmp():void
+			{
+				rtmfpadapter.close();
+				if(incomingitem.rtmpok){
+					log("[accept_1_rtmp]incoming.ok\n");
+					vctrl.rtmpStage++; //rtmpStage=1为正确
+					vctrl.ready_receiver_rtmp();
+					rtmpadapter.open(incomingitem.rtmpurl);
+					rtmpadapter.vc();
+				}else{
+					log("[accept_1_rtmp]incoming.!ok_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+					//通知协议服务器连接失败
+					protocaladapter.failed(
+						localitem.weburl("failed"),
+						incomingitem.userid,
+						false, //receiver
+						incomingitem.rtmfpurl,
+						incomingitem.rtmpurl,
+						vctrl.rtmfpStage,
+						vctrl.rtmpStage,
+						incomingitem,
+						localstatus.holdingdeadline+10,
+						Capabilities.version
+					);
+					bwcheck.setAction(caller_receiver,"accept_failed",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受失败
+				}
+			}
+			/**
+			 * 功能:	rtmp通道建立失败,走失败流程
+			 * tips:由accept_1_rtmp引起的vc_r_rtmp_timeout事件触发
+			 */
+			private function accept_1_rtmp_timeout(e:Event):void{
+				log("[accept_1_rtmp_timeout]rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				//通知协议服务器连接失败
+				protocaladapter.failed(
+					localitem.weburl("failed"),
+					incomingitem.userid,
+					false, //receiver
+					incomingitem.rtmfpurl,
+					incomingitem.rtmpurl,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					incomingitem,
+					localstatus.holdingdeadline+10,
+					Capabilities.version
+				);
+				bwcheck.setAction(caller_receiver,"accept_failed",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受失败
+				
+			}
+			/**
+			 * 功能:	rtmp通道建立成功,尝试rtmp流
+			 * 		如果尝试不成功,走失败流程
+			 * tips:由accept_1_rtmp引起的vc_r_rtmp事件触发
+			 */
+			private function accept_2_rtmp(e:Event):void{
+				log("[accept_2_rtmp]...\n");
+				vctrl.rtmpStage++;  //rtmpStage=2为正确
+				if( accept_3_rtmp() ){
+					//到达这里，只能说明本地vs操作都成功了
+					//但是并不表示跟对方的流已经接通
+					//而是在等api的通知
+					//现在其实是在vstimer的过程中，要么超时，要么成功
+				}else{
+					log("[accept_2_rtmp]vsfailed_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+					//通知协议服务器连接失败
+					protocaladapter.failed(
+						localitem.weburl("failed"),
+						incomingitem.userid,
+						false, //receiver
+						incomingitem.rtmfpurl,
+						incomingitem.rtmpurl,
+						vctrl.rtmfpStage,
+						vctrl.rtmpStage,
+						incomingitem,
+						localstatus.holdingdeadline+10,
+						Capabilities.version
+					);
+					bwcheck.setAction(caller_receiver,"accept_failed",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受失败
+				}
+			}
+			/**
+			 * 功能:	尝试publish rtmp流
+			 * 		如果成功,就尝试play rtmp流
+			 * 		如果尝试不成功,走失败流程
+			 */
+			private function accept_3_rtmp():Boolean
+			{
+				vctrl.vs_rtmp_timer_start();
+				var i:Object=new Object;
+				i.onIm=function(name:String, text:String):void
+				{
+					receiveim(name,text);
+				}
+				
+				if( rtmpadapter.playrtmpinstream("CO"+incomingitem.userid,localequip.speakervolume,i) ){
+					log("[accept_3_rtmp]play_CO"+incomingitem.userid+"\n");
+					vctrl.rtmpStage++;  //rtmpStage=3为正确
+				}else{
+					log("[accept_3_rtmp]err_play_CO"+incomingitem.userid+"\n");
+					return false;
+				}
+				rtmpadapter.checkID_from_red5(incomingitem.userid,accept_4_rtmp);
+				
+				return true;
+				//return accept_4_rtmp();
+			}
+			private function accept_4_rtmp(obj:Object):Boolean
+			{
+				log("[accept_4_rtmp]id_exist "+obj+"\n");
+				if(obj){
+					vctrl.rtmpStage++;  //rtmpStage=4为正确
+					accept_5_rtmp();
+				}else{
+					log("[caller_offline]accept_becanceled..\n");
+					caller_offline();
+					reset("[Eventcaller_offline]...\n",PlayerNoteStatusMsgBeCanceled);//视频邀请已被取消
+				}
+				log("[accept_4_rtmp]accept_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				return true;
+			}
+			/**
+			 * 功能:	caller端 red5 离线时向red5
+			 * 
+			 */
+			public function caller_offline():void
+			{
+				protocaladapter.debug(
+					localitem.weburl("debug"),
+					"test_red5_accept_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage
+				);
+				bwcheck.setAction(caller_receiver,"accept_becanceled",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受失败
+			}
+			/**
+			 * 功能:	尝试rtmp流超时,走失败流程
+			 * tips:由accept_3_rtmp引起的vs_r_rtmp_timeout事件触发
+			 */
+			private function accept_3_rtmp_timeout(e:Event):void{
+				log("[accept_3_rtmp_timeout]rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				
+				protocaladapter.failed(
+					localitem.weburl("failed"),
+					incomingitem.userid,
+					false,
+					incomingitem.rtmfpurl,
+					incomingitem.rtmpurl,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					incomingitem,
+					localstatus.holdingdeadline+10,
+					Capabilities.version
+				);
+				bwcheck.setAction(caller_receiver,"accept_failed",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受失败
+			}
+			/**
+			 * 功能:	尝试publish rtmp流
+			 * 		如果尝试不成功,走失败流程
+			 */
+			public function accept_5_rtmp():Boolean
+			{
+				if( rtmpadapter.publishrtmpoutstream("RO"+incomingitem.userid) ){
+					log("[accept_5_rtmp]publish_RO"+incomingitem.userid+"\n");
+					vctrl.rtmpStage++;  //rtmpStage=5为正确
+					attachaudio(rtmpadapter);
+					attachvideo(rtmpadapter);
+				} else{
+					log("[accept_5_rtmp]err_publish_RO"+incomingitem.userid+"\n");
+					return false;
+				}
+				return true;
+			}
+			/**
+			 * 功能:	rtmp视频流建立的回调
+			 * tips:由call_2_rtmp中本方的play监听到对方publish引起的vs_rtmp事件触发
+			 */
+			private function accept_6_rtmp(e:Event):void
+			{
+				log("[accept_6_rtmp]connect\n");
+				vctrl.vs_rtmp_timer_stop();
+				vctrl.rtmpStage++;   //在这算是真正连接成功，双方已开始通话, rtmpStage=6为正确
+				
+				remotevideo=new Video();
+				remotevideo.width=PLAYER_WIDTH;
+				remotevideo.height=PLAYER_HEIGHT;
+				remotevideo.attachNetStream(rtmpadapter.instream);
+				PlayerBigVideoDisplay.addChild(remotevideo);
+				
+				vctrl.rtmp_talking();
+				rtmfpadapter.close();
+				localstatus.talk(rtmpadapter.instream,false);
+				
+				log("[accept_6_rtmp]accept_rtmfpStage_"+vctrl.rtmfpStage+"_rtmpStage_"+vctrl.rtmpStage+"\n");
+				protocaladapter.accept(
+					localitem.weburl("accept"),
+					incomingitem.userid,
+					"0",
+					localstatus.talkingtimeout,
+					vctrl.rtmfpStage,
+					vctrl.rtmpStage,
+					incomingitem.rtmfpok,
+					incomingitem.rtmpok,
+					incomingitem.rtmfpurl,
+					incomingitem.rtmpurl
+				);
+				bwcheck.setAction(caller_receiver,"accept_succ",vctrl.rtmfpStage,vctrl.rtmpStage,incomingitem.rtmpurl); //接受成功
+				
+			};
+			
+			/**
+			 * 功能:	就向协议服务器发送真正的呼叫请求成功的回调
+			 * tips:由accept_3_rtmfp和accept_3_rtmp引起的AcceptSucc和AcceptFail事件触发
+			 */
+			private function accept_3_ret(e:Event):void
+			{
+				if (e.type == "AcceptSucc"){
+					log("[accept_3_ret]"+e.type+"\n");
+				}else{//AcceptFail
+					reset("[accept_3_ret]"+e.type,PlayerNoteStatusMsgServerErr);
+				}
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 通话时保持通话状态的回调
+			 */
+			private function Eventtalking(e:Event):void
+			{
+				//log("[Eventtalking]"+e.type+"\n");
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			/**
+			 * 通话时主动挂断
+			 * 功能:	由用户触发,挂断当前通话
+			 */
+			private function hangup():void
+			{
+				reset("[hangup]...\n",PlayerNoteStatusMsgHangup);
+			}
+			/**
+			 * 通话时被挂断
+			 * 功能:	由视频服务器事件触发,挂断当前通话,并且向协议服务器汇报该事件
+			 */
+			private function behangup():void
+			{
+				log("[behangup]...\n");
+				if( localstatus.istalking ){
+					if( localstatus.iscaller() ){
+						protocaladapter.behangup(localitem.weburl("behangup"),outgoingitem.userid,"true",localstatus.talkingtime);
+						reset("[behangup]...\n",PlayerNoteStatusMsgHangup);
+					}else if( localstatus.isreciever() ){
+						protocaladapter.behangup(localitem.weburl("behangup"),incomingitem.userid,"false",localstatus.talkingtime);
+						reset("[behangup]...\n",PlayerNoteStatusMsgHangup);
+					}else{
+						reset("[behangup]warn\n",PlayerNoteStatusMsgHangup);
+					}
+				}
+			}
+			/**
+			 * 通话时被挂断的回调
+			 */
+			private function Eventbehangup(e:Event):void
+			{
+				log("[Eventbehangup]" + e.type + "\n");
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			public function report(type:int):void
+			{
+				var detail:String="type:"+type+":";
+				switch( type ){
+					case ReportTypeEIQ:
+						eiqInput.text='';
+						eiqInput.enabled=false;
+						eiqButton.enabled=false;
+						PlayerEiqIndex=PlayerEiqDone;
+						detail += StatusArea.text+"\n"+eiq_res;
+						break;
+					case ReportTypeDEBUG:
+						detail += StatusArea.text;
+						StatusArea.text='';
+						log("调试信息已发送,感谢您的帮助\n");
+						
+						break;
+					case ReportTypeERR:
+						detail += StatusArea.text;
+						
+						break;
+					default:
+						break;
+				}
+				if( localitem ){
+					protocaladapter.report(localitem.weburl("report"),vctrl.VTalkingType+"",type+"",detail);
+				}
+			}
+			private function Eventreport(e:Event):void
+			{
+				log("[Eventreport]" + e.type + "\n");
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			public function log(msg:String):void
+			{
+				StatusArea.text += msg;
+				StatusArea.validateNow();
+				StatusArea.verticalScrollPosition=StatusArea.textHeight;
+			}
+			
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			// sending text message
+			private function sendim():void
+			{
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				if( videoadapter.sendim(localitem.username,ImInput.text) ){
+					ImArea.text+=localitem.username+": "+ImInput.text+"\n";
+					ImInput.text="";
+				}
+			}
+			private function receiveim(name:String, text:String):void
+			{
+				ImArea.text += name + ": " + text + "\n";
+				ImArea.validateNow();
+				ImArea.verticalScrollPosition=ImArea.textHeight;
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			private function onvideopublishctrl(sendvideo:Boolean):void
+			{
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				if( sendvideo ){
+					if(videoadapter){
+						videoadapter.attachoutcamera(localequip.avcamera);
+					}
+					localequip.CameractrlEnable();
+				}else{
+					if(videoadapter){
+						videoadapter.attachoutcamera(null);
+					}
+					localequip.CameractrlDisable();
+				}
+			}
+			private function onaudiopublishctrl(sendaudio:Boolean):void
+			{
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				if( sendaudio ){
+					if(videoadapter){
+						videoadapter.attachoutaudio(localequip.avmic);
+					}
+					localequip.MicctrlEnable();
+				}else{
+					if(videoadapter){
+						videoadapter.attachoutaudio(null);
+					}
+					localequip.MicctrlDisable();
+				}
+			}
+			private function speakervolumechanged(e:SliderEvent):void
+			{
+				log("[speakervolumechanged]speaker_volume:" + e.value + "\n");
+				localequip.speakervolume=e.value;
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				videoadapter.instreamsound(new SoundTransform(e.value));
+			}
+			
+			private function micvolumechanged(e:SliderEvent):void
+			{
+				log("[micvolumechanged]mic_volume:" + e.value + "\n");
+				localequip.micvolume=e.value;
+			}
+			
+			private function onvideoplayctrl(receivevideo:Boolean):void
+			{
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				if(videoadapter){
+					videoadapter.playvideo(receivevideo);
+				}
+			}
+			
+			private function onaudioplayctrl(receiveaudio:Boolean):void
+			{
+				var videoadapter:VideoAdapter;
+				switch( vctrl.VTalkingType ){
+					case vctrl.VTalkingTypeRtmfp:
+						videoadapter=rtmfpadapter;
+						break;
+					case vctrl.VTalkingTypeRtmp:
+						videoadapter=rtmpadapter;
+						break;
+					default:
+						return;
+						break;
+				}
+				if(videoadapter){
+					videoadapter.playaudio(receiveaudio);
+				}
+			}
+			
+			private const PLAYER_WIDTH:int=480;
+			private const PLAYER_HEIGHT:int=360;
+			private const NOTE_HEIGHT:int=50;
+			private const OPERATION_HEIGHT:int=40;
+			private const DEBUG_HEIGHT:int=180;
+			private const PIC_WIDTH:int=50;
+			private const PIC_HEIGHT:int=50;
+			private const SMALL_WIDTH:int=112;
+			private const SMALL_HEIGHT:int=84;
+			private const BIG_BUTTON_WIDTH:int=70;
+			private const BIG_BUTTON_HEIGHT:int=30;
+			private const SMALL_BUTTON_WIDTH:int=70;
+			private const SMALL_BUTTON_HEIGHT:int=20;
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Style>
+		.buttonStyle {
+			font-family: "宋体";
+			font-size: "14";
+			font-weight: "bold";
+			color: "0x333333";
+			textSelectedColor: "0x333333";
+		}
+		.myComboBoxDropdown {
+			dropShadowEnabled: true;
+			shadowDistance: 3;
+			shadowDirection: "right";
+			cornerRadius: 5;
+		}
+		.playernotestyle {
+			font-family: "宋体";
+			font-size: "14";
+			color: "0xFFFFFF";
+			font-weight: "bold";
+			vertical-align: "middle";
+			horizontal-align: "center";
+			background-color: "0x000000";
+			background-alpha: "0.2";
+		}
+		.playerdebugstyle {
+			font-family: "宋体";
+			font-size: "12";
+			color: "0xFFFFFF";
+			font-weight: "bold";
+			vertical-align: "middle";
+			horizontal-align: "center";
+			background-color: "0x000000";
+			background-alpha: "0.2";
+		}
+		.debugclosestyle {
+			font-family: "宋体";
+			font-size: "13";
+			color: "0xFFFFFF";
+			vertical-align: "middle";
+			horizontal-align: "center";
+		}
+		.debugsmallbuttonstyle {
+			font-family: "宋体";
+			font-size: "12";
+			font-weight: "bold";
+			color: "0x888888";
+			textSelectedColor: "0x888888";
+		}
+		.debugbigbuttonstyle {
+			font-family: "宋体";
+			font-size: "14";
+			font-weight: "bold";
+			color: "0x888888";
+			textSelectedColor: "0x888888";
+		}
+	</mx:Style>
+	
+	<mx:VBox paddingTop="0" paddingLeft="0" paddingBottom="0" cornerRadius="10" backgroundColor="#FFFFFF" width="480" >
+		<mx:Canvas width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" rollOver="localstatus.playerin()" rollOut="localstatus.playerout()" >
+			<mx:HBox id="PlayerBackground" width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" includeInLayout="false" >
+				<mx:Image width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" source="{playerbackground}" doubleClickEnabled="true" doubleClick="localstatus.PlayerDebugIndex=(localstatus.PlayerDebugIndex+1)%(localstatus.PlayerDebugHidden+1)" />
+			</mx:HBox>
+			<mx:ViewStack id="PlayerBig" visible="{localstatus.PlayerBigIndex!=localstatus.PlayerBigHidden}" selectedIndex="{localstatus.PlayerBigIndex}" width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" includeInLayout="false" >
+				<mx:VBox id="PlayerBigVideo" visible="false" >
+					<mx:VideoDisplay id="PlayerBigVideoDisplay" width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" doubleClickEnabled="true" doubleClick="localstatus.PlayerDebugIndex=(localstatus.PlayerDebugIndex+1)%(localstatus.PlayerDebugHidden+1)" />
+				</mx:VBox>
+				<mx:VBox id="PlayerBigOutgoing" width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" paddingTop="{NOTE_HEIGHT+PIC_HEIGHT}" horizontalAlign="center" >
+					<mx:Image width="{PIC_WIDTH}" height="{PIC_WIDTH}" source="{outgoingitem.tinyurl}" >
+						<mx:filters>
+							<mx:DropShadowFilter blurX="12.00" blurY="12.00" angle="156.00" alpha="1.00" distance="0.00" quality="1" strength="1.00"/>
+						</mx:filters>
+					</mx:Image>
+					<mx:Label text="无视频流输入" color="#FFFFFF" fontWeight="bold" fontFamily="宋体" fontSize="12" />
+				</mx:VBox>
+				<mx:VBox id="PlayerBigIncoming" width="{PLAYER_WIDTH}" height="{PLAYER_HEIGHT}" paddingTop="{NOTE_HEIGHT+PIC_HEIGHT}" dropShadowVisible="true" horizontalAlign="center" >
+					<mx:Image width="{PIC_WIDTH}" height="{PIC_WIDTH}" source="{incomingitem.tinyurl}" >
+						<mx:filters>
+							<mx:DropShadowFilter blurX="12.00" blurY="12.00" angle="156.00" alpha="1.00" distance="0.00" quality="1" strength="1.00"/>
+						</mx:filters>
+					</mx:Image>
+					<mx:Label text="无视频流输入" color="#FFFFFF" fontWeight="bold" fontFamily="宋体" fontSize="12" />
+					
+				</mx:VBox>
+				<mx:VBox visible="false" includeInLayout="false" >
+				</mx:VBox>
+			</mx:ViewStack>
+			<mx:ViewStack id="PlayerSmall" visible="{localequip.PlayerSmallIndex!=localequip.PlayerSmallHidden}" selectedIndex="{localequip.PlayerSmallIndex}" width="{SMALL_WIDTH}" height="{SMALL_HEIGHT}" x="{PLAYER_WIDTH-SMALL_WIDTH-5}" y="{PLAYER_HEIGHT-SMALL_HEIGHT-5}" >
+				<mx:HBox id="PlayerSmallVideo" width="{SMALL_WIDTH}" height="{SMALL_HEIGHT}" dropShadowVisible="true" >
+					<mx:VideoDisplay id="PlayerSmallVideoDisplay" width="{SMALL_WIDTH}" height="{SMALL_HEIGHT}" />
+				</mx:HBox>
+				<mx:HBox id="PlayerSmallNoVideo" width="{SMALL_WIDTH}" height="{SMALL_HEIGHT}" verticalAlign="bottom" horizontalAlign="center" >
+					<mx:Label text="{localequip.Camerastatus}" color="#7FA3CB" fontWeight="bold" fontFamily="宋体" fontSize="12" />
+				</mx:HBox>
+				<mx:HBox visible="false" includeInLayout="false" >
+				</mx:HBox>
+			</mx:ViewStack>
+			<mx:ViewStack id="PlayerNote" visible="{localstatus.PlayerNoteIndex!=localstatus.PlayerNoteHidden}" selectedIndex="{localstatus.PlayerNoteIndex}" backgroundColor="#000000" backgroundAlpha="0.4" width="{PLAYER_WIDTH}" height="{NOTE_HEIGHT}" x="0" y="0" includeInLayout="false" >
+				<mx:HBox id="PlayerNoteStatus" styleName="playernotestyle" >
+					<mx:Label text="{localstatus.PlayerNoteStatusMsg}"/>
+				</mx:HBox>
+				<mx:HBox id="PlayerNoteIncomming" styleName="playernotestyle" >
+					<mx:HBox width="{PLAYER_WIDTH-BIG_BUTTON_WIDTH*2-10*4}" verticalAlign="middle" horizontalScrollPolicy="off" >
+						<ui:Photo width="35" height="35" borderAlpha="1" borderWidth="1" borderColor="#FFFFFF" source="{incomingitem.tinyurl}" />
+						<mx:Label text="{incomingitem.username}"/>
+						<mx:Label text="请求与您视频通话"/>
+					</mx:HBox>
+					<mx:Button label="接受" width="{BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0x005EAC" click="accept()" />
+					<mx:Button label="拒绝" width="{BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0xA91C13" click="reject()" />
+				</mx:HBox>
+				<mx:HBox id="PlayerNoteOutgoing" styleName="playernotestyle" >
+					<mx:HBox width="{PLAYER_WIDTH-BIG_BUTTON_WIDTH-10*3}" verticalAlign="middle" horizontalScrollPolicy="off" >
+						<mx:Label text="您正在邀请："/>
+						<ui:Photo width="35" height="35" borderAlpha="1" borderWidth="1" borderColor="#FFFFFF" source="{outgoingitem.tinyurl}" />
+						<mx:Label text="{outgoingitem.username}"/>
+						<mx:Label text="视频通话"/>
+					</mx:HBox>
+					<mx:Button label="取消" width="{BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0xA91C13" click="cancel('user_cancel\n',PlayerNoteStatusMsgCancel)" />
+				</mx:HBox>
+				<mx:HBox id="PlayerNoteReset" styleName="playernotestyle" >
+					<mx:HBox width="{PLAYER_WIDTH-BIG_BUTTON_WIDTH*2-10*4}" verticalAlign="middle" horizontalScrollPolicy="off" >
+						<mx:Label text="需要中断当前视频通话，是否继续？"/>
+					</mx:HBox>
+					<mx:Button label="是" width="{BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0x005EAC" click="refresh()" />
+					<mx:Button label="否" width="{BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0xA91C13" click="goon()" />
+				</mx:HBox>
+				<!--mx:HBox id="PlayerNoteReload" styleName="playernotestyle" >
+				<mx:Button label="刷新呼叫列表" width="{BIG_BUTTON_WIDTH*2}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" buttonMode="true" styleName="buttonStyle" textRollOverColor="0x005EAC" click="webtalkConnecting('0')" />
+				</mx:HBox-->
+				<mx:HBox id="PlayerNoteControl" styleName="playernotestyle" horizontalAlign="center" verticalAlign="middle" >
+					<mx:Label text="{localequip.Cameractrl}" />
+					<mx:Label text="{localequip.Micctrl}" />
+				</mx:HBox>
+				<mx:HBox visible="false" includeInLayout="false" >
+				</mx:HBox>
+			</mx:ViewStack>
+			<mx:ViewStack id="PlayerOperation" visible="{localstatus.PlayerOperationIndex!=localstatus.PlayerOperationHidden}" selectedIndex="{localstatus.PlayerOperationIndex}" backgroundColor="#000000" backgroundAlpha="0.4" cornerRadius="8" width="{PLAYER_WIDTH-20}" height="{OPERATION_HEIGHT}" x="10" y="{PLAYER_HEIGHT-OPERATION_HEIGHT-10}" >
+				<mx:HBox id="PlayerOperationTalking" horizontalAlign="center" verticalAlign="middle" >
+					<mx:HSlider id="speakerVolumeSlider" visible="false" includeInLayout="false" showDataTip="false" width="50" minimum="0" maximum="1" change="speakervolumechanged(event)" />
+					<mx:HSlider id="micVolumeSlider" visible="false" includeInLayout="false" showDataTip="false" width="50" minimum="0" maximum="100" change="micvolumechanged(event)" />
+					<mx:ViewStack id="PlayerOperationTalkingCamera" selectedIndex="{localequip.PlayerOperationTalkingCameraIndex}" >
+						<mx:HBox id="PlayerOperationTalkingCameraOn" >
+							<mx:Button id="PlayerOperationTalkingCameraOnButton" width="35" height="30" buttonMode="true" icon="{cameraonicon}" cornerRadius="0" enabled="{localequip.Camerastatus==localequip.CamerastatusWork}" click="onvideopublishctrl(false)" />
+						</mx:HBox>
+						<mx:HBox id="PlayerOperationTalkingCameraOff" >
+							<mx:Button id="PlayerOperationTalkingCameraOffButton" width="35" height="30" buttonMode="true" icon="{cameraofficon}" click="onvideopublishctrl(true)" />
+						</mx:HBox>
+					</mx:ViewStack>
+					<mx:ViewStack id="PlayerOperationTalkingMic" selectedIndex="{localequip.PlayerOperationTalkingMicIndex}" >
+						<mx:HBox id="PlayerOperationTalkingMicOn" >
+							<mx:Button id="PlayerOperationTalkingMicOnButton" width="35" height="30" buttonMode="true" icon="{miconicon}" enabled="{localequip.Micstatus==localequip.MicstatusWork}" click="onaudiopublishctrl(false)" />
+						</mx:HBox>
+						<mx:HBox id="PlayerOperationTalkingMicOff" >
+							<mx:Button id="PlayerOperationTalkingMicOffButton" width="35" height="30" buttonMode="true" icon="{micofficon}" click="onaudiopublishctrl(true)" />
+						</mx:HBox>
+					</mx:ViewStack>
+					<mx:HBox id="PlayerOperationTalkingHangup" >
+						<mx:Button id="PlayerOperationTalkingHangupButton" width="79" height="30" buttonMode="true" icon="{hangupicon}" styleName="buttonStyle" textRollOverColor="0xA91C13" click="hangup()" />
+					</mx:HBox>
+					<mx:HBox visible="false" includeInLayout="false" >
+					</mx:HBox>
+					<mx:Label id="TalkingTimer" text="{localstatus.talkingtime}" includeInLayout="false" width="150" color="#FFFFFF" />
+				</mx:HBox>
+				<mx:HBox id="PlayerOperationHanging" horizontalAlign="center" verticalAlign="middle" >
+					<!--mx:Button id="PlayerOperationTalkingHangingButton" width="79" height="30" buttonMode="true" icon="{hangupicon}" styleName="buttonStyle" textRollOverColor="0xA91C13" click="recall()" /-->
+				</mx:HBox>
+				<mx:HBox visible="false" includeInLayout="false" >
+				</mx:HBox>
+			</mx:ViewStack>
+			<mx:ViewStack id="PlayerDebug" styleName="playerdebugstyle" visible="{localstatus.PlayerDebugIndex!=localstatus.PlayerDebugHidden}" selectedIndex="{localstatus.PlayerDebugIndex}" backgroundColor="#000000" backgroundAlpha="0.4" width="{PLAYER_WIDTH-20-20}" height="{DEBUG_HEIGHT}" x="20" y="{NOTE_HEIGHT+10}" >
+				<mx:VBox id="PlayerDebugLog" paddingLeft="10" includeInLayout="false" >
+					<mx:HBox height="15" >
+						<mx:Label width="{PLAYER_WIDTH-20-20-20-10-8}" text="调试信息:" />
+						<mx:Label text="X" styleName="debugclosestyle" buttonMode="true" click="localstatus.PlayerDebugIndex=localstatus.PlayerDebugHidden" />
+					</mx:HBox>
+					<mx:TextArea id="StatusArea" width="{PLAYER_WIDTH-20-20-20}" height="{DEBUG_HEIGHT-15-40}" borderVisible="false" editable="false" verticalScrollPolicy="auto" contentBackgroundColor="#000000" contentBackgroundAlpha="0.2" />
+					<mx:HBox height="25" width="{PLAYER_WIDTH-20-20-20}" >
+						<mx:Label text="发送报告" buttonMode="true" click="report(ReportTypeDEBUG)" />
+						<mx:Label text="清除" buttonMode="true" click="StatusArea.text=''" />
+					</mx:HBox>
+				</mx:VBox>
+				<mx:VBox id="PlayerDebugIm" paddingLeft="10" includeInLayout="false" ><!--visible="{State == StateTalking}"-->
+					<mx:HBox height="15" >
+						<mx:Label width="{PLAYER_WIDTH-20-20-20-10-8}" text="文本通话测试:" />
+						<mx:Label text="X" styleName="debugclosestyle" buttonMode="true" click="localstatus.PlayerDebugIndex=localstatus.PlayerDebugHidden" />
+					</mx:HBox>
+					<mx:TextArea id="ImArea" width="{PLAYER_WIDTH-20-20-20}" height="{DEBUG_HEIGHT-15-40}" borderVisible="false" editable="false" verticalScrollPolicy="auto" contentBackgroundColor="#000000" contentBackgroundAlpha="0.2" />
+					<mx:HBox width="{PLAYER_WIDTH-20-20-20}" height="20" paddingLeft="2">
+						<mx:TextInput id="ImInput" width="{PLAYER_WIDTH-20-20-20-BIG_BUTTON_WIDTH-12}" enter="sendim()" color="#000000" enabled="{localstatus.istalking}" />
+						<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="发送" enabled="{ImInput.text.length>0 &amp;&amp; localstatus.istalking}" click="sendim()" />
+					</mx:HBox>
+				</mx:VBox>
+				<mx:VBox id="PlayerDebugFeedback" paddingLeft="10" includeInLayout="false" horizontalAlign="center" >
+					<mx:HBox height="15" >
+						<mx:Label width="{PLAYER_WIDTH-20-20-20-10-8}" text="您的体验:" />
+						<mx:Label text="X" styleName="debugclosestyle" buttonMode="true" click="localstatus.PlayerDebugIndex=localstatus.PlayerDebugHidden" />
+					</mx:HBox>
+					<mx:ViewStack selectedIndex="{PlayerEiqIndex}" height="{DEBUG_HEIGHT-15-55}" >
+						<mx:HBox horizontalAlign="center" >
+							<mx:VBox horizontalAlign="right" >
+								<mx:Button width="{1.5*BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugbigbuttonstyle" label="还行" click="eiqboolt=!eiqboolt;eiqboolf=true;eiqboolq=true;" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="很通畅" visible="{!eiqboolt}" click="eiq_res='[eiq_t0]';report(ReportTypeEIQ)" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="能接受" visible="{!eiqboolt}" click="eiq_res='[eiq_t0]';report(ReportTypeEIQ)" />
+							</mx:VBox>
+							<mx:Spacer width="30" />
+							<mx:VBox horizontalAlign="right" >
+								<mx:Button width="{1.5*BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugbigbuttonstyle" label="用不了" click="eiqboolt=true;eiqboolf=!eiqboolf;eiqboolq=true;" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="连不上" visible="{!eiqboolf}" click="eiq_res='[eiq_f0]';report(ReportTypeEIQ)" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="bug" visible="{!eiqboolf}" click="eiq_res='[eiq_f0]';report(ReportTypeEIQ)" />
+							</mx:VBox>
+							<mx:Spacer width="30" />
+							<mx:VBox horizontalAlign="right" >
+								<mx:Button width="{1.5*BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugbigbuttonstyle" label="卡" click="eiqboolt=true;eiqboolf=true;;eiqboolq=!eiqboolq" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="延时" visible="{!eiqboolq}" click="eiq_res='[eiq_q0]';report(ReportTypeEIQ)" />
+								<mx:Button width="{SMALL_BUTTON_WIDTH}" height="{SMALL_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugsmallbuttonstyle" label="顿" visible="{!eiqboolq}" click="eiq_res='[eiq_q1]';report(ReportTypeEIQ)" />
+							</mx:VBox>
+						</mx:HBox>
+						<mx:HBox horizontalAlign="center" verticalAlign="middle" >
+							<mx:Label text="拍砖成功,感谢支持!" />
+						</mx:HBox>
+					</mx:ViewStack>
+					<mx:HBox id="eiqText" width="{PLAYER_WIDTH-20-20-20}" height="{BIG_BUTTON_HEIGHT+5}" >
+						<mx:Label text="其它:" />
+						<mx:TextArea id="eiqInput" width="{PLAYER_WIDTH-20-20-20-60-1.5*BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT+5}" text="白色小包纸什么的最可爱了" color="#888888"
+									 click="eiqboolt=true;eiqboolf=true;eiqboolq=true;if(eiqInput.text=='白色小包纸什么的最可爱了'){eiqInput.text='';eiqInput.setStyle('color','#000000')}"/>
+						<mx:Button id="eiqButton" width="{1.5*BIG_BUTTON_WIDTH}" height="{BIG_BUTTON_HEIGHT}" chromeColor="#FFFFFF" textRollOverColor="#000000" buttonMode="true" styleName="debugbigbuttonstyle" label="提交" enabled="{eiqInput.text.length>0}" click="eiqboolt=true;eiqboolf=true;eiqboolq=true;eiq_res='[eiq_i_'+eiqInput.text+']';report(ReportTypeEIQ)" />
+					</mx:HBox>
+				</mx:VBox>
+				<mx:VBox visible="false" includeInLayout="false" >
+				</mx:VBox>
+			</mx:ViewStack>
+		</mx:Canvas>
+	</mx:VBox>
+</mx:Application>
+

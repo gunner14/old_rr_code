@@ -1,0 +1,22 @@
+1. 安装zookeeper c client
+   wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.3.3/zookeeper-3.3.3.tar.gz
+   tar -zxvf zookeeper-3.3.3.tar.gz
+   cd zookeeper-3.3.3/src/c
+   ./configure
+   make
+   sudo make install
+
+2. 安装zkpython
+   ease_install zkpython-0.4stf417487e-py2.6-linux-x86_64.eg
+
+3. 安装termcolor
+   tar -zxvf termcolor-1.1.0.tar.gz
+   cd termcolor-1.1.0 && python setup.py
+
+FAQ:
+1. 如何解决找不到 libzookeeper_ms.so.2 错误?
+  配置 LD_LIBRARY_PATH 使其能找到该动态库
+
+2. python使用哪个版本?
+  2.6
+  其他本版没有测试过

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+	<root>
+		<level value ="error"/>  
+		<appender-ref ref="stdout" />
+	</root>
+
+	<logger name="net.paoding.rose" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="rose" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="stdout" />
+	</logger>
+	<logger name="com.renren.sns.explore.xoa" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="explore" />
+	</logger>
+	
+	<appender name="explore" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Encoding" value="UTF-8" />
+		<param name="File" value="/data/logs/xiaonei_explore_xoa.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} - %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="stderr" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} - %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<!-- Rose -->
+	<appender name="rose" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/rose.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<root>
+		<level value="WARN" />
+		<appender-ref ref="root" />
+	</root>
+
+
+</log4j:configuration>

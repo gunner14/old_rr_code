@@ -1,0 +1,118 @@
+
+upstream cwfd {
+  server unix:/var/lib/nginx/socks/socialgraphd.sock weight=1000;
+  server www3.xce.d.xiaonei.com:3000 weight=10;
+  server www4.xce.d.xiaonei.com:3000 weight=10;
+  server www5.xce.d.xiaonei.com:3000 weight=10;
+  server www10.xce.d.xiaonei.com:3000 weight=10;
+  server www13.xce.d.xiaonei.com:3000 weight=10;
+}
+
+upstream cwfd_darklaunch {
+  server unix:/var/lib/nginx/socks/socialgraphd.sock weight=1000;
+  server www3.xce.d.xiaonei.com:3000 weight=10;
+  server www4.xce.d.xiaonei.com:3000 weight=10;
+  server www5.xce.d.xiaonei.com:3000 weight=10;
+  server www10.xce.d.xiaonei.com:3000 weight=10;
+  server www13.xce.d.xiaonei.com:3000 weight=10;
+}
+
+upstream web_card {
+  server 10.3.21.57:80;
+}
+
+
+server {
+  listen 80;
+  server_name friend.renren.com;
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    root   /usr/share/nginx/html;
+  }
+
+  if ($request_method ~* PROPFIND){
+    return 403;
+  }
+
+  location / {
+    proxy_pass http://web_friend;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+    client_max_body_size       10m;
+    client_body_buffer_size    128k;
+    client_body_temp_path      /data/client_body_temp;
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+    proxy_temp_path            /data/proxy_temp;
+    if ($isOpi = "yes") {
+      proxy_pass http://web_friend_darklaunch;
+    }
+    if ($isExp = "yes") {
+      proxy_pass http://web_friend_darklaunch;
+    }
+  }
+    # contact request
+  location ~ ^/(address/\w*|getprivacy|editprivacy|showcard|isImported|friendsImported|friendsUnchanged|deletecard|showimportcard|exchangecard|getunexchangedfriends|savecard|listcards|searchcard|searchcard/\w+|selectcontacter/\w+|createcontacter|importcard|saveimportedcard|guidetrace/[0-9]/[0-9]|getmorerequests|ignorequest|getprofilecontact/\d+|getallimportcontacters|subscribe) {
+    proxy_pass http://web_card;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+    client_max_body_size       10m;
+    client_body_buffer_size    128k;
+    client_body_temp_path      /data/client_body_temp;
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+    proxy_temp_path            /data/proxy_temp;
+  }
+
+  location /ajaxproxy.htm {
+    root /usr/share/nginx/html;
+  }
+  location /ajaxProxy.html {
+    root /usr/share/nginx/html;
+  }
+
+  location /cwf_remove {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+  location /cwf_get {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+
+  location /cwf_video {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+  location /cwf_blog {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+  
+  location /cwf_nremove {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+  location /cwf_nget {
+    include fastcgi_params;
+    fastcgi_pass cwfd;
+  }
+  
+  location /nginx-profiler {
+    stub_status     on;
+    access_log      on;
+    auth_basic      "NginxStatus";
+  }
+}

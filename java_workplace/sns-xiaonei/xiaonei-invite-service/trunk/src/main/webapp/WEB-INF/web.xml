@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    
+	<filter>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.domainIdentified.DomainIdentifiedFilter</filter-class>
+	</filter>
+ 
+	<filter-mapping>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.wrapper.OpiWrapperFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		 <filter-name>CharacterEncodingFilter</filter-name>
+		 <filter-class>com.xiaonei.platform.core.opt.base.action.CharacterEncodingFilter</filter-class>
+		 <init-param>
+		 	<param-name>encoding</param-name>
+		 	<param-value>UTF-8</param-value>
+		 </init-param>
+	</filter>
+	
+	<filter>
+		<filter-name>roseFilter</filter-name>
+		<filter-class>net.paoding.rose.RoseFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>roseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	
+  <listener>
+		<listener-class>
+			com.dodoyo.invite.httpservice.listener.ServiceListener
+		</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+    <error-page>
+
+        <error-code>404</error-code>
+
+        <location>/pages/404.jsp</location>
+
+    </error-page>  
+</web-app>
+
+

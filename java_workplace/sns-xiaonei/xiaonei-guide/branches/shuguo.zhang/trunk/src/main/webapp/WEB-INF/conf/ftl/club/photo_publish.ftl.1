@@ -1,0 +1,31 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "org_photo"/>
+<#assign num = 0/>
+<#list f_album_count as c>
+	<#assign num=num+c?number>
+</#list>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a class="avatar" href="http://org.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<a href="http://org.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}" target="_blank">${f_from_name[0]}</a>
+		上传了${num}张照片至 <a href="http://org.renren.com/${f_from_id[0]}/album/${f_album_id[0]}?ref=${vType}&feed=${argu}" target="_blank">${f_album_title[0]}</a>
+	</h3>
+	<div id="moreThumbnails${id[0]}" class="content">
+		<#list f_album_photo_image as aSrc>
+			<#if 3==aSrc_index><#break></#if>
+			<a href="http://org.renren.com/${f_from_id[0]}/photo/${f_album_photo_id[aSrc_index]}?ref=${vType}&feed=${argu}" target="_blank"><img width="100" lala="${aSrc}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" class="photo"/></a>
+		</#list>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

@@ -1,0 +1,30 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "user_pageshare"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<#list f_from_name as n>
+			<a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}&ref=${vType}&feed=${argu}" stats="NF_People">${n}</a>
+		</#list> 分享公共主页 <a target="_blank" href="http://www.renren.com/profile.do?id=${f_share_user_id[0]}&ref=${vType}&feed=${argu}">${f_share_user_name[0]}</a>
+		<#if f_share_user_certify?exists><img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/></#if>
+	</h3>
+	<div class="content">
+		<div class="figure">
+			<a target="_blank" href="http://www.renren.com/profile.do?id=${f_share_user_id[0]}&ref=${vType}&feed=${argu}"><img lala="${ (f_share_user_image[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" alt="${f_share_user_name[0]}"/></a>
+		</div>
+		<#if f_share_user_digest?exists && f_share_user_digest[0] != "" ><p>${f_share_user_digest[0]}</p></#if>
+		<#if f_share_comment?exists && f_share_comment[0] != ""><p class="comment"><q>${f_share_comment[0]}</q></p></#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<a href="http://page.renren.com/pa/bf?pid=${f_share_user_id[0]}&ref=${vType}&feed=${argu}" target="_blank">${f_share_user_freestype_action[0]}</a>
+			<span class="seperator">|</span>
+			<a href="http://share.renren.com/share/ShareList.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}&share_id=${f_share_id[0]}#share_${f_share_id[0]}" target="_blank">评论该分享</a>
+		</div>
+	</div>
+<#include "1|1|1">
+</#compress>

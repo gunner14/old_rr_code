@@ -1,0 +1,11 @@
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;'>
+</head>
+<body>
+<div>
+$!{customMessage}<br/><br/>
+<a href="$!{link}?iid=$!{uuid}">$!{link}?iid=$!{uuid}</a>
+</div>
+</body>
+</html>

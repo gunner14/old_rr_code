@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- 基础配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-taglibs</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-sns-SNAPSHOT</version>
+
+	<!-- 引用校内pom -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>wangzhiliang</name>
+			<email>zhiliang.wang@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<!-- 第三方依赖-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+
+		<!-- 对校内的依赖 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-component</artifactId>
+		</dependency>
+	</dependencies>
+</project>

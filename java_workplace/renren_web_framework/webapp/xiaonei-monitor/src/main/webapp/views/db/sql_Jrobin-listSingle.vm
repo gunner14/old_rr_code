@@ -1,0 +1,88 @@
+<!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="120"/>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>XNMonitor</title>
+<style type="text/css">
+	*{
+		font-size:12pt;
+		margin:0;
+		padding:0;
+	}
+	a{color:#005EAC;}
+	a:link.a:visited{color:#005EAC;text-decoration:none;}
+	#wrapper{width: 100%; }
+	#header{  height: 134px;padding-left:10px;  background:url(/img/bg.gif) repeat-x ;overflow:hidden;  }
+	#header .logo{width: 270px;height: 59px;margin:0 auto;margin-top:25px;  background:url(/img/xnlogo.png) no-repeat ;   }
+	#header .xn-logo{float:left;  width: 114px; height: 33px;margin-top:40px;background:url(/img/logo.png) no-repeat ;   }
+	#header .bar{clear:both; height: 25px;padding-top:12px; }
+	#header .bar select{width: 120px; }
+	#header .bar a{color:#FFF;text-decoration:none;margin-left:15px;   }
+	#header .bar a:hover{text-decoration:underline; }
+
+	.input-submit{width: 100px;height: 24px;padding-bottom:4px;background-color:#005eac ;border:1px solid #FFF;color:#FFF;font-size:12px; cursor:pointer }
+	#main {overflow:hidden}
+	#main li{display:block;float:left;width:355px;padding-bottom:10px;text-align:center}
+	#main li a{display:block}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+
+		<div class="xn-logo"></div>
+			<div class="logo"></div>
+		<div class="bar"> 
+			<form >
+			<select name="dayType" onChange="submit()">
+				<option value="hour" 
+				#if($dayType=="hour") 
+					selected=true
+				#end>
+				过去一个小时
+                </option>
+				<option value="day" 
+				#if($dayType=="day") 
+					selected=true
+				#end>
+				过去一天
+                </option>
+				<option value="week" 
+				#if($dayType=="week") 
+					selected=true
+				#end>
+				过去一周
+                </option>
+				<option value="month" 
+				#if($dayType=="month") 
+					selected=true
+				#end>
+				过去一月
+                </option>
+			</select>
+			<input type="hidden" name="rrdFile" value="$rrdFile"/>
+			<input type="hidden" name="dayType" value="$dayType"/>
+			<input type="hidden" name="childDir" value="$childDir"/>
+			<input type="hidden" name="dsName" value="$dsName"/>
+			<input type="hidden" name="logType" value="dblog"/>
+			<strong><a href="/im/im/imInfoList">IM状况</a></strong>    
+			
+        <a href="listBiz?dayType=$dayType&dsName=$dsName"> 返回上两级</a>
+        <a href="listSql?dayType=$dayType&dsName=$dsName&childDir=$childDir"> 返回上一级</a>
+        </form>
+		 </div>
+	</div>
+
+	<div id="main">
+			<a href="listSingle?logType=dblog&rrdFile=$rrdFile&dayType=$dayType&dsName=$dsName&childDir=$childDir&bigPic=$bigPic">
+			<img src="../../imgstream/getImg?rrdFile=$rrdFile&logType=dblog&dsName=$dsName&dayType=$dayType&childDir=$childDir&bigPic=$bigPic" border="0"/>
+            </a>
+    </div>
+</div>
+    </body>
+</html>

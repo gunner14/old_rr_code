@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="EmailSender" default="package" basedir=".">
+
+<target name="package">
+	<mkdir dir="${basedir}/build"/>
+	<javac destdir="${basedir}/build"
+		debug="${java.debug}"
+		debuglevel="${java.debuglevel}"
+		encoding="UTF-8"
+		optimize="${optimize}"
+		deprecation="${java.deprecation}">
+		<classpath path="${basedir}/lib/mail.jar" />
+		<src path="${basedir}/src"/>
+	</javac>
+	<jar jarfile="${basedir}/EmailSender.jar" basedir="${basedir}/build" filesetmanifest="merge">
+		<include name="**" />
+		<exclude name="**/.depend" />
+		<zipfileset src="${basedir}/lib/mail.jar" />
+		<manifest>
+			<attribute name="Main-Class" value="xce.tools.EmailSender"/>
+		</manifest>
+	</jar>
+</target>
+
+<target name="clean">
+	<delete dir="${basedir}/build" />
+</target>
+
+</project>

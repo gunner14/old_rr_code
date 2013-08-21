@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<logger name="com.renren.sns.wiki" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="file" />
+	</logger>
+	
+	<!-- delegator perf4j log -->
+	<logger name="delegatorPerf" additivity="false">
+		<level value="info" />
+		<appender-ref ref="delegatorPerfAppender" />
+	</logger>
+	
+	<logger name="xoa2profiler" additivity="false">
+		<level value="info" />
+		<appender-ref ref="xoa2PerfAppender" />
+	</logger>
+	
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%-5p:%m %n==> %l%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xiaonei_wiki_xoa.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+	
+	<!-- Perf4J appenders -->
+    <!--
+       This AsyncCoalescingStatisticsAppender groups StopWatch log messages
+       into GroupedTimingStatistics messages which it sends on the
+       file appender defined below
+    -->
+    <appender name="delegatorPerfAppender"
+              class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice" value="5000" />
+        <appender-ref ref="delegatorAppender" />
+    </appender>
+	
+	<appender name="delegatorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xoa_wiki_delegator.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+	
+	<!-- Perf4J appenders -->
+    <!--
+       This AsyncCoalescingStatisticsAppender groups StopWatch log messages
+       into GroupedTimingStatistics messages which it sends on the
+       file appender defined below
+    -->
+    <appender name="xoa2PerfAppender"
+              class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice" value="5000" />
+        <appender-ref ref="xoa2fileAppender" />
+    </appender>
+	
+	<appender name="xoa2fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xoa_wiki_performance.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] %l [%m]%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<level value="warn" />
+		<appender-ref ref="file" />
+	</root>
+	
+</log4j:configuration>

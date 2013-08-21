@@ -1,0 +1,9 @@
+Thu Apr  5 10:20:31 2012 
+    Xoa 调度模块 V0.1
+    1. 可以通过hadoop-mapreduce提交多副本的任务
+    2. 可以设定服务时间，服务后等待时间 (conf/xoa-service/xoa.xml)
+
+    TODO:
+    1. mapreduce 默认4小时超时调整
+    2. reduce 的内存限制可调节 
+    3. 废弃掉 maven-hadoop-plugin，使用其他工具打包（eg：maven-jar-plugin），解决class查找问题

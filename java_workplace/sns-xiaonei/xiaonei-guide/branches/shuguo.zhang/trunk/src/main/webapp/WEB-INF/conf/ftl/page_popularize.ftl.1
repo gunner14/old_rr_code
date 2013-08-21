@@ -1,0 +1,20 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}" class="page-flyer">
+	<div class="figure">
+		<a href="http://page.renren.com/pa/v?pid=${f_user_id[0]}&from=hnn">
+			<img lala="${f_user_image[0]}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" width="80" />
+		</a>
+	</div>
+	<div class="article">
+		<h4>
+			<a href="http://page.renren.com/pa/v?pid=${f_user_id[0]}&from=hnn">${f_user_name[0]}</a>
+			<img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/>
+		</h4>
+		<p>${f_info_body[0]}</p>			
+		<p><a class="follow" href="${f_info_button_url[0]}">${f_info_button_title[0]}</a></p>
+	</div>
+	<#include "1|1|1">
+</li>
+</#compress>

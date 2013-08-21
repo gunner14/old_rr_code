@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-identified>
+	<!-- standard errors -->
+	<msg key="errors.header"><value><![CDATA[<div class="errors_div">]]></value></msg>
+	<msg key="errors.prefix"><value><![CDATA[<p>]]></value></msg>
+	<msg key="errors.suffix"><value><![CDATA[</p>]]></value></msg>
+	<msg key="errors.footer"><value><![CDATA[</div>]]></value></msg>
+	
+	<!-- validator -->
+	<msg key="errors.invalid"><value><![CDATA[%s无效！]]></value></msg>
+	<msg key="errors.maxlength"><value><![CDATA[%s 不能多于 %s 个字符！]]></value></msg>
+	<msg key="errors.minlength"><value><![CDATA[%s 不能少于 %s 个字符！]]></value></msg>
+	<msg key="errors.range"><value><![CDATA[%s 不在从 %s 到 %s 的范围内！]]></value></msg>
+	<msg key="errors.required"><value><![CDATA[%s 不能为空！]]></value></msg>
+	<msg key="errors.byte"><value><![CDATA[%s 必须是一个字节！]]></value></msg>
+	<msg key="errors.date"><value><![CDATA[%s 不是有效的日期格式！]]></value></msg>
+	<msg key="errors.double"><value><![CDATA[%s 必须是一个双精度数字！]]></value></msg>
+	<msg key="errors.float"><value><![CDATA[%s 必须是一个浮点型数字！]]></value></msg>
+	<msg key="errors.integer"><value><![CDATA[%s 必须是一个整数！]]></value></msg>
+	<msg key="errors.long"><value><![CDATA[%s 必须是一个长整数！]]></value></msg>
+	<msg key="errors.short"><value><![CDATA[%s 必须是一个短整数！]]></value></msg>
+	<msg key="errors.creditcard"><value><![CDATA[%s 不是有效的信用卡帐号！]]></value></msg>
+	<msg key="errors.email"><value><![CDATA[%s 格式无效！]]></value></msg>
+	
+	<!-- other -->
+	<msg key="errors.cancel"><value><![CDATA[操作被取消！]]></value></msg>
+	<msg key="errors.detail"><value><![CDATA[%s]]></value></msg>
+	<msg key="errors.general"><value><![CDATA[操作没有完成！]]></value></msg>
+	<msg key="errors.token"><value><![CDATA[请求不能执行！]]></value></msg>
+	<msg key="errors.emailNotFound"><value><![CDATA[没有找到该email！]]></value></msg>
+	<msg key="errors.internalEmailError"><value><![CDATA[发送email出错，请查收你的email或重试！]]></value></msg>
+	<msg key="errors.reenter.validwhen"><value><![CDATA[两次输入密码不一致]]></value></msg>
+	
+	<!-- messages -->
+	<msg key="messages.sendEmailSuccess"><value><![CDATA[email已经发送到 %s！]]></value></msg>
+	<msg key="errors.detail"><value><![CDATA[%s]]></value></msg>
+	
+	<!-- terms -->
+	<msg key="terms.logonName"><value><![CDATA[帐号]]></value></msg>
+	<msg key="terms.email"><value><![CDATA[email]]></value></msg>
+	<msg key="terms.report.url"><value><![CDATA[网址]]></value></msg>
+	<msg key="terms.gender"><value><![CDATA[性别]]></value></msg>
+	<msg key="terms.enterYear"><value><![CDATA[入学年份]]></value></msg>
+	<msg key="terms.department"><value><![CDATA[院系]]></value></msg>
+	<msg key="terms.university"><value><![CDATA[大学]]></value></msg>
+	<msg key="terms.password"><value><![CDATA[密码]]></value></msg>
+	<msg key="terms.tribe.name"><value><![CDATA[群名称]]></value></msg>
+	<msg key="terms.dorm"><value><![CDATA[宿舍]]></value></msg>
+	<msg key="terms.name"><value><![CDATA[名字]]></value></msg>
+	<msg key="terms.tribe.name"><value><![CDATA[群名称]]></value></msg>
+	<msg key="terms.birthday"><value><![CDATA[生日]]></value></msg>
+	<msg key="terms.industry"><value><![CDATA[行业]]></value></msg>
+	<msg key="terms.city"><value><![CDATA[城市]]></value></msg>
+	<msg key="terms.hometown"><value><![CDATA[家乡]]></value></msg>
+	<msg key="terms.homeProvince"><value><![CDATA[家乡所在省]]></value></msg>
+	<msg key="terms.tribe.url"><value><![CDATA[群主页]]></value></msg>
+	<msg key="terms.user.url"><value><![CDATA[个人主页]]></value></msg>
+	<msg key="terms.reenter"><value><![CDATA[重输密码]]></value></msg>
+	<msg key="terms.qq"><value><![CDATA[QQ号码]]></value></msg>
+	<msg key="terms.cellPhone"><value><![CDATA[移动电话]]></value></msg>
+	<msg key="terms.officePhone"><value><![CDATA[办公电话]]></value></msg>
+	<msg key="terms.im"><value><![CDATA[聊天软件]]></value></msg>
+	<msg key="terms.subject"><value><![CDATA[标题]]></value></msg>
+	<msg key="terms.message"><value><![CDATA[消息]]></value></msg>
+	<msg key="terms.contents"><value><![CDATA[内容]]></value></msg>
+	<msg key="terms.description"><value><![CDATA[描述]]></value></msg>
+	<msg key="terms.forumAccess"><value><![CDATA[群权限设置]]></value></msg>
+	<msg key="terms.joinLvl"><value><![CDATA[加入群权限设置]]></value></msg>
+	<msg key="terms.leaveWordAccessLevel"><value><![CDATA[留言版设置]]></value></msg>
+	<msg key="terms.headAccessLevel"><value><![CDATA[头像设置]]></value></msg>
+	<msg key="terms.messageNotifyFlag"><value><![CDATA[站内信件email提醒设置]]></value></msg>
+	<msg key="terms.leaveWordNotifyFlag"><value><![CDATA[留言板email提醒设置]]></value></msg>
+	<msg key="terms.oldPassword"><value><![CDATA[旧密码]]></value></msg>
+	<msg key="terms.body"><value><![CDATA[帖子内容]]></value></msg>
+	<msg key="terms.zipcode"><value><![CDATA[邮政编码]]></value></msg>
+	<msg key="terms.highSchool"><value><![CDATA[高中]]></value></msg>
+	<msg key="terms.organization"><value><![CDATA[工作单位]]></value></msg>
+	<msg key="terms.title"><value><![CDATA[职务]]></value></msg>
+	<msg key="terms.comName"><value><![CDATA[单位名称]]></value></msg>
+	<msg key="terms.comId"><value><![CDATA[ID]]></value></msg>
+	<msg key="terms.comTitle"><value><![CDATA[职务]]></value></msg>
+	<msg key="terms.comStartYear"><value><![CDATA[起始年]]></value></msg>
+	<msg key="terms.comStartMonth"><value><![CDATA[起始月]]></value></msg>
+	<msg key="terms.comEndYear"><value><![CDATA[结束年]]></value></msg>
+	<msg key="terms.comEndMonth"><value><![CDATA[结束月]]></value></msg>
+	<msg key="terms.schId"><value><![CDATA[ID]]></value></msg>
+	<msg key="terms.postId"><value><![CDATA[帖子ID]]></value></msg>
+	<msg key="terms.curpage"><value><![CDATA[当前页]]></value></msg>
+	<msg key="terms.leaveWordId"><value><![CDATA[留言ID]]></value></msg>
+	<msg key="terms.id"><value><![CDATA[ID]]></value></msg>
+	<msg key="terms.trId"><value><![CDATA[TRIBEID]]></value></msg>
+	<msg key="terms.contactControl"><value><![CDATA[联系信息安全控制]]></value></msg>
+	<msg key="terms.basicControl"><value><![CDATA[基本信息安全控制]]></value></msg>
+	<msg key="terms.blogControl"><value><![CDATA[日志安全控制]]></value></msg>
+	<msg key="terms.notify"><value><![CDATA[email提醒设置]]></value></msg>
+	<msg key="terms.interestControl"><value><![CDATA[兴趣爱好安全控制]]></value></msg>
+	<msg key="terms.mobilePhone"><value><![CDATA[移动电话]]></value></msg>
+	<msg key="terms.fixPhone"><value><![CDATA[固定电话]]></value></msg>
+	<msg key="terms.fax"><value><![CDATA[传真]]></value></msg>
+	<msg key="terms.im"><value><![CDATA[IM]]></value></msg>
+	<msg key="terms.keyword"><value><![CDATA[关键词]]></value></msg>
+	<msg key="terms.guestbook.body"><value><![CDATA[留言内容]]></value></msg>
+	<msg key="terms.curpage"><value><![CDATA[当前页码]]></value></msg>
+	<msg key="terms.guestbook.reply"><value><![CDATA[回复内容]]></value></msg>
+	<msg key="terms.label"><value><![CDATA[分版]]></value></msg>
+	<msg key="terms.birthYear"><value><![CDATA[出生年]]></value></msg>
+	<msg key="terms.birthMonth"><value><![CDATA[出生月]]></value></msg>
+	<msg key="terms.birthDay"><value><![CDATA[出生日]]></value></msg>
+	<msg key="terms.anony"><value><![CDATA[匿名标志]]></value></msg>
+	<msg key="terms.rate"><value><![CDATA[打分]]></value></msg>
+	<msg key="terms.field"><value><![CDATA[搜索限定]]></value></msg>
+	<msg key="terms.tag"><value><![CDATA[关键词]]></value></msg>
+	<msg key="terms.review"><value><![CDATA[评论]]></value></msg>
+	<msg key="terms.course.name"><value><![CDATA[课程名]]></value></msg>
+	<msg key="terms.course.department"><value><![CDATA[开课]]></value></msg>
+	<msg key="terms.course.teacher"><value><![CDATA[开课老师]]></value></msg>
+	<msg key="terms.course.desc"><value><![CDATA[课程描述]]></value></msg>
+	<msg key="terms.labor.dest"><value><![CDATA[目的地]]></value></msg>
+	
+	<!-- messages generated from Action and Logic -->
+	<!-- general purpose message -->
+	<msg key="errors.action.url"><value><![CDATA[网址格式错误</a>]]></value></msg>
+	<msg key="errors.action.upload"><value><![CDATA[上载失败，可能由于网速太慢或网络不稳定，如果上载文件比较大，请压缩一下或者等网速快时再上载]]></value></msg>
+	<msg key="errors.action.upload.timeout"><value><![CDATA[处理超时，请重试或<a href="http://support.renren.com/GetGuestbookList.do">报告管理员</a>]]></value></msg>
+	<msg key="errors.action.unknown"><value><![CDATA[内部错误</a>]]></value></msg>
+	<msg key="errors.action.userNotFound"><value><![CDATA[该用户不存在]]></value></msg>
+	<msg key="errors.action.univNotFound"><value><![CDATA[该学校不存在]]></value></msg>
+	<msg key="errors.action.tribeNotFound"><value><![CDATA[该群不存在或已被删除,若有疑问,请与我们联系:admin@renren.com.]]></value></msg>
+	<msg key="errors.action.thread.notFound"><value><![CDATA[该主题不存在或已经被删除]]></value></msg>
+	<msg key="errors.action.tribe.notAdmin"><value><![CDATA[你不是%s群的管理员，无权进行这项操作]]></value></msg>
+	<msg key="errors.action.permission"><value><![CDATA[你没有权限进行此项操作]]></value></msg>
+	<msg key="errors.action.password"><value><![CDATA[输入的密码错误，请重试]]></value></msg>
+	<msg key="errors.action.message.notFound"><value><![CDATA[该站内信不存在或已被删除]]></value></msg>
+	<msg key="messages.action.protected.relay"><value><![CDATA[为保护用户隐私，登录用户才能查看具体信息]]></value></msg>
+	<msg key="messages.action.link.close"><value><![CDATA[这位同学已经关闭了个人网址，登录之后才能查看他的信息。<br />人人网目前对<a href="/info/SchoolList.do">这些学校</a>的同学开放]]></value></msg>
+	<msg key="errors.action.upload.size.exceed"><value><![CDATA[上载的文件不能超过4M]]></value></msg>
+	<msg key="messages.action.suc"><value><![CDATA[操作成功]]></value></msg>
+	
+	<!-- terms for system -->
+	<msg key="sys.email.dodoyo"><value><![CDATA[renren@renren.com;人人网]]></value></msg>
+	<msg key="sys.email.weekly"><value><![CDATA[RenRen Weekly <renren@renren.com>]]></value></msg>
+	<msg key="sys.email.admin"><value><![CDATA[RenRen Admin <renren@renren.com>]]></value></msg>
+	<msg key="sys.email.host"><value><![CDATA[127.0.0.1]]></value></msg>
+	<msg key="sys.domain"><value><![CDATA[renren.com]]></value></msg>
+	
+	<!-- for user css -->
+	<msg key="sys.path.ps"><value><![CDATA[/data/mvp/ps.friends.mop.com]]></value></msg>
+	<msg key="sys.path.photo"><value><![CDATA[/opt/fbimg/photos/]]></value></msg>
+	<msg key="sys.path.photo.regaudit"><value><![CDATA[/opt/fbimg2/storage/regaudit/]]></value></msg>
+	<msg key="sys.path.img"><value><![CDATA[/opt/fbimg/]]></value></msg>
+	<msg key="sys.path.static"><value><![CDATA[/opt/static/]]></value></msg>
+	<msg key="sys.context.photo"><value><![CDATA[photos/]]></value></msg>
+	<msg key="sys.url.head"><value><![CDATA[http://head.renren.com]]></value></msg>
+	<msg key="sys.url.main"><value><![CDATA[http://renren.com]]></value></msg>
+	<msg key="sys.url.class"><value><![CDATA[http://class.renren.com]]></value></msg>
+	<msg key="sys.url.team"><value><![CDATA[http://team.renren.com]]></value></msg>
+	<msg key="sys.url.img"><value><![CDATA[http://img.renren.com]]></value></msg>
+	<msg key="sys.url.group"><value><![CDATA[http://group.renren.com]]></value></msg>
+	<msg key="sys.url.event"><value><![CDATA[http://event.renren.com]]></value></msg>
+	<msg key="sys.url.course"><value><![CDATA[http://course.renren.com]]></value></msg>
+	<msg key="sys.url.blog"><value><![CDATA[http://blog.renren.com]]></value></msg>
+	<msg key="sys.url.photo"><value><![CDATA[http://photo.renren.com]]></value></msg>
+	<msg key="sys.url.msg"><value><![CDATA[http://msg.renren.com]]></value></msg>
+	<msg key="sys.url.home"><value><![CDATA[http://home.renren.com]]></value></msg>
+	<msg key="sys.url.reg"><value><![CDATA[http://reg.renren.com]]></value></msg>
+	<msg key="sys.url.browse"><value><![CDATA[http://browse.renren.com]]></value></msg>
+	<msg key="sys.url.upload"><value><![CDATA[http://upload.renren.com]]></value></msg>
+	<msg key="sys.url.school"><value><![CDATA[http://school.renren.com]]></value></msg>
+	<msg key="sys.url.static"><value><![CDATA[http://xnimg.cn]]></value></msg>
+	<msg key="sys.url.guide"><value><![CDATA[http://guide.renren.com]]></value></msg>
+	
+	<!--由于原先5q的静态信息域名与人人网 img.renren.com 域名冲突 所以5q的静态服务域名改用 txt.5q.com-->
+	<msg key="sys.url.txt.5q"><value><![CDATA[http://txt.5q.com]]></value></msg>
+	<msg key="sys.url.photos.album"><value><![CDATA[http://photos.album.5q.com]]></value></msg>
+	<msg key="sys.url.photos.group"><value><![CDATA[http://photos.group.5q.com]]></value></msg>
+	<msg key="sys.url.photos2.album"><value><![CDATA[http://photos2.album.5q.com]]></value></msg>
+	<msg key="sys.url.photos2.group"><value><![CDATA[http://photos2.group.5q.com]]></value></msg>
+	<msg key="sys.path.img2"><value><![CDATA[/opt/fbimg2/]]></value></msg>
+	<msg key="sys.url.source"><value><![CDATA[http://source.renren.com]]></value></msg>
+	<msg key="sys.context.storage"><value><![CDATA[storage/]]></value></msg>
+	<msg key="tribe.logo.main"><value><![CDATA[0/0/logoMain.jpg]]></value></msg>
+	<msg key="tribe.logo.head"><value><![CDATA[0/0/logoHead.jpg]]></value></msg>
+	<msg key="tribe.logo.tiny"><value><![CDATA[0/0/logoTiny.jpg]]></value></msg>
+	<msg key="tribe.logo.large"><value><![CDATA[0/0/logoLarge.jpg]]></value></msg>
+	<msg key="user.logo.main"><value><![CDATA[0/0/main.jpg]]></value></msg>
+	<msg key="user.logo.head"><value><![CDATA[0/0/head.jpg]]></value></msg>
+	<msg key="user.logo.tiny"><value><![CDATA[0/0/tiny.jpg]]></value></msg>
+	<msg key="user.logo.large"><value><![CDATA[0/0/large.jpg]]></value></msg>
+	
+	<!-- message class -->
+	<msg key="messages.action.class.invite.title"><value><![CDATA[%s 邀请你加入%s班级：%s]]></value></msg>
+	<msg key="messages.action.class.invite"><value><![CDATA[%s 邀请你加入%s班级 %s\n 请登录人人网（http://www.renren.com ）接收邀请\n 你也可以先浏览班级主页：http://class.renren.com/%s \n 人人网]]></value></msg>
+	
+	<!-- message team -->
+	<msg key="messages.action.team.invite.title"><value><![CDATA[%s 邀请你加入%sTeam %s]]></value></msg>
+	<msg key="messages.action.team.invite"><value><![CDATA[>%s 邀请你加入%sTeam %s\n 请登录人人网（http://www.renren.com ）接收邀请\n 你也可以先浏览Team主页：http://team.renren.com/%s \n 人人网]]></value></msg>
+	
+	<!-- message tribe -->
+	<msg key="errors.action.tribe.name.occupied"><value><![CDATA[%s群已经存在，加入<a href="http://renren.com/GetTribe.do?id=%s">%s</a>群，或另选一个群名]]></value></msg>
+	<msg key="errors.action.tribe.new.no.star"><value><![CDATA[星级用户才能建群，你还不是星级用户]]></value></msg>
+	<msg key="errors.action.tribe.new.exp.not.enough"><value><![CDATA[建群需要%s积分，你的积分不足]]></value></msg>
+	<msg key="errors.action.tribe.new.exp"><value><![CDATA[*建群需要花%s积分，你现在有%s积分*]]></value></msg>
+	
+	<!-- message user -->
+	<msg key="errors.action.user.email.occupied"><value><![CDATA[你填写的email已经被占用，如果该email是你的，请<a href="http://renren.com/GetPasswd.do">取回密码</a>]]></value></msg>
+	
+	<!-- message for Action or Logic -->
+	<msg key="messages.action.register.activate"><value><![CDATA[%s，你好：<br>    欢迎加入人人网(renren.com)，你的帐号是%s<br><br>    点击下面的激活链接完成注册：<br><br>    <a>http://renren.com/Activate.do?id=%s&vc=%s</a><br><br>    如果以上链接无法点击，请将它拷贝到浏览器(例如IE)的地址栏中。<br><br>    人人网(renren.com)是一个真实网络，非常重视对用户隐私权的保护。在这里你可以创建个性空间，发表日志，上传照片，分享好友新鲜事。<br><br>    感谢你对人人网的支持。<br><br>        人人网 http://renren.com<br>        (这是一封自动产生的email，请勿回复。)]]></value></msg>
+	<msg key="messages.action.suicide.activate"><value><![CDATA[点击下面的链接完成删除帐号：<br>   <a href='http://renren.com/delaccount.do?id=%s&vc=%s'>http://renren.com/delaccount.do?id=%s&vc=%s</a><br>    如果以上链接无法点击，请将它拷贝到浏览器(例如IE)的地址栏中。    人人网(renren.com)一个真实网络，非常重视对用户隐私权的保护。在这里你可以创建个性空间，发表日志，上传照片，分享好友新鲜事。<br> 如果你要恢复帐号，请直接用原帐号和密码登录人人网。 感谢你对人人网的支持。<br><br>        人人网 http://renren.com<br>        (这是一封自动产生的email，请勿回复。)]]></value></msg>
+	<msg key="messages.action.admin.ipadd.revert"><value><![CDATA[你好：<br>    你提交的ip已经加到我们的数据库中，<br>    从你提交的ip访问人人网就可以注册了，<br>    非常抱歉这么久才处理你提供的ip。<br>    感谢你对人人网的支持。<br><br>        人人网 http://renren.com<br>        ]]></value></msg>
+	<msg key="errors.action.tribe.admin.delete.noDelete"><value><![CDATA[该群不能删除]]></value></msg>
+	<msg key="messages.action.register.title"><value><![CDATA[[人人网 - 激活帐号] 你需要激活帐号完成注册]]></value></msg>
+	<msg key="messages.action.suicide.title"><value><![CDATA[[人人网 - 删除帐号] 你需要点击链接完成删除帐号]]></value></msg>
+	<msg key="messages.action.suicide.reason.required"><value><![CDATA[请填写删除帐号的原因]]></value></msg>
+	<msg key="messages.action.register.emailNotFound"><value><![CDATA[%s不是有效的%s的email地址]]></value></msg>
+	<msg key="errors.action.register.no.school"><value><![CDATA[开通列表中没有这所学校。]]></value></msg>
+	<msg key="errors.action.register.bbs"><value><![CDATA[鉴于部分学校的bbs允许校外注册，暂时不开放bbs的email注册]]></value></msg>
+	<msg key="messages.action.activate.succ"><value><![CDATA[激活帐号成功，请登录]]></value></msg>
+	<msg key="messages.action.friend.request.alreadyRequest"><value><![CDATA[你已经申请把%s添加为好友，请等待对方确认，14天内不必再申请]]></value></msg>
+	<msg key="messages.action.friend.request.add"><value><![CDATA[把%s加为好友]]></value></msg>
+	<msg key="messages.action.friend.request.suc"><value><![CDATA[向%s发出添加为好友的申请，请等待%s确认]]></value></msg>
+	<msg key="errors.action.friend.host.full"><value><![CDATA[你的好友数量已满,无法添加新好友]]></value></msg>
+	<msg key="errors.action.friend.guest.full"><value><![CDATA[对方好友数量已满,无法添加好友]]></value></msg>
+	<msg key="errors.action.friend.nofriend"><value><![CDATA[您还没有朋友]]></value></msg>
+	<msg key="errors.action.friend.accept.notInvited"><value><![CDATA[对方并没有向你发出邀请]]></value></msg>
+	<msg key="errors.action.member.accept.requestNotFound"><value><![CDATA[该申请不存在]]></value></msg>
+	<msg key="messages.action.member.accept.suc"><value><![CDATA[接受%s加入%s群的申请]]></value></msg>
+	<msg key="messages.action.tribeadmin.accept.suc"><value><![CDATA[提升%s为%s群的管理员]]></value></msg>
+	<msg key="errors.action.tribe.acceptadmin.no.star"><value><![CDATA[%s不是星级用户，星级用户才能作群管理员]]></value></msg>
+	<msg key="errors.action.tribe.not.owner"><value><![CDATA[你不是%s群的群主，不能执行此操作]]></value></msg>
+	<msg key="messages.action.tribe.accept.suc"><value><![CDATA[接受%s的邀请，加入%s群]]></value></msg>
+	<msg key="messages.action.tribe.accept.join"><value><![CDATA[加入%s群]]></value></msg>
+	<msg key="errors.action.password.change.oldPassErr"><value><![CDATA[输入的旧密码有误, 请重试]]></value></msg>
+	<msg key="messages.action.password.change.suc"><value><![CDATA[修改密码成功, 请用帐号和新密码登录.]]></value></msg>
+	<msg key="messages.action.tribe.change.suc"><value><![CDATA[修改群设置成功]]></value></msg>
+	<msg key="errors.action.tribe.descr.script"><value><![CDATA["%s"是在群描述里面禁用的字符串]]></value></msg>
+	<msg key="errors.action.user.delete.owner"><value><![CDATA[你是<a href="/GetTribe.do?id=%s">%s</a>群的群主，不能删除帐号]]></value></msg>
+	<msg key="errors.action.user.delete.password"><value><![CDATA[操作失败，请核对你的密码，或者<a href="%s/GetGuestbookList.do">联系系统管理员</a>]]></value></msg>
+	<msg key="messages.action.user.delete.suc"><value><![CDATA[操作成功，你的帐号已被删除]]></value></msg>
+	<msg key="messages.action.user.relive.suc"><value><![CDATA[操作成功，你的帐号已经复活]]></value></msg>
+	<msg key="messages.action.friend.delete.suc"><value><![CDATA[把%s移出你的好友列表]]></value></msg>
+	<msg key="messages.action.tribe.new.suc"><value><![CDATA[创建群成功]]></value></msg>
+	<msg key="messages.action.message.delete.multi.suc"><value><![CDATA[删除%s封站内信]]></value></msg>
+	<msg key="messages.action.guestRequest.reject"><value><![CDATA[忽略了对方的加好友申请。你可以修改<a href="/a_setprivacy.do">隐私设置</a>，限制陌生人发送好友申请给你。]]></value></msg>
+	<msg key="messages.action.block.succ"><value><![CDATA[把%s加入了黑名单]]></value></msg>
+	<msg key="messages.action.block.remove.succ"><value><![CDATA[把%s移出了黑名单]]></value></msg>
+	<msg key="errors.action.go.vc"><value><![CDATA[该邀请不存在]]></value></msg>
+	<msg key="errors.action.course.take.notFound"><value><![CDATA[没有找到该课程]]></value></msg>
+	<msg key="errors.action.entry.get.not.found"><value><![CDATA[该日志不存在]]></value></msg>
+	<msg key="errors.action.comment.not.found"><value><![CDATA[该评论不存在]]></value></msg>
+	<msg key="errors.course.department.validwhen"><value><![CDATA[开课系不能为空]]></value></msg>
+	<msg key="messages.action.tribe.delete.suc"><value><![CDATA[删除%s群成功]]></value></msg>
+	<msg key="messages.action.invite.search.succ"><value><![CDATA[向%s个用户发出加入%s群邀请]]></value></msg>
+	<msg key="messages.action.invite.search.add"><value><![CDATA[把%s个用户加入%s群]]></value></msg>
+	<msg key="messages.action.friend.invite.over"><value><![CDATA[每人一共只能邀请200个未注册用户，你已经到上限了]]></value></msg>
+	<msg key="messages.action.tribe.invite.over"><value><![CDATA[每人一共只能邀请200个未注册用户加入群，你已经到上限了]]></value></msg>
+	<msg key="errors.action.tribe.admin.fire.notPrimeAdmin"><value><![CDATA[你不是%s群的群主，无权进行这项操作]]></value></msg>
+	<msg key="errors.action.tribe.admin.fire.notAdmin"><value><![CDATA[%s不是%s群的管理员，不必免去他的职务]]></value></msg>
+	<msg key="errors.action.tribe.admin.add.no.star"><value><![CDATA[一星用户才能作群管理员，%s还不是一星用户]]></value></msg>
+	<msg key="errors.action.password.get.email.notFound"><value><![CDATA[你填写的email在系统中不存在，请检查是否输入错误，再重试]]></value></msg>
+	<msg key="messages.action.password.get.message"><value><![CDATA[你好, %s <br> 你刚在人人网申请了重置密码，请点击下面的链接进行重置：<br>%s 此链接只能使用一次, 如果失效请重新申请. <br>如果以上链接无法点击，请将它拷贝到浏览器(例如IE)的地址栏中。<br> 若有其他问题请与我们联系：admin@renren.com<br>感谢你对人人网的支持。<br>人人网 http://renren.com]]></value></msg>
+	<msg key="messages.action.password.get.title"><value><![CDATA[人人网 - 设置密码]]></value></msg>
+	<msg key="messages.action.password.get.suc"><value><![CDATA[已经发送邮件至%s. 请点击邮件中的链接，设置你的新密码。]]></value></msg>
+	<msg key="messages.action.thread.get.permission"><value><![CDATA[你无权查看该主题，请先<a href="/RequestTribe.do?id=%s">加入该群</a>]]></value></msg>
+	<msg key="messages.action.subtribe.permission"><value><![CDATA[你无权订阅该群，请先<a href="/RequestTribe.do?id=%s">加入该群</a>]]></value></msg>
+	<msg key="messages.action.threadlist.get.permission"><value><![CDATA[你无权查看该群的主题列表，请先<a href="/RequestTribe.do?id=%s">加入该群</a>]]></value></msg>
+	<msg key="messages.action.friend.invite.exist.alreadyFriend"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，并且他已经是你的好友了，不必邀请]]></value></msg>
+	<msg key="messages.action.friend.invite.exist.add"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，添加<a href="/getuser.do?id=%s">%s</a>为你的好友]]></value></msg>
+	<msg key="messages.action.friend.invite.exist.apply"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，向他发出了加为好友的申请]]></value></msg>
+	<msg key="messages.action.friend.invite.message"><value><![CDATA[你好：<br>    你的朋友%s邀请你加入人人网^_^    %s    请点击下面的链接加入人人网：      %s    欢迎加入人人网 http://renren.com]]></value></msg>
+	<msg key="messages.action.friend.invite.title.default"><value><![CDATA[%s邀请你加入人人网(renren.com)]]></value></msg>
+	<msg key="messages.action.friend.invite.suc"><value><![CDATA[向%s发出了邀请]]></value></msg>
+	<msg key="messages.action.friend.invite.count"><value><![CDATA[发出了%s个邀请]]></value></msg>
+	<msg key="messages.action.tribe.invite.exist.alreadyMember"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，并且他已经是%s的成员了，不必邀请]]></value></msg>
+	<msg key="messages.action.tribe.invite.exist.add"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，把<a href="/getuser.do?id=%s">%s</a>加入了%s群]]></value></msg>
+	<msg key="messages.action.tribe.invite.exist.apply"><value><![CDATA[%s已经在人人网中有帐号，他是<a href="/getuser.do?id=%s">%s</a>，向<a href="/getuser.do?id=%s">%s</a>发出了加入%s群的邀请}]]></value></msg>
+	<msg key="messages.action.tribe.invite"><value><![CDATA[邀请<a href="/getuser.do?id=%s">%s</a>加入%s群]]></value></msg>
+	<msg key="messages.action.tribe.add"><value><![CDATA[把<a href="/getuser.do?id=%s">%s}</a>加入%s群]]></value></msg>
+	<msg key="messages.action.tribe.invite.message"><value><![CDATA[你好：\n    你的朋友%s邀请你加入他在人人网中的%s群\n    %s\n    请点击下面的链接查看%s群：m     http://renren.com/Go.do?vc=%s\n    该邀请只对你本人有效，请勿转发\n\n    人人网(renren.com)是面向全国高校开放的一个真实网络，非常重视对用户隐私权的保护。在这里你可以创建个性空间，发表日志，上传照片，分享好友新鲜事。。\n    欢迎加入人人网 http://renren.com]]></value></msg>
+	<msg key="messages.action.tribe.invite.title.default"><value><![CDATA[%s邀请你加入他在人人网(renren.com)中的%s群]]></value></msg>
+	<msg key="messages.action.tribe.invite.exist.suc"><value><![CDATA[向%s发出了邀请]]></value></msg>
+	<msg key="messages.action.tribe.invite.exist.count"><value><![CDATA[发出了%s个邀请]]></value></msg>
+	<msg key="messages.action.login.notConfirmed"><value><![CDATA[你还没有激活帐号，请查看来自人人网的email，点击里面的激活链接来激活你的帐号。<br />如果你没有收到email，<a href="/ReActivate.do">请重新发送激活链接</a>]]></value></msg>
+	<msg key="messages.action.login.banned"><value><![CDATA[你的帐号因不当行为被管理员封禁，要申诉或解除封禁请<a href="%s/GetGuestbookList.do">给管理员留言</a>]]></value></msg>
+	<msg key="messages.action.login.suicided"><value><![CDATA[您的帐号已被冻结，请先<a href="%s/relive.do">解锁帐号</a>。]]></value></msg>
+	<msg key="errors.action.login.postneed"><value><![CDATA[为保护用户信息需要登录才能执行此操作，请先登录]]></value></msg>
+	<msg key="errors.action.login.failed"><value><![CDATA[登录帐号或密码错误，请重试]]></value></msg>
+	<msg key="messages.action.message.multicast.count"><value><![CDATA[给%s个好友发出了站内消息]]></value></msg>
+	<msg key="messages.action.tribe.mail.multicast.count"><value><![CDATA[给%s个群内用户群发了email]]></value></msg>
+	<msg key="errors.action.post.permission"><value><![CDATA[你无权在该群发言，要想发言，请先加入%s群]]></value></msg>
+	<msg key="errors.action.post.block"><value><![CDATA[你被%s封禁了在该群发言的权限，要想解封，请与群主或管理员联系]]></value></msg>
+	<msg key="errors.action.tribe.member.process.delete.admin"><value><![CDATA[%s是管理员，不能删除]]></value></msg>
+	<msg key="messages.action.admin.quit.notAdmin"><value><![CDATA[你不是%s群的管理员，不必辞职]]></value></msg>
+	<msg key="errors.action.admin.quit.noAdmin"><value><![CDATA[%s群只有你一位管理员，不能辞职，请你先将其他成员升级为管理员，再进行此操作]]></value></msg>
+	<msg key="messages.action.admin.quit.suc"><value><![CDATA[你辞去了%s群的管理员职务]]></value></msg>
+	<msg key="errors.action.tribe.quit.admin"><value><![CDATA[你是%s的管理员，如果要退出，请先辞去管理员职务]]></value></msg>
+	<msg key="messages.action.tribe.quit.suc"><value><![CDATA[你退出了%s群]]></value></msg>
+	<msg key="errors.action.tribe.requestadmin.admin"><value><![CDATA[你已经是%s群的管理员了]]></value></msg>
+	<msg key="errors.action.tribe.requestadmin.enough"><value><![CDATA[每个群最多有8个管理员，现在管理员已经满了]]></value></msg>
+	<msg key="errors.action.tribe.requestadmin.no.star"><value><![CDATA[你不是星级用户，星级用户才能作群管理员]]></value></msg>
+	<msg key="errors.action.tribe.requestadmin.notmember"><value><![CDATA[你还不是%s的成员]]></value></msg>
+	<msg key="errors.action.upload.null"><value><![CDATA[上传图片为空，请重试]]></value></msg>
+	<msg key="errors.action.upload.format"><value><![CDATA[图片格式错误，请换张图片重试]]></value></msg>
+	<msg key="formats.message.reply.body"><value><![CDATA[\n\n-----------------------------------------------------\n【%s在来信中提到】\n>%s]]></value></msg>
+	<msg key="formats.message.reply.title"><value><![CDATA[回复：%s]]></value></msg>
+	<msg key="formats.post.reply.message.body"><value><![CDATA[\n\n-----------------------------------------------------\n【你在<%s>主题中提到】\n>%s]]></value></msg>
+	<msg key="formats.post.reply.message.title"><value><![CDATA[回复：%s]]></value></msg>
+	<msg key="formats.post.reply"><value><![CDATA[\n\n-----------------------------------------------------\n【%s提到】\n>%s]]></value></msg>
+	<msg key="messages.action.tribe.request.member.alreadyMember"><value><![CDATA[%s已经是%s的成员，不必邀请]]></value></msg>
+	<msg key="messages.action.tribe.request.member.add"><value><![CDATA[把%s加进了%s群]]></value></msg>
+	<msg key="messages.action.tribe.request.member.suc"><value><![CDATA[向%s发出了加入%s群的邀请]]></value></msg>
+	<msg key="messages.action.tribe.request.member.count"><value><![CDATA[发出了%s个邀请]]></value></msg>
+	<msg key="messages.action.member.request.tribe.alreadyMember"><value><![CDATA[你已经是%s群的成员了，不需要再加入]]></value></msg>
+	<msg key="messages.action.member.request.tribe.join"><value><![CDATA[你加入了%s群]]></value></msg>
+	<msg key="messages.action.member.request.tribe.suc"><value><![CDATA[申请已经发送，等待群主批准]]></value></msg>
+	<msg key="errors.action.tribe.requestadmin.notmember"><value><![CDATA[你还不是%s群的成员，不能作管理员]]></value></msg>
+	<msg key="messages.action.basicInfo.suc"><value><![CDATA[修改基本信息成功]]></value></msg>
+	<msg key="messages.action.selfdesc.suc"><value><![CDATA[修改涂鸦板成功]]></value></msg>
+	<msg key="errors.action.selfdesc.script"><value><![CDATA["%s"是在涂鸦板里面禁用的字符串]]></value></msg>
+	<msg key="errors.action.blog.script"><value><![CDATA["%s"是在日志里面禁用的字符串]]></value></msg>
+	<msg key="errors.action.comment.script"><value><![CDATA["%s"是在评论里面禁用的字符串]]></value></msg>
+	<msg key="errors.action.post.script"><value><![CDATA["%s"是在帖子里面禁用的字符串]]></value></msg>
+	<msg key="errors.action.personalinfo.script"><value><![CDATA["%s"是在个人信息里面禁用的字符串]]></value></msg>
+	<msg key="messages.action.contactInfo.suc"><value><![CDATA[修改联系方式成功]]></value></msg>
+	<msg key="messages.action.privacy.suc"><value><![CDATA[修改隐私设置成功]]></value></msg>
+	<msg key="messages.action.setmail.suc"><value><![CDATA[修改邮件提醒设置成功]]></value></msg>
+	<msg key="messages.action.name.suc"><value><![CDATA[修改名字成功]]></value></msg>
+	<msg key="messages.action.personalInfo.suc"><value><![CDATA[修改个人信息成功]]></value></msg>
+	<msg key="errors.action.name.length.exeed"><value><![CDATA[名字超长，英文不能超过12个，汉字不能超过6个]]></value></msg>
+	<msg key="messages.action.email.suc"><value><![CDATA[修改帐号email需要经过验证，验证链接已经发送到%s，请点击里面的验证链接进行验证]]></value></msg>
+	<msg key="errors.action.email.eyou"><value><![CDATA[请用帐号email发信到admin@renren.com，管理员将尽快为你激活帐号。谢谢^_^]]></value></msg>
+	<msg key="messages.action.email.body"><value><![CDATA[http://renren.com/VerifyEmail.do?id=%s&email=%s&code=%s]]></value></msg>
+	<msg key="messages.action.email.subject"><value><![CDATA[[人人网 - 验证email] ]]></value></msg>
+	<msg key="errors.action.email.verify"><value><![CDATA[email验证失败]]></value></msg>
+	<msg key="messages.action.email.verify"><value><![CDATA[email验证成功，请用修改后的帐号email登录]]></value></msg>
+	<msg key="errors.admin.action.university.new.url.occupied"><value><![CDATA[该URL已经被占用，请选择别的URL]]></value></msg>
+	<msg key="messages.admin.action.univ.edit.suc"><value><![CDATA[编辑学校成功]]></value></msg>
+	<msg key="messages.admin.action.dorm.add.suc"><value><![CDATA[成功添加%s个宿舍。]]></value></msg>
+	<msg key="errors.action.tribe.admin.fire.notMember"><value><![CDATA[%s还不是%s群的成员，只有成员才能升为管理员]]></value></msg>
+	<msg key="errors.action.tribe.add.owner.not.admin"><value><![CDATA[%s不是%s群管理员，不能升为群主]]></value></msg>
+	<msg key="errors.action.tribe.member.delete.admin"><value><![CDATA[%s是管理员不能删除]]></value></msg>
+	<msg key="errors.action.activate.already"><value><![CDATA[帐号已经激活，请登录]]></value></msg>
+	<msg key="errors.action.reactivate.activated"><value><![CDATA[帐号已经激活，请登录]]></value></msg>
+	<msg key="errors.action.reactivate.suicide"><value><![CDATA[帐号已经删除了，不能激活]]></value></msg>
+	<msg key="errors.action.reactivate.banned"><value><![CDATA[帐号已经被管理员封禁，不能激活]]></value></msg>
+	<msg key="errors.action.invite.search.length.short"><value><![CDATA[关键词长度太短，请选择个合理的关键词]]></value></msg>
+	<msg key="errors.action.search.gender"><value><![CDATA[不能只用性别搜索]]></value></msg>
+	<msg key="errors.action.tribe.search.invite.no.star"><value><![CDATA[星级用户才能使用这种邀请方式，你还不是星级用户]]></value></msg>
+	<msg key="errors.action.tribe.search.invite.exp.not.enough"><value><![CDATA[这种邀请方式至少需要%s积分，你的积分不足]]></value></msg>
+	<msg key="errors.action.tribe.search.invite.exp"><value><![CDATA[*每向一个用户发出邀请需要花%s积分，你现在有%s积分*]]></value></msg>
+	<msg key="errors.action.course.add.exists"><value><![CDATA[<a href="/GetCourse.do?id=%s">%s</a>已经存在了，<a href="/GetCourse.do?id=%s">查看</a>]]></value></msg>
+	<msg key="errors.action.course.edit.not.found"><value><![CDATA[该课程不存在或已被删除]]></value></msg>
+	<msg key="messages.action.course.edit.succ"><value><![CDATA[修改课程成功]]></value></msg>
+	<msg key="messages.action.course.delete.succ"><value><![CDATA[移除课程成功]]></value></msg>
+	<msg key="errors.action.course.edit.not.owner"><value><![CDATA[你不是该课程的提交人，无权修改]]></value></msg>
+	<msg key="errors.action.course.review.not.owner"><value><![CDATA[你无权删除这条评论]]></value></msg>
+	<msg key="messages.email.daily.body.leaveword"><value><![CDATA[%s给你留言，查看留言：http://renren.com/getuser.do?id=%s]]></value></msg>
+	<msg key="messages.email.daily.subject.leaveword"><value><![CDATA[[人人网 - 留言提醒] %s给你留言]]></value></msg>
+	<msg key="messages.email.daily.body.message"><value><![CDATA[收到来自%s的站内信件，查看站内信件：http://renren.com/GetMessageInList.do]]></value></msg>
+	<msg key="messages.email.daily.subject.message"><value><![CDATA[[人人网 - 站内信件] 收到来自%s的站内信件]]></value></msg>
+	<msg key="messages.email.daily.body.friend.request"><value><![CDATA[%s申请加你为好友，查看申请：http://renren.com/GetGuestRequest.do]]></value></msg>
+	<msg key="messages.email.daily.subject.friend.request"><value><![CDATA[[人人网 - 加好友申请] %s申请加你为好友]]></value></msg>
+	<msg key="messages.email.daily.body.friend.add"><value><![CDATA[%s把你加为好友，查看%s：http://renren.com/getuser.do?id=%s]]></value></msg>
+	<msg key="messages.email.daily.subject.friend.add"><value><![CDATA[[人人网 - 加为好友] %s加你为好友]]></value></msg>
+	<msg key="messages.email.daily.subject.poke"><value><![CDATA[[人人网 - 打招呼] %s向你打招呼]]></value></msg>
+	<msg key="messages.email.daily.body.poke"><value><![CDATA[%s向你打招呼，查看：http://renren.com/Home.do]]></value></msg>
+	<msg key="messages.email.daily.body.triberequest"><value><![CDATA[%s邀请你加入%s群，查看邀请：http://renren.com/GetTribeRequest.do]]></value></msg>
+	<msg key="messages.email.daily.subject.triberequest"><value><![CDATA[[人人网 - 群邀请] %s邀请你加入%s群]]></value></msg>
+	<msg key="messages.email.daily.body.requesttribe"><value><![CDATA[%s申请加入%s群，查看申请：http://renren.com/GetRequestTribe.do]]></value></msg>
+	<msg key="messages.email.daily.subject.requesttribe"><value><![CDATA[[人人网 - 加入群申请] %s申请加入%s群]]></value></msg>
+	<msg key="messages.email.daily.body.acceptmember"><value><![CDATA[%s把你加入%s群，查看%s群：http://renren.com/GetTribe.do?id=%s]]></value></msg>
+	<msg key="messages.email.daily.subject.acceptmember"><value><![CDATA[[人人网 - 加入群] %s把你加入%s群]]></value></msg>
+	<msg key="messages.email.daily.body.addadmin"><value><![CDATA[%s把你升为%s群的管理员 查看%s群：http://renren.com/GetTribe.do?id=%s]]></value></msg>
+	<msg key="messages.email.daily.subject.addadmin"><value><![CDATA[[人人网 - 升为管理员] %s把你升为%s群的管理员]]></value></msg>
+	<msg key="errors.action.tribe.add.tag.full"><value><![CDATA[每个群最多可以选择3个分类]]></value></msg>
+	<msg key="errors.action.tag.notexist"><value><![CDATA[没有这个分类]]></value></msg>
+	<msg key="messages.contactInfo.mobile"><value><![CDATA[<br>想通过手机直接访问人人网么？<a href="http://mobile.renren.com">点击查看</a>]]></value></msg>
+	
+	
+	<msg key="terms.announce.title"><value><![CDATA[布告标题]]></value></msg>
+	<msg key="terms.announce.link"><value><![CDATA[网址链接]]></value></msg>
+	<msg key="terms.announce.body"><value><![CDATA[布告内容]]></value></msg>
+	<msg key="terms.announce.days"><value><![CDATA[布告显示天数]]></value></msg>
+	<msg key="messages.action.announce.ban.succ"><value><![CDATA[封禁了%s的贴布告权限]]></value></msg>
+	<msg key="messages.action.announce.deban.succ"><value><![CDATA[解封了%s的贴布告权限]]></value></msg>
+	<msg key="errors.action.announce.new.no.star"><value><![CDATA[一星用户才能发布告，你还不是一星用户]]></value></msg>
+	<msg key="errors.action.announce.new.exp.not.enough"><value><![CDATA[每个布告每天需要%s积分，你的积分不足]]></value></msg>
+	<msg key="errors.action.announce.exp"><value><![CDATA[*每个布告每天需要%s积分，你现在有%s积分*]]></value></msg>
+	<msg key="messages.action.announce.edit.succ"><value><![CDATA[修改布告信息成功]]></value></msg>
+	<msg key="messages.action.announce.new.succ"><value><![CDATA[发布布告成功]]></value></msg>
+	<msg key="messages.action.announce.new.posted"><value><![CDATA[每个用户只能发一个布告]]></value></msg>
+	<msg key="errors.action.announce.not.found"><value><![CDATA[该布告不存在或已经过期]]></value></msg>
+	<msg key="errors.action.announce.no.edit.right"><value><![CDATA[你没有权力编辑该布告]]></value></msg>
+	
+	<!--cpbook related begin-->
+	<msg key="terms.cpbook.phone"><value><![CDATA[电话号码]]></value></msg>
+	<msg key="terms.cpbook.book"><value><![CDATA[书名]]></value></msg>
+	<msg key="terms.cpbook.email"><value><![CDATA[email]]></value></msg>
+	<msg key="terms.cpbook.isbn"><value><![CDATA[ISBN号]]></value></msg>
+	<msg key="terms.cpbook.name"><value><![CDATA[名字]]></value></msg>
+	<msg key="terms.cpbook.department"><value><![CDATA[院系]]></value></msg>
+	<msg key="terms.cpbook.dorm"><value><![CDATA[宿舍]]></value></msg>
+	<msg key="terms.cpbook.address"><value><![CDATA[邮政地址]]></value></msg>
+	<msg key="terms.cpbook.zipcode"><value><![CDATA[邮政编码]]></value></msg>
+	
+	<!-- event related begin -->
+	<msg key="terms.event.name"><value><![CDATA[活动名称]]></value></msg>
+	<msg key="terms.event.host"><value><![CDATA[活动举办方]]></value></msg>
+	<msg key="terms.event.begin.date"><value><![CDATA[活动开始日期]]></value></msg>
+	<msg key="terms.event.begin.hour"><value><![CDATA[活动开始的小时]]></value></msg>
+	<msg key="terms.event.begin.minute"><value><![CDATA[活动开始的分钟]]></value></msg>
+	<msg key="terms.event.end.date"><value><![CDATA[活动结束的日期]]></value></msg>
+	<msg key="terms.event.end.hour"><value><![CDATA[活动结束小时]]></value></msg>
+	<msg key="terms.event.end.minute"><value><![CDATA[活动结束分钟]]></value></msg>
+	<msg key="terms.event.location"><value><![CDATA[活动地点]]></value></msg>
+	<msg key="terms.event.gatherLoc"><value><![CDATA[集合地点]]></value></msg>
+	<msg key="terms.event.phone"><value><![CDATA[联系电话]]></value></msg>
+	<msg key="terms.event.email"><value><![CDATA[联系email]]></value></msg>
+	<msg key="terms.event.desc"><value><![CDATA[活动描述]]></value></msg>
+	<msg key="terms.event.leaveword.body"><value><![CDATA[留言内容]]></value></msg>
+	<msg key="terms.event.leaveword.from"><value><![CDATA[当前页面]]></value></msg>
+	<msg key="terms.event.leaveword.id"><value><![CDATA[留言板ID]]></value></msg>
+	<msg key="errors.action.board.not.found"><value><![CDATA[该留言板不存在或已被删除]]></value></msg>
+	<msg key="errors.action.event.not.found"><value><![CDATA[该活动不存在，或已被删除]]></value></msg>
+	<msg key="errors.action.event.no.edit.right"><value><![CDATA[你没有修改该活动的权力]]></value></msg>
+	<msg key="messages.action.event.edit.succ"><value><![CDATA[修改活动信息成功]]></value></msg>
+	<msg key="messages.action.event.new.succ"><value><![CDATA[创建活动成功]]></value></msg>
+	<msg key="messages.action.event.ban.succ"><value><![CDATA[封禁了%s的创建活动权限]]></value></msg>
+	<msg key="messages.action.event.deban.succ"><value><![CDATA[解封了%s的创建活动权限]]></value></msg>
+	<msg key="errors.event.end.minute.validwhen"><value><![CDATA[结束时间必须添]]></value></msg>
+	<msg key="errors.event.end.hour.validwhen"><value><![CDATA[结束时刻必须添]]></value></msg>
+	<msg key="errors.action.leaveword.not.found"><value><![CDATA[该留言不存在]]></value></msg>
+	<!-- event related end -->
+	
+	<!-- mail related begin -->
+	<msg key="messages.action.mail.ban.succ"><value><![CDATA[封禁了%s的发信权限]]></value></msg>
+	<msg key="messages.action.mail.deban.succ"><value><![CDATA[解封了%s的发信权限]]></value></msg>
+	<!-- mail related end -->
+	
+	<msg key="messages.action.leaveword.ban.succ"><value><![CDATA[封禁了%s的留言权限]]></value></msg>
+	<msg key="messages.action.leaveword.deban.succ"><value><![CDATA[解封了%s的留言权限]]></value></msg>
+	<msg key="messages.action.comment.ban.succ"><value><![CDATA[封禁了%s的评论权限]]></value></msg>
+	<msg key="messages.action.comment.deban.succ"><value><![CDATA[解封了%s的评论权限]]></value></msg>
+	<msg key="messages.action.bandesc.ban.succ"><value><![CDATA[封禁了%s的涂鸦板权限]]></value></msg>
+	<msg key="messages.action.bandesc.deban.succ"><value><![CDATA[解封了%s的涂鸦板权限]]></value></msg>
+	<msg key="messages.action.notify.change.suc"><value><![CDATA[修改email提醒设置成功]]></value></msg>
+	<msg key="messages.action.profile.change.suc"><value><![CDATA[修改资料成功]]></value></msg>
+	<msg key="messages.action.all.ban.succ"><value><![CDATA[封禁了%s的全站权限  ]]></value></msg>
+	<msg key="messages.action.all.deban.succ"><value><![CDATA[解封了%s的全站权限]]></value></msg>
+	
+	<!-- for vote -->
+	<msg key="messages.action.vote.suc"><value><![CDATA[你已经成功的投出了一票，还有%s票可以投]]></value></msg>
+	<msg key="messages.action.guestvote.suc"><value><![CDATA[你已经成功的投出了一票]]></value></msg>
+	<msg key="messages.action.vote.voted"><value><![CDATA[每人只有一次投票机会，你已经投过了]]></value></msg>
+	
+	<!-- for block -->
+	<msg key="messages.action.tribeblock.suc"><value><![CDATA[你已经封禁了%s的发帖权限]]></value></msg>
+	<msg key="messages.action.tribeUnblock.suc"><value><![CDATA[你已经取消了对%s的封禁]]></value></msg>
+	
+	<!-- for album -->
+	<msg key="errors.action.album.full"><value><![CDATA[你的相册空间已经满了]]></value></msg>
+	<msg key="errors.action.album.notowner"><value><![CDATA[这个相册不是你的，不能删除]]></value></msg>
+	<msg key="errors.action.album.benphoto"><value><![CDATA[该图片已被封禁，不能编辑]]></value></msg>
+	<msg key="errors.action.album.get.not.found"><value><![CDATA[没有找到这个相册]]></value></msg>
+	<msg key="messages.action.album.new.succ"><value><![CDATA[创建新相册成功]]></value></msg>
+	<msg key="messages.action.album.upload.succ"><value><![CDATA[上传照片成功]]></value></msg>
+	<msg key="messages.action.album.del.succ"><value><![CDATA[删除成功]]></value></msg>
+	<msg key="messages.action.album.edit.succ"><value><![CDATA[修改成功]]></value></msg>
+	<msg key="errors.action.albumphoto.get.not.found"><value><![CDATA[没有找到这张照片]]></value></msg>
+	<msg key="errors.action.album.upload.cmt.error"><value><![CDATA[你不能盗用别人的照片]]></value></msg>
+	<msg key="messages.action.newip.succ"><value><![CDATA[提交成功，谢谢你的支持]]></value></msg>
+	<msg key="errors.action.team.not.found"><value><![CDATA[没有这支参赛队伍]]></value></msg>
+	<msg key="messages.action.worldcup.joined"><value><![CDATA[每人只能支持一只球队，你已经选过了：）]]></value></msg>
+	<msg key="messages.action.worldcup.join.ok"><value><![CDATA[你成功加入了支持%s队的小组]]></value></msg>
+	<msg key="messages.action.worldcup.quit"><value><![CDATA[成功退出，现在你可以选择支持另一支队伍]]></value></msg>
+	<msg key="message.action.question.onlyone"><value><![CDATA[你已经填过这份问卷了，谢谢你的支持]]></value></msg>
+	<msg key="errors.action.register.no.ac"><value><![CDATA[你输入的注册码有误，请重试]]></value></msg>
+	<msg key="errors.action.register.ac.occupied"><value><![CDATA[这个注册码已经被使用过了]]></value></msg>
+	<msg key="errors.action.registerbycode.no.school"><value><![CDATA[你输入的注册码有误，没有与之对应的学校]]></value></msg>
+	<msg key="messages.action.registerbycode.succ"><value><![CDATA[注册帐号成功，请登录]]></value></msg>
+	<msg key="errors.action.admin.user.notexit"><value><![CDATA[这个用户不存在]]></value></msg>
+	<msg key="errors.action.admin.entry.notexit"><value><![CDATA[这篇日志不存在]]></value></msg>
+	<msg key="errors.action.admin.activate.nouser"><value><![CDATA[没有找到对应的用户]]></value></msg>
+	<msg key="message.action.admin.activate.ok"><value><![CDATA[激活成功]]></value></msg>
+	<msg key="errors.action.name.join.qmoon"><value><![CDATA[你参加了“女生也爱世界杯活动”，活动期间不能修改名字]]></value></msg>
+	<msg key="errors.action.livestudio.user.notexit"><value><![CDATA[没有这个用户，请重新输入]]></value></msg>
+	<msg key="messages.action.livestudio.upload.ok"><value><![CDATA[上传成功]]></value></msg>
+	<msg key="errors.action.livestudio.not.found"><value><![CDATA[没有这个作品]]></value></msg>
+	
+	<!-- for buaa -->
+	<msg key="messages.action.buaa.voted"><value><![CDATA[每个人只能投一票，你已经投过了：）]]></value></msg>
+	<msg key="messages.action.buaa.vote.star"><value><![CDATA[只有星级用户能够参加投票]]></value></msg>
+	<msg key="errors.action.buaa.not.found"><value><![CDATA[你投票的对象不存在]]></value></msg>
+	<msg key="messages.action.buaa.vote.succ"><value><![CDATA[你已经成功的投出了一票]]></value></msg>
+	<msg key="errors.action.name.join.buaa"><value><![CDATA[你参加了”北航卡拉ok大赛“，活动期间不能修改名字]]></value></msg>
+	
+	<!-- for vacation -->
+	<msg key="errors.action.vacation.dest.not.found"><value><![CDATA[没有这个目的地]]></value></msg>
+	<msg key="messages.action.vacation.join.ok"><value><![CDATA[你成功的选择了这个目的地]]></value></msg>
+	<msg key="messages.action.vacation.joined"><value><![CDATA[每人只能选择5个目的地，你已经有5个了]]></value></msg>
+	<msg key="messages.action.vacation.quit.ok"><value><![CDATA[你决定不去%s了]]></value></msg>
+	
+	<!-- vacation end -->
+	<msg key="messages.action.report.msg.ok"><value><![CDATA[你的举报信已经发给管理员了，谢谢你的支持。]]></value></msg>
+	<msg key="errors.action.thread.closed"><value><![CDATA[群管理员已经将该主题封闭，不能再回复了。]]></value></msg>
+	<msg key="messages.action.unverified.relay"><value><![CDATA[只有未验证用户才能执行这个操作]]></value></msg>
+	<msg key="messages.action.activated.relay"><value><![CDATA[只有已激活帐号才能执行这个操作]]></value></msg>
+	<msg key="messages.action.activatedverified.relay"><value><![CDATA[只有已验证已激活的帐号才能执行这个操作]]></value></msg>
+	<msg key="messages.action.verifyrequest.over"><value><![CDATA[每人只能发出两个验证申请，你已经发完了]]></value></msg>
+	<msg key="messages.action.verifyrequest.guest.notselected"><value><![CDATA[只能向星级用户发出验证申请]]></value></msg>
+	<msg key="messages.action.verifyrequest.suc"><value><![CDATA[向%s发出验证申请，请等待%s确认]]></value></msg>
+	<msg key="messages.action.verifyRequest.no"><value><![CDATA[没有这个验证申请]]></value></msg>
+	<msg key="messages.action.verifyRequest.accept"><value><![CDATA[你通过了%s的身份验证申请]]></value></msg>
+	<msg key="messages.action.verifyRequest.reject"><value><![CDATA[你拒绝了%s的身份验证申请]]></value></msg>
+	<msg key="messages.action.verifyRequest.cancel"><value><![CDATA[你取消了发给%s的身份验证申请]]></value></msg>
+	<msg key="messages.action.verifyRequest.end"><value><![CDATA[这个验证申请已经有结果了，不能取消]]></value></msg>
+	<msg key="messages.action.verified.relay"><value><![CDATA[抱歉，刚才的操作需要通过身份验证后才能进行，请使用以下方式搜索你认识的朋友并发出验证申请。每个人只能发出两个验证申请，当验证申请长时间没有结果的时候，可以取消申请。]]></value></msg>
+	<msg key="errors.action.verifybycode.school.unequal"><value><![CDATA[这个注册码对应的学校和你的学校不符]]></value></msg>
+	<msg key="errors.action.verifybycode.verified"><value><![CDATA[你已经是通过验证的用户了]]></value></msg>
+	<msg key="messages.action.verifybycode.succ"><value><![CDATA[你已经成功的通过了身份验证]]></value></msg>
+	<msg key="messages.selfdesc.default"><value><![CDATA[欢迎加入人人网。这是新手上路指南，看完后可<a href="/SelfDesc.do">修改涂鸦板</a>。\n\n<strong>第一步：</strong>请先<a href="/BasicInfo.do">完善你的个人资料</a>，完成后如下所示，你只需点击图中基本信息里的链接，就能很容易地找到你的高中校友、同班同学、师兄师姐、老乡，甚至是同一天生日的同学。\n\n<a href="/BasicInfo.do"><img style="border:1px solid #3b5998;" src="http://xnimg.cn/img/guide/step1.gif" alt="基本信息" /></a>\n\n<strong>第二步：</strong>你也可以通过<a href="/Search.do">搜索</a>找到你的同学，只需按照图示的方法输入他的姓名然后搜索。\n\n<a href="/Search.do"><img style="border:1px solid #3b5998;" src="http://xnimg.cn/img/guide/step2.gif" alt="搜索" /></a>\n\n<strong>第三步：</strong>如果你想邀请你的朋友加入人人网，可以点击<a href="/Invite.do">邀请</a>。\n\n<strong>第四步：</strong>人人网还有很多好玩的功能，你可以写<a href="/popblog.do">日志</a>，看<a href="/freshalbum.do">相册</a>，加入各种各样的<a href="/RandomTribe.do">群</a>，参加周围同学们组织的<a href="/GetEventList.do">活动</a>……\n\n<strong>第五步：</strong>如果你还有什么不懂，欢迎你向人人网管理员咨询，或者到新手上路群问问。\n\n<ul style="list-style:none;clear:both;line-height:24px;"><li style="float:left;text-align:center;"><a href="/GetTribe.do?id=1037"><img style="border:1px solid #3b5998;" src="http://xnimg.cn/img/guide/group.jpg" alt="新手上路群" /><br />新手上路群</a></li></ul>]]></value></msg>
+	
+	<!-- dispatch start -->
+	<msg key="fangle_config_path"><value><![CDATA[WEB-INF/conf/fangles_config.xml]]></value></msg>
+	<msg key="fangle_view_path"><value><![CDATA[WEB-INF/conf/fangles_view.xml]]></value></msg>
+	<!-- dispatch  end -->
+	
+	<!-- filter.properties begin -->
+	<msg key="filter_config_path"><value><![CDATA[WEB-INF/conf/filter/filter_config.xml]]></value></msg>
+	<msg key="filter_properties_path"><value><![CDATA[WEB-INF/conf/filter.properties]]></value></msg>
+	<msg key="filter_webtag_properties_path"><value><![CDATA[WEB-INF/conf/filter_webtag.properties]]></value></msg>
+	<msg key="filter_webtag_properties_path2"><value><![CDATA[WEB-INF/conf/filter_webtag2.properties]]></value></msg>
+	<msg key="filter_forbidtag_properties_path"><value><![CDATA[WEB-INF/conf/filter_forbid.properties]]></value></msg>
+	<msg key="filter_weighttag_properties_path"><value><![CDATA[WEB-INF/conf/filter_forweight.properties]]></value></msg>
+	<!-- filter.properties end -->
+	
+	<msg key="sys.path.index.blog"><value><![CDATA[/data/mvp/xiaonei/index_blog]]></value></msg>
+	<msg key="sys.path.index.topic"><value><![CDATA[/data/mvp/xiaonei/index_topic]]></value></msg>
+	<msg key="sys.path.index.mergeFactor"><value><![CDATA[10]]></value></msg>
+	<msg key="sys.path.index.maxBufferedDocs"><value><![CDATA[10]]></value></msg>
+	<msg key="sys.path.index.indexType"><value><![CDATA[clean]]></value></msg>
+	<msg key="sys.path.index.resultNum"><value><![CDATA[1000]]></value></msg>
+	<!-- search index -->
+	
+	<!-- email subscribe start, added by yao.hu -->
+	<msg key="messages.email.subscribe.addsub.error"><value><![CDATA[内部错误，请稍后再试]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.wrongid"><value><![CDATA[内部错误，请稍后再试]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.self"><value><![CDATA[您目前无法订阅自己的动态]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.exceed"><value><![CDATA[您目前最多可以添加5份订阅]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.readd"><value><![CDATA[请不要重复添加订阅]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.notfriend"><value><![CDATA[对方的隐私设置仅允许好友订阅]]></value></msg>
+    <msg key="messages.email.subscribe.addsub.needconfirm"><value><![CDATA[您的订阅请求已经发出，请等待对方确认]]></value></msg>
+    <!-- email subscribe  end -->
+	
+	<!-- share error -->
+	<msg key="error.share.action.user"><value><![CDATA[没有找到共享者]]></value></msg>
+	<msg key="error.share.action.url"><value><![CDATA[url地址不合法]]></value></msg>
+	
+	<msg key="messages.domain.name"><value><![CDATA[人人]]></value></msg>
+	<msg key="siteName"><value><![CDATA[人人]]></value></msg>
+	<msg key="fullSiteName"><value><![CDATA[人人网]]></value></msg>
+	<msg key="oppSiteName"><value><![CDATA[开心]]></value></msg>
+	<msg key="logoutUrl"><value><![CDATA[http://www.renren.com/Logout.do]]></value></msg>
+	<msg key="oppSiteNameAbbr"><value><![CDATA[kx]]></value></msg>
+	<msg key="siteNameAbbr"><value><![CDATA[rr]]></value></msg>
+
+	<msg key="messages.domain.title"><value><![CDATA[人人网 校内]]></value></msg>
+	<msg key="siteDescription"><value><![CDATA[人人网 校内是一个真实的社交网络，联络你和你周围的朋友。 加入人人网校内你可以:联络朋友，了解他们的最新动态；和朋友分享相片、音乐和电影；找到老同学，结识新朋友；用照片和日志记录生活,展示自我。]]></value></msg>
+	<msg key="siteKeywords"><value><![CDATA[Xiaonei,Renren,校内,大学,同学,同事,白领,个人主页,博客,相册,群组,社区,交友,聊天,音乐,视频,校园,人人,人人网]]></value></msg>
+</domain-identified>

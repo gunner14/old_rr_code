@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categories>
+	<category id="1255.1254" value="invite_normal_1255.vm" />
+	<category id="1244.1243" value="invite_remind.vm"/>
+	<category id="1220" value="invite_remind_register_1.vm"/>
+	<category id="1223" value="invite_remind_register_2.vm"/>
+	<category id="1288.1287" value="invite_normal_1288.vm"/>
+	<category id="1266.1265" value="invite_normal_1266.vm"/>
+	<category id="1219.1218" value="invite_app_1219.vm"/>
+	<category id="1268.1267" value="invite_app_1268.vm"/>
+	<category id="1299.1298" value="invite_app_carpark.vm"/>
+	<category id="1221.class" value="invite_class_1221.vm"/>
+	<category id="1259.1258" value="invite_app_1257.vm"/>
+	<category id="1233.1232" value="invite_app_1233.vm"/>
+	<category id="1252.1251" value="invite_app_1252.vm"/>
+	<category id="1229.1228" value="invite_app_1229.vm"/>
+	<category id="def" value="invite_def.vm"/>
+	<category id="msntab" value="invite_msntab.vm"/>
+	<category id="adrbk" value="invite_adrbk.vm"/>
+	<category id="bailingvip" value="invite_bailingvip.vm"/>
+</categories>

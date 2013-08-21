@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-root-pom</artifactId>
+	<version>1.0-SNAPSHOT</version>	
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.renren</groupId>
+  <artifactId>renren-sns-wiki-xoa-build</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>renren-sns-wiki-xoa-build</name>
+  <url>http://maven.sns.d.xiaonei.com/${artifactId}/</url>
+
+  <modules>
+	<module>renren-sns-wiki-model</module>
+	<module>renren-sns-wiki-service</module>
+	<module>renren-sns-wiki-xoa-api</module>
+	<module>renren-sns-wiki-xoa</module>
+  </modules>
+</project>

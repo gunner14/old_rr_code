@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 <webapp>";
+  exit 3;
+fi
+
+WEBAPP=$1
+
+rsync -ztrvlC $WEBAPP/META-INF/revxxx.data/* xnimg@10.3.17.37:/data/static/
+

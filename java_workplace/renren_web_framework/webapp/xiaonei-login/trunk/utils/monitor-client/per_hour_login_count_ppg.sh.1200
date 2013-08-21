@@ -1,0 +1,21 @@
+#$/bin/sh
+
+rt=""
+h=`date +%k`; 
+for i in `seq $h`
+do
+	now=`date +%Y%m%d%H`
+	if test $i -lt "10"
+	then
+		now=`date +%Y%m%d`"0"$i
+	else
+		now=`date +%Y%m%d`$i
+	fi
+	cou=`grep -c "status:loginOk" /data/resin/logs/passport/passportServer.log.${now}*`
+	if test -z "$cou"
+	then
+		cou="0"
+	fi
+	rt="$rt""$i"":""$cou"";"
+done
+echo $rt | tee $1

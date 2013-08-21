@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<logger name="xnlog.404" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="Socket" />
+	</logger>
+	<logger name="xnlog.500" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="Socket" />
+	</logger>
+	<logger name="net.paoding.rose" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="rose" />
+	</logger>
+	<logger name="org.springframework" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="com.xiaonei.page.dao" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page" />
+	</logger>
+	<!-- 皇甫红明开放注册测试log -->
+	<logger name="OPEN_REG" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="open_reg" />
+	</logger>
+	<logger name="HFHM_COMMON" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="hfhm_common" />
+	</logger>
+	<logger name="com.xiaonei.page.domain.cache" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="cache" />
+	</logger>
+	<logger name="com.xiaonei.page.service" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="com.xiaonei.page.controllers" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="PERFORMANCE" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="performance" />
+	</logger>
+	<logger name="STORM" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="storm" />
+	</logger>
+	<logger name="xceStat" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="xce" />
+	</logger>
+	<logger name="STDOUT" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="STDERR" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="XNPAGE" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page" />
+	</logger>
+	<logger name="PAGEXOA" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="pagexoa" />
+	</logger>
+	<logger name="com.xiaonei.page.xoa" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="pagexoa" />
+	</logger>
+	<logger name="feed" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="feedLogs" />
+	</logger>
+	<logger name="SUPERADMIN" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="superadminLogs" />
+	</logger>
+	<logger name="ADMIN" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="adminLogs" />
+	</logger>
+	<logger name="SPAM_FORBIDDEN" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="spam_forbidden" />
+	</logger>
+	<logger name="SPAM_SUSPECT" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="spam_suspect" />
+	</logger>
+	<logger name="PAGE_STATISTICS" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page_statistics" />
+	</logger>
+	<logger name="PAGE_REG" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="page_reg" />
+	</logger>
+
+	<logger name="FANS_COUNT_LIMIT" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="fans_count_limit" />
+	</logger>
+	<logger name="SHOPPINFG_IMPORT_PRODUCT" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ShoppingImport" />
+	</logger>
+	<logger name="SHOPPINFG_COMPARE_PRICE" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ShoppingComparePrice" />
+	</logger>
+	<logger name="SHOPPINFG_PHOTO_UPLOAD_SUCC" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ShoppingUploadPhotoSucc" />
+	</logger>
+	<logger name="SHOPPINFG_PHOTO_UPLOAD_FAILURE" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ShoppingUploadPhotoFailure" />
+	</logger>
+	<logger name="com.xiaonei.page.util.MemcacheWatcher" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="memcacheWatcher" />
+	</logger>
+	<appender name="open_reg" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/hongming.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="3" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="hfhm_common" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/hfhmcommon.log" />
+		<param name="maxFileSize" value="100MB" />
+		<param name="maxBackupIndex" value="3" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="root" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_root.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d|%p|%c{1}|%m%n" />
+		</layout>
+	</appender>
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} - %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="stderr" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} - %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="page" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xiaonei_page.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+		<appender name="pagexoa" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xiaonei_pagexoa.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<!-- Rose -->
+	<appender name="rose" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/rose.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t %p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="spam_forbidden" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_spam_forbidden.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n" />
+		</layout>
+	</appender>
+	<appender name="spam_suspect" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_spam_suspect.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS},%m%n" />
+		</layout>
+	</appender>
+	<appender name="page_statistics" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_statistics.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="xce" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_xce.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="feedLogs" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_feeds.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="superadminLogs" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_superadmin.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="adminLogs" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_admin.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="cache" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_cache.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="storm" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_storm.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="performance" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/page_performance.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="page_reg" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/page_reg.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="fans_count_limit" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/fans_limit.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="Socket" class="org.apache.log4j.net.SocketAppender">
+		<param name="remoteHost" value="10.3.19.141" />
+		<param name="port" value="9123" />
+		<param name="Threshold" value="ERROR" />
+		<param name="ReconnectionDelay" value="6000" />
+		<param name="LocationInfo" value="true" />
+	</appender>
+	<appender name="ShoppingImport" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/ShoppingImport.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="ShoppingComparePrice" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/ShoppingComparePrice.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="ShoppingUploadPhotoSucc" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/shoppingUploadPhotoSucc.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="ShoppingUploadPhotoFailure" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/shoppingUploadPhotoFailure.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="SNSChuanbo" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/snsChuanbo.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="memcacheWatcher" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/memcacheWatcher.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<level value="WARN" />
+		<appender-ref ref="root" />
+	</root>
+
+
+</log4j:configuration>

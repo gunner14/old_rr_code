@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strategy-config>
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionSpace">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.OperationBan
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.GoodDay
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace
+			</strategy>
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionActive">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Active
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Active
+			</strategy>
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionActived">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+			</strategy>
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionConfirm">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm
+			</strategy>
+		</permission>
+	</module>
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionAlbum">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SuperAdmin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionPhotoComment">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SuperAdmin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Active
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+
+
+		</permission>
+	</module>
+
+
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionBlog">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionBlogComment">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Active
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+	</module>
+
+
+
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionGossip">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SuperAdmin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Active
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace
+			</strategy>
+
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionMessage">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+	</module>
+
+
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionPoke">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+	</module>
+
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionRequestFriend">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.FriendFriend
+			</strategy>
+		</permission>
+	</module>
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionHead">
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+
+
+		</permission>
+	</module>
+	<module className="com.xiaonei.platform.core.opt.permission.impl.PermissionBlock">
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.True
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+	</module>
+	<module
+		className="com.xiaonei.platform.core.opt.permission.impl.PermissionFollow">
+
+		<permission action="select">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="update">
+			<strategy>
+
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="delete">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser
+			</strategy>
+
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Admin
+			</strategy>
+		</permission>
+		<permission action="insert">
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser
+			</strategy>
+			<!--
+				<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Actived
+				</strategy> <strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed
+				</strategy>
+			-->
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.BlockEachOther
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate
+			</strategy>
+			<strategy>
+				com.xiaonei.platform.core.opt.permission.strategy.impl.True
+			</strategy>
+		</permission>
+	</module>
+
+
+
+	<strategy>
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SameUser"
+			value="同一个用户" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.NotSameUser"
+			value="你不能对自己进行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Admin"
+			value="管理员" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Actived"
+			value="你还没有激活，你不能执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Active"
+			value="对方还没有激活，你不能执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Confirmed"
+			value="你还没有被确认，你不能执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Confirm"
+			value="对方还没有被确认，你不能执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SameStage"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace.Block"
+			value="对方把你加入了黑名单你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace.Stage"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace.Network"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.IntimateSpace.Friend"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate.Block"
+			value="对方把你加入了黑名单你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate.Stage"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate.Network"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Intimate.Friend"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.FriendFriend"
+			value="由于对方的隐私设置，你不能加他为好友" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.Default"
+			value="由于对方的隐私设置，你没有权限执行该操作。" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.GouYinGuo"
+			value="对方没有给你发过消息/打招呼/加朋友申请你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser.Suicide"
+			value="由于对方注销了你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser.Banned"
+			value="由于对方被封禁你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser.Active"
+			value="由于对方没有激活你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.SocietyUser.Confirm"
+			value="由于对方没有被确认你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.GoodDay"
+			value="由于对方没有被确认你不能执行该操作" />
+		<message
+			key="com.xiaonei.platform.core.opt.permission.strategy.impl.StarUser"
+			value="校内网是一个真实的网络，你还不是&lt;a href='http://xiaonei.com/info/Help.do#help1_15
+' target='_blank'&gt;星级用户&lt;/a&gt;不能执行该操作。"
+			isRedirect="true" redirectUrl="http://www.xiaonei.com" />
+	</strategy>
+
+</strategy-config>
+

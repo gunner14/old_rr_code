@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link_conf>
+	<base_link>http://wwv.renren.com/xn2.do?iid=</base_link>
+	<common>
+		<rt>1</rt>
+		<ss name="默认链接" value="80344"></ss>
+		<ss name="现在同事" value="80344"></ss>
+		<ss name="以前同事" value="80344"></ss>
+		<ss name="大学同学" value="80344"></ss>
+		<ss name="家人亲戚" value="80344"></ss>
+		<ss name="挚交好友" value="80344"></ss>
+		<ss name="普通朋友" value="80344"></ss>
+		<ss name="中小学同学" value="80344"></ss>
+	</common>
+	<app>
+		<rt>2</rt>
+		<ss name="默认链接" value="80345"></ss>
+		<ss name="现在同事" value="80345"></ss>
+		<ss name="以前同事" value="80345"></ss>
+		<ss name="大学同学" value="80345"></ss>
+		<ss name="家人亲戚" value="80345"></ss>
+		<ss name="挚交好友" value="80345"></ss>
+		<ss name="普通朋友" value="80345"></ss>
+		<ss name="中小学同学" value="80345"></ss>
+	</app>
+</link_conf>

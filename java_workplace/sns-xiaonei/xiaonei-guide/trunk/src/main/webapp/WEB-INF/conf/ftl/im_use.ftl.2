@@ -1,0 +1,27 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+        <div class="no-interact-pic">
+                <a target="_blank" href="http://im.renren.com/desktop/ver26/rrsetup.exe?double"><img class="photo" src="http://im.renren.com/widget/newsfeed-01.png"/></a>
+        </div>
+        <div class="no-interact">
+        <#include "1|4|1">
+        <h3>
+        <#list f_from_name as n>
+                <a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}" stats="NF_People">${n}</a>
+        </#list> ${f_im_title[0]}
+        </h3>
+        <div class="content">
+                <p>${f_im_body[0]}</p>
+        </div>
+        <div class="details">
+                <div class="legend">
+                        <span class="duration"><@format>${f_time[0]}</@format></span>
+                        <a href="${f_im_url[0]}" target="_blank">【立即免费下载】</a>
+                </div>
+        </div>
+        </div>
+<#include "1|1|1">
+</li>
+</#compress>

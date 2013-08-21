@@ -1,0 +1,4 @@
+
+
+###### Linux load average warn value##########
+LEVEL_WARN=50

@@ -1,0 +1,24 @@
+<div>
+Hi,我是$!{hostname},我发现了一个好玩的网站,很多朋友都在上面,大家玩的很过瘾<br/><br/>
+点击这个链接加我为好友,就可以加入我们<br/>
+<a href="http://click.xiaonei.com/m.jsp?d=$!{mills}&t=1257&u=$!{monitorUrl_31257}"/>
+	http://click.xiaonei.com/m.jsp?d=$!{mills}&t=1257&u=$!{monitorUrl_31257}
+</a>
+</div>
+<br/><br/><br/>
+<div>
+我已经有好友$!{friendscount}个:
+#set($friendList = $!{friendList})
+	#foreach($value in $friendList)
+	#set($key = $value)
+	<span>$key.getName()</span>
+	#end
+	………
+<br/>
+<br/>
+还有$!{album_count}张照片  $!{blog_count}篇日志  $!{gossip_count}条留言
+</div>
+<br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<div>此邮件由$!{hostname}通过校内网发送给你,请勿直接回复。</div>
+校内网 <a href="http://www.xiaonei.com">http://www.xiaonei.com</a>

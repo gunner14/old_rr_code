@@ -1,0 +1,38 @@
+CHANGE LOGS
+
+20100806
+1. Change the capacity of ExpireWheels used in pipelines from 2^18 to 2^14. 2^14 is enough and 2^18 is a waste of memory.
+
+20100906
+1. Bug fix: lose parameters when reading data from request body which is larger than 8186 bytes.
+2. Config URIEncoding="UTF-8" in server.xml to solve the URL encoding problem.
+3. NettyRequestAdapter.java modified in xoa-server-xxx.jar. use bytes instead of string when copying header data, to solve the URL encoding problem.
+4. add setenv.sh in bin/, set environment encoding.
+
+20110104
+1. Now compatible with paoding-spdy.
+2. Bug fix: local address and remote address info not properly set to org.apache.coyote.Request
+
+20110124
+1. Add postgresql-8.1-407.jdbc3.jar to lib.
+2. Add ulimit -n and -s setting to bin/setenv.sh.
+
+20110413
+1. Add XOA Admin Console plugin to xoa-tomcat.
+
+20110414
+1. bin/xoa-admin.sh is enhanced. Auto detect whether $JAVA_HOME is set.
+
+20110419
+1. Use environment variable CATALINA_HOME to locate conf/server.xml.
+2. Command 'server list this' enhanced.
+
+20110420
+1. Change shutdown port from 8005 to 8105, to avoid conflict to other tomcat instances.
+2. Change maxThreads of the thread pool from 2000 to 1024.
+3. /lib/log4j.properties is added and well configured for xoa-server.
+4. Connection status change log is added. 
+5. package-xoa-tomcat.sh is added.
+
+20110524
+1. New command added to Xoa-Console: server enable|disable [serviceId] [ip:port]

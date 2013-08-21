@@ -1,0 +1,14 @@
+
+if [ -f ~/.nickname ]; then
+	NICKNAME=$(cat ~/.nickname)
+	PS1="\[\e]2;${NICKNAME}:\w\a\][\u@\h \[\033[01;31m\]${NICKNAME}\[\033[0m\] \W]\$ "
+fi
+
+ICE_HOME=/opt/Ice-3.3
+PATH=$ICE_HOME/bin:$PATH
+LANG=en_US.utf8
+EDITOR=vim
+
+export NICKNAME PS1 ICE_HOME PATH LANG EDITOR
+
+

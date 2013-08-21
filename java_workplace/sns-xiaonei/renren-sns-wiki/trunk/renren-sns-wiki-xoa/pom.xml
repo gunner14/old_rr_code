@@ -1,0 +1,235 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>renren-sns-wiki</artifactId>
+		<groupId>com.renren</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.renren</groupId>
+	<artifactId>renren-sns-wiki-xoa</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>renren-sns-wiki-xoa</name>
+	<url>http://maven.sns.d.xiaonei.com/${artifactId}/</url>
+
+	<scm>
+		<connection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-xoa</connection>
+		<developerConnection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-xoa</developerConnection>
+		<url>http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-web</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>yi.li</name>
+			<email>yi.li@renren-inc.com</email>
+			<organization>renren.com</organization>
+			<organizationUrl>http://www.renren.com</organizationUrl>
+			<url>http://www.renren.com/profile.do?id=242679716</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<name>weiwei.wang</name>
+			<email>weiwei.wang@renren-inc.com</email>
+			<organization>renren.com</organization>
+			<organizationUrl>http://www.renren.com</organizationUrl>
+			<url>http://www.renren.com/profile.do?id=200778561</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>jira</system>
+		<url>http://jira.d.xiaonei.com/</url>
+	</issueManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva.snapshots</id>
+			<name>development</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/</url>
+		</repository>
+		<snapshotRepository>
+			<id>archiva.snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<finalName>sns_wiki_xoa</finalName>
+		<defaultGoal>package</defaultGoal>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>.svn</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- 编译配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+					<showDeprecation>false</showDeprecation>
+					<showWarnings>false</showWarnings>
+					<meminitial>512m</meminitial>
+					<maxmem>1024m</maxmem>
+					<compilerArguments>
+						<sourcepath>src/main/java</sourcepath>
+						<sourcepath>src/main/resources</sourcepath>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<!-- 资源文件配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<outputDirectory>target/classes</outputDirectory>
+				</configuration>
+			</plugin>
+			<!-- 资源文件处理 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+						<configuration>
+							<dest>target/classes/</dest>
+							<src>src/main/resources/</src>
+							<encoding>utf-8</encoding>
+							<includes>
+								<param>*.xml</param>
+								<param>*.properties</param>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- ? -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose>*</Rose>
+						</manifestEntries>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- 编码设置 -->
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<!--failOnError>true</failOnError -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>renren-sns-wiki-xoa-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- Wiki Service包 -->
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>renren-sns-wiki-service</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-sns-core</artifactId>
+				</exclusion>
+				<!-- 这个包里面有一个validator实际上是web才用到，在这里会引起类加载的问题，因此去掉，以后再引入此包时也需要额外注意 by 
+					yi.li -->
+				<!-- 咨询过志亮(qieqie.wang)后发现通过设置LoadScope可以解决，只加载wiki域下的context，这里先避免引入不需要的包 yi.li -->
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-antispam</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.xiaonei.ugc</groupId>
+					<artifactId>photo-xoa-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- XOA server包 -->
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>xoa2-serverlib</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 架构组修改了thrift包，但是由于依赖问题导致始终拿到的是0.8版本的包，在这里强制引入依赖 -->
+		<dependency>
+			<groupId>org.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 切词包 -->
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-adapter</artifactId>
+			<version>1.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.renren</groupId>
+					<artifactId>renren-sns-pagedata-service</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 高锋开发的分词包 -->
+		<dependency>
+	    	<groupId>com.renren</groupId>
+			<artifactId>renren-word-seg</artifactId>
+			<version>1.0-SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+        	<groupId>com.renren</groupId>
+        	<artifactId>renren-wiki-word</artifactId>
+        	<version>1.0-SNAPSHOT</version>
+		</dependency>
+	    <!-- 高锋开发的分词包end -->
+	    
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.7</version>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.3-603.jdbc4</version>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

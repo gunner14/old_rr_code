@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<main>
+
+	<normal>
+		<random>0</random>
+		<category>1255.1254-0-21255</category>
+	</normal>
+
+	<apps>
+		<special>
+			<category >1229.1228-20805-31229;1244.1243-19-0;1299.1298-28-0;1233.1232-19974-31233-我是#name#，我刚养了只狗^_^</category>
+		</special>
+		<appnormals>
+			<random>2</random>
+			<category>1259.1258-0-31259;1252.1251-0-31252</category>
+		</appnormals>
+	</apps>
+
+</main>

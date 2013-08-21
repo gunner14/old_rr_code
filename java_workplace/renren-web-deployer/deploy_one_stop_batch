@@ -1,0 +1,124 @@
+#!/bin/bash
+
+if [ $# -ne 6 ]
+then
+  echo "Usage: $0 <group> <artifact> <version> <history> <bussiness> <inner/outer>";
+  exit 3;
+fi
+
+R_GROUP=$1
+R_ARTIFACT=$2
+R_VERSION=$3
+R_HISTORY=$4
+BUSSINESS=$5
+NETWORK=$6
+LOCAL_UNIQ_DIR=${R_GROUP}_${R_ARTIFACT}_${R_VERSION}_${R_HISTORY}
+#[[ -d ${LOCAL_UNIQ_DIR} ]] || mkdir $LOCAL_UNIQ_DIR  
+
+. ${PWD}/nginx_conf/bussiness_parameter.conf
+. ${PWD}/nginx_conf/process_parameter.conf
+. ${PWD}/nginx_conf/${BUSSINESS}_parameter.conf
+
+./generate_and_sync_all
+
+if [ ${NETWORK} == "inner" ] && [ ${has_inner} != "yes" ]
+then
+	echo "${BUSSINESS} no inner!"
+	exit -1;
+fi
+
+echo -e "\e[1;31mDo you want \e[1;34mdeploy_from_radis\e[0m \e[1;31mcontinue? [yes/no] \e[0m \c"
+read radis;
+echo -e "\e[1;31mI will \e[1;34mdeploy_from_radis\e[0m \e[1;31mnow! \e[0m"
+#radis="yes"
+if [ ${radis} == "yes" ]
+then
+	#echo "deploy_from_radis!"
+	export CLASSPATH="radis-client/:radis-client/*"
+	java radis.client.Cli get $R_GROUP $R_ARTIFACT $R_VERSION $R_HISTORY $LOCAL_UNIQ_DIR
+elif [ ${radis} != "no" ]
+then
+	echo "input [yes/no], please try again!"
+	exit -1;
+fi
+
+echo -e "\e[1;31mDo you want \e[1;34mdeploy_xnimg\e[0m \e[1;31mcontinue? [yes/no] \e[0m \c"
+read xnimg;
+echo -e "\e[1;31mI will \e[1;34mdeploy_xnimg\e[0m \e[1;31mnow! \e[0m "
+#xnimg="yes"
+if [ ${xnimg} == "yes" ]
+then
+	if [ -d ${LOCAL_UNIQ_DIR} ]
+	then
+		echo " deploy_xnimg now!";
+		./deploy_xnimg ${LOCAL_UNIQ_DIR}
+	else
+		echo "ERROR: ${LOCAL_UNIQ_DIR} not exist!";
+		exit -1;
+	fi
+elif [ ${xnimg} != "no" ]
+then
+	echo "input [yes/no], please try again!"
+	exit -1;
+fi
+
+IPS=$(eval echo \${${NETWORK}_ip})
+PROCESS=$(eval echo \${${NETWORK}_process})
+STAY=$(eval echo \${${NETWORK}_stay_darklanuch})
+
+for m in ${IPS}
+do
+for p in ${PROCESS}
+do
+	./nginx_conf/nginx_config_generator ${BUSSINESS} ${p} ${m} ${STAY}
+	while [ 1 ]
+	do
+		echo -e "\e[1;31mDo you want \e[1;34m${p} ${m}\e[0m \e[1;31mcontinue? [yes/no] \e[0m \c"
+		read reply;
+		echo -e "\e[1;31mI will \e[1;34m${p} ${m}\e[0m \e[1;31mnow! \e[0m"
+		#reply="yes"
+		if [ ${reply} == "yes" ]
+		then
+			#echo "${p} ${m} ..."
+			for i in ${machine_list}
+			do
+				TARGET=www$i.xce
+				echo "sync nginx confs www$i.xce"
+				./sync_nginx_confs $TARGET
+			done
+
+			if [ ${p} == "cut" ]
+			then
+				if [ -d ${LOCAL_UNIQ_DIR} ]
+				then
+					echo "deploy_from_disk ${LOCAL_UNIQ_DIR} ${m}"
+					./deploy_from_disk ${LOCAL_UNIQ_DIR} ${m}
+					#ssh web@${m} "tail -f ~/run/logs/catalina.out"
+					while [ $(./sucess_monitor ${m}) != "yes" ]
+					do 
+						echo "tomcat is starting..."
+						sleep 10
+					done
+					echo "tomcat is started!"
+
+				else
+					echo "${LOCAL_UNIQ_DIR} not exist!"
+					exit -1;
+				fi
+			else
+				echo "warmer the tomcat ${m}"
+				sleep 3
+				#ssh web@${m} "tail -f ~/run/logs/catalina.out"
+			fi
+			break;
+		elif [ ${reply} == "no" ]
+		then
+			echo "Skip ${p} ${m} step!"
+			break;
+		fi
+	done
+
+done
+done
+
+

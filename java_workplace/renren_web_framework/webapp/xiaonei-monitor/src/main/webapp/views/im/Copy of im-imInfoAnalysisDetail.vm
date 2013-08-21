@@ -1,0 +1,216 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>校内web监控</title>
+<style type="text/css">
+	*{
+		font-size:12pt;
+		margin:0;
+		padding:0;
+	}
+	a{color:#005EAC;}
+	a:link.a:visited{color:#005EAC;text-decoration:none;}
+	#wrapper{width: 100%; }
+	#header{  height: 134px;padding-left:10px;  background:url(/img/bg.gif) repeat-x ;overflow:hidden;  }
+	#header .logo{width: 270px;height: 59px;margin:0 auto;margin-top:25px;  background:url(/img/xnlogo.png) no-repeat ;   }
+	#header .xn-logo{float:left;  width: 114px; height: 33px;margin-top:40px;background:url(/img/logo.png) no-repeat ;   }
+	#header .bar{clear:both; height: 25px;padding-top:12px; }
+	#header .bar select{width: 120px; }
+	#header .bar a{color:#FFF;text-decoration:none;margin-left:15px;   }
+	#header .bar a:hover{text-decoration:underline; }
+
+	.input-submit{width: 100px;height: 24px;padding-bottom:4px;background-color:#005eac ;border:1px solid #FFF;color:#FFF;font-size:12px; cursor:pointer }
+	#main {overflow:hidden}
+	#main li{display:block;float:left;width:355px;padding-bottom:10px;text-align:center}
+	#main li a{display:block}
+</style>
+</head>
+<body>
+<!--
+  <div id="wrapper">
+  -->
+	<div id="header">
+		<div class="xn-logo"></div>
+			<div class="logo"></div>
+		<div class="bar"> 
+	 	<strong><a href="/http/overtime/listOvertime">Http 监控</a></strong>
+	 	<strong><a href="/db/sql_Jrobin/listBiz">SQL 监控</a>  </strong>
+		<strong><a href="/http/error/httpErr">Http404/500监控</a> </strong>       
+	 	
+	</div>
+	</div>
+	<div id="main">
+	</div>
+	<div>
+	<form>
+	开始时间：
+	<select name="byear">
+		#foreach ($item in [2009..2022])
+			<option value="${item}" 
+		#if($timeParam.byear == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>
+	年
+	<select name="bmonth">
+		#foreach ($item in [1..12])
+			<option value="${item}" 
+		#if($timeParam.bmonth == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+		
+    </select>月
+	<select name="bday">
+		#foreach ($item in [1..31])
+			<option value="${item}" 
+		#if($timeParam.bday == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+    </select>日
+	<select name="bhour">
+		#foreach ($item in [0..23])
+			<option value="${item}" 
+		#if($timeParam.bhour == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="bminute">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.bminute == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="bsecond">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.bsecond == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>
+	
+	～
+	结束时间：
+	<select name="eyear">
+		
+		#foreach ($item in [2009..2022])
+			<option value="${item}" 
+		#if($timeParam.eyear == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+    </select>
+	年
+	<select name="emonth">
+		#foreach ($item in [1..12])
+			<option value="${item}" 
+		#if($timeParam.emonth == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>月
+	<select name="eday">
+		#foreach ($item in [1..31])
+			<option value="${item}" 
+		#if($timeParam.eday == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+    </select>日
+	<select name="ehour">
+		#foreach ($item in [0..23])
+			<option value="${item}" 
+		#if($timeParam.ehour == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="eminute">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.eminute == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+	</select>:
+		<select name="esecond">
+		#foreach ($item in [0..59])
+			<option value="${item}" 
+		#if($timeParam.esecond == $item)
+			selected="true"
+		#end
+		/>${item}
+		#end
+        </option>
+        
+	</select><br/>
+	<ul>
+	<li>查询内容：
+	<select name="type" 
+		<option value="dns" 
+			#if($type=="dns")
+			selected="true"
+			#end
+			/>dns		
+		<option value="url" 
+			#if($type=="url")
+			selected="true"
+			#end
+			/>url		
+	</select>	
+	</li>
+	<li>
+	<input type="hidden" name="remoteHost" value="$remoteHost"/>
+	<input type="submit" value="查看"/></li>
+	</ul>
+	
+    </form>
+    </div >
+    <table>
+    	<tr>
+    	<td>用户IP</td>
+    	<td>用户的地址</td>
+		<td>DNS域名</td>
+		<td>DNS IP</td>
+		<td>DNS IP地址</td>
+		<td>消耗时间</td>
+		<td>发生时间</td>
+		<td>类型</td>
+        </tr>
+		#foreach ($mostSlowIMInfoDetail in ${mostSlowIMInfoDetailList})
+		<tr>
+		<td>${mostSlowIMInfoDetail.remoteHost}</td>
+		<td>${mostSlowIMInfoDetail.remoteLocation}</td>
+		<td><a href="urlAndLocation?remoteHost=${mostSlowIMInfoDetail.urlOrHost}&byear=$timeParam.byear&bmonth=$timeParam.bmonth&bday=$timeParam.bday&bhour=$timeParam.bhour&bminute=$timeParam.bminute&bsecond=$timeParam.bsecond&ehour=$timeParam.ehour&eminute=$timeParam.eminute&esecond=$timeParam.esecond&eyear=$timeParam.eyear&emonth=$timeParam.emonth&eday=$timeParam.eday&type=$type&url=${mostSlowIMInfoDetail.urlOrHost}">${mostSlowIMInfoDetail.urlOrHost}</a></td>
+		<td>${mostSlowIMInfoDetail.IP}</td>
+		<td>${mostSlowIMInfoDetail.location}</td>
+		<td>${mostSlowIMInfoDetail.costTime}</td>
+		<td>${mostSlowIMInfoDetail.happenTime}</td>
+		<td>${mostSlowIMInfoDetail.type}</td>
+		#end
+</body>
+</html>

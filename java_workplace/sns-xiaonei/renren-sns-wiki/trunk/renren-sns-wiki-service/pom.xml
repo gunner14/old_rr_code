@@ -1,0 +1,304 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>com.renren</groupId>
+		<artifactId>renren-sns-wiki</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.renren</groupId>
+	<artifactId>renren-sns-wiki-service</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>renren-sns-wiki-service</name>
+	<url>http://maven.sns.d.xiaonei.com/${artifactId}/</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<scm>
+		<connection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-service</connection>
+		<developerConnection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-service</developerConnection>
+		<url>http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-service</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>yi.li</name>
+			<email>yi.li@renren-inc.com</email>
+			<organization>renren.com</organization>
+			<organizationUrl>http://www.renren.com</organizationUrl>
+			<url>http://www.renren.com/profile.do?id=242679716</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<name>weiwei.wang</name>
+			<email>weiwei.wang@renren-inc.com</email>
+			<organization>renren.com</organization>
+			<organizationUrl>http://www.renren.com</organizationUrl>
+			<url>http://www.renren.com/profile.do?id=200778561</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>jira</system>
+		<url>http://jira.d.xiaonei.com/</url>
+	</issueManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva.snapshots</id>
+			<name>development</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/</url>
+		</repository>
+		<snapshotRepository>
+			<id>archiva.snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<defaultGoal>package</defaultGoal>
+		<plugins>
+			<!-- 编译使用1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<verbose>true</verbose>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<sourcepath>
+							${project.basedir}/src/main/java
+						</sourcepath>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose>*</Rose>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- 对资源文件和xml的native2asccii处理 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+						<configuration>
+							<dest>target/classes/resources/</dest>
+							<src>src/main/resources/</src>
+							<encoding>utf-8</encoding>
+							<includes>
+								<param>*.xml</param>
+								<param>*.properties</param>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>renren-sns-wiki-model</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- core包  -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- XCache依赖  -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-xcache</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- Jade依赖  -->
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose-jade</artifactId>
+		</dependency>
+		<!-- 数据中心数据库 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-datasource4jade</artifactId>
+		</dependency>
+		<!-- 引入aspectj rt和weaver包 为了使用其annotion进行AOP，主要用于delegator性能监控 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>
+		<!--
+			<dependency> <groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId> <version>2.2.2</version>
+			</dependency>
+		-->
+		<!-- 引入perf4j做性能监控 -->
+		<dependency>
+			<groupId>org.perf4j</groupId>
+			<artifactId>perf4j</artifactId>
+		</dependency>
+		<!-- JSON lib -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+		</dependency>
+		<!-- JSON包有依赖 -->
+		<dependency>
+			<groupId>net.sf.ezmorph</groupId>
+			<artifactId>ezmorph</artifactId>
+		</dependency>
+		<!-- 根据新鲜事ID获取新鲜事相关依赖 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-feed</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-status-service</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.renren</groupId>
+					<artifactId>renren-sns-lifeevent</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 敏感词提交依赖,另外还依赖xiaonei-ugc-model和xiaonei-commons-gid-util 在下面已经添加 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-admin-api</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-status-service</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-blog-service</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>renren-share-service</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-group-service</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.paoding</groupId>
+					<artifactId>paoding-rose</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 敏感词依赖xiaonei-admin-api依赖Share类,需要加入这个依赖 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-ugc-model</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+				<!--
+					xoa需要下面这个依赖,加上这个依赖 <exclusion> <groupId>com.renren</groupId>
+					<artifactId>retain-base</artifactId> </exclusion>
+				-->
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-ubb</artifactId>
+				</exclusion>
+
+				<!--
+					解析@需要,加上这个依赖 <exclusion> <groupId>com.xiaonei</groupId>
+					<artifactId>renren-ugc-commons-tools</artifactId> </exclusion>
+				-->
+				<!-- 解析@需要去掉这个依赖 -->
+				<exclusion>
+					<groupId>com.xiaonei</groupId>
+					<artifactId>xiaonei-friend-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.jackson</groupId>
+					<artifactId>jackson-core-lgpl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.xiaonei.ugc</groupId>
+					<artifactId>ugc-doingubb-util</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 敏感词依赖xiaonei-admin-api依赖Type类,需要加入这个依赖 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-gid-util</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 解析表情依赖 -->
+		<dependency>
+			<groupId>com.xiaonei.ugc</groupId>
+			<artifactId>ugc-doingubb-util</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- 分享的xoa -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xoa-share-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 获取photo的xoa依赖 -->
+		<dependency>
+			<groupId>com.xiaonei.ugc</groupId>
+			<artifactId>photo-xoa-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 用于过滤html标签 -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

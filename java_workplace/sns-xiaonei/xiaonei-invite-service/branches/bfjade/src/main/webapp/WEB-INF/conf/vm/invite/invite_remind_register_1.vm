@@ -1,0 +1,10 @@
+<!--
+tip:for invitor who has send email for her
+
+@author seraph
+-->
+<blockquote>
+	$!{hostname}接受了你的邀请，成功注册了校内并已经加你为好友，快去打个招呼吧！<br/><a href = "http://click.xiaonei.com/m.jsp?d=$!{mills}&t=$!{t}&u=$!{monitorUrlMain}" target="_blank">http://www.xiaonei.com</a>
+</blockquote>
+<br/><br/>
+$!{hostname}<br/>$!{year}年$!{month}月$!{day}日<br/><br/><br/>

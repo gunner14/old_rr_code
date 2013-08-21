@@ -1,0 +1,24 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" target="_blank" stats="NF_People">${f_from_name[0]}</a> 发表影评 <a href="${f_movie_mark_url[0]}&ref=${vType}" target="_blank">${f_movie_mark_title[0]}</a>
+	</h3>
+	<div class="content">
+		<div class="figure">
+			<a href="${f_movie_url[0]}&ref=${vType}" target="_blank"><img class="photo" lala="${(f_movie_image[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);"/></a>
+		</div>
+		<p><a href="${f_movie_url[0]}&ref=${vType}" target="_blank"><strong>${f_movie_title[0]}</strong></a></p>
+		<meter class="rating" min="0" max="5" value="${f_movie_star[0]}">${f_movie_star[0]}星</meter>
+		<p>${ (f_movie_body[0])?html}</p>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

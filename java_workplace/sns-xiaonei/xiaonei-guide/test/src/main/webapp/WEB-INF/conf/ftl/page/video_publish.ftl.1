@@ -1,0 +1,30 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "page_video"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<a href="http://page.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}" target="_blank">${f_from_name[0]}</a> 
+		<#if idef?exists><img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/></#if>
+		上传视频 <a target="_blank" href="http://page.renren.com/media/video/singleVideo?pid=${f_page_id[0]}&ref=${vType}&feed=${argu}&vid=${f_page_album_video_id[0]}">${f_page_album_video_name[0]}</a>
+		到
+		<a target="_blank" href="http://page.renren.com/${f_page_id[0]}/video/${f_page_album_id[0]}?ref=${vType}&feed=${argu}">${f_page_album_name[0]}</a>
+	</h3>
+	<div class="content">
+		<div class="video" style="background-image: url(${f_page_album_video_image[0]});">
+			<a href="http://page.renren.com/media/video/singleVideo?pid=${f_page_id[0]}&ref=${vType}&feed=${argu}&vid=${f_page_album_video_id[0]}">${f_page_album_video_name[0]}</a>
+		</div>
+		<#if f_page_album_video_brief?exists && f_page_album_video_brief[0] != ""><p class="comment"><q>${f_page_album_video_brief[0]}</q></p></#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<#include "1|5|1">
+			<a target="_blank" href="http://page.renren.com/media/video/singleVideo?pid=${f_page_id[0]}&ref=${vType}&feed=${argu}&vid=${f_page_album_video_id[0]}">查看视频</a>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

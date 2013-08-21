@@ -1,0 +1,14 @@
+<%@ page pageEncoding="UTF-8" %>
+<html:option value="">选择月份:</html:option>
+<html:option value="01">1</html:option>
+<html:option value="02">2</html:option>
+<html:option value="03">3</html:option>
+<html:option value="04">4</html:option>
+<html:option value="05">5</html:option>
+<html:option value="06">6</html:option>
+<html:option value="07">7</html:option>
+<html:option value="08">8</html:option>
+<html:option value="09">9</html:option>
+<html:option value="10">10</html:option>
+<html:option value="11">11</html:option>
+<html:option value="12">12</html:option>

@@ -1,0 +1,28 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<h3>
+		<a href="${f_ad_url[0]}" class="dark" target="_blank">${f_ad_title[0]}</a>
+	</h3>
+	<div class="content">
+	<#if f_ad_share_id??>
+		<div class="video" style="background-image: url(${f_ad_share_video_image[0]});">
+			<a href="#nogo" onclick="playFeedVideo('${f_ad_share_id[0]}','${id[0]}','240570432',1.2);this.style.display='none';">播放</a>
+		</div>
+		<p><a href="${f_ad_url[0]}" class="dark" target="_blank">${f_ad_body[0]}</a></p>
+	<#else>
+		<p><a href="${f_ad_url[0]}" class="dark" target="_blank">${f_ad_body[0]}</a></p>
+	</#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<#if f_ad_share_id??>
+			<a href="#nogo" stats="NF_Share" onclick="create_share_div(${f_ad_share_id[0]},240570432,240570432);" >分享</a>
+			</#if>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

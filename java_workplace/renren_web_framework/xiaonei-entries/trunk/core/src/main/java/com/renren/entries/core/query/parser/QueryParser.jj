@@ -1,0 +1,173 @@
+options {
+	JDK_VERSION = "1.6";
+	IGNORE_CASE=true;
+	DEBUG_PARSER=false ;
+   	STATIC = false;
+}
+
+PARSER_BEGIN(QueryParser)
+
+package com.renren.entries.core.query.parser;
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import com.renren.entries.core.query.Field;
+import com.renren.entries.core.query.Query;
+import com.renren.entries.core.query.Value;
+
+/**
+ * 
+ * @author qieqie.wang@gmail.com
+ *
+ */
+public class QueryParser{
+
+    /**
+     * main method to test parser.
+     * <p>
+     * e.g author:123456 and master:(654321) and point_x:116.45-116.47 and point_x:(39.91-39.93) and tag:(123 or 456 or 678) and create_time:(232134-232144);
+     * 
+     * @throws ParseException
+     */
+    public static void main(String args[]) throws ParseException {
+        QueryParser p = null;
+        if (args.length < 1) {
+            System.out.println("Reading from stdin");
+            p = new QueryParser(System.in);
+        } else {
+            try {
+                p = new QueryParser(new DataInputStream(new FileInputStream(args[0])));
+            } catch (FileNotFoundException e) {
+                System.out.println("File " + args[0] + " not found. Reading from stdin");
+                p = new QueryParser(System.in);
+            }
+        }
+
+        if (args.length > 0) {
+            System.out.println(args[0]);
+        }
+        Query query = p.parse();
+        System.out.println(query);
+
+    }
+} 
+
+PARSER_END(QueryParser)
+
+
+SKIP:
+{
+    " "
+|   "\t"
+|   "\r"
+|   "\n"
+}
+
+SPECIAL_TOKEN:
+{
+   < LINE_COMMENT: "--"(~["\r","\n"])*>
+|  < MULTI_LINE_COMMENT: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+}
+
+TOKEN: 
+{
+   < K_AND: "AND">
+|  < K_OR: "OR">
+}
+
+TOKEN:
+{
+ 	< FIELD_NAME: ((<LETTER>)+ (<DIGIT> | <LETTER> | <SPECIAL_CHARS>)*) >
+|   < QUOTED_IDENTIFIER: "\"" (~["\n","\r"])* "\"" >
+| 	< FIELD_NUMBER_VALUES: <NUMBER> ("-"<NUMBER>)? >
+| 	< NUMBER: (["+", "-"])?(<DIGIT>)+("."(<DIGIT>)+)? >   
+| 	< #LETTER: ["a"-"z", "A"-"Z"]>
+| 	< #DIGIT: ["0"-"9"]>
+|   < #SPECIAL_CHARS: "_">
+}
+
+// tag:(123 or 456 or 678) and create_time:(232134-232144)
+Query parse() :
+{
+    Query query = new Query();
+    Field field = null;
+}
+{
+    (([<K_AND>] field = FieldExpression() { query.addField(field);})+ [";"])
+    {
+        return query;
+    }
+}
+
+// tag:123
+// tag:(123)
+// tag:(123 or 456 or 678)
+Field FieldExpression() :
+{
+	Field field = new Field();
+	Token t = null;
+	Value value = null;
+}
+{
+	(  t = <FIELD_NAME> {field.setName(t.image);} 
+	    ":" 
+        ( 
+         ( "(" ([<K_OR>] value = FieldValueExpression() {value.setField(t.image); field.addValue(value);})+ ")" )
+         | (value = FieldValueExpression() {value.setField(t.image); field.addValue(value);} ) 
+        )
+    ) {
+        return field;
+    }
+}
+
+Value FieldValueExpression() :
+{
+	Value value = null;
+}
+{
+     ((value = FieldNumberValuesExpression()) | (value = FieldStringValueExpression())) {
+     	 return value;
+     }
+}
+
+Value FieldNumberValuesExpression() :
+{
+	Value value = new Value();
+	Token t = null;
+}
+{
+	t = <FIELD_NUMBER_VALUES> {
+	    int index = t.image.indexOf('-');
+	    if (index >= 0) {
+	        value.setValue1(t.image.substring(0, index));
+	        value.setValue2(t.image.substring(index + 1));
+	    } else {
+	        value.setValue1(t.image);
+	    }
+	    index = t.image.indexOf('.');
+	    if (index >=0) {
+	    	value.setType(Value.DOUBLE);
+	    } else {
+	    	value.setType(Value.INTEGER);
+	    }
+	    return value;
+	 }
+}
+
+Value FieldStringValueExpression() :
+{
+	Value value = new Value();
+	Token t = null;
+}
+{
+	t = <QUOTED_IDENTIFIER> {
+	    value.setValue1(t.image.substring(1, t.image.length() - 1));
+	    value.setType(Value.STRING);
+	    return value;
+	 }
+}
+
+
+

@@ -1,0 +1,118 @@
+<html>
+<head><meta http-equiv='Content-Type' content='text/html;'></head>
+<body>
+<table width='100%'><tr><td bgcolor='#F7F7F7' cellspacing='0' cellpadding='0'>
+<table cellspacing='0' cellpadding='30'><tr><td>
+<table width='950' cellspacing='0' cellpadding='0'>
+<tr><th bgcolor='#3B5998' align='left' style="font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;line-height:120%;color:#FFF;font-size:24px;font-weight:bold;padding:4px">&nbsp; </th></tr>
+<tr><td style="border-left:1px solid #ADADAD;border-right:1px solid #ADADAD;border-bottom:1px solid #3b5998">
+<table width="100%" cellspacing="0" bgcolor="#FFFFFF" cellpadding="20">
+<tr>
+#if($!{headurl_2}!="0/0/head.jpg")
+	<td width="0" style="font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;font-size:12px;color:#666;" valign="top">
+	<a href="http://xiaonei.com/getuser.do?id=$!{hostid}><img src="$!{headurl}" alt="$!{hostname}"name="$!{hostname}" style="padding:1px;border:1px solid #CCC;"/></a><br />
+<div style="padding:5px 0 5px 3px;">$!{hostname}</div>
+<div style="padding:0 0 0 6px;line-height:120%;">
+	$!{album_count}&nbsp;张照片<br />
+	$!{blog_count}&nbsp;片日志<br/>
+	$!{gossip_count}&nbsp;条留言<br/>
+<span style="font-size:14px;"><strong>我在校内网已有$!{friendscount}个好友：</strong></span><br /><br />
+#set($friendList = $!{friendList_2})
+<table>
+	<tr>
+	#set($index = 0)
+	#foreach($value in $friendList)
+		#set($key = $value)
+	<td>
+	<img src="$key.getTiny_Url()" alt="$!{hostname}" name="$!{hostname}" style="padding:1px;border:1px solid #CCC;"/>
+	<br/><span style="font-size:12px; color:gray;padding:5px 0 5px 3px;">$key.getName()</span>
+	</td>
+	#set($index = $index + 1)
+	#if($index % 3 ==0)
+		</tr><tr>
+	#end
+	#end
+</table>
+</div>
+</td>
+#end
+<td style="font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;line-height:150%;color:#000;font-size:12px;" valign="top">
+<div style="font-size:15px;"><p><strong>我是$!{hostname}，我在校内网建立了自己的个人主页，请你也加入并成为我的好友：</strong></p></div>
+
+<blockquote style="margin-left:0px;">
+#if($!{someTips}!="")
+	<p>$!{hostname}说：<span style="font-size:14px;">$!{someTips}</span></p>
+#end
+<blockquote style="margin-left:0px;">
+<p>我的朋友发现了一个有意思的网站，叫校内网，我们已经在校内注册了，如果你来校内注册并且加我为好友，你就可以随时看到我上传的照片和日志，还可以和我们一起玩校内几个有意思的小游戏。</p>
+<div><strong>
+	<img src="http://p.xiaonei.com/w.jpg?u=http://app.xnimg.cn/application/20080627/22/50/L820824663421HEI.jpg"/>
+	&nbsp;好友买卖
+</strong>
+把朋友们都买了当宠物，起个小名，折腾一下再安抚一会儿～<br/>
+<strong>
+<img src="http://p.xiaonei.com/w.jpg?u=http://app.xnimg.cn/application/20080708/07/04/L187412264212PUM.jpg"/>
+&nbsp;抢车位，</strong>让你在校内买到梦寐以求的劳斯莱斯！
+</div>
+<p>还有更多新鲜有趣的小游戏等你来发现！</p><span>请点击以下链接，接受好友邀请：</span><br/>
+<a href="http://click.xiaonei.com/m.jsp?d=$!{mills}&t=1219&u=$!{monitorUrlApp_temp_kaixin}" target="_blank" style="color:#000080;text-decoration:underline;">
+http://click.xiaonei.com/m.jsp?d=$!{mills}&t=1219&u=$!{monitorUrlApp_temp_kaixin}</a>
+</blockquote>
+#set($albumList=$!{albumList})
+	#if($albumList.size()>0)
+	<div style="font-size:13px;margin-top:25px;margin-bottom:10px"><strong>我的照片：</strong></div>
+	<div>
+	<table style="width:420px;"><tr>
+	#foreach($value in $albumList)
+		#set($key=$value)
+		<td align="center">
+		<img src="http://p.xiaonei.com/w.jpg?u=${key.getHeadUrl()}"/>
+		</td>
+	#end
+	</tr>
+	<tr>
+	#foreach($value in $albumList)
+		#set($key = $value)
+		<td align="center">
+		<span style="color:#3b5888;font-size:12px;">${key.getName()}</span>
+		</td>
+	#end
+	</tr>
+	</table>
+	</div>
+#end
+#set($blogList = $!{blogList})
+#if($blogList.size()>0)
+#set($blogEntry = $!{blogEntry})
+	<div>
+	<div style="font-size:13px;margin-top:20px;"><strong>我的日志：</strong></div>
+	<p style="color:#3b5888;">${blogEntry.getTitle()}&nbsp;&nbsp;${blogEntry.getTime()}&nbsp;发表</p>
+	<p>
+	${blogBody}
+	</p>
+	</div>
+#end
+校内网<br/>$!{year}年$!{month}月$!{day}日<br/><br/>
+#set($senders = $!{senders})
+#if($senders.size()>0)
+	<span style="color:#000;">还有哪些人邀请你加入校内:<br/><br/>
+#set($counters = $!{counters})
+#foreach($value in $counters)
+	#set($key = $value)
+	<strong>$key.getOwner_name()</strong>&nbsp;&nbsp;
+	$key.getFriendsCount()个好友&nbsp;
+	$key.getNotesCount()条留言&nbsp;
+	$key.getPhotosCount()张照片&nbsp;
+	$key.getBlogsCount()篇日志&nbsp;
+	<br/>
+#end
+	<br/></span>
+
+#end
+	<div style="display:none;"><img src = "http://click.xiaonei.com/m.jsp?d=$!{mills}&t=1218"/></div>
+	</td></tr></table>
+	</td></tr></table>
+	</td></tr></table>
+	</td></tr></table>
+</body>
+</html>

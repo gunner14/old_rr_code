@@ -1,0 +1,260 @@
+<class-diagram version="0.9.82" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.RegForm" project="xiaonei-reg" 
+    file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false">    
+    <position x="1898" y="285" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.BaseRegForm" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/BaseRegForm.java" binary="false">    
+    <position x="258" y="294" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IAudit" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IAudit.java" 
+    binary="false">    
+    <position x="546" y="-39" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IBasicControl" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IBasicControl.java" 
+    binary="false">    
+    <position x="822" y="498" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IBirthday" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IBirthday.java" 
+    binary="false">    
+    <position x="841" y="-64" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IGender" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IGender.java" 
+    binary="false">    
+    <position x="1072" y="818" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IHeadupload" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IHeadupload.java" 
+    binary="false">    
+    <position x="1062" y="263" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IHomecity" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IHomecity.java" 
+    binary="false">    
+    <position x="541" y="-243" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IInvite" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IInvite.java" 
+    binary="false">    
+    <position x="1322" y="563" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IMiddleschool" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IMiddleschool.java" 
+    binary="false">    
+    <position x="1072" y="602" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IName" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IName.java" 
+    binary="false">    
+    <position x="1312" y="198" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.INicknameId" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/INicknameId.java" 
+    binary="false">    
+    <position x="858" y="-264" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IPwd" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IPwd.java" 
+    binary="false">    
+    <position x="1322" y="831" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IRegcode" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IRegcode.java" 
+    binary="false">    
+    <position x="572" y="498" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IRegEmail" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IRegEmail.java" 
+    binary="false">    
+    <position x="812" y="198" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IStage" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IStage.java" 
+    binary="false">    
+    <position x="562" y="1000" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IUniversity" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IUniversity.java" 
+    binary="false">    
+    <position x="572" y="844" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.form.base.userganerate.IWorkplace" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IWorkplace.java" 
+    binary="false">    
+    <position x="822" y="831" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.apache.struts.action.ActionForm" project="xiaonei-reg" 
+    file="/xiaonei-reg/www/WEB-INF/lib/struts-1.2.9.jar" binary="true">    
+    <position x="-11" y="-275" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="false" private="true"/>    
+    </display>  
+  </class>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IRegEmail" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IRegEmail.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IUniversity" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IUniversity.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IMiddleschool" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IMiddleschool.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IStage" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IStage.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.BaseRegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/BaseRegForm.java" binary="false"/>  
+  </generalization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IWorkplace" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IWorkplace.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IBirthday" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IBirthday.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IAudit" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IAudit.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IGender" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IGender.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.BaseRegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/BaseRegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="org.apache.struts.action.ActionForm" 
+      file="/xiaonei-reg/www/WEB-INF/lib/struts-1.2.9.jar" binary="true"/>  
+  </generalization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IPwd" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IPwd.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IInvite" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IInvite.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IName" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IName.java" binary="false"/>  
+  </realization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.form.RegForm" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/RegForm.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.form.base.userganerate.IHomecity" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/form/base/userganerate/IHomecity.java" binary="false"/>  
+  </realization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="false" private="false"/>    
+    <operations public="true" package="true" protected="false" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

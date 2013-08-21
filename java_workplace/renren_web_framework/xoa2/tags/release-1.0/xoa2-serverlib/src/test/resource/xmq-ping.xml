@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-app>
+  <services>
+    <service type="xmq" id="xmqDemo" class="com.renren.xoa2.server.ping.PingServerImpl"
+             port="0">
+      <service-listener name="init-listener" class="com.renren.xoa2.server.ping.PingInitListenerImpl" />
+    </service>
+  </services>
+</xoa-app>

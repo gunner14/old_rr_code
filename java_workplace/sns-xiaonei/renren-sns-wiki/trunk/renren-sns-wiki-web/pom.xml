@@ -1,0 +1,238 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.renren</groupId>
+    <artifactId>renren-sns-wiki</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.renren</groupId>
+  <artifactId>renren-sns-wiki-web</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>renren-sns-wiki-web</name>
+  <url>http://maven.sns.d.xiaonei.com/${artifactId}/</url>
+  
+  <scm>
+	<connection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-web</connection>
+	<developerConnection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-web</developerConnection>
+	<url>http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-web</url>
+	<tag>HEAD</tag>
+  </scm>
+  
+  <developers>
+	<developer>
+		<name>yi.li</name>
+		<email>yi.li@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=242679716</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+	<developer>
+		<name>weiwei.wang</name>
+		<email>weiwei.wang@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=200778561</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+  </developers>
+  
+  <issueManagement>
+	<system>jira</system>
+	<url>http://jira.d.xiaonei.com/</url>
+  </issueManagement>
+  
+  <distributionManagement>
+	<repository>
+		<id>archiva.snapshots</id>
+		<name>development</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/</url>
+	</repository>
+	<snapshotRepository>
+		<id>archiva.snapshots</id>
+		<name>Internal Snapshot Repository</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+	</snapshotRepository>
+  </distributionManagement>
+  
+  <build>
+    <finalName>sns_wiki</finalName>
+    <defaultGoal>package</defaultGoal>
+    <resources>
+		<resource>
+			<directory>
+				${project.basedir}/src/main/resources
+			</directory>
+		</resource>
+		<resource>
+			<directory>src/main/java</directory>
+			<includes>
+				<include>**/*.properties</include>
+				<include>**/*.xml</include>
+				<include>**/*.java</include>
+			</includes>
+		</resource>
+	</resources>
+	<plugins>
+		<!-- 编译配置 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+				<encoding>UTF-8</encoding>
+				<showDeprecation>false</showDeprecation>
+				<showWarnings>false</showWarnings>
+				<meminitial>512m</meminitial>
+				<maxmem>1024m</maxmem>
+				<compilerArguments>
+					<sourcepath>src/main/java</sourcepath>
+					<sourcepath>src/main/resources</sourcepath>
+				</compilerArguments>
+			</configuration>
+		</plugin>
+		<!-- 资源文件配置 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<configuration>
+				<encoding>UTF-8</encoding>
+				<outputDirectory>target/classes</outputDirectory>
+			</configuration>
+		</plugin>
+		<!-- 资源文件处理 -->
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>native2ascii-maven-plugin</artifactId>
+			<executions>
+				<execution>
+					<goals>
+						<goal>native2ascii</goal>
+					</goals>
+					<configuration>
+						<dest>target/classes/</dest>
+						<src>src/main/resources/</src>
+						<encoding>utf-8</encoding>
+						<includes>
+							<param>*.xml</param>
+							<param>*.properties</param>
+						</includes>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		<!-- ? -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+				<archive>
+					<manifestEntries>
+						<Rose>*</Rose>
+					</manifestEntries>
+					<addMavenDescriptor>false</addMavenDescriptor>
+				</archive>
+			</configuration>
+		</plugin>
+		<!-- 编码设置 -->
+		<plugin>
+			<artifactId>maven-site-plugin</artifactId>
+			<configuration>
+				<inputEncoding>UTF-8</inputEncoding>
+				<outputEncoding>UTF-8</outputEncoding>
+				<!--failOnError>true</failOnError-->
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+  
+  <dependencies>
+    <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+	</dependency>
+	<!-- 共用拦截器 -->
+	<dependency>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-commons-interceptors</artifactId>
+		<exclusions>
+			<!-- 该包从名字上来看social wiki没有用到 -->
+			<exclusion>
+				<groupId>com.xiaonei</groupId>
+				<artifactId>xiaonei-newbie-helper-service</artifactId>
+			</exclusion>
+			<!-- 去除app的menu包，该包依赖太多而且会出现无法正常加载传递依赖的情况 -->
+			<exclusion>
+				<groupId>com.xiaonei</groupId>
+		  		<artifactId>xiaonei-commons-interceptors-menu</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<!-- Wiki Service包 -->
+    <dependency>
+      <groupId>com.renren</groupId>
+	  <artifactId>renren-sns-wiki-service</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!-- wiki搜索包 -->
+	<dependency>
+		<groupId>com.renren</groupId>
+		<artifactId>renren-sns-wiki-search</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</dependency>
+    <!-- inc 文件依赖这个包 -->
+    <dependency>
+      <groupId>com.xiaonei</groupId>
+	  <artifactId>xiaonei-logo</artifactId>
+	  <exclusions>
+	  	<!-- logo也引用了commons-menu包同上面menu的做法 去掉 -->
+		<exclusion>
+		  <groupId>com.xiaonei</groupId>
+		  <artifactId>xiaonei-commons-menu</artifactId>
+	    </exclusion>
+	    <exclusion>
+		  <groupId>com.xiaonei</groupId>
+		  <artifactId>xiaonei-search2-util</artifactId>
+	    </exclusion>
+	    <exclusion>
+		  <groupId>com.xiaonei</groupId>
+		  <artifactId>xiaonei-search2-client</artifactId>
+	    </exclusion>
+	    <exclusion>
+		  <groupId>com.renren</groupId>
+		  <artifactId>renren-sns-pagedata-service</artifactId>
+	    </exclusion>
+	  </exclusions>
+    </dependency>
+    <!-- tag libs 页面上有使用 -->
+    <dependency>
+      <groupId>taglibs</groupId>
+	  <artifactId>standard</artifactId>
+    </dependency>
+    <dependency>
+	  <groupId>taglibs</groupId>
+	  <artifactId>string</artifactId>
+	</dependency>
+    <!-- UrlRewrite包 用来禁用.jsp 和.inc的访问 -->
+	<dependency>
+		<groupId>org.tuckey</groupId>
+		<artifactId>urlrewritefilter</artifactId>
+	</dependency>
+    <!-- JUnit 包 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

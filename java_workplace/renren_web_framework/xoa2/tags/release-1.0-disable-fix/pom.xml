@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.xiaonei.ugc</groupId>
+  <artifactId>ugc-status</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  
+  <parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+  
+  <modules>
+    <module>xoa2-client-pool</module>
+    <module>xoa2-demo</module>
+    <module>xoa2-demo-client</module>
+    <module>xoa2-client</module>
+    <module>xoa2-commons</module>
+    <module>xoa2-demo-api</module>
+    <module>xoa2-registry</module>
+    <module>xoa2-serverlib</module>
+    <module>libthrift</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+        <plugins>
+            <!-- 编译使用1.6 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <fork>true</fork>
+                    <verbose>true</verbose>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <sourcepath>${project.basedir}/src/main/java</sourcepath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- 忽略测试 -->
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+  </build>
+</project>

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "$0 <domain>"
+    exit 3
+fi
+
+DOMAIN=$1
+
+. ${PWD}/nginx_conf/${DOMAIN}_parameter.conf
+
+function defaultGenerator {
+
+FILE=$1
+
+echo "upstream web_${DOMAIN} {" > ${FILE}
+for m in ${outer_ip}
+do
+	echo "  server ${m}${config_suffix}" >> ${FILE}
+done
+echo "}" >> ${FILE}
+echo >> ${FILE}
+
+echo "upstream web_${DOMAIN}_darklaunch {" >> ${FILE}
+
+for n in ${inner_ip}
+do
+	echo "  server ${n}${config_suffix}" >> ${FILE}
+done
+echo "}" >> ${FILE}
+echo >> ${FILE}
+}
+
+result=`defaultGenerator ${config_file}`
+
+cat ${PWD}/nginx_conf/template/${template} >> ${config_file}
+

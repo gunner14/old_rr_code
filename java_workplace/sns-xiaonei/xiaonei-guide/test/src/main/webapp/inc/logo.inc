@@ -1,0 +1,2 @@
+<%@ page pageEncoding="UTF-8" %>
+<h1 id="logo"><c:if test="${empty hideLink}"><a href="${applicationScope.urlHome}/Home.do" title="${domainIdentified["siteName"]}"></c:if><img src="${applicationScope.urlSmallStatic}/img/new-logo.gif" alt="${domainIdentified["siteName"]}(Logo)"/><c:if test="${empty hideLink}"></a></c:if></h1>

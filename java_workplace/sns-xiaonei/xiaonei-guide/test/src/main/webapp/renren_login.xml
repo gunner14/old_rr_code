@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="gbk"?>
+<DOCUMENT>
+<item>
+<!--人人农场 人人网人人农场 人人农场登录-->
+
+	<key>人人农场</key>
+	<!--关键词，目前一个key标签中只支持输入一个关键词，不支持罗列关键词。当用户在百度检索此关键词时，即可检索到item中指定的内容。每个key的长度限制为1－76字节-->
+
+	<display>
+	<!--表示该关键词要显示的搜索结果信息，包含以下的url、title等标签。display标签中的文本长度上限为2k-->
+
+		<url><![CDATA[http://apps.renren.com/rr_farm]]></url>
+		<!--url: 表示资源的链接地址，即title指向的链接。url的长度限制为6－512字节;-->
+		<title>人人农场登录_人人网</title>      
+		<!--title: 资源名称，即展示在百度搜索结果页中的标题。长度限制为4－63字节;-->
+		<content1></content1>
+		<!--content为可选标签，当不填时，改区域不显示出来,为一段内容，会被动折行，文字长度限制为200字节，如果超过200字节，请截断，并增加省略符号“…”，且保证内容加上省略符号总长度不超过200字节-->
+		<smalltitle>登录人人农场</smalltitle>
+		<!--smalltitle: 登陆提示标题。长度限制为4－63字节;-->
+		<action>http://www.renren.com/PLogin.do</action>
+		<usertext>帐　号:</usertext>
+		<!--usertext: 帐号输入框前显示的文字。长度限制为2-8字节; -->
+		<passtext>密　码:</passtext>
+		<!--passtext: 密码输入框前显示的文字。长度限制为2-8字节; -->
+		<username>email</username>
+		<userdefault>邮箱帐号/手机号/用户名</userdefault>
+		<!--userdefault: 缺省文字提示,定义为可选标签，长度限制为0-24字节; -->
+		<usernametail></usernametail>
+		<!--用户在提交数据的时候，附加在用户名后面的后缀 -->
+		<password>password</password>
+		<!--用户登录密码，即用户在登录时输入的密码。-->
+		<params para1name="origURL" para1value="http://apps.renren.com/rr_farm" para2name="" para2value="" para3name=""  para3value="" para4name="" para4value="" para5name="" para5value=""/>
+		<!--提交的参数名称和参数值-->
+		<emailtail></emailtail>
+		<!--在搜索框中对应的用户名后显示的附加在用户名后面的后缀，定义为可写，阈值为0-20-->
+		<buttontext>登录</buttontext>
+		<!--buttontext: 登录按钮中的文字，定义为可选标签，长度限制为2-8字节;  -->
+		<findpsw url="http://safe.renren.com/findPass.do" content="忘记密码"/>
+		<!--忘记密码页的url，即用户在点击登录框中的“忘记密码”时跳转到相关页面的url。长度限制为4－34字节-->
+		<register url="http://wwv.renren.com/xn.do?ss=17046&amp;rt=1&amp;g=rrfarm" content="开通人人农场" />
+		<!--注册邮箱页的url，即用户在点击登录框中的“注册邮箱”时跳转到相关页面的url。长度限制为4－34字节-->
+		<showurl>www.renren.com</showurl>
+		<!--用于显示在搜索结果的下方，请仅填写资源所属站点的一级域名，否则可能不能通过审核。不需要有”http://”的部分；Showurl的长度限制为2－42字节，如果超过42字节，请截断，并增加省略符号“…”，并保证截断后的showurl加上省略符号总长度不超过42字节-->
+     
+	</display>
+
+</item>
+
+<item>
+<!--人人餐厅 人人网人人餐厅 人人餐厅登录-->
+
+	<key>人人餐厅</key>
+	<!--关键词，目前一个key标签中只支持输入一个关键词，不支持罗列关键词。当用户在百度检索此关键词时，即可检索到item中指定的内容。每个key的长度限制为1－76字节-->
+
+	<display>
+	<!--表示该关键词要显示的搜索结果信息，包含以下的url、title等标签。display标签中的文本长度上限为2k-->
+
+		<url><![CDATA[http://apps.renren.com/rr_cook]]></url>
+		<!--url: 表示资源的链接地址，即title指向的链接。url的长度限制为6－512字节;-->
+		<title>人人餐厅登录_人人网</title>      
+		<!--title: 资源名称，即展示在百度搜索结果页中的标题。长度限制为4－63字节;-->
+		<content1></content1>
+		<!--content为可选标签，当不填时，改区域不显示出来,为一段内容，会被动折行，文字长度限制为200字节，如果超过200字节，请截断，并增加省略符号“…”，且保证内容加上省略符号总长度不超过200字节-->
+		<smalltitle>登录人人餐厅</smalltitle>
+		<!--smalltitle: 登陆提示标题。长度限制为4－63字节;-->
+		<action>http://www.renren.com/PLogin.do</action>
+		<usertext>帐　号:</usertext>
+		<!--usertext: 帐号输入框前显示的文字。长度限制为2-8字节; -->
+		<passtext>密　码:</passtext>
+		<!--passtext: 密码输入框前显示的文字。长度限制为2-8字节; -->
+		<username>email</username>
+		<userdefault>邮箱帐号/手机号/用户名</userdefault>
+		<!--userdefault: 缺省文字提示,定义为可选标签，长度限制为0-24字节; -->
+		<usernametail></usernametail>
+		<!--用户在提交数据的时候，附加在用户名后面的后缀 -->
+		<password>password</password>
+		<!--用户登录密码，即用户在登录时输入的密码。-->
+		<params para1name="origURL" para1value="http://apps.renren.com/rr_cook" para2name="" para2value="" para3name=""  para3value="" para4name="" para4value="" para5name="" para5value=""/>
+		<!--提交的参数名称和参数值-->
+		<emailtail></emailtail>
+		<!--在搜索框中对应的用户名后显示的附加在用户名后面的后缀，定义为可写，阈值为0-20-->
+		<buttontext>登录</buttontext>
+		<!--buttontext: 登录按钮中的文字，定义为可选标签，长度限制为2-8字节;  -->
+		<findpsw url="http://safe.renren.com/findPass.do" content="忘记密码"/>
+		<!--忘记密码页的url，即用户在点击登录框中的“忘记密码”时跳转到相关页面的url。长度限制为4－34字节-->
+		<register url="http://wwv.renren.com/xn.do?ss=17046&amp;rt=2&amp;g=rrcook" content="开通人人餐厅" />
+		<!--注册邮箱页的url，即用户在点击登录框中的“注册邮箱”时跳转到相关页面的url。长度限制为4－34字节-->
+		<showurl>www.renren.com </showurl>
+		<!--用于显示在搜索结果的下方，请仅填写资源所属站点的一级域名，否则可能不能通过审核。不需要有”http://”的部分；Showurl的长度限制为2－42字节，如果超过42字节，请截断，并增加省略符号“…”，并保证截断后的showurl加上省略符号总长度不超过42字节-->
+     
+	</display>
+
+</item>
+</DOCUMENT>

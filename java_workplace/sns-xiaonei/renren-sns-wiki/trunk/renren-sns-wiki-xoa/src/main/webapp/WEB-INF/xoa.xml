@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-app>
+	<services>
+		<service id="social_wiki.xoa.renren.com" class="com.renren.sns.wiki.xoa.WikiXoaServiceImpl"
+			port="9100">
+		</service>
+	</services>
+</xoa-app>

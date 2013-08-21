@@ -1,0 +1,26 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "page_blog"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a href="http://page.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}&tagid=${f_blog_id[0]}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}&tagid=${f_blog_id[0]}" target="_blank">${f_from_name[0]}</a> 
+		<#if f_from_certify?exists><img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/></#if>
+		发表日志 <a href="http://page.renren.com/${f_from_id[0]}/note/${f_blog_id[0]}?ref=${vType}&feed=${argu}&tagid=${f_blog_id[0]}" target="_blank">${f_blog_title[0]}</a>
+	</h3>
+	<div class="content">
+		<blockquote>${f_blog_digest[0]}</blockquote>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<#include "1|5|1">
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

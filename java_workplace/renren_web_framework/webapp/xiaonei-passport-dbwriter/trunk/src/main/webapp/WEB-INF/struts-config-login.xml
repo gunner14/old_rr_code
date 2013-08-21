@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<!-- ==================================== Data Source Configuration -->
+	<!-- ======================================== Form Bean Definitions -->
+	<form-beans>
+	</form-beans>
+
+	<!-- ================================= Global Exception Definitions -->
+	<global-exceptions></global-exceptions>
+	<!-- =================================== Global Forward Definitions -->
+	<global-forwards>
+	</global-forwards>
+	<!-- =================================== Action Mapping Definitions -->
+	<action-mappings>
+		<action path="/LHP" type="com.xiaonei.login.client.LoginOutsideAction"
+			scope="request" />
+		<action path="/AL" type="com.xiaonei.login.client.LoginOutsideAction"
+			scope="request" />
+		<!-- CL client login  for phoneclient -->
+		<action path="/CL" type="com.xiaonei.login.client.ClientLoginAction"
+			scope="request" />
+
+		<action path="/L" type="com.xiaonei.login.client.LoginInsideAction"
+			scope="request">
+			<forward name="fail" path="/pages/login/login.jsp"></forward>
+			<forward name="succ" path="/pages/login/login.jsp"></forward>
+			<forward name="token" path="/pages/login/token.jsp"></forward>
+			<forward name="tos" path="/tos.do"></forward>
+		</action>
+		<!--
+			<action path="/Login" type="com.dodoyo.reg.action.LoginAction"
+			name="loginForm" scope="request" validate="false"> <forward
+			name="fail" path="/pages/reg/login.jsp" /> <forward name="fail5q"
+			path="/pages/logonq.jsp" /> <forward name="wap"
+			path="/pages/wap/login.jsp" /> <forward name="banned"
+			path="/pages/login/banned.jsp" /> <forward name="valiateLogin"
+			path="/pages/validateLogin.jsp" /> </action> <action path="/login"
+			type="com.dodoyo.reg.action.LoginAction" name="loginForm"
+			scope="request" validate="false"> <forward name="fail"
+			path="/pages/reg/login.jsp" /> <forward name="fail5q"
+			path="/pages/logonq.jsp" /> <forward name="wap"
+			path="/pages/wap/login.jsp" /> <forward name="banned"
+			path="/pages/login/banned.jsp" /> <forward name="valiateLogin"
+			path="/pages/validateLogin.jsp" /> </action> <action path="/GLogin"
+			type="com.dodoyo.reg.action.LoginAction" name="loginForm"
+			scope="request" validate="false"> <forward name="fail"
+			path="/pages/reg/login.jsp" /> <forward name="fail5q"
+			path="/pages/logonq.jsp" /> <forward name="wap"
+			path="/pages/wap/login.jsp" /> <forward name="banned"
+			path="/pages/login/banned.jsp" /> <forward name="valiateLogin"
+			path="/pages/validateLogin.jsp" /> </action> <action path="/Logout"
+			type="com.dodoyo.reg.action.LogoutAction" scope="request"> <forward
+			name="succ" path="/SysHome.do" redirect="true" /> <forward
+			name="succ5q" path="/pages/logonq.jsp" /> <forward name="wap"
+			path="/pages/wap/login.jsp" /> </action> <action path="/logout"
+			type="com.dodoyo.reg.action.LogoutAction" scope="request"> <forward
+			name="succ" path="/SysHome.do" redirect="true" /> <forward
+			name="succ5q" path="/pages/logonq.jsp" /> <forward name="wap"
+			path="/pages/wap/login.jsp" /> </action>
+		-->
+		<!-- SSo -->
+		<action path="/Login" type="com.xiaonei.login.action.LoginAction"
+			scope="request" validate="false" />
+		<action path="/GLogin" type="org.apache.struts.actions.ForwardAction"
+			scope="request" validate="false" parameter="/pages/plogin/login.jsp" />
+		<action path="/callback" type="com.xiaonei.login.http.SetTicketAction"
+			scope="request" validate="false">
+		</action>
+		<action path="/Logout" type="com.xiaonei.login.http.LogoutAction"
+			scope="request" validate="false" />
+		<action path="/logout" type="com.xiaonei.login.http.LogoutAction"
+			scope="request" validate="false" />
+		<action path="/PLogin" type="com.xiaonei.login.http.WebLoginAction"
+			scope="request">
+			<forward name="fail" path="/pages/plogin/login.jsp"></forward>
+		</action>
+		<action path="/relogin" type="com.xiaonei.login.http.ReLoginAction"
+			scope="request">
+			<forward name="fail" path="/pages/plogin/login.jsp"></forward>
+		</action>
+		<action path="/plogin" type="com.xiaonei.login.http.WebLoginAction"
+			scope="request" validate="false">
+			<forward name="fail" path="/pages/plogin/login.jsp"></forward>
+		</action>
+		<action path="/transfer" type="com.xiaonei.login.http.TransferAction"
+			scope="request" validate="false" />
+		<action path="/RL" type="com.xiaonei.login.http.RedirectLoginAction"
+			scope="request" validate="false" />
+		<action path="/LN" type="com.xiaonei.login.action.LoginNotifyAction"
+			scope="request" validate="false">
+			<forward name="fail" path="/pages/plogin/loginnotify.jsp"></forward>
+		</action>
+
+
+
+		<action path="/LoginIM" type="com.dodoyo.reg.action.LoginIMAction"
+			scope="request" validate="false"></action>
+		<action path="/relive" type="com.dodoyo.reg.action.ReliveAction"
+			name="loginForm" scope="request" validate="false">
+			<forward name="fail" path="/pages/reg/relive.jsp" />
+		</action>
+		<action path="/validateLogin" type="com.dodoyo.action.ValidateLoginAction"
+			name="valiateLoginForm" parameter="action" scope="request" validate="false">
+			<forward name="fail" path="/pages/validateLogin.jsp" />
+			<forward name="gologin" path="/Login.do" />
+		</action>
+
+		<action path="/login/recall" forward="/views/login/recall_email_log_in_renren.jsp" />
+	</action-mappings>
+	<message-resources parameter="application" />
+</struts-config>

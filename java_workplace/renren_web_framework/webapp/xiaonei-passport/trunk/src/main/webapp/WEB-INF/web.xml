@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-app_2_4.xsd"
+	version="2.4">
+
+	<context-param>
+		<param-name>portalExecutorCorePoolSize</param-name>
+		<param-value>2000</param-value>
+	</context-param>
+
+	<distributable />
+	<display-name>xiaonei.com</display-name>
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.action.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+
+
+	</filter-mapping>
+	<filter>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.domainIdentified.DomainIdentifiedFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<!-- conflict Login 
+		<dispatcher>FORWARD</dispatcher>
+		-->
+	</filter-mapping>
+
+	<filter>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.wrapper.OpiWrapperFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<filter>
+		<filter-name>UserDomainFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.action.UserDomainFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserDomainFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+
+	</filter-mapping>
+
+	<filter>
+		<filter-name>resin-profiler</filter-name>
+		<filter-class>com.xiaonei.tools.profiler.ProfilerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>resin-profiler</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+
+	
+	<!--  Spring 容器启动监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!--
+		Spring MVC 的Servlet，它将加载WEB-INF/annomvc-servlet.xml 的 配置文件，以启动Spring
+		MVC模块
+	-->
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+
+
+	<listener>
+		<listener-class>com.xiaonei.platform.core.opt.base.action.InitiateListener
+		</listener-class>
+	</listener>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<servlet>
+		<servlet-name>xiaoneilog</servlet-name>
+		<servlet-class>com.xiaonei.tools.profiler.ProfilerServlet
+		</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>xiaoneilog</servlet-name>
+		<url-pattern>/resin-profiler</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- web UA -->
+
+
+
+	<!-- 兴涛大哥的404 505远程log收集器 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.xml</param-value>
+		<!--
+			存放目录自己设置log4j.xml
+		-->
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60</param-value>
+		<!--
+			时间自己控制 检查log4j.xml 的间隔 当文件变更后会自动reload
+		-->
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+		<!--
+			确保Spring-XXX.jar存在
+		-->
+	</listener>
+
+	
+</web-app>

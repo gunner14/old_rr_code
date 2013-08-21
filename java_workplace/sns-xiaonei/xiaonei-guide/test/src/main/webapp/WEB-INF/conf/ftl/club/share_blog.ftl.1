@@ -1,0 +1,28 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "user_blogshare"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a class="avatar" href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3>
+		<#list f_from_name as n>
+			<a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}&ref=${vType}&feed=${argu}" stats="NF_People">${n}</a>
+		</#list> 
+		分享 <a target="_blank" href="http://org.renren.com/${f_share_blog_owner_id[0]}?ref=${vType}&feed=${argu}">${f_share_blog_owner_name[0]}</a> 的日志 <a href="${f_share_blog_url[0]}?ref=${vType}&feed=${argu}" target="_blank">${f_share_blog_title[0]}</a>
+	</h3>
+	<div class="content">
+		<blockquote>${f_share_blog_digest[0]}</blockquote>
+		<#if f_share_comment?exists && f_share_comment[0] != ""><p class="comment"><q>${f_share_comment[0]}</q></p></#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<a href="http://share.renren.com/share/ShareList.do?id=${f_from_id[0]}&feed=${argu}&ref=${vType}&share_id=${f_share_id[0]}#share_${f_share_id[0]}" target="_blank">评论该分享</a>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

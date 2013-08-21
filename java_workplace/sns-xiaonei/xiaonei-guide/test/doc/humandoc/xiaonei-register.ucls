@@ -1,0 +1,235 @@
+<class-diagram version="0.9.86" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <interface corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.IRegisterLogic" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/IRegisterLogic.java" 
+    binary="false">    
+    <position x="1666" y="975" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" 
+    binary="false">    
+    <position x="1337" y="1305" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSCommonLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSCommonLogic.java" 
+    binary="false">    
+    <position x="651" y="1633" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSInviteLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSInviteLogic.java" 
+    binary="false">    
+    <position x="246" y="1616" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSQuickLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSQuickLogic.java" binary="false">    
+    <position x="3280" y="1625" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="TOP_LEFT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorInviteLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorInviteLogic.java" 
+    binary="false">    
+    <position x="-37" y="1612" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorQuickLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorQuickLogic.java" 
+    binary="false">    
+    <position x="1516" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" 
+    name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersCommonLogic" project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersCommonLogic.java" 
+    binary="false">    
+    <position x="1816" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" 
+    name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersInviteLogic" project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersInviteLogic.java" 
+    binary="false">    
+    <position x="924" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersQuickLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersQuickLogic.java" 
+    binary="false">    
+    <position x="2120" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivCommonLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivCommonLogic.java" 
+    binary="false">    
+    <position x="1221" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivQuickLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivQuickLogic.java" 
+    binary="false">    
+    <position x="2411" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorCommonLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorCommonLogic.java" 
+    binary="false">    
+    <position x="2989" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivInviteLogic" 
+    project="xiaonei-reg" 
+    file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivInviteLogic.java" 
+    binary="false">    
+    <position x="2695" y="1617" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersInviteLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersInviteLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersQuickLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersQuickLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSQuickLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSQuickLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <realization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.IRegisterLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/IRegisterLogic.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSInviteLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSInviteLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorInviteLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorInviteLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectOthersCommonLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectOthersCommonLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivQuickLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivQuickLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorQuickLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorQuickLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivCommonLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivCommonLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectUnivInviteLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectUnivInviteLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectHSCommonLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectHSCommonLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterDirectMajorCommonLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterDirectMajorCommonLogic.java" 
+      binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.logic.impl.RegisterBaseLogic" 
+      file="/xiaonei-reg/src/main/java/com/xiaonei/reg/register/logic/impl/RegisterBaseLogic.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="false" private="false"/>    
+    <operations public="true" package="true" protected="true" private="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="Socket" class="org.apache.log4j.net.SocketAppender">
+		<param name="remoteHost" value="10.3.19.141"/>
+		<param name="port" value="9123"/>
+		<param name="Threshold" value="ERROR"/>
+		<param name="ReconnectionDelay" value="6000"/>
+		<param name="LocationInfo" value="true"/>
+	</appender>
+	<appender name="SocketGuide" class="org.apache.log4j.net.SocketAppender">
+		<param name="remoteHost" value="10.3.19.141"/>
+		<param name="port" value="9123"/>
+		<param name="Threshold" value="INFO"/>
+		<param name="ReconnectionDelay" value="6000"/>
+		<param name="LocationInfo" value="true"/>
+	</appender>
+	<appender name="guideBoxData" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/main/guideBoxData.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%4p]|%d{MM-dd HH:mm:ss}|[.yx.] - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="guideSearchData" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/main/guideSearchData.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p   - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="friendFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/friend.log"/>
+		<param name="maxFileSize" value="100MB"/>
+		<param name="maxBackupIndex" value="2"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %t %x - %m %n"/>
+		</layout>
+	</appender>
+	<appender name="xceStatFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/main/xceStat.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %t %x - %m %n"/>
+		</layout>
+	</appender>
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/facebook.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	<!-- reg start -->
+	<appender name="roseLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/rose.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} [%t] [%p] %c: %n %m%n"/>
+        </layout>
+	</appender>
+	<appender name="regLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/reg.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%4p]|%d{MM-dd HH:mm:ss} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="regSSLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/regSS.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss},%m %n"/>
+		</layout>
+	</appender>
+	<appender name="regMonitorLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/regMonitorLog.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss},%m %n"/>
+		</layout>
+	</appender>
+	<appender name="guideLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/guide.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%4p]|%d{MM-dd HH:mm:ss}|[.yx.] - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="guideTimeCostLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/guideTime.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%4p]|%d{MM-dd HH:mm:ss}|[.yx.] - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="regTimeCost" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/regTimeCost.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		</layout>
+	</appender>
+	<appender name="RegAccountLogic" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/regAccountLogic.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		</layout>
+	</appender>
+	<!-- reg end -->
+	<appender name="rec404File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/404.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="imptFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/important.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="errFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/error.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="DataAccessFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/dataAccessMgr.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %-5p:%n==>%m%n"/>
+		</layout>
+	</appender>
+	<appender name="xnLogDebugFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/xnLogDebug.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n"/>
+		</layout>
+	</appender>
+	<appender name="doing" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/doing.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n"/>
+		</layout>
+	</appender>
+	<appender name="loginIpFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/loginLog.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n"/>
+		</layout>
+	</appender>
+	<appender name="actionLogFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/actionLog.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n"/>
+		</layout>
+	</appender>
+	<!-- remote log -->
+	<appender name="remote" class="com.xiaonei.xce.log.log4j.XceAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="|%d{yyyy-MM-dd|HH:mm:ss:SSS}|%t|%c{1}|%m%n"/>
+		</layout>
+	</appender>
+	<appender name="oce-logger" class="com.xiaonei.xce.log.log4j.XceAppender">
+		<param name="CommunicatorInitArgs" value="Ice.Override.ConnectTimeout=70"/>
+		<param name="LoggerEndpoints" value="M:udp -h profilerlog -p 9001"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,sss} %m %n"/>
+		</layout>
+	</appender>
+	<appender name="socketFriend" class="org.apache.log4j.net.SocketAppender">
+		<param name="remoteHost" value="10.3.18.175"/>
+		<param name="port" value="8015"/>
+		<param name="ReconnectionDelay" value="6000"/>
+		<param name="LocationInfo" value="true"/>
+	</appender>
+	<appender name="timecost" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/data/logs/main/timecost.log"/>
+		<param name="maxFileSize" value="100MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p] %m%n"/>
+		</layout>
+	</appender>
+	<!-- Friend -->
+	<appender name="friendStatistics" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/main/friendStatistics.log"/>
+		<param name="DatePattern" value="'.'yyyyMMdd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyyMMdd HH:mm:ss} %t %m %n"/>
+		</layout>
+	</appender>
+	<!-- kaixin -->
+	<appender name="registerAction" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/main/regAction.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="regKXSSLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/regKXSS.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss},%m %n"/>
+		</layout>
+	</appender>
+	<!-- resin-profiler -->
+	<appender name="remote_appender" class="com.xiaonei.xce.log.log4j.XceAppender">
+		<param name="CommunicatorInitArgs" value="Ice.Override.ConnectTimeout=70"/>
+		<param name="LoggerEndpoints" value="M:udp -h 10.22.202.169 -p 9000"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	<!--add by shixingtao 2010-03-03-->
+	<appender name="xceNewLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/main/ocelog.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]%m%n" />
+		</layout>
+	</appender>
+	<logger name="oce" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="xceNewLogger"/>
+	</logger>
+	<!-- resin-profiler -->
+	<logger name="com.xiaonei.tools.profiler.ProfilerLogThread" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="remote_appender"/>
+	</logger>
+	<!-- remote guide click stat log -->
+	<logger name="socialGraph" additivity="false">
+		<level value="warn"/>
+		<appender-ref ref="socketFriend"/>
+	</logger>
+	<logger name="friendStat" additivity="false">
+		<level value="fatal"/>
+		<appender-ref ref="friendStatistics"/>
+	</logger>
+	<logger name="xnguide.clickstat" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="remote"/>
+	</logger>
+	<logger name="friend" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="friendFile"/>
+	</logger>
+	<logger name="impt" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="imptFile"/>
+	</logger>
+	<!-- reg start -->
+	<logger name="regSSLog" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regSSLog"/>
+	</logger>
+	<logger name="regMonitorLog" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regMonitorLog"/>
+	</logger>
+	<logger name="regLog" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regLog"/>
+	</logger>
+	<logger name="com.inshion.MyLogger" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="guideLog"/>
+	</logger>
+	<logger name="com.inshion.MyTimeCostLogger" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="guideTimeCostLog"/>
+	</logger>
+	<logger name="regTimeCost" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regTimeCost"/>
+	</logger>
+	<logger name="com.xiaonei.reg.register.logic.buildperson.RegAccountLogic" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="RegAccountLogic"/>
+	</logger>
+	<!-- reg end -->
+	<logger name="rec404log" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="rec404File"/>
+	</logger>
+	<logger name="err" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="errFile"/>
+	</logger>
+	<logger name="com.xiaonei.platform.core.opt.DataAccessMgr" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="DataAccessFile"/>
+	</logger>
+	<!-- for ICE -->
+	<logger name="xceStat" additivity="false">
+		<level value="fatal"/>
+		<appender-ref ref="xceStatFile"/>
+	</logger>
+	<logger name="com.xiaonei.platform.framework.log.XnLog" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="xnLogDebugFile"/>
+	</logger>
+	<!-- doing  end -->
+	<logger name="com.dodoyo.profile.action.FriendDoingListAction" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="doing"/>
+	</logger>
+	<!-- doing  end -->
+	<logger name="com.dodoyo.reg.action.LoginBaseAction" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="loginIpFile"/>
+	</logger>
+	<logger name="com.xiaonei.platform.core.opt.base.action.BaseXnAction" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="actionLogFile"/>
+	</logger>
+	<logger name="com.xiaonei.reg.guide.util.GuideData" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="guideBoxData"/>
+	</logger>
+	<logger name="com.xiaonei.search2.SearchViewFactoryHelper" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="guideSearchData"/>
+	</logger>
+	<logger name="com.xiaonei.platform.core.opt.DataAccessMgr" additivity="false">
+		<level value="DEBUG"/>
+		<appender-ref ref="oce-logger"/>
+	</logger>
+	<logger name="net.paoding.rose">
+		<level value="info"/>
+		<appender-ref ref="roseLog"/>
+	</logger>
+	<logger name="net.paoding.rose.jade">
+		<level value="info"/>
+		<appender-ref ref="roseLog"/>
+	</logger>
+	<logger name="com.xiaonei.platform.core.control.TimeCostUtil" additivity="false">
+		<level value="DEBUG"/>
+		<appender-ref ref="timecost"/>
+	</logger>
+	<logger name="freemarker" additivity="false">
+		<level value="fatal"/>
+		<appender-ref ref="oce-logger"/>
+	</logger>
+	<logger name="regAction" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="registerAction"/>
+	</logger>
+	<logger name="regKXSSLog" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regKXSSLog"/>
+	</logger>
+	<logger name="xnlog.guide" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="SocketGuide"/>
+	</logger>
+	<logger name="xnlog.404" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="Socket"/>
+	</logger>
+	<logger name="xnlog.500" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="Socket"/>
+	</logger>
+	<root>
+		<level value="error"/>
+		<appender-ref ref="file"/>
+	</root>
+</log4j:configuration>

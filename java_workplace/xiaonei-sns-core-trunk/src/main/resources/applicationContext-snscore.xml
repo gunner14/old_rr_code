@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<bean id="v6UserIdsManager" class="com.xiaonei.sns.platform.core.rose.vsix.V6UserIdsManager"></bean>
+	<bean id="com.xiaonei.sns.platform.core.rose.cache.CacheManager"
+		class="com.xiaonei.sns.platform.core.rose.cache.CacheManagerResolver" />
+	<bean id="com.xiaonei.sns.platform.core.rose.interceptors.Performance"
+		class="com.xiaonei.sns.platform.core.rose.interceptors.PerformanceInterceptor" />
+	<bean
+		id="com.xiaonei.sns.platform.core.rose.interceptors.MergeWindowModel"
+		class="com.xiaonei.sns.platform.core.rose.interceptors.MergeWindowModelInterceptor" />
+	<bean id="com.xiaonei.sns.platform.core.rose.interceptors.CookieCleaner"
+		class="com.xiaonei.sns.platform.core.rose.interceptors.CookieCleanerInterceptor" />
+	<bean id="com.xiaonei.sns.platform.core.rose.interceptors.ServiceCutter"
+		class="com.xiaonei.sns.platform.core.rose.interceptors.ServiceCutterInterceptor" />
+
+	<bean id="com.xiaonei.platform.core.control.IBlockExecutor" class="com.xiaonei.platform.core.control.BlockExecutor" />
+
+     <!-- socialwiki 按照尾号开放 by david on 2012-05-30 -->
+     <bean id="wikiUserIdsManager"  class="com.xiaonei.sns.platform.core.rose.wiki.WikiUserIdsManager" />
+
+	<context:component-scan base-package="com.renren.sns.privacy.service"
+		use-default-filters="true" />
+
+</beans>

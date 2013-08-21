@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>校内web监控</title>
+<script type="text/javascript" src="/y/js/swfobject.js"></script>
+<script type="text/javascript" src="/y/js/json2.js"></script>
+</head>
+<body>
+    <b2>Http 监控30天详情</b2>
+	<br>
+    <a href="/y/db/sql/generalInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">sql慢查询概况</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/error/geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">404/500概况</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/error/details?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">404/500详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/y/http/overtime/geneInfo?byear=$byear&bmonth=$bmonth&bday=$bday&bhour=$bhour&bminute=$bminute&bsecond=$bsecond&ehour=$ehour&eminute=$eminute&esecond=$esecond&eyear=$eyear&emonth=$emonth&eday=$eday">Url超时概括</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+<table>
+	<td>
+		<tr>
+			<td align="center">日期</a></td>
+			<td align="center">Url$errortype</a></td>
+			<td align="center">amount</a></td>
+			<td align="center">referer</a></td>
+			<!-- <td align="center">happenTime</a></td>
+			-->
+		</tr>
+		#foreach ($monthinfo in ${monthinfolist})
+			#foreach($item in ${monthinfo})
+				<tr>
+				<td align="center">${item.date}</td>
+				<td align="center">${item.url}</td>
+				<td align="center">${item.amount}</td>
+				<td align="center">${item.referer}</td>
+				</tr>
+			#end
+		#end
+	</td>
+	#set($name = "wangzhiliang")
+	#if(!$name)
+		
+		
+		
+		#else
+			
+	#end
+</table>
+<script type="text/javascript">
+                    swfobject.embedSWF("/y/open-flash-chart.swf", "errdetailmonth", "1000",
+"800", "9.0.0", "expressInstall.swf",
+                    {"get-data":"get_data"});
+                </script>
+                <script type="text/javascript">
+                    function ofc_ready()
+                    {
+                    }
+                    var tmp = false
+                    function get_data()
+                    {
+                        return JSON.stringify(errdetailmonthdata);
+                    }
+                    function findSWF(movieName) {
+                        if (navigator.appName.indexOf("Microsoft") != -1) {
+                            return window[movieName];
+                        } else {
+                            return document[movieName];
+                        }
+                    }
+                    var errdetailmonthdata =
+                    ${errdetailmonthdata}
+                </script>
+                <div id="errdetailmonth"> </div>
+
+
+</body>
+</html>

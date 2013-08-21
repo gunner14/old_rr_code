@@ -1,0 +1,77 @@
+#!/bin/bash
+
+if [ $# -ne 4 ]
+then
+        echo "$0 <bussiness> <type> <ip> <stay>"
+        exit 3
+fi
+
+BUSSINESS=$1
+TYPE=$2
+IP=$3
+STAY=$4
+
+. ${PWD}/nginx_conf/${BUSSINESS}_parameter.conf
+
+function generalConf {
+if [ $# -ne 4 ]
+then
+	echo "no"
+fi
+
+FLAG_ONLINE=$1
+FLAG_DARKLAUNCH=$2
+FLAG_IP=$3
+FILE=$4
+
+echo "upstream web_${BUSSINESS} {" > ${FILE}
+for m in ${outer_ip}
+do
+	if [ ${FLAG_ONLINE} == "true" ] || ([ ${FLAG_ONLINE} == "false" ] && [ ${m} != ${FLAG_IP} ])
+	then
+		echo "  server ${m}${config_suffix}" >> ${FILE}
+	fi
+done
+echo "}" >> ${FILE}
+echo >> ${FILE}
+
+echo "upstream web_${BUSSINESS}_darklaunch {" >> ${FILE}
+if [ ${FLAG_DARKLAUNCH} == "true" ]
+then
+	echo "  server ${FLAG_IP}${config_suffix}" >> ${FILE}
+fi
+
+if [ ${FLAG_ONLINE} == "true" ] || ([ ${FLAG_ONLINE} == "false" ] && [ ${FLAG_DARKLAUNCH} == "false" ])
+then
+	for n in ${inner_ip}
+	do
+	if [ ${n} != ${FLAG_IP} ]
+	then
+		echo "  server ${n}${config_suffix}" >> ${FILE}
+	fi
+	done
+fi
+echo "}" >> ${FILE}
+echo >> ${FILE}
+}
+
+if [ ${TYPE} == "cut" ]
+then
+	result=`generalConf "false" "false" ${IP} ${config_file}`
+elif [ ${TYPE} == "darklaunch" ]
+then
+	result=`generalConf "false" "true" ${IP} ${config_file}`
+fi
+
+if [ ${TYPE} == "online" ]
+then
+	if [ ${STAY} == "yes" ]
+	then
+	result=`generalConf "true" "true" ${IP} ${config_file}`
+	elif [ ${STAY} == "no" ]
+	then
+	result=`generalConf "true" "false" ${IP} ${config_file}`
+	fi
+fi
+cat ${PWD}/nginx_conf/template/${template} >> ${config_file}
+

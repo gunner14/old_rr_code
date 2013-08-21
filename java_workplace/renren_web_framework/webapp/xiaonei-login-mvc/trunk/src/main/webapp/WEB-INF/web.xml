@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-app_2_4.xsd"
+	version="2.4">
+
+	<context-param>
+		<param-name>portalExecutorCorePoolSize</param-name>
+		<param-value>2000</param-value>
+	</context-param>
+
+	<distributable />
+	<display-name>xiaonei.com</display-name>
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.action.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+
+
+	</filter-mapping>
+	<filter>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.domainIdentified.DomainIdentifiedFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<!-- conflict Login 
+		<dispatcher>FORWARD</dispatcher>
+		-->
+	</filter-mapping>
+
+	<filter>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.wrapper.OpiWrapperFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpiWrapperFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<filter>
+		<filter-name>UserDomainFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.action.UserDomainFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserDomainFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+
+	</filter-mapping>
+
+	<filter>
+		<filter-name>resin-profiler</filter-name>
+		<filter-class>com.xiaonei.tools.profiler.ProfilerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>resin-profiler</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+
+	<filter>
+		<filter-name>RoseFilter</filter-name>
+		<filter-class>net.paoding.rose.RoseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RoseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+
+
+	<listener>
+		<listener-class>com.xiaonei.platform.core.opt.base.action.InitiateListener
+		</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config-login.xml,
+     			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.f</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<servlet>
+		<servlet-name>xiaoneilog</servlet-name>
+		<servlet-class>com.xiaonei.tools.profiler.ProfilerServlet
+		</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>xiaoneilog</servlet-name>
+		<url-pattern>/resin-profiler</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- web UA -->
+	<filter>
+		<filter-name>useragentFilter</filter-name>
+		<filter-class>com.xiaonei.web.framework.util.UserAgentFilter
+		</filter-class>
+		<!--
+			默认为false，这种情况下不检查浏览器ua， 建议设置为true， 根据ua库做红黑平衡树查找，算法时间复杂度为O(logn)
+		-->
+		<init-param>
+			<param-name>CHECK_USER_AGENT</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!-- ua数据库的绝对路径，如果不进行设置的话，默认值为当前web工 程的WEB-INF/ua.db -->
+		<!--
+			<init-param> <param-name>UA_DB</param-name>
+			<param-value>/data/ua.db</param-value> </init-param>
+		-->
+	</filter>
+
+	<filter-mapping>
+		<filter-name>useragentFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- 兴涛大哥的404 505远程log收集器 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.xml</param-value>
+		<!--
+			存放目录自己设置log4j.xml
+		-->
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60</param-value>
+		<!--
+			时间自己控制 检查log4j.xml 的间隔 当文件变更后会自动reload
+		-->
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+		<!--
+			确保Spring-XXX.jar存在
+		-->
+	</listener>
+
+	<!-- jade的配置  -->
+	<context-param>
+		<param-name>jadeDataAccessProviderClass</param-name>
+		<param-value>
+			com.xiaonei.commons.jade.impl.xceadapter.provider.XceDataAccessProvider
+		</param-value>
+	</context-param>
+</web-app>

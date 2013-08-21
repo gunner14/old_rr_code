@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa>
+	<services>
+		<service id="abc.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.11" port="8189" status="enabled" />
+				<node ip="10.3.21.12" port="8189" status="enabled" />
+			</nodes>
+		</service>
+		<service id="account.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.148" port="8188" status="enabled" />
+				<node ip="10.3.20.224" port="8188" status="enabled" />
+				<node ip="10.7.18.194" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="admin.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.20.23" port="8188" status="enabled" />
+				<node ip="10.3.20.24" port="8188" status="disabled" />
+			</nodes>
+		</service>
+		<service id="at.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.20.145" port="8188" status="enabled" />
+				<node ip="10.3.20.146" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="blog.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.15" port="8188" status="enabled" />
+				<node ip="10.3.24.16" port="8188" status="enabled" />
+				<node ip="10.3.24.17" port="8188" status="enabled" />
+				<node ip="10.3.24.18" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="comment.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.18.168" port="8188" status="enabled" />
+				<node ip="10.3.18.169" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="comment.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.18.168" port="8188" status="enabled" />
+				<node ip="10.3.18.169" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="contact.wap.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.174" port="8188" status="enabled" />
+				<node ip="10.3.20.222" port="8188" status="enabled" />
+				<node ip="10.3.17.61" port="8188" status="enabled" />
+				<node ip="10.3.17.63" port="8188" status="enabled" />
+				<node ip="10.3.24.184" port="8188" status="enabled" />
+				<node ip="10.3.24.187" port="8188" status="enabled" />
+				<node ip="10.3.24.188" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="core.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.17.59" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="email.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.136" port="8188" status="enabled" />
+				<node ip="10.3.19.139" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="event.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.43" port="8188" status="enabled" />
+				<node ip="10.3.21.44" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="event.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.44" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="explore.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.52" port="8188" status="enabled" />
+				<node ip="10.3.21.57" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="feeds.zhan.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.22.116" port="8188" status="enabled" />
+				<node ip="10.7.18.23" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="entries.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.17.180" port="8188" status="enabled" />
+				<node ip="10.3.17.181" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="fm.music.xoa.renren.com">
+			<nodes>
+                                <node ip="10.3.24.104" port="8184" status="enabled" />
+                                <node ip="10.3.24.105" port="8184" status="enabled" />
+                                <node ip="10.3.24.106" port="8184" status="enabled" />
+			</nodes>
+		</service>
+		<service id="forum.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.29" port="8188" status="enabled" />
+				<node ip="10.3.24.109" port="8188" status="enabled" />
+				<node ip="10.3.17.27" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="fuxi.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.31" port="8188" status="enabled" />
+				<node ip="10.3.24.32" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="fuxi.devc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.123" port="8388" status="enabled" />
+				<node ip="10.3.20.220" port="8388" status="enabled" />
+			</nodes>
+		</service>
+		<service id="ip.game.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.135" port="8188" status="enabled" />
+				<node ip="10.3.19.135" port="8199" status="enabled" />
+			</nodes>
+		</service>
+		<service id="jebe.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.18.194" port="8188" status="enabled" />
+				<node ip="10.4.16.151" port="8188" status="enabled" />
+				<node ip="10.3.19.166" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="lbs.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.163" port="8188" status="enabled" />
+				<node ip="10.3.20.222" port="8288" status="enabled" />
+				<node ip="10.3.23.181" port="8188" status="enabled" />
+				<node ip="10.3.24.19" port="8188" status="enabled" />
+				<node ip="10.3.24.20" port="8188" status="enabled" />
+				<node ip="10.3.24.119" port="8188" status="enabled" />
+				<node ip="10.3.24.120" port="8188" status="enabled" />
+				<node ip="10.3.24.239" port="8188" status="enabled" />
+				<node ip="10.3.24.240" port="8188" status="enabled" />
+				<node ip="10.3.24.184" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="mapping.lbs.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.25.185" port="8388" status="enabled" />
+				<node ip="10.3.25.186" port="8388" status="enabled" />
+				<node ip="10.3.24.240" port="8388" status="enabled" />
+				<node ip="10.3.24.239" port="8388" status="enabled" />
+				<node ip="10.3.23.181" port="8388" status="enabled" />
+			</nodes>
+		</service>
+		<service id="biz.lbs.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.188" port="8188" status="enabled" />
+				<node ip="10.3.19.189" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="matter.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.25.129" port="8188" status="enabled" />
+				<node ip="10.3.25.130" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="mlocate.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.105" port="8188" status="enabled" />
+				<node ip="10.3.23.106" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="msgcenter.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.48" port="8188" status="enabled" />
+				<node ip="10.3.22.41" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="music.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.104" port="8184" status="enabled" />
+				<node ip="10.3.24.105" port="8184" status="enabled" />
+				<node ip="10.3.24.106" port="8184" status="enabled" />
+			</nodes>
+		</service>
+		<service id="page.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.17.145" port="8188" status="enabled" />
+				<node ip="10.3.17.146" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="photo.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.25.31" port="8188" status="enabled" />
+				<node ip="10.3.25.32" port="8188" status="enabled" />
+				<node ip="10.3.25.33" port="8188" status="enabled" />
+				<node ip="10.3.25.34" port="8188" status="enabled" />
+				<node ip="10.3.25.35" port="8188" status="enabled" />
+				<node ip="10.3.25.36" port="8188" status="enabled" />
+				<node ip="10.3.25.37" port="8188" status="enabled" />
+				<node ip="10.3.25.38" port="8188" status="enabled" />
+				<node ip="10.3.25.39" port="8188" status="enabled" />
+				<node ip="10.3.25.40" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="photo.m.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.17.47" port="8188" status="enabled" />
+				<node ip="10.3.17.48" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="picker.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.18.171" port="8188" status="enabled" />
+				<node ip="10.3.18.38" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="qun.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.17.56" port="8188" status="enabled" />
+				<node ip="10.3.17.57" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="realtime.api.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.21.35" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="reg.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.49" port="8188" status="enabled" />
+				<node ip="10.3.23.50" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="rrgj.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.77" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="rrsc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.19.169" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="rrurl.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.18.166" port="8188" status="enabled" />
+				<node ip="10.3.18.133" port="8188" status="enabled" />
+				<node ip="10.3.18.129" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="share.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.58" port="8188" status="enabled" />
+				<node ip="10.3.24.59" port="8188" status="enabled" />
+				<node ip="10.3.19.25" port="8188" status="enabled" />
+				<node ip="10.3.19.26" port="8188" status="enabled" />
+				<node ip="10.3.19.11" port="8188" status="enabled" />
+				<node ip="10.3.19.12" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="status.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.25.137" port="8188" status="enabled" />
+				<node ip="10.3.25.138" port="8188" status="enabled" />
+				<node ip="10.3.25.139" port="8188" status="enabled" />
+				<node ip="10.3.25.140" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="test.xoa.renren.com">
+			<nodes />
+		</service>
+		<service id="tv.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.52" port="8188" status="enabled" />
+				<node ip="10.3.23.53" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="video.ugc.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.52" port="8188" status="enabled" />
+				<node ip="10.3.23.53" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="vip.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.49" port="8188" status="enabled" />
+				<node ip="10.3.23.50" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="gift.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.107" port="8187" status="enabled" />
+				<node ip="10.3.24.108" port="8187" status="enabled" />
+			</nodes>
+		</service>
+		<service id="zhan.xoa.renren.com">
+			<nodes>
+				<node ip="10.7.18.22" port="8189" status="enabled" />
+				<node ip="10.3.23.47" port="8189" status="enabled" />
+			</nodes>
+		</service>
+		<service id="message.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.25.127" port="8888" status="enabled" />
+				<node ip="10.3.25.128" port="8888" status="enabled" />
+			</nodes>
+		</service>
+		<service id="chewen.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.24.135" port="8188" status="enabled" />
+				<node ip="10.3.24.136" port="8188" status="enabled" />
+			</nodes>
+		</service>
+		<service id="business.platform.xoa.renren.com">
+			<nodes>
+				<node ip="10.3.23.20" port="8188" status="enabled" />
+				<node ip="10.3.23.20" port="8189" status="enabled" />
+			</nodes>
+		</service>
+		<service id="api.platform.xoa.renren.com">
+			<nodes>
+               			<node ip="10.3.23.179" port="8188" status="enabled" />
+                		<node ip="10.3.23.180" port="8188" status="enabled" />
+			</nodes>
+        	</service>
+		<service id="authz.m.xoa.renren.com">
+			<nodes>
+               			<node ip="10.3.23.183" port="28188" status="enabled" />
+                		<node ip="10.3.23.184" port="28188" status="enabled" />
+			</nodes>
+        	</service>
+		<service id="flashscreen.wap.xoa.renren.com">
+			<nodes>
+               			<node ip="10.3.20.68" port="8288" status="enabled" />
+                		<node ip="10.3.24.174" port="8288" status="enabled" />
+			</nodes>
+        	</service>
+	</services>
+</xoa>

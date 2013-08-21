@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+<form-validation>
+	<global>
+    </global>
+	<formset>
+		<form name="ipTableForm">
+			<field property="ipMask" depends="maxlength">
+				<arg0 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="newDestForm">
+			<field property="dest" depends="required,maxlength">
+				<arg0 key="terms.labor.dest"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>15</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="reportForm">
+			<field property="url" depends="required">
+				<arg0 key="terms.report.url"/>
+			</field>
+		</form>
+		<!--      <form name="courseForm"> 
+        <field property="name" depends="required,maxlength"> 
+          <arg0 key="terms.course.name" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>40</var-value>
+          </var>
+        </field>
+        <field property="department" depends="maxlength"> 
+          <arg0 key="terms.course.department" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>25</var-value>
+          </var>
+        </field>
+        <field property="department2" depends="maxlength,validwhen"> 
+          <arg0 key="terms.course.department" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>25</var-value>
+          </var>
+					<msg name="validwhen" key="errors.course.department.validwhen" />
+					<var>
+						<var-name>test</var-name>
+						<var-value>((department != null) or (*this* != null))</var-value>
+					</var>
+        </field>
+        <field property="teacher" depends="required,maxlength"> 
+          <arg0 key="terms.course.teacher" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>25</var-value>
+          </var>
+        </field>
+        <field property="desc" depends="maxlength"> 
+          <arg0 key="terms.course.desc" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>1000</var-value>
+          </var>
+        </field>
+      </form> -->
+		<!-- ================================= cpbook related begin -->
+		<form name="confirmbookForm">
+			<field property="phone" depends="required,maxlength">
+				<arg0 key="terms.cpbook.phone"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="email" depends="required,email,maxlength">
+				<arg0 key="terms.cpbook.email"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="address" depends="required,maxlength">
+				<arg0 key="terms.cpbook.address"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="zipcode" depends="required,maxlength">
+				<arg0 key="terms.cpbook.zipcode"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+			</field>
+		</form>
+		<!--
+			<form name="infoForm">
+        <field property="book" depends="required,maxlength">
+          <arg0 key="terms.cpbook.book" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="isbn" depends="required,maxlength">
+          <arg0 key="terms.cpbook.isbn" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>20</var-value>
+          </var>
+        </field>
+        <field property="name" depends="maxlength">
+          <arg0 key="terms.cpbook.name" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>12</var-value>
+          </var>
+        </field>
+	      <field property="department" depends="maxlength">
+          <arg0 key="terms.cpbook.department" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>100</var-value>
+          </var>
+        </field>
+	      <field property="dorm" depends="maxlength">
+          <arg0 key="terms.cpbook.dorm" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>100</var-value>
+          </var>
+        </field>
+			</form>
+			-->
+		<!-- ================================= cpbook related begin -->
+		<!-- ================================= train related begin -->
+		<!--
+      <form name="busleavewordForm"> 
+        <field property="body" depends="required"> 
+          <arg0 key="terms.train.leaveword.body" />
+        </field>
+      </form>
+
+			<form name="takebusForm"> 
+        <field property="code" depends="required,maxlength"> 
+          <arg0 key="terms.train.code" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+
+        <field property="day" depends="required,integer,intRange">
+          <arg0 key="terms.train.day" />
+          <arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>01</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>31</var-value>
+          </var>
+        </field>
+
+        <field property="station" depends="required,maxlength"> 
+          <arg0 key="terms.train.station" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+
+        <field property="dayBus" depends="required,integer,intRange">
+          <arg0 key="terms.train.day" />
+          <arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>01</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>31</var-value>
+          </var>
+        </field>
+        <field property="depart" depends="required">
+          <arg0 key="terms.train.depart" />
+        </field>
+      </form>
+			-->
+		<!-- ================================= train related end -->
+		<!-- ================================= announce related begin -->
+		<form name="editannounceForm">
+			<field property="title" depends="required,maxlength">
+				<arg0 key="terms.announce.title"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>15</var-value>
+				</var>
+			</field>
+			<field property="link" depends="maxlength">
+				<arg0 key="terms.announce.link"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="body" depends="required,maxlength">
+				<arg0 key="terms.announce.body"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>80</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="newannounceForm">
+			<field property="title" depends="required,maxlength">
+				<arg0 key="terms.announce.title"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>15</var-value>
+				</var>
+			</field>
+			<field property="link" depends="maxlength">
+				<arg0 key="terms.announce.link"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="body" depends="required,maxlength">
+				<arg0 key="terms.announce.body"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>80</var-value>
+				</var>
+			</field>
+			<field property="days" depends="required,integer">
+				<arg0 key="terms.announce.days"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- ================================= announce related end -->
+		<!-- ================================= event related begin -->
+		<!--     <form name="neweventForm"> 
+        <field property="name" depends="required,maxlength"> 
+          <arg0 key="terms.event.name" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="host" depends="maxlength"> 
+          <arg0 key="terms.event.host" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="begin_date" depends="required,date"> 
+          <arg0 key="terms.event.begin.date" />
+						<var> 
+							<var-name>datePattern</var-name> 
+							<var-value>yyyy-MM-dd</var-value> 
+						</var>
+        </field>
+        <field property="begin_hour" depends="required,integer,intRange"> 
+          <arg0 key="terms.event.begin.hour" />
+         	<arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>0</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>24</var-value>
+          </var>
+        </field>
+        <field property="begin_min" depends="required,integer,intRange"> 
+          <arg0 key="terms.event.begin.minute" />
+         	<arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>0</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>60</var-value>
+          </var>
+        </field>
+        <field property="end_date" depends="date"> 
+          <arg0 key="terms.event.end.date" />
+						<var> 
+							<var-name>datePattern</var-name> 
+							<var-value>yyyy-MM-dd</var-value> 
+						</var>
+        </field>
+        <field property="end_hour" depends="validwhen,integer,intRange"> 
+          <arg0 key="terms.event.end.hour" />
+         	<arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+					<msg name="validwhen" key="errors.event.end.hour.validwhen" />
+					<var>
+						<var-name>test</var-name>
+						<var-value>((end_date == null) or (*this* != null))</var-value>
+					</var>
+          <var>
+            <var-name>min</var-name>
+            <var-value>0</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>24</var-value>
+          </var>
+        </field>
+        <field property="end_min" depends="validwhen,integer,intRange"> 
+          <arg0 key="terms.event.end.minute" />
+         	<arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+					<msg name="validwhen" key="errors.event.end.minute.validwhen" />
+					<var>
+						<var-name>test</var-name>
+						<var-value>((end_date == null) or (*this* != null))</var-value>
+					</var>
+          <var>
+            <var-name>min</var-name>
+            <var-value>0</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>60</var-value>
+          </var>
+        </field>
+        <field property="location" depends="required,maxlength"> 
+          <arg0 key="terms.event.location" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="gatherLoc" depends="maxlength"> 
+          <arg0 key="terms.event.gatherLoc" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="phone" depends="maxlength"> 
+          <arg0 key="terms.event.phone" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+        <field property="email" depends="email,maxlength"> 
+          <arg0 key="terms.event.email" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+
+        <field property="desc" depends="required,maxlength"> 
+          <arg0 key="terms.event.desc" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>10000</var-value>
+          </var>
+        </field>
+			</form> -->
+		<form name="leavewordForm">
+			<field property="body" depends="required">
+				<arg0 key="terms.event.leaveword.body"/>
+			</field>
+			<field property="from" depends="required">
+				<arg0 key="terms.event.leaveword.from"/>
+			</field>
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.event.leaveword.id"/>
+			</field>
+		</form>
+		<!-- ================================= event related end -->
+		<form name="loginForm">
+			<field property="email" depends="required,maxlength">
+				<arg0 key="terms.logonName"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="password" depends="required,maxlength">
+				<arg0 key="terms.password"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="profileBasicInfoForm">
+			<field property="gender" depends="required,maxlength">
+				<arg0 key="terms.gender"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<field property="homeProvince" depends="maxlength">
+				<arg0 key="terms.homeProvince"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="homeCityName" depends="maxlength">
+				<arg0 key="terms.hometown"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="birthYear" depends="integer,intRange">
+				<arg0 key="terms.birthYear"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1900</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>2100</var-value>
+				</var>
+			</field>
+			<field property="birthMonth" depends="integer,intRange">
+				<arg0 key="terms.birthMonth"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>12</var-value>
+				</var>
+			</field>
+			<field property="birthDay" depends="integer,intRange">
+				<arg0 key="terms.birthDay"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>31</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="basicInfoForm">
+			<field property="gender" depends="required,maxlength">
+				<arg0 key="terms.gender"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<field property="univYear" depends="integer">
+				<arg0 key="terms.enterYear"/>
+			</field>
+			<field property="department" depends="maxlength">
+				<arg0 key="terms.department"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="dorm" depends="maxlength">
+				<arg0 key="terms.dorm"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="primeEmail" depends="email,maxlength">
+				<arg0 key="terms.email"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<!--
+        <field property="relationship" depends="maxlength">
+          <arg0 key="terms.relationship" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>20</var-value>
+          </var>
+        </field>
+				-->
+			<field property="birthYear" depends="integer,intRange">
+				<arg0 key="terms.birthYear"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1900</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>2100</var-value>
+				</var>
+			</field>
+			<field property="birthMonth" depends="integer,intRange">
+				<arg0 key="terms.birthMonth"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>12</var-value>
+				</var>
+			</field>
+			<field property="birthDay" depends="integer,intRange">
+				<arg0 key="terms.birthDay"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>31</var-value>
+				</var>
+			</field>
+			<field property="hometown" depends="maxlength">
+				<arg0 key="terms.hometown"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="homeProvince" depends="maxlength">
+				<arg0 key="terms.homeProvince"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="homeZipcode" depends="integer">
+				<arg0 key="terms.zipcode"/>
+			</field>
+			<field property="highSchool" depends="maxlength">
+				<arg0 key="terms.highSchool"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="contactInfoForm">
+			<field property="qq" depends="integer">
+				<arg0 key="terms.qq"/>
+			</field>
+			<field property="cellPhone" depends="maxlength">
+				<arg0 key="terms.cellPhone"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="fixPhone" depends="maxlength">
+				<arg0 key="terms.fixPhone"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="curAddress" depends="maxlength">
+				<arg0 key="terms.curAddress"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="homepage" depends="maxlength">
+				<arg0 key="terms.homepage"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="contactControl" depends="integer">
+				<arg0 key="terms.contactControl"/>
+			</field>
+		</form>
+		<form name="labelForm">
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.id"/>
+			</field>
+			<field property="label" depends="required,maxlength">
+				<arg0 key="terms.label"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="selfDescForm">
+			<field property="description" depends="maxlength">
+				<arg0 key="terms.description"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10000</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="privacyForm">
+			<field property="contactControl" depends="required,integer">
+				<arg0 key="terms.contactControl"/>
+			</field>
+			<!--
+        <field property="notify" depends="required,integer">
+          <arg0 key="terms.notify"  />
+        </field>
+        <field property="blogControl" depends="required,integer">
+          <arg0 key="terms.blogControl"  />
+        </field>
+				-->
+			<field property="basicControl" depends="required,integer">
+				<arg0 key="terms.basicControl"/>
+			</field>
+		</form>
+		<form name="nameForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="terms.name"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="passwordForm">
+			<field property="password" depends="required,maxlength">
+				<arg0 key="terms.password"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			<field property="oldpassword" depends="required,maxlength">
+				<arg0 key="terms.oldPassword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			<field property="reenter" depends="required,,maxlength,validwhen">
+				<arg0 key="terms.reenter"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<msg name="validwhen" key="errors.reenter.validwhen"/>
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this* == password)</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="delAcctForm">
+			<field property="password" depends="required,maxlength">
+				<arg0 key="terms.password"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="newEmailForm">
+			<field property="email" depends="required,email,maxlength">
+				<arg0 key="terms.email"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+		</form>
+		<!--
+      <form name="newTribeForm"> 
+        <field property="name" depends="required,maxlength"> 
+          <arg0 key="terms.tribe.name" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>30</var-value>
+          </var>
+        </field>
+			</form>
+			-->
+		<!--			<form name="reviewCourseForm">
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" />
+        </field>
+        <field property="anony" depends="integer">
+          <arg0 key="terms.anony" />
+        </field>
+        <field property="rate" depends="integer, intRange">
+          <arg0 key="terms.rate" />
+          <arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>0</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>10</var-value>
+          </var>
+        </field>
+				<field property="review" depends="required">
+					<arg0 key="terms.review" />
+				</field>
+			</form>-->
+		<!--
+      <form name="tribeInfoForm">
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" />
+        </field>
+
+        <field property="name" depends="required,maxlength">
+          <arg0 key="terms.tribe.name" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>30</var-value>
+          </var>
+        </field>
+
+        <field property="description" depends="maxlength">
+          <arg0 key="terms.description" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>10000</var-value>
+          </var>
+        </field>
+
+        <field property="forumAccess" depends="required,integer,intRange">
+          <arg0 key="terms.forumAccess" />
+          <arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>1</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>3</var-value>
+          </var>
+        </field>
+
+        <field property="joinLvl" depends="required,integer,intRange">
+          <arg0 key="terms.joinLvl" />
+          <arg1 name="range" key="${var:min}" resource="false" />
+          <arg2 name="range" key="${var:max}" resource="false" />
+          <var>
+            <var-name>min</var-name>
+            <var-value>1</var-value>
+          </var>
+          <var>
+            <var-name>max</var-name>
+            <var-value>2</var-value>
+          </var>
+        </field>
+      </form>
+			-->
+		<form name="newUnivForm">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="terms.univ.name"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			<field property="url" depends="required,maxlength">
+				<arg0 key="terms.univ.url"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="pokeForm">
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.id"/>
+			</field>
+		</form>
+		<form name="guestbookForm">
+			<field property="body" depends="required">
+				<arg0 key="terms.guestbook.body"/>
+			</field>
+			<field property="email" depends="required,email,maxlength">
+				<arg0 key="terms.email"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="name" depends="maxlength">
+				<arg0 key="terms.name"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="reguestbookForm">
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.id"/>
+			</field>
+			<field property="curpage" depends="integer">
+				<arg0 key="terms.curpage"/>
+			</field>
+			<field property="reply" depends="required">
+				<arg0 key="terms.guestbook.reply"/>
+			</field>
+		</form>
+		<!--
+      <form name="sendMessageForm">
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" />
+        </field>
+
+        <field property="subject" depends="required,maxlength">
+          <arg0 key="terms.subject" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>60</var-value>
+          </var>
+        </field>
+
+        <field property="contents" depends="maxlength">
+          <arg0 key="terms.contents" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>20000</var-value>
+          </var>
+        </field>
+      </form>
+			-->
+		<form name="getPasswordForm">
+			<field property="email" depends="required,maxlength">
+				<!-- email, -->
+				<arg0 key="terms.email"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="registerForm">
+			<!--
+        <field property="email" depends="required,email,maxlength">
+          <arg0 key="terms.email" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>50</var-value>
+          </var>
+        </field>
+				-->
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.university"/>
+			</field>
+			<field property="name" depends="required,maxlength">
+				<arg0 key="terms.name"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>12</var-value>
+				</var>
+			</field>
+			<field property="password" depends="required,maxlength">
+				<arg0 key="terms.password"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			<field property="reenter" depends="required,,maxlength,validwhen">
+				<arg0 key="terms.reenter"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<msg name="validwhen" key="errors.reenter.validwhen"/>
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this* == password)</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="processTribeMemberForm">
+			<field property="trId" depends="required,integer">
+				<arg0 key="terms.trId"/>
+			</field>
+		</form>
+		<!--
+			<form name="searchInviteForm">
+				<field property="id" depends="required,integer">
+					<arg0 key="terms.id" />
+				</field>
+				<field property="field" depends="required">
+					<arg0 key="terms.field" />
+				</field>
+				<field property="tag" depends="required">
+					<arg0 key="terms.tag" />
+				</field>
+			</form>
+			-->
+		<form name="invitetribeForm">
+			<field property="id" depends="required,integer">
+				<arg0 key="terms.id"/>
+			</field>
+			<field property="email" depends="required">
+				<arg0 key="terms.email"/>
+			</field>
+			<field property="subject" depends="maxlength">
+				<arg0 key="terms.subject"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="message" depends="maxlength">
+				<arg0 key="terms.message"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4000</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="inviteForm">
+			<field property="email" depends="required">
+				<arg0 key="terms.email"/>
+			</field>
+			<field property="subject" depends="maxlength">
+				<arg0 key="terms.subject"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="message" depends="maxlength">
+				<arg0 key="terms.message"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4000</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="multicastMsgForm">
+			<field property="subject" depends="required,maxlength">
+				<arg0 key="terms.subject"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="contents" depends="maxlength">
+				<arg0 key="terms.contents"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20000</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="multiMailTribeForm">
+			<field property="subject" depends="required,maxlength">
+				<arg0 key="terms.subject"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="contents" depends="maxlength">
+				<arg0 key="terms.contents"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20000</var-value>
+				</var>
+			</field>
+			<field property="trId" depends="required, integer">
+				<arg0 key="terms.trId"/>
+			</field>
+		</form>
+		<form name="chginfotribeForm">
+			<field property="trId" depends="required,integer">
+				<arg0 key="terms.trId"/>
+			</field>
+			<field property="kw1" depends="maxlength">
+				<arg0 key="terms.keyword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="kw2" depends="maxlength">
+				<arg0 key="terms.keyword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="kw3" depends="maxlength">
+				<arg0 key="terms.keyword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="kw4" depends="maxlength">
+				<arg0 key="terms.keyword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="kw5" depends="maxlength">
+				<arg0 key="terms.keyword"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="name" depends="required,maxlength">
+				<arg0 key="terms.name"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="url" depends="required,maxlength">
+				<arg0 key="terms.tribe.url"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="description" depends="maxlength">
+				<arg0 key="terms.description"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10000</var-value>
+				</var>
+			</field>
+			<field property="forumAccess" depends="required,integer,intRange">
+				<arg0 key="terms.forumAccess"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>3</var-value>
+				</var>
+			</field>
+			<field property="joinLvl" depends="required,integer,intRange">
+				<arg0 key="terms.joinLvl"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>2</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="editNotifyPrfForm">
+			<field property="leaveWordNotifyFlag" depends="required,integer,intRange">
+				<arg0 key="terms.leaveWordNotifyFlag"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>2</var-value>
+				</var>
+			</field>
+			<field property="messageNotifyFlag" depends="required,integer,intRange">
+				<arg0 key="terms.messageNotifyFlag"/>
+				<arg1 name="range" key="${var:min}" resource="false"/>
+				<arg2 name="range" key="${var:max}" resource="false"/>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>2</var-value>
+				</var>
+			</field>
+		</form>
+		<!--
+      <form name="deleteTribeForm">
+        <field property="password" depends="required,maxlength">
+          <arg0 key="terms.password" />
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>20</var-value>
+          </var>
+        </field>
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" />
+        </field>
+      </form>
+      
+      <form name="editThreadForm">
+        <field property="subject" depends="required,maxlength"> 
+          <arg0 key="terms.subject" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>250</var-value>
+          </var>
+        </field>
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" />
+        </field>
+      </form>
+
+      <form name="editPostForm">
+        <field property="body" depends="required"> 
+          <arg0 key="terms.body" /> 
+        </field>
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" resource="false" />
+        </field>
+      </form>
+
+      <form name="leaveWordForm">
+        <field property="message" depends="required,maxlength"> 
+          <arg0 key="terms.message" /> 
+          <arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>2000</var-value>
+          </var>
+        </field>
+        <field property="id" depends="required,integer">
+          <arg0 key="terms.id" resource="false" />
+        </field>
+        <field property="leaveWordTo" depends="required,integer">
+          <arg0 key="terms.leaveWordId" resource="false" />
+        </field>
+      </form>
+			-->
+		<form name="editDescriptionForm">
+			<field property="description" depends="maxlength">
+				<arg0 key="terms.description"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10000</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+</form-validation>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+	<!-- [1]index==================================================================================>> -->
+	<!-- [1]index==================================================================================>> -->
+
+	<!-- index的 portlet 定义Map -->
+	<bean id="indexPortletMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 默认的 -->
+				<entry key="0" value-ref="indexDefaultPortletList" />
+				<!-- app的 -->
+				<entry key="3" value-ref="indexAppPortletList" />
+				<!-- community page -->
+				<entry key="11220" value-ref="indexCommunityPortletList" />
+				<!-- 世界杯球队page已经删除 -->
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="indexAppPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<!--value>102100118</value> <value>103100116</value -->
+				<value>201100105</value>
+				<value>202100102</value>
+				<value>203100112</value>
+				<value>204100101</value>
+				<value>205100104</value>
+				<value>206100106</value>
+				<value>207100123</value>
+				<value>208100122</value>
+				<value>301100117</value>
+				<value>302100120</value>
+				<value>401100109</value>
+				<value>402100121</value>
+				<value>403100110</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="indexDefaultPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<!--value>102100118</value> <value>103100116</value -->
+				<value>201100105</value>
+				<value>202100102</value>
+				<value>203100112</value>
+				<value>204100101</value>
+				<value>205100104</value>
+				<value>206100106</value>
+				<value>207100107</value>
+				<value>208100108</value>
+				<value>301100117</value>
+				<value>302100120</value>
+				<value>401100109</value>
+				<value>402100110</value>
+				<value>403100111</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="indexCommunityPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<!--value>102100118</value> <value>103100116</value -->
+				<value>201100105</value>
+				<value>202100140</value>
+				<value>203100102</value>
+				<value>2043100112</value>
+				<value>205100101</value>
+				<value>206100104</value>
+				<value>207100106</value>
+				<value>208100107</value>
+				<value>209100108</value>
+				<value>301100117</value>
+				<value>302100120</value>
+				<value>401100109</value>
+				<value>402100110</value>
+				<value>403100111</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!--bean id="indexWCPortletList" class="java.util.ArrayList"> <constructor-arg> 
+		<list -->
+	<!--value>102100118</value> <value>103100116</value -->
+	<!--value>201100105</value> <value>202100102</value> <value>203100112</value> 
+		<value>204100101</value> <value>205100104</value> <value>206100106</value> 
+		<value>207100107</value> <value>208100108</value> <value>301100117</value> 
+		<value>302100120</value> <value>401100900</value> <value>402100109</value> 
+		<value>403100110</value> <value>404100111</value> </list> </constructor-arg> 
+		</bean -->
+
+	<!-- [1]index==================================================================================<< -->
+	<!-- [1]index==================================================================================<< -->
+
+	<!-- [2]info==================================================================================>> -->
+	<!-- [2]info==================================================================================>> -->
+	<!--index的portlet定义Map -->
+	<bean id="infoPortletMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 默认的 -->
+				<entry key="0" value-ref="infoDefaultPortletList" />
+				<!-- app的 -->
+				<entry key="3" value-ref="infoAppPortletList" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!--资料的portlet定义list -->
+	<bean id="infoDefaultPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<!--value>102100118</value> <value>103100116</value -->
+				<value>201100105</value>
+				<value>401100201</value>
+				<value>402100202</value>
+				<value>403100203</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="infoAppPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>201100105</value>
+				<value>202100123</value>
+				<value>203100122</value>
+				<value>401100201</value>
+				<value>402100202</value>
+				<value>402100124</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<!-- [2]info==================================================================================<< -->
+	<!-- [2]info==================================================================================<< -->
+
+	<!-- [3]zpshow==================================================================================>> -->
+	<!-- [3]zpshow==================================================================================>> -->
+	<bean id="zpshowPortletMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 默认的 -->
+				<entry key="0" value-ref="zpshowPortletList" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<!--资料的portlet定义list -->
+	<bean id="zpshowPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<!--value>102100118</value> <value>103100116</value -->
+				<value>201100105</value>
+				<value>401100207</value>
+				<value>402100209</value>
+				<value>403100204</value>
+				<value>404100205</value>
+				<value>405100206</value>
+				<value>406100208</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<!-- [3]zpshow==================================================================================<< -->
+	<!-- [3]zpshow==================================================================================<< -->
+
+	<!-- <bean id="reviewPortletList" class="java.util.ArrayList"> <constructor-arg> 
+		<list> <value>201100105</value> <value>403100203</value> </list> </constructor-arg> 
+		</bean> -->
+
+	<!-- [4]map==================================================================================>> -->
+	<!-- [4]map==================================================================================>> -->
+	<bean id="mapPortletMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 默认的 -->
+				<entry key="0" value-ref="mapPortletList" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="mapPortletList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>201100127</value>
+				<value>401100126</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<!-- [4]map==================================================================================<< -->
+	<!-- [4]map==================================================================================<< -->
+
+	<!-- 默认的portal对应的 portlet的配置 -->
+	<bean id="settingsDefaultPortletLocationMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 什么都没有的话，就取这个吧 -->
+				<entry key="_default" value-ref="indexPortletMap" />
+				<entry key="index" value-ref="indexPortletMap" />
+				<entry key="info" value-ref="infoPortletMap" />
+				<!-- <entry key="appIndex" value-ref="appPortletList" /> <entry key="appInfo" 
+					value-ref="applicationInfoPortletList" /> -->
+				<entry key="zpshow" value-ref="zpshowPortletMap" />
+				<entry key="map" value-ref="mapPortletMap" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!--禁用的portlet集合 -->
+	<bean id="settingsDenyPortletIdsSet" class="java.util.HashSet">
+		<constructor-arg>
+			<set>
+				<value>118</value><!--状态 -->
+				<value>116</value><!-- 标签 -->
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<!--定义某个bizType的内部uri 如果直接通过物理路径映射，就不要再使用这种方式了！！！！！！仿照/newtree/note路径的做法 
+		by xiao.zhang. for SEO，现在应该没用了 by huqi . -->
+	<bean id="settingsBizUriMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!--<entry key="note" value="/note/?pid=%s" /> <entry key="photo" value="/photo/?pid=%s" 
+					/> <entry key="video" value="/media/video/videoAlbumList?pid=%s" /> -->
+				<entry key="share" value="/share/list/?pid=%s" />
+				<entry key="music" value="/media/music/musicUpload?pid=%s" />
+				<entry key="related" value="/commpage/?pid=%s" />
+				<entry key="recruit" value="/recruit/company/position/getPositionList?pid=%s" />
+				<entry key="reviews" value="/reviews/reviews?pid=%s" />
+				<entry key="vote" value="/vote?pid=%s" />
+				<entry key="shopping" value="/shopping/?pid=%s" />
+				<entry key="producrCompare" value="/shopping/product/?pid=%s" />
+				<entry key="productComment" value="/shopping/comment/?pid=%s" />
+				<entry key="productAlbum" value="/shopping/photo/?pid=%s" />
+				<entry key="producDetail" value="/shopping/detail/?pid=%s" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- bizType的默认的portal view -->
+	<bean id="settingsBizViewMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="_default" value="/views/portal/index/templet/1-2-1.jsp" />
+				<entry key="index" value="/views/portal/index/templet/1-2-1.jsp" />
+				<entry key="info" value="/views/portal/info/templet/1-3.jsp" />
+				<!-- 招聘展示页面 -->
+				<entry key="zpshow" value="/views/portal/info/templet/1-3.jsp" />
+				<entry key="map" value="/views/portal/templet/7-2.jsp" /><!-- 地图页面 -->
+				<entry key="info5" value="/views/portal/templet/1.jsp" /><!-- 情侣空间资料页 -->
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<!-- bizType的默认的templet -->
+	<bean id="settingsBizTempletMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="_default" value="2" /><!-- 1-2-1.jsp -->
+				<entry key="index" value="2" /><!-- 1-2-1.jsp -->
+				<entry key="info" value="3" /><!-- 1-3.jsp -->
+				<!-- 招聘展示页面 -->
+				<entry key="zpshow" value="3" /><!-- 1-3.jsp -->
+				<entry key="map" value="4" /><!-- 地图页面  7-2.jsp-->
+				<entry key="info5" value="9" /><!-- 情侣空间资料页 1.jsp -->
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- 必须的portlets -->
+	<bean id="settingsIntegrantPortlets" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>1100100</value>
+				<value>100100001</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="portalSettings" class="com.xiaonei.page.bean.PortalSettingsBean">
+		<!-- 定义某个bizType的内部uri,如果有配置直接forward到这里，否则按照portal的流程走 <bizType,uri> uri的格式里面会传入pageId,用于生成uri -->
+		<property name="bizUriMap" ref="settingsBizUriMap" />
+
+		<!--bizType的默认的portal view,如果是portal页面，会直接走这里 -->
+		<property name="bizViewMap" ref="settingsBizViewMap" />
+		
+		<!--bizType的默认的template,如果是portal页面，会直接走这里 -->
+		<property name="bizTemplateMap" ref="settingsBizTempletMap" />
+
+		<!--默认的portal对应的 portlet的配置 -->
+		<property name="defaultPortletLocationMap" ref="settingsDefaultPortletLocationMap" />
+
+		<!-- 必须的portlets -->
+		<property name="integrantPortlets" ref="settingsIntegrantPortlets" />
+
+		<!-- 禁用的portlet 集合，如：状态和标签，统一到showFullColumn中了，并且不可配置，所以不要多余的操作了 -->
+		<property name="denyPortletIds" ref="settingsDenyPortletIdsSet" />
+
+		<!--tab最多显示个数 -->
+		<property name="showTabMax" value="6" />
+
+		<!-- 最多定义的自定义页个数 -->
+		<property name="customMax" value="10" />
+	</bean>
+
+</beans>

@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<groupId>com.xiaonei</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.renren</groupId>
+	<artifactId>renren-entrybase-zhan-xoa-service</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>xoa-commons-interceptors</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>xoa-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-gid-util</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose-jade</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-datasource4jade</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>renren-entrybase-zhan-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<developers>
+		<developer>
+			<id>chuanyu.ban</id>
+			<name>班传玉</name>
+			<email>chuanyu.ban@renren-inc.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<verbose>true</verbose>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<sourcepath>${project.basedir}/src/main/java</sourcepath>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>.svn</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+</project>

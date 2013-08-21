@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<!-- ==================================== Data Source Configuration -->
+	<!-- ======================================== Form Bean Definitions -->
+	<action-mappings>
+		<action path="/InviteService" type="com.dodoyo.invite.httpservice.action.InviteServiceAction" scope="request">
+        </action>
+		<action path="/GetTimestamp" type="com.dodoyo.invite.httpservice.action.GetTimestampAction" scope="request">
+        </action>
+		<action path="/RecvPostDatas" type="com.dodoyo.invite.httpservice.action.RecvPostDatasAction" scope="request">
+        </action>
+		<action path="/ServiceManage" type="com.dodoyo.invite.httpservice.action.ServiceManageAction" scope="request">
+			<forward name="login" path="/pages/login.jsp"/>
+			<forward name="client_list" path="/pages/client_list.jsp"/>
+		</action>
+	</action-mappings>
+	<!-- ===================================== Controller Configuration -->
+	<controller maxFileSize="15M" tempDir="/data/tmp" locale="false"/>
+	<!-- ================================ Message Resources Definitions -->
+	<message-resources parameter="resources.application"/>
+	<!-- ======================================= Plug Ins Configuration -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+	</plug-in>
+</struts-config>

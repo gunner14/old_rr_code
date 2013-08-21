@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="g.pcRouter"
+		class="com.xiaonei.commons.gid.service.http.routers.pc.PCRouter">
+		<property name="routersByName">
+			<map>
+				<entry key="album">
+					<bean class="com.xiaonei.commons.gid.service.http.routers.pc.AlbumRouter">
+					</bean>
+				</entry>
+				<entry key="blog">
+					<bean class="com.xiaonei.commons.gid.service.http.routers.pc.BlogRouter">
+					</bean>
+				</entry>
+				<entry key="mini_group">
+					<bean
+						class="com.xiaonei.commons.gid.service.http.routers.pc.MiniGroupRouter">
+					</bean>
+				</entry>
+				<entry key="page">
+					<bean class="com.xiaonei.commons.gid.service.http.routers.pc.PageRouter">
+					</bean>
+				</entry>
+				<entry key="person">
+					<bean
+						class="com.xiaonei.commons.gid.service.http.routers.pc.PersonRouter">
+					</bean>
+				</entry>
+				<entry key="photo">
+					<bean class="com.xiaonei.commons.gid.service.http.routers.pc.PhotoRouter">
+					</bean>
+				</entry>
+				<entry key="share">
+					<bean class="com.xiaonei.commons.gid.service.http.routers.pc.ShareRouter">
+					</bean>
+				</entry>
+				<entry key="status">
+					<bean
+						class="com.xiaonei.commons.gid.service.http.routers.pc.StatusRouter">
+					</bean>
+				</entry>
+				<entry key="xiaozu">
+					<bean
+						class="com.xiaonei.commons.gid.service.http.routers.pc.XiaozuRouter">
+					</bean>
+				</entry>
+				<entry key="xiaozhan">
+					<bean
+						class="com.xiaonei.commons.gid.service.http.routers.pc.XiaozhanRouter">
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+
+</beans>

@@ -1,0 +1,74 @@
+
+upstream cwf_browse {
+  server unix:/var/lib/nginx/socks/search.sock weight=1000;
+  server www6.xce.d.xiaonei.com:3000 weight=10;
+  server www7.xce.d.xiaonei.com:3000 weight=10;
+}
+
+server {
+  listen 80;
+  server_name browse.renren.com;
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    root   /usr/share/nginx/html;
+  }
+
+  if ($request_method ~* PROPFIND){
+    return 403;
+  }
+
+  location ~(friendsSelector.do(.*)|friendsSelectorN(.*)|myrelationperson.do(.*)|recommendSelector.do(.*))$ {
+    proxy_pass http://web_friend;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+    client_max_body_size       10m;
+    client_body_buffer_size    128k;
+    client_body_temp_path      /data/client_body_temp;
+    proxy_connect_timeout      90;
+    proxy_send_timeout         90;
+    proxy_read_timeout         90;
+    proxy_buffer_size          4k;
+    proxy_buffers              4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+    proxy_temp_path            /data/proxy_temp;
+  }
+  location / {
+    proxy_pass http://web_browse;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP      $remote_addr;
+    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+    client_max_body_size     10m;
+    client_body_buffer_size    128k;
+    client_body_temp_path    /data/client_body_temp;
+    proxy_connect_timeout    90;
+    proxy_send_timeout       90;
+    proxy_read_timeout       90;
+    proxy_buffer_size        4k;
+    proxy_buffers          4 32k;
+    proxy_busy_buffers_size    64k;
+    proxy_temp_file_write_size 64k;
+    proxy_temp_path        /data/proxy_temp;
+
+    #if ($isOpi = "yes") {
+    #  proxy_pass http://web_browse_darklaunch;
+    #}
+    if ($isExp = "yes") {
+      proxy_pass http://web_browse_darklaunch;
+    }
+  }
+
+  location /ajaxproxy.htm {
+    root /usr/share/nginx/html;
+  }
+  location /ajaxProxy.html {
+    root /usr/share/nginx/html;
+  }
+
+  location /nginx-profiler {
+    stub_status     on;
+    access_log      on;
+    auth_basic      "NginxStatus";
+  }
+}

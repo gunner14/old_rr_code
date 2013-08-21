@@ -1,0 +1,102 @@
+.webtalk_header_container { margin: 10px 0px 10px 0px; text-align: left; }
+.webtalk_main { margin: auto; border: solid 1px #005EAC }
+
+.webtalkmanager_friendbox h4{ line-height: 30px; padding: 0 5px 3px 10px; text-align: left; position:relative; *zoom:1; }
+.webtalkmanager_friendbox_fsearchinput { position:absolute; right:20px; top:5px; *top:5px; _top:5px; }
+.webtalkmanager_friendbox_fsearchreset { position:absolute; right:5px; top:12px; *top:12px; _top:12px; }
+.webtalkmanager_friendbox_fsearch {
+	-moz-box-sizing: border-box;
+	padding-left: 20px;
+	background: url("http://a.xnimg.cn/n/core/modules/webpager/cssimg/search.png") no-repeat scroll left center transparent;
+	border: 1px solid #B2B2B2;
+	line-height: 20px;
+	height: 20px;
+	font-family: 'lucida grande',tahoma,verdana,arial,STHeiTi,simsun,sans-serif;
+	color: #888888;
+}
+.webtalkmanager_friendbox_flist li { cursor:pointer; height:32px; padding:2px 10px; position:relative; *zoom:1; }
+.webtalkmanager_friendbox_flist li a{ text-decoration:none; display:block; }
+
+.webtalkmanager_friendbox_flist li:hover,
+.webtalkmanager_friendbox_flist li.hover { background-color:#F0F5F8 }
+
+.webtalkmanager_friendbox_flist_li_img { display:inline-block; height:32px; margin-right:1ex; overflow:hidden; vertical-align:middle; width:32px; }
+.webtalkmanager_friendbox_flist_li_img img { margin-left:-9px; margin-top:-9px; }
+
+.webtalkmanager_friendbox_flist_li_op { display:none; position:absolute; right:5px; top:10px; *top:13px; _top:10px; }
+.webtalkmanager_friendbox_flist a:hover span.webtalkmanager_friendbox_flist_li_op,
+.webtalkmanager_friendbox_flist a.hover span.webtalkmanager_friendbox_flist_li_op { display:block; background-color:transparent }
+.webtalkmanager_friendbox_flist a {
+	*zoom: expression(function(ele){
+		ele.style.zoom="1";
+	Expressions.hover(ele);
+}(this));
+}
+
+.webtalkmanager_chatroom {
+    padding: 5px 5px 3px 5px;
+    width: 310px
+    }
+.webtalkmanager_chatroom div.dialogs {
+    margin-bottom: 5px
+    position: relative;
+    }
+.webtalkmanager_chatroom article.dialogs > section {
+    position: relative;
+    padding: 10px 5px;
+    background-color: #FFF;
+    z-index: 1
+    }
+.webtalkmanager_chatroom article.dialogs > section:after {
+    content: "\20";
+    background-color: #FFF;
+    display: block;
+    clear: both
+    }
+.webtalkmanager_chatroom article.dialogs > section:nth-child(odd) {
+    background-color: #F7F7F7
+    }
+.webtalkmanager_chatroom article.dialogs > section figure {
+    float: left;
+    margin: 0;
+    margin-right: 10px
+    }
+.webtalkmanager_chatroom article.dialogs > section header span.time {
+    margin-left: 1ex;
+    font-size: 11px
+    }
+.webtalkmanager_chatroom article.dialogs > section.with-avatar section {
+    margin-left: 35px
+    }
+.webtalkmanager_chatroom article.dialogs > section section {
+    padding: 0;
+    margin-left: 40px
+    }
+.webtalkmanager_chatroom article.dialogs > section footer {
+    position: absolute;
+    text-align: right;
+    right: 5px;
+    top: 10px
+    }
+.webtalkmanager_chatroom form.editor textarea {
+    width: 100%;
+    padding-right: 60px;
+    height: 38px;
+    margin-top: 1px;
+    box-sizing: border-box;
+    border: 1px solid #84ABC6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    overflow: visible;
+    *overflow: hidden;
+    *width: 246px;
+    *height: 30px
+    }
+.webtalkmanager_chatroom form.editor input {
+    position: relative;
+    float: right;
+    margin-top: -32px;
+    margin-right: 6px;
+    *zoom: 1;
+    *position: static
+    }

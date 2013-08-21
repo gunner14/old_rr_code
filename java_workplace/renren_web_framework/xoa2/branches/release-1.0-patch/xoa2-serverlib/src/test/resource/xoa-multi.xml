@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-app>
+  <services>
+    <service id="twitter.xoa.renren.com" class="com.renren.xoa2.demo.twitter.TwitterServiceImpl"
+             port="9100">
+      <service-listener name="init-listener" class="com.renren.xoa2.server.DummyInitListenerImpl" />
+    </service>
+     
+    <service id="twitteradmin.xoa.renren.com" class="com.renren.xoa2.demo.twitter.TwitterAdminServiceImpl"
+             port="9101">
+      <service-listener name="init-listener" class="com.renren.xoa2.server.DummyInitListenerImpl" />
+    </service>
+
+  </services>
+</xoa-app>

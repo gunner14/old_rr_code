@@ -1,0 +1,12 @@
+<domain-identified>
+	<msg key="messages.domain.name"><value><![CDATA[开心]]></value></msg>
+	<msg key="siteName"><value><![CDATA[开心]]></value></msg>
+	<msg key="fullSiteName"><value><![CDATA[开心网]]></value></msg>
+	<msg key="oppSiteName"><value><![CDATA[人人]]></value></msg>
+	<msg key="logoutUrl"><value><![CDATA[http://www.kaixin.com/Logout.do]]></value></msg>
+	<msg key="siteNameAbbr"><value><![CDATA[kx]]></value></msg>
+	<msg key="oppSiteNameAbbr"><value><![CDATA[rr]]></value></msg>
+	<msg key="messages.domain.title"><value><![CDATA[开心网]]></value></msg>
+	<msg key="siteDescription"><value><![CDATA[开心网是一个与朋友，同学，同事，家人一起玩的地方：）和朋友们抢车位，养宠物狗狗，在开心农场种自己喜欢的蔬菜水果，一起玩游戏,交友。]]></value></msg>
+	<msg key="siteKeywords"><value><![CDATA[开心网,kaixinwang,真开心网,同事,白领,在职人士,博客,相册,社区,交友,游戏,休闲,聊天,音乐,视频,开心美女, 开心宝贝,开心达人,分享照片,网页游>戏,flash游戏,休闲游戏,办公室宠物,开心农场,狗狗,抢车位,好友买卖,超级大亨,教父,踢屁屁,咬我吧]]></value></msg>
+</domain-identified>

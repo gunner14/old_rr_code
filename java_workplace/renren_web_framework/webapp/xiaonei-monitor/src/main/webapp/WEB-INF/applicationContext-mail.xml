@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>mail.opi-corp.com</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+		<property name="username">
+			<value>guicheng.you@opi-corp.com</value>
+		</property>
+		<property name="password">
+			<value>zofia</value>
+		</property>
+	</bean>
+	<bean id="email" class="com.xiaonei.xnmonitor.mailreport.Email">
+		<property name="emailTo">
+			<value> guicheng.you@opi-corp.com</value>
+		</property>
+		<property name="emailFrom">
+			<value> guicheng.you@opi-corp.com</value>
+		</property>
+		<property name="subject">
+			<value>IM DNS 解析耗时 TOP50 带有分析细节
+			</value>
+		</property>
+	</bean>
+	<!-- 定时发邮件的任务 -->
+	<bean id="reportmail" class="com.xiaonei.xnmonitor.mailreport.ReportTask">
+	</bean>
+	<bean id="imdnsReport" class="com.xiaonei.xnmonitor.mailreport.IMDNSReport"></bean>
+	<bean id="jobInvokeMethod"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="reportmail" />
+		</property>
+		<property name="targetMethod">
+			<value>reportMail</value>
+		</property>
+	</bean>
+	<bean id="dotime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobInvokeMethod" />
+		</property>
+		<property name="cronExpression">
+			<!--
+				<value>0 0/1 0 * * ?</value> <value>0/5 * * * * ?</value>
+			-->
+			<value>0 0 0 * * ?</value>
+		</property>
+
+	</bean>
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="dotime" />
+			</list>
+		</property>
+	</bean>
+</beans>

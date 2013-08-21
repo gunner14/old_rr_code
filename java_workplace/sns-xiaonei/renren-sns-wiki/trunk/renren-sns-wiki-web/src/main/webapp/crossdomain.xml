@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cross-domain-policy>
+<allow-access-from domain="*.renren.com"/>
+<allow-access-from domain="renren.com"/>
+<allow-access-from domain="xnimg.cn"/>
+<allow-access-from domain="s.xnimg.cn"/>
+<allow-access-from domain="a.xnimg.cn"/>
+<allow-http-request-headers-from domain="*.renren.com" headers="*" secure="false"/>
+<allow-http-request-headers-from domain="xnimg.cn" headers="*" secure="false"/>
+<allow-http-request-headers-from domain="s.xnimg.cn" headers="*" secure="false"/>
+</cross-domain-policy>

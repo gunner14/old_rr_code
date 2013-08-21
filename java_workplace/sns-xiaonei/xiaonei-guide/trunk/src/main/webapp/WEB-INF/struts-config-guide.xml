@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="fill-info-form-ns"	type="com.xiaonei.reg.guide.form.NoStageFillInfoForm"></form-bean>
+		<form-bean name="fill-info-form-090729-daxue"	type="com.xiaonei.reg.guide.form.f090729.FormDaxue"></form-bean>
+		<form-bean name="fill-info-form-090729-zhongxue"	type="com.xiaonei.reg.guide.form.f090729.FormZhongxue"></form-bean>
+		<form-bean name="fill-info-form-090729-bailing"	type="com.xiaonei.reg.guide.form.f090729.FormBailing"></form-bean>
+		<form-bean name="fill-info-form-090729-qita"	type="com.xiaonei.reg.guide.form.f090729.FormQita"></form-bean>		
+		<form-bean name="fDX"	type="com.xiaonei.reg.guide.form.f090729.FormDaxue"></form-bean>
+		<form-bean name="fZX"	type="com.xiaonei.reg.guide.form.f090729.FormZhongxue"></form-bean>
+		<form-bean name="fBL"	type="com.xiaonei.reg.guide.form.f090729.FormBailing"></form-bean>
+		<form-bean name="fQT"	type="com.xiaonei.reg.guide.form.f090729.FormQita"></form-bean>	
+		<form-bean name="myEducationForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="univ_type_0" type="java.lang.String" />
+			<form-property name="univ_type_1" type="java.lang.String" />
+			<form-property name="univ_type_2" type="java.lang.String" />
+			<form-property name="univ_type_3" type="java.lang.String" />
+			<form-property name="univ_type_4" type="java.lang.String" />
+			<form-property name="univ_name_0" type="java.lang.String" />
+			<form-property name="univ_name_1" type="java.lang.String" />
+			<form-property name="univ_name_2" type="java.lang.String" />
+			<form-property name="univ_name_3" type="java.lang.String" />
+			<form-property name="univ_name_4" type="java.lang.String" />
+			<form-property name="dept_name_0" type="java.lang.String" />
+			<form-property name="dept_name_1" type="java.lang.String" />
+			<form-property name="dept_name_2" type="java.lang.String" />
+			<form-property name="dept_name_3" type="java.lang.String" />
+			<form-property name="dept_name_4" type="java.lang.String" />
+			<form-property name="dorm_name_0" type="java.lang.String" />
+			<form-property name="dorm_name_1" type="java.lang.String" />
+			<form-property name="dorm_name_2" type="java.lang.String" />
+			<form-property name="dorm_name_3" type="java.lang.String" />
+			<form-property name="dorm_name_4" type="java.lang.String" />
+			<form-property name="univ_id_0" type="java.lang.String" />
+			<form-property name="univ_id_1" type="java.lang.String" />
+			<form-property name="univ_id_2" type="java.lang.String" />
+			<form-property name="univ_id_3" type="java.lang.String" />
+			<form-property name="univ_id_4" type="java.lang.String" />
+			<form-property name="univ_year_0" type="java.lang.String" />
+			<form-property name="univ_year_1" type="java.lang.String" />
+			<form-property name="univ_year_2" type="java.lang.String" />
+			<form-property name="univ_year_3" type="java.lang.String" />
+			<form-property name="univ_year_4" type="java.lang.String" />			
+			
+			<form-property name="hs_name_0" type="java.lang.String" />
+			<form-property name="hs_name_1" type="java.lang.String" />
+			<form-property name="hs_id_0" type="java.lang.String" />
+			<form-property name="hs_id_1" type="java.lang.String" />
+			<form-property name="hs_year_0" type="java.lang.String" />
+			<form-property name="hs_year_1" type="java.lang.String" />
+			<form-property name="class_one_0" type="java.lang.String" />
+			<form-property name="class_one_1" type="java.lang.String" />
+			<form-property name="class_two_0" type="java.lang.String" />
+			<form-property name="class_two_1" type="java.lang.String" />
+			<form-property name="class_three_0" type="java.lang.String" />
+			<form-property name="class_three_1" type="java.lang.String" />
+			
+			<form-property name="juniorHighName" type="java.lang.String" />
+			<form-property name="juniorHighYear" type="java.lang.String" />
+			<form-property name="elementaryName" type="java.lang.String" />
+			<form-property name="elementaryYear" type="java.lang.String" />
+		</form-bean>	
+	</form-beans>
+	<action-mappings>
+		<action path="/gapp"	type="com.xiaonei.reg.guide.action.a090729.GotoApp" scope="request"></action>
+		<action path="/getMaybeFriends"	type="com.xiaonei.reg.guide.action.findnewfriends.AjaxGetMayBeFriends" scope="request"></action>		
+		<action path="/im-090729"	type="com.xiaonei.reg.guide.action.a090729.ImportMsnAction" scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/importmsn.jsp"></forward>
+		</action>
+		<action path="/pv-090729"	type="com.xiaonei.reg.guide.action.a090729.PreviewAction" scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/preview.jsp"></forward>
+		</action>
+		<action path="/pv-090729-ff"	type="com.xiaonei.reg.guide.action.a090729.AjaxRecommendFriendsSelectAction"	scope="request">
+		</action>
+		<action path="/hu-090729"	type="com.xiaonei.reg.guide.action.a090729.PortraitAction" scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/preview.jsp"></forward>
+		</action>
+		<action path="/fi-090729"	type="com.xiaonei.reg.guide.action.a090729.FillInfoActionDaxue" name="fill-info-form-090729-daxue"	scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-090729-dx"	type="com.xiaonei.reg.guide.action.a090729.FillInfoActionDaxue" name="fill-info-form-090729-daxue"	scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-090729-zx"	type="com.xiaonei.reg.guide.action.a090729.FillInfoActionZhongxue"	name="fill-info-form-090729-zhongxue" scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-090729-bl"	type="com.xiaonei.reg.guide.action.a090729.FillInfoActionBailing"	name="fill-info-form-090729-bailing" scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-090729-qt"	type="com.xiaonei.reg.guide.action.a090729.FillInfoActionQita" name="fill-info-form-090729-qita"	scope="request">
+			<forward name="succ" path="/pages/guide/090729AddStage/fillinfo.jsp"></forward>
+		</action>		
+		<!-- 090821ForApp start -->
+		<action path="/fi"	type="com.xiaonei.reg.guide.action.a090821.FillInfoActionDaxue" name="fDX"	scope="request">
+			<forward name="succ" path="/pages/guide/090821ForApp/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-dx"	type="com.xiaonei.reg.guide.action.a090821.FillInfoActionDaxue" name="fDX"	scope="request">
+			<forward name="succ" path="/pages/guide/090821ForApp/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-zx"	type="com.xiaonei.reg.guide.action.a090821.FillInfoActionZhongxue" name="fZX" 	scope="request">
+			<forward name="succ" path="/pages/guide/090821ForApp/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-bl"	type="com.xiaonei.reg.guide.action.a090821.FillInfoActionBailing" name="fBL" 	scope="request">
+			<forward name="succ" path="/pages/guide/090821ForApp/fillinfo.jsp"></forward>
+		</action>
+		<action path="/fi-qt"	type="com.xiaonei.reg.guide.action.a090821.FillInfoActionQita" name="fQT"	scope="request">
+			<forward name="succ" path="/pages/guide/090821ForApp/fillinfo.jsp"></forward>
+		</action>
+		<!-- 090821ForApp end -->		
+		<!-- 090902ForFlash start -->
+		<action path="/af" type="com.xiaonei.reg.guide.action.appflashflow.FlashPageInitAction" scope="request">
+			<forward name="succ" path="/pages/guide/090902ForFlash/fillinfo.jsp"></forward>
+		</action>		
+		<action path="/axgets" type="com.xiaonei.reg.guide.action.ajaxforflashflow.AjaxRequestUserStepStatus" scope="request"></action>
+		<action path="/axputs" type="com.xiaonei.reg.guide.action.ajaxforflashflow.AjaxUpdateUserStepStatus" scope="request"></action>
+		<action path="/axsmt" type="com.xiaonei.reg.guide.action.ajaxforflashflow.AjaxSubmitFillInfo" scope="request"></action>
+		<action path="/axsmtstg" type="com.xiaonei.reg.guide.action.ajaxforflashflow.AjaxSubmitStage" scope="request"></action>
+		<!-- 090902ForFlash end -->		
+		<!-- 091013ForCook start -->
+		<action path="/acook" type="com.xiaonei.reg.guide.action.appflashflow.FlashCookPageInitAction" scope="request">
+			<forward name="succ" path="/pages/guide/090902ForFlash/fillinfo_cook.jsp"></forward>
+		</action>	
+		<action path="/axputs-cook" type="com.xiaonei.reg.guide.action.ajaxforflashflow.AjaxUpdateUserStepStatusForCook" scope="request"></action>
+		<action path="/nof" type="com.xiaonei.reg.guide.action.appflashflow.NoFlashLoadedAction" scope="request"></action>
+		<action path="/skipupload" type="com.xiaonei.reg.guide.action.a090729.SkipHeadUploadAction"></action>
+		<!-- 091013ForCook end -->
+		<action path="/fill-info-ns"	type="com.xiaonei.reg.guide.action.NoStageFillInfoAction" name="fill-info-form-ns"	scope="request">
+			<forward name="succ" path="/pages/guide/fill-info-ns.jsp"></forward>
+		</action>
+		<action path="/fillinfo-sf-09f"	type="com.xiaonei.reg.guide.action.ShortFormFillinfoAction" name="shortFormFillInfoHsForm" 
+			scope="request" validate="false">
+			<forward name="succ" path="/pages/register/shortforminfo_09freshman.jsp" />
+		</action>
+		<action path="/preview-ns"	type="com.xiaonei.reg.guide.action.NoStagePreviewAction" scope="request">
+			<forward name="succ" path="/pages/guide/preview-ns.jsp"></forward>
+		</action>
+		<action path="/import-msn-ns"	type="com.xiaonei.reg.guide.action.NoStageRegImportMsnAction" scope="request">
+			<forward name="succ" path="/pages/guide/import-msn-ns.jsp"></forward>
+		</action>
+		<action path="/head-upload-ns"	type="com.xiaonei.reg.guide.action.NoStagePortraitAction" scope="request" />
+		<action path="/ajaxAddFrd" type="com.xiaonei.reg.guide.action.AjaxAddFrdAction"	scope="request"></action>			
+		<action path="/friendsSelector" type="com.xiaonei.platform.component.friends.selector.FriendsSelector" scope="request"/>
+		<action path="/recommendSelector" type="com.xiaonei.platform.component.friends.selector.RecommendFriendsSelector" scope="request"/>
+		<action path="/offerRandomSelector" type="com.xiaonei.reg.guide.action.GuideOfferRandomSelector" scope="request"/>
+		<action path="/popgame" type="com.xiaonei.reg.guide.action.PopGameAction" scope="request">	
+			<forward name="succ" path="/pages/guide/others/guide_pop_games.jsp"></forward>
+		</action>
+		<action path="/ajaxStatLink" type="com.xiaonei.reg.guide.action.AjaxStatLinkAction" scope="request"></action>
+		<action path="/ajaxGuideSetMemcache" type="com.renren.sns.guide.action.AjaxGuideSetMemcacheAction" scope="request"></action>				
+		<action path="/ajaxNoteAction" type="com.xiaonei.reg.guide.action.AjaxNoteAction" scope="request"></action>		
+		<action path="/ajaxGetNoteAction" type="com.xiaonei.reg.guide.action.AjaxGetNoteAction" scope="request">
+			<forward name="succ" path="/views/guide/xf/common/ajax/guide_get_note.jsp" />
+		</action>
+		<action path="/ajaxGuideTwoDegrees" type="com.xiaonei.reg.guide.action.AjaxGuideTwoDegreesAction" scope="request">
+			<forward name="succ" path="/views/guide/xf/common/ajax/guide_two_degrees.jsp" />
+		</action>
+		<action path="/ajaxGuideModifyInfo" type="com.renren.sns.guide.action.AjaxGuideModifyInfoAction" name="myEducationForm" scope="request" validate="false">
+			<forward name="succ" path="/views/guide/xf/common/ajax/guide_modify_info.jsp" />
+		</action>		
+		<action path="/ajaxGuideSaveInfo" type="com.renren.sns.guide.action.AjaxGuideSaveInfoAction" name="myEducationForm" scope="request" validate="false">
+			<forward name="succ" path="/views/guide/xf/common/ajax/guide_modify_info.jsp" />
+		</action>
+		<action path="/ajaxGuideKaixinHotStar" type="com.renren.sns.guide.action.AjaxGuideHotStarAction" name="myEducationForm" scope="request" validate="false">
+			<forward name="succ" path="/views/guide/xf/common/right/guide_star_li.jsp" />
+		</action>
+		<action path="/ajaxGuideAddScore" type="com.renren.sns.guide.action.AjaxGuideAddScoreAction" scope="request"></action>
+		<action path="/ajaxGuideOfferFriends" type="com.renren.sns.guide.action.AjaxGuideOfferFriendsAction" scope="request">
+			<forward name="succ" path="/views/guide/ajax/guide_offer_friends.jsp" />
+		</action>
+	</action-mappings>
+	<controller locale="false" />
+	<!-- ======= Message Resources Definitions ======= -->
+	<message-resources parameter="application" />
+</struts-config>

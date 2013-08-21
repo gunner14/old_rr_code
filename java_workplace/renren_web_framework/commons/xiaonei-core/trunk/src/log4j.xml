@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/opt/resin/logs/facebook.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>	
+	
+	<appender name="imFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/im.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		</layout>
+	</appender>
+	<appender name="regStatFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/regStat.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		</layout>
+	</appender>	
+	<appender name="rec404File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/404.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} - %m%n"/>
+		</layout>
+	</appender>	
+	<appender name="imptFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/important.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>	
+	<appender name="errFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/log/error.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>	
+	<appender name="jserrFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/log/jserror.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>	
+	<appender name="cacheFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/cache.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>	
+	<appender name="MySQLFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/resin/logs/MySQL.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		</layout>
+	</appender>	
+	<appender name="DataAccessFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/opt/resin/logs/dataAccessMgr.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss,SSS} %5p %t %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="xnLogDebugFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/opt/resin/logs/xnLogDebug.log"/>
+		<param name="maxFileSize" value="10MB"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH:mm:ss} %-5p:%m %n==> %l%n%n"/>
+		</layout>
+	</appender>
+	
+	
+	<logger name="impt" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="imptFile"/>
+	</logger>
+	<logger name="im" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="imFile"/>
+	</logger>
+	<logger name="regStat" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="regStatFile"/>
+	</logger>
+	<logger name="rec404" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="rec404File"/>
+	</logger>	
+	<logger name="err" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="errFile"/>
+	</logger>
+	<logger name="cache" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="cacheFile"/>
+	</logger>	
+	<logger name="MySQL" additivity="true">
+		<level value="error"/>
+		<appender-ref ref="MySQLFile"/>
+	</logger>	
+	<logger name="com.xiaonei.platform.core.opt.DataAccessMgr" additivity="false">
+		<level value="error"/>
+		<appender-ref ref="DataAccessFile"/>
+	</logger>	
+	<logger name="com.xiaonei.platform.framework.log.XnLog" additivity="false">
+		<level value="debug"/>
+		<appender-ref ref="xnLogDebugFile"/>
+	</logger>	
+	
+	<!-- 
+	<logger name="com.brush.task.schedule" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="scheduleFile"/>
+		<appender-ref ref="stdout"/>
+	</logger>	
+	-->
+	<root>
+		<level value="info"/>
+		<appender-ref ref="file"/>
+	</root>
+	
+</log4j:configuration>

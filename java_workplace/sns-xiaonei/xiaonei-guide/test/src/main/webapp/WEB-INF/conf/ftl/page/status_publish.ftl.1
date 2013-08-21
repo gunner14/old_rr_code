@@ -1,0 +1,47 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "page_status"/>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<div class="figure">
+		<a href="http://page.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}&tagid=${f_status_id[0]}" stats="NF_People" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+	</div>
+	<h3><a href="http://page.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}&tagid=${f_status_id[0]}" stats="NF_People" target="_blank">${f_from_name[0]}</a>
+	<#if f_from_certify?exists><img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/></#if>
+	: ${f_status_title[0]}
+	</h3>
+	<div class="details">
+		<div class="legend">
+		<span class="duration"><@format>${f_status_time[0]}</@format></span>
+		<#include "1|5|1">
+		<a href="#nogo" id="replyKey${f_status_id[0]}" onClick="getReplyOfTheDoing4Page('${f_status_id[0]}','${f_from_id[0]}','${userID[0]}','f',false,'3')">
+			<span id="replyCount${f_status_id[0]}"></span>
+		</a>
+		<#if vType != "minifeed" >
+			<span class="seperator">|</span>
+			<a href="#nogo" onclick="forwardDoing('${f_status_id[0]}', '${f_from_id[0]}','page');" >转发</a>
+		</#if>
+		</div>
+		<div id="media${f_status_id[0]}"></div>
+		<div id="feedbody${f_status_id[0]}" style="display:none;" class="replies"></div>
+		<script language="Javascript" status='1'> 
+			(function()
+			{
+				var reply${f_status_id[0]} = {"replyList":[
+					<#list f_reply_id as id>
+						<#if 2==id_index><#break></#if>
+						{"id":"${id}","replyer_tinyurl":"${f_reply_from_tinyimg[id_index]}","replyContent":${f_reply_body[id_index]},"ubname":"${f_reply_from_name[id_index]}","replyTime":"${f_reply_time[id_index]}","type":0,"reply_layer":0,"ubid":${f_reply_from_id[id_index]}}
+						<#if (f_reply_id?size > 1) && 0==id_index>,</#if>
+					</#list>
+					],"ownerid":${f_from_id[0]}};
+				getReplyOfDoingFromJSON4Page( reply${f_status_id[0]} , '${f_status_id[0]}' ,'${userID[0]}' , '${reply_count[0]}','3' )
+			})();
+			<#if isNewsFeed>
+				renderStatusFeed('feed${id[0]}','http://page.renren.com/${f_from_id[0]}?ref=${vType}&feed=${argu}&tagid=${f_status_id[0]}');
+			</#if>
+		</script>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<!DOCTYPE jade-config SYSTEM "jade-config.DTD">
+
+<jade-config>
+
+	<!-- 测试数据源-->
+	<catalog id="example">
+
+		<!-- 定向到数据库 test -->
+		<default-dbname>test</default-dbname>
+
+		<!-- 联系人信息表 -->
+		<table name="contact_info">
+
+			<!-- 按  user_id 散表 -->
+			<table-partitions>
+
+				<!-- 进行  hash 散表
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>5</partitions>
+					<target-pattern>contact_info_{0}</target-pattern>
+				</hash>
+				-->
+			</table-partitions>
+		</table>
+
+		<!-- 联系人更新日志表 -->
+		<table name="contact_log">
+
+			<!-- 按  timestamp 进行散表 -->
+			<table-partitions>
+
+				<!-- 按日期散表			
+				<range>
+					<by-column>timestamp</by-column>
+					<target-pattern>contact_log_{yyyy_MM}</target-pattern>
+				</range>
+				-->
+			</table-partitions>
+		</table>
+	</catalog>
+</jade-config>

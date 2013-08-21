@@ -1,0 +1,8 @@
+申请者 $name:
+	抱歉，管理员不同意您的申请。
+	#if ($reason)
+		管理者意见：$reason
+	#end
+	
+							系统
+							$date

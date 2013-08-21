@@ -1,0 +1,4 @@
+<div>
+$!{customMessage}<br/><br/>
+<a href="$!{link}?iid=$!{uuid}&rt=$!{rt}">$!{link}?iid=$!{uuid}&rt=$!{rt}</a>
+</div>

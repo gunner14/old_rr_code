@@ -1,0 +1,26 @@
+${"\r"}
+<#compress>
+<#assign page = "1"/>
+<#assign argu = "page_regossip"/>
+<#include "1|0|0">
+	<li id="feed${id[0]}">
+		<div class="figure">
+			<a class="avatar" stats="NF_People" href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&tagid=${f_gossip_id[0]}" target="_blank"><img needclip="1" width="50" height="50" lala="${(f_from_tinyimg[0])!"about:blank"}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" /></a>
+		</div>
+		<h3>
+			<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}&feed=${argu}&tagid=${f_gossip_id[0]}" stats="NF_People" target="_blank">${f_from_name[0]}</a>
+			<#if f_gossip_owner_certify?exists><img lala="http://xnimg.cn/imgpro/icons/follow.gif" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" title="通过人人真实身份验证"/></#if>
+			在 <a href="http://page.renren.com/${f_from_id[0]}?id=${f_from_id[0]}&s=gossip&ref=${vType}&feed=${argu}&tagid=${f_gossip_id[0]}" target="_blank">留言板</a> 回复了粉丝
+		</h3>
+		<div class="content">
+			<#if f_gossip_digest?exists && f_gossip_digest[0] != ""><div class="pagecomment">${f_gossip_digest[0]}</div></#if>
+		</div>
+		<div class="details">
+			<div class="legend">
+				<span class="duration"><@format>${f_time[0]}</@format></span>
+				<#include "1|5|1">
+			</div>
+		</div>
+		<#include "1|1|1">
+	</li>
+</#compress>

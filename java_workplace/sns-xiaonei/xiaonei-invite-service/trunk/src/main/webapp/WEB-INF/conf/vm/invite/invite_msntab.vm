@@ -1,0 +1,12 @@
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;'>
+</head>
+<body>
+<div>
+$!{customMessage}<br/><br/>
+<a href="$!{link}?iid=$!{uuid}">$!{link}?iid=$!{uuid}</a>
+</div>
+<img style="display:none" src="http://invite.renren.com/mcc.jsp?t=msntab"/>
+</body>
+</html>

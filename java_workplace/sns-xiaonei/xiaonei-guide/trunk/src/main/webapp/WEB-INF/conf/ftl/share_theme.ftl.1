@@ -1,0 +1,44 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" stats="NF_People" target="_blank">${f_from_name[0]}</a>
+		分享论坛帖子 <a href="${f_share_thread_url[0]}&ref=${vType}">${f_share_thread_title[0]}</a>
+	</h3>
+	<div class="content">
+		<p>来自: <a href="http://www.renren.com/profile.do?id=${f_share_thread_owner_id[0]}&ref=${vType}" target="_blank">${f_share_thread_owner_name[0]}</a> </p>
+		<#if f_share_comment?? && f_share_comment[0] != ""><p class="comment"><q>${f_share_comment[0]}</q></p></#if>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+			<a href="#nogo" id="replyKey${f_share_id[0]}" onClick="getReplyOfTheDoing('${f_share_id[0]}','${f_from_id[0]}','${userID[0]}','f',false,'4')">
+				<span id="replycommentCount${f_share_id[0]}"></span>
+			</a>
+			<span class="seperator">|</span>
+				<#if selfzancount??>
+					<a href="#nogo" stats="NF_Like" id="ILike${f_share_id[0]}" onclick="ILike_toggleUserLike('share','${f_share_id[0]}','${userID[0]}','${f_from_id[0]}','${userName[0]}')" >不赞</a>
+				<#else>
+					<a href="#nogo" stats="NF_Like" class="ilike_icon" id="ILike${f_share_id[0]}" onclick="ILike_toggleUserLike('share','${f_share_id[0]}','${userID[0]}','${f_from_id[0]}','${userName[0]}')" >赞</a>
+				</#if>
+		</div>
+		<div id="feedbody${f_share_id[0]}" style="display:none;" class="replies"></div>
+		<script language="Javascript" status='1'> 
+			(function()
+			{
+				var reply = {"replyList":[
+					<#list f_reply_id as id>
+						<#if 2==id_index><#break></#if>
+						{"id":"${id}","replyer_tinyurl":"${f_reply_from_tinyimg[id_index]}","replyContent":${f_reply_body[id_index]},"ubname":"${f_reply_from_name[id_index]}","replyTime":"${f_reply_time[id_index]}","type":'${f_reply_type[id_index]}',"reply_layer":0,"ubid":${f_reply_from_id[id_index]}}
+						<#if (f_reply_id?size > 1) && 0==id_index>,</#if>
+					</#list>
+					],"ownerid":${f_from_id[0]},"userDigged":"${selfzancount[0]}","digged":"${totalzancount[0]}","type":"share","guestName":"${userName[0]}","fin":"${feedIndex[0]}"};
+				getReplyOfDoingFromJSON( reply , '${f_share_id[0]}' ,'${userID[0]}' , '${reply_count[0]}','4','','',true)
+			})();
+		</script>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

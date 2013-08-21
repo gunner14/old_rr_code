@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>GID转换便捷线上工具</title>
+</head>
+<body>
+<p>this is a gid transfer tool provided by zhiliang.wang@renren-inc.com and chuanyu.ban@renren-inc.com</p>
+<form name="form" action="/g/tool/{gid-by-js}" method="get"></form>
+<form>
+<table>
+  <tr>
+    <td>
+      <select id="type" name="type">
+        <option value="gid">gid</option>
+      #foreach($type in $types)
+        <option value="${type.name}" #if(${g.type.name} == "${type.name}") selected = "true" #end >${type.name} ${type.value}</option>
+      #end
+      </select>
+    <td>
+    <td>
+      <input size="30" type="text" id="x" name="x" value="$!{g.x}"/>
+    </td>
+    <td><input type="submit" value="go" onclick="return submitGID();" /></td>
+    <td>$!{g.id}</td>
+    </tr>
+    <tr>
+    </tr>
+   </tr>
+</table>
+</form>
+</body>
+
+</html>
+
+<script type="text/javascript" language="javascript">
+        function submitGID() {
+                document.form.action = "/g/tool/transfer/" + document.getElementById("type").value + "-" + document.getElementById("x").value;
+                document.form.submit();
+                return false;
+}
+</script>

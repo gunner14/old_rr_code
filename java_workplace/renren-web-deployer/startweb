@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 <target_ip>"
+  exit 3;
+fi
+
+
+ssh web@$1 "cd run && JAVA_HOME=~/java CATALINA_PID=~/run/catalina.pid ~/apache-tomcat/bin/startup.sh"

@@ -1,0 +1,29 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+		<a href="http://www.renren.com/profile.do?id=${f_from_id[0]}&ref=${vType}" target="_blank" stats="NF_People">${f_from_name[0]}</a>  
+		<a class="text" target="_blank" href="http://huodong.renren.com/ziliao?ref=${vType}">${f_commerce_title[0]}</a>
+	</h3>
+	<div class="content">
+		<div class="figure">
+			<a target="_blank" href="http://huodong.renren.com/ziliao?ref=${vType}">
+				<img width="100" class="photo" src="http://fmn.xnimg.cn/fmn038/20100422/1835/p_large_cwZW_41110000f28a2d13.jpg"/>
+			</a>
+		</div>
+		<p>
+			更新自己或好友的资料，找到更多校友同事！
+			还有百万礼券等你拿！
+			<a target="_blank" href="http://huodong.renren.com/ziliao?ref=${vType}">立即参加线上活动>></a>
+		</p>
+	</div>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

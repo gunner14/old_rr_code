@@ -1,0 +1,18 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+<#include "1|4|1">
+	<h3>
+	<#list f_from_name as n>
+		<a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}&ref=${vType}">${n}</a>
+	</#list> 觉得分享 <a href="${f_share_video_url[0]}&ref=${vType}" target="_blank">${f_share_video_title[0]}</a> 很赞
+	</h3>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

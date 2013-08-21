@@ -1,0 +1,30 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<#include "1|4|1">
+	<h3>
+		<#list f_from_name as n>
+			<#if f_commerce_user_url?? && f_commerce_user_url[0] != "">
+				<a target="_blank" stats="NF_People" href="${f_commerce_user_url[0]}">${n}</a>
+			<#else>
+				<a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}&ref=${vType}" stats="NF_People">${n}</a>				
+			</#if>
+		</#list> ${f_commerce_prefix[0]} <a href="${f_commerce_url[0]}" target="_blank">${f_commerce_title[0]}</a> ${f_commerce_body[0]}
+	</h3>
+	<#if f_commerce_image?? && f_commerce_image[0] != "">
+		<div class="content">
+				<a href="${f_commerce_url[0]}" target="_blank"><img lala="${f_commerce_image[0]}" src="http://s.xnimg.cn/a.gif" onload="feed_img_delay_load(this);" class="photo"/></a>
+				<#if f_commerce_text?exists>
+					<p>${f_commerce_text[0]}</p>
+				</#if>
+		</div>
+	</#if>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

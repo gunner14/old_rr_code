@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-commons-gid-service-http</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei-commons-gid-service-http Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- 引用校内POM -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 开发人员说明 -->
+	<developers>
+		<developer>
+			<name>wangzhiliang</name>
+			<email>zhiliang.wang@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置(只添加本项目特有的) -->
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+	<dependencies>
+		<!-- 第三方依赖，不需要指定版本号，不需要写scope -->
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-gid-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>xiaonei-entries-xoa-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.renren</groupId>
+			<artifactId>xiaonei-entries-model</artifactId>
+		</dependency>
+
+		<!-- 对校内的依赖，需要指定版本号，以及可能的scope -->
+
+	</dependencies>
+</project>

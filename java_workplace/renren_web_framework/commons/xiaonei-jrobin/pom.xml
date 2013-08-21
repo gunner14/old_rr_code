@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- 基本配置 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei.commons</groupId>
+	<artifactId>xiaonei-commons-jrobin</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei-commons-jrobin</name>
+	<url>http://repos.d.xiaonei.com</url>
+
+	<!-- 引用校内POM -->
+	<parent>
+		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- 开发者-->
+	<developers>
+		<developer>
+			<name>游桂成</name>
+			<email>guicheng.you@opi-corp.com</email>
+		</developer>
+		<developer>
+			<name>张洁</name>
+			<email>zhangjie@opi-corp.com</email>
+		</developer>
+	</developers>
+
+	<!-- 构建配置 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Rose></Rose>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 依赖配置 -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jrobin</groupId>
+			<artifactId>jrobin</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.7</version>
+		</dependency>
+
+	</dependencies>
+	<!--
+		<build> <resources> <resource> <directory>src/</directory>
+		<filtering>true</filtering> <excludes> <exclude>.svn</exclude>
+		</excludes> </resource> </resources> <plugins> <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId> <configuration>
+		<source>1.6</source> <target>1.6</target> </configuration> </plugin>
+		<plugin> <groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId> <configuration>
+		<encoding>UTF-8</encoding> </configuration> </plugin> </plugins>
+		</build>
+	-->
+
+
+
+</project>

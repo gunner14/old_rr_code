@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv='Content-Type' content='text/html;'></head>
+<body>
+<table width='100%'><tr><td bgcolor='#F7F7F7' cellspacing='0' cellpadding='0'>
+<table cellspacing='0' cellpadding='30'><tr><td>
+<table width='600' cellspacing='0' cellpadding='0'>
+<tr><td bgcolor='#3B5998' align='left' style=\"font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;line-height:150%;color:#FFF;font-size:24px;font-weight:bold;padding:4px\">&nbsp;校内网</th></tr>
+<tr><td style="border-left:1px solid #ADADAD;border-right:1px solid #ADADAD;border-bottom:1px solid #3b5998">
+<table width="100%" cellspacing="0" bgcolor="#FFFFFF" cellpadding="20">
+<tr>
+#if($!{headurl_2}!="/0/0/head.jpg")
+<td width="0" style="font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;font-size:12px;color:#666;" valign="top">
+<a href="http://xiaonei.com/getuser.do?id=$!{hostid}"><img src="$!{headurl}" alt=$!{hostname} name="$!{hostname}" style="padding:1px;border:1px solid #CCC;"/></a><br />
+<div style="padding:5px 0 5px 3px;">$!{hostname}</div>
+<div style="padding:0 0 0 6px;line-height:120%;">
+$!{album_count}张照片<br/>
+$!{blog_count}篇日志<br/>
+$!{gossip_count}条留言<br/><br/>
+$!{friendscount}个好友<br/><br/>
+</div>
+</td>
+#end
+<td style="font-family:'lucida grande',tahoma,'bitstream vera sans',helvetica,sans-serif;line-height:150%;color:#000;font-size:12px;" valign="top">
+<h3 style="font-size:14px;">"$!{hostname}邀请你加入校内网班级$!{school}$!{department}$!{classname}</h3>
+校内网校友录是一个感情聚合，在这里，你可以联系老同学，共享新信息，浏览班级合影，情归同学少年时的点点滴滴。<br /><p>点击下面的链接即可查看班级<blockquote><a href="http://class.xiaonei.com/classhome.do?classid=$!{classid}" target="_blank" style="color:#3B5998;text-decoration:underline;">http://class.xiaonei.com/classhome.do?classid=$!{classid}</a></blockquote><br/>
+校内网<br/>$!{year}年$!{month}月$!{day}日
+</td></tr></table>
+</td></tr></table>
+</td></tr></table
+</td></tr></table>
+</body>
+</html>

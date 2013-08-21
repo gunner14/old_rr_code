@@ -1,0 +1,118 @@
+/*reset by zufang.wang@opi-corp.com*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {margin: 0;padding: 0}
+body,button, input, select, textarea {font: 12px Tahoma,Verdana,STHeiTi,simsun,sans-serif;; }
+h1{font-size: 18px;}h2{ font-size: 16px; }h3{ font-size: 14px; }h4,h5,h6{ font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; }
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; }
+small { font-size: 12px; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color:#005EAC;}
+a:hover { text-decoration: underline; }
+q:before, q:after { content: ''; }
+hr {border: none;height: 1px;}
+legend { color: #000; }
+fieldset, img { border: none; }
+button, input, select, textarea {font-size: 100%; }
+table {border-collapse: collapse;border-spacing: 0;}
+
+/*common use by zufang.wang@opi-corp.com*/
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:inline-block;display:block; zoom:1;}
+.pipe{color:#AAAAAA; font-size:11px; font-weight:lighter; margin:0 4px;}
+.time{color:gray;}
+.red{color:red;}
+.gray{color:gray;}
+.lightgray{color:#CECECE;}
+.arrow{color:#005EAC;}
+.input-text{border:1px solid #bdc7d8; padding:3px;}
+
+/*
+	body by zufang.wang@opi-corp.com
+	width:auto;padding:0 2px;
+	or
+	width:996px; for 1024*768
+	or
+	width:1200px; for 1280*1024
+	or
+	width:1400px; for 1440*900
+*/
+body{width:960px; margin:0 auto;}
+body.width-auto{width:auto!important;}
+
+/*header by zufang.wang@opi-corp.com*/
+#header{height:35px; background:#005EAC; margin-bottom:10px;}
+#header .logo{float:left;}
+#header .logo a{outline:none; display:block; overflow:hidden;}
+#header .menu-body{background:url(/webmonitor/img/nav_top_bg.gif) no-repeat right -25px; padding-right:5px;}
+#header .menu-body .main-menu{float:left; font-size:14px;}
+#header .menu-body .sub-menu{float:right;}
+#header .menu-body ul li{float:left;}
+#header .menu-body ul li a{ display:inline-block; height:35px; line-height:35px; color:#FFF;padding:0 8px;}
+#header .menu-body ul li a:hover{background:#3777BC; text-decoration:none;}
+
+/*footer by zufang.wang@opi-corp.com*/
+#footer{clear:both; padding-top:10px}
+#footer .copyright{border-top:1px solid #B8D4E8;color:gray;margin:10px 0;overflow:hidden;padding:5px;}
+#footer .copyright .links{float:right;}
+
+/*common box*/
+.box{border:1px solid #CCCCCC; margin-bottom:10px;}
+.box .box-hd{height:36px; line-height:36px; color:#FFF; background:#0560AD;padding:0 10px;position:relative;}
+.box .box-hd .title{font-size:14px;}
+.box .box-hd .more{float:right;}
+.box .title .edit{color:#FFF; font-size:12px; text-decoration:underline; font-weight:normal;}
+.box .box-hd .back{top:0;right:0; position:absolute;}
+.box .box-hd .back .select a{display:inline-block; height:34px; vertical-align:middle; width:32px; background:url(/webmonitor/img/select-bg.png) no-repeat 0 0; overflow:hidden; padding:0;border-right:1px solid #0560AD;}
+.box .box-hd .back .select a:hover{background:url(/webmonitor/img/select-bg.png) no-repeat 0 -38px;}
+.box .box-hd .back .select a.hover{background-position:0 -38px!important;}
+.box .box-hd .selects{position:absolute;top:36px; right:0; width:100px; text-align:right; background:#ECF6FF;border:1px solid #0560AD;}
+.box .box-hd .selects li{height:18px;line-height:18px;margin:2px 0;}
+.box .box-hd .selects a{height:18px; line-height:18px; color:#005EAC; width:100%; padding:0;}
+.box .box-hd .selects a:hover{color:#FFF; background:#1E6FB2;}
+.box .box-bd{background:#FFF;}
+.box .box-ft{height:36px; line-height:36px; background:#F6FBFF; text-align:center;}
+
+/*small box*/
+.smallbox{border:1px solid #C2DAED;}
+.smallbox .smallbox-hd{height:22px; line-height:22px; color:#000; font-weight:bolder; background:#EAF5FF;padding:0 10px; text-align:center; }
+.smallbox .smallbox-bd{background:#F6FBFF; text-align:center; height:22px; line-height:22px;border-top:1px solid #C2DAED;}
+
+/*group*/
+.group .box-bd{padding:5px}
+.group-detail{width:100%; color:#595959;}
+.group-detail tr{line-height:40px;}
+.group-detail th{ width:15%; text-align:right; font-weight:normal;}
+.group-detail td{padding-left:8px;}
+.group-detail td .input-text{width:250px; color:#595959;}
+.group .input-btn{width:73px; height:23px; line-height:23px; border:0; background:url(/webmonitor/img/btn-bg.png) no-repeat center center; color:#FFF; cursor:pointer; margin-top:7px;}
+.group .smallbox{width:123px; float:left; margin:5px;_display:inline;}
+
+
+.create-btn {position:absolute; top:0; right:0; display:block; outline:none; margin:6px 10px; height:23px; width:92px; background:url(/webmonitor/img/create-btn.png) no-repeat center top; }
+.create-btn  span{display:none;}
+
+/*domain*/
+.domain .box-bd{padding:5px 8px;}
+.domain .smallbox{width:213px; float:left; margin:5px 10px; _display:inline;}
+.domain .smallbox .del,.domain .smallbox .add{display:block; width:100%}
+.domain .smallbox .del:hover,.domain .smallbox .add:hover{text-decoration:none; color:#FFF;}
+.domain .smallbox .del:hover{background:#F9494C;}
+.domain .smallbox .add:hover{background:#57B94C;}
+
+/*monitor*/
+.monitor .box-hd select{margin-top:7px;}
+.monitor .box-hd a{ display:inline-block; height:35px; padding:0 10px; color:#FFF;}
+.monitor .box-hd a:hover,.monitor .box-hd a.current{background:#003F73; text-decoration:none;}
+.monitor .box-bd h3{height:36px; background:url(/webmonitor/img/h3-bg.png) repeat-x; line-height:36px; padding:0 10px;font-weight:normal; font-size:12px;}
+.monitor .box-bd h3 .input-btn{width:43px; height:22px; line-height:22px; border:0; background:url(/webmonitor/img/btn-bg2.png) no-repeat center center; color:#FFF; cursor:pointer; margin-top:7px;}
+.monitor .box-bd ul.figure{overflow:hidden;_height:1%; margin:0 auto;}
+.monitor .box-bd ul.figure li{float:left; margin:5px 4px; text-align:center;_display:inline;}
+.monitor .box-bd p.figure{text-align:center; margin:10px;}
+.monitor .box-bd h4{color:#005EAC; margin:10px 20px;}
+
+/*commen-table*/
+.commen-table{width:80%; margin:10px auto; color:#333;}
+.commen-table tr,.commen-table td,.commen-table th{border:1px solid #CBCBCB; border-collapse:collapse; padding:5px; text-align:center;}
+.commen-table th{background:#F2F2F2;}
+.commen-table tr:hover{background:#E3F0FA;}
+.commen-table tr.hover{background:#E3F0FA;}

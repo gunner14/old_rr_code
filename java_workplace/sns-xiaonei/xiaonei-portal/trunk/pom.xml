@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+ 		<groupId>com.xiaonei</groupId>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-portal</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>xiaonei_portal</name>
+	<url>http://www.xiaonei.com</url>
+	<description>www.xiaonei.com</description>
+	<developers>
+		<developer>
+			<id>liyong</id>
+			<name>liyong</name>
+			<email>liyong@opi-corp.com</email>
+			<organization>xiaonei.com</organization>
+			<organizationUrl>http://www.xiaonei.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+
+	<contributors>
+		<contributor />
+	</contributors>
+	<issueManagement>
+		<system>jira</system>
+		<url>http://tracker.xiaonei.com/</url>
+	</issueManagement>
+	<mailingLists>
+		<mailingList>
+			<name>xiaonei</name>
+			<subscribe>xn-tech-subscribe@opi-corp.com</subscribe>
+			<unsubscribe>xn-tech-unsubscribe@opi-corp.com</unsubscribe>
+			<post>xn_tech@opi-corp.com</post>
+		</mailingList>
+	</mailingLists>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva.snapshots</id>
+			<name>development</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/</url>
+		</repository>
+		<snapshotRepository>
+			<id>archiva.snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<fork>true</fork>
+					<verbose>true</verbose>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<sourcepath>${project.basedir}/src/main/java</sourcepath>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+		  <groupId>com.xiaonei</groupId>
+		  <artifactId>xiaonei-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet-api-version}</version>
+			<!-- 
+			<exclusions>
+				<exclusion>
+					<groupId>net.spy</groupId>
+					<artifactId>photo_service</artifactId>
+				</exclusion>
+			</exclusions>
+			 -->
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging-version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>net.spy</groupId>
+		  <artifactId>memcached</artifactId>
+		  <version>2.3.1</version>
+		</dependency>
+
+
+	</dependencies>
+
+</project>

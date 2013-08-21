@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "Usage: $0 <nickname> <trusts>"
+  exit 3;
+fi
+
+SERVER=$1
+ACCT=web
+IDS=$2
+#****************************************
+# Setup StrictHostKeyChecking
+#****************************************
+ssh -o "StrictHostKeyChecking no" root@${SERVER} "echo Initializing ${SERVER}"
+
+
+#****************************************
+# System level configs
+#****************************************
+ssh root@${SERVER} 'grep "* soft nofile" /etc/security/limits.conf &> /dev/null; if [ "$?" -eq "0" ];then sed -i "s/\* soft nofile.*/* soft nofile 1048576/" /etc/sysctl.conf;else echo "* soft nofile 1048576" >> /etc/security/limits.conf;fi'
+ssh root@${SERVER} 'grep "* hard nofile" /etc/security/limits.conf &> /dev/null; if [ "$?" -eq "0" ];then sed -i "s/\* hard nofile.*/* hard nofile 1048576/" /etc/sysctl.conf;else echo "* hard nofile 1048576" >> /etc/security/limits.conf;fi'
+ssh root@${SERVER} 'grep kernel.pid_max /etc/sysctl.conf &> /dev/null; if [ "$?" -eq "0" ];then sed -i "s/kernel.pid_max.*/kernel.pid_max = 819200/" /etc/sysctl.conf;else echo "kernel.pid_max = 819200" >> /etc/sysctl.conf;fi'
+ssh root@${SERVER} 'grep vm.swappiness /etc/sysctl.conf &> /dev/null; if [ "$?" -eq "0" ];then sed -i "s/vm.swappiness.*/vm.swappiness = 40/" /etc/sysctl.conf;else echo "vm.swappiness = 40" >> /etc/sysctl.conf;fi'
+ssh root@${SERVER} 'grep net.ipv4.tcp_tw_recycle /etc/sysctl.conf &> /dev/null; if [ "$?" -eq "0" ];then sed -i "s/net.ipv4.tcp_tw_recycle.*/net.ipv4.tcp_tw_recycle = 0/" /etc/sysctl.conf;else echo "net.ipv4.tcp_tw_recycle = 0" >> /etc/sysctl.conf;fi'
+ssh root@${SERVER} "sysctl -p"
+ssh root@${SERVER} "rpm -ivh http://10.22.206.124/nginx/nginx-0.7.65-1.x86_64.rpm"
+ssh root@${SERVER} "mkdir /data/nginx_log; rm -rf /var/log/nginx;ln -s /data/nginx_log /var/log/nginx"
+scp ajaxproxy.htm ajaxProxy.html root@${SERVER}:/usr/share/nginx/html/
+
+
+
+
+#****************************************
+# non-privilige user enviroment
+#****************************************
+
+ssh root@${SERVER} "if [ -f /etc/debian_version ];then id ${ACCT} || adduser --disabled-password --home /data/${ACCT} ${ACCT};fi"
+ssh root@${SERVER} "if [ -f /etc/redhat-release ];then id ${ACCT} || adduser -m -d /data/${ACCT} ${ACCT};fi"
+for ID in $IDS
+do
+	ssh root@${SERVER} "grep \"^${ID}\" ~${ACCT}/.k5login || echo ${ID} >> ~${ACCT}/.k5login"
+done
+
+ssh ${ACCT}@${SERVER} "echo ${SERVER} > ~/.nickname"
+
+scp xcerc ${ACCT}@${SERVER}:~/.xcerc
+scp bash_profile ${ACCT}@${SERVER}:~/.bash_profile
+

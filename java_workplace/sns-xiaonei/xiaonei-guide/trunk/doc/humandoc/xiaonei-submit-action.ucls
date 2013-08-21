@@ -1,0 +1,71 @@
+<class-diagram version="0.9.82" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.action.base.BaseRegSubmitAction" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/action/base/BaseRegSubmitAction.java" 
+    binary="false">    
+    <position x="799" y="108" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.action.InviteRegisterAction" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/action/InviteRegisterAction.java" 
+    binary="false">    
+    <position x="100" y="435" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.action.CommonRegisterAction" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/action/CommonRegisterAction.java" 
+    binary="false">    
+    <position x="634" y="419" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.action.EducationRegisterAction" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/action/EducationRegisterAction.java" 
+    binary="false">    
+    <position x="1198" y="403" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="com.xiaonei.reg.register.action.F4399QuickRegisterAction" 
+    project="xiaonei-reg" file="/xiaonei-reg/src/com/xiaonei/reg/register/action/F4399QuickRegisterAction.java" 
+    binary="false">    
+    <position x="1802" y="467" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.action.F4399QuickRegisterAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/F4399QuickRegisterAction.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.action.base.BaseRegSubmitAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/base/BaseRegSubmitAction.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.action.EducationRegisterAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/EducationRegisterAction.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.action.base.BaseRegSubmitAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/base/BaseRegSubmitAction.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="xiaonei-reg" name="com.xiaonei.reg.register.action.InviteRegisterAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/InviteRegisterAction.java" binary="false"/>    
+    <target project="xiaonei-reg" name="com.xiaonei.reg.register.action.base.BaseRegSubmitAction" 
+      file="/xiaonei-reg/src/com/xiaonei/reg/register/action/base/BaseRegSubmitAction.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

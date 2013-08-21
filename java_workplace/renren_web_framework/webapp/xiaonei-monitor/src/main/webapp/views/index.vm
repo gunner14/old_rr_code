@@ -1,0 +1,21 @@
+<html >
+	<head >
+		<title > 校内WEB监控
+        </title>
+    </head>
+	<body >
+        <strong><a href="/http/overtime/listOvertime">Http 监控</a>        
+        </strong><br>
+        <strong><a href="/db/sql_Jrobin/listBiz">SQL 监控</a>        
+        </strong><br>
+         <strong><a href="/http/error/httpErr">Http404/500监控</a>        
+        </strong><br>
+			<strong><a href="/im/im/imInfoList">IM</a>        
+        </strong><br>
+			 <strong><a href="/group/groupClassfication/index">分组</a>        
+        </strong><br>
+			
+       <!-- <stong ><a href="http://localhost:8080/im/im/testReferer">Test Referer</a></strong> -->
+    </body>
+    
+</html>

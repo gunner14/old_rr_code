@@ -1,0 +1,6055 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE jade-config SYSTEM "jade-config.DTD">
+
+<jade-config>
+
+	<catalog id="at">
+		<default-dbname>at</default-dbname>
+		<table name="atme">
+			<db-partitions>
+				<hash>
+					<by-column>at_to</by-column>
+					<partitions>100</partitions>
+					<target-pattern>atme_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>at_to</by-column>
+					<partitions>100</partitions>
+					<target-pattern>atme_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="myat">
+			<db-partitions>
+				<hash>
+					<by-column>auther</by-column>
+					<partitions>100</partitions>
+					<target-pattern>myat_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>auther</by-column>
+					<partitions>100</partitions>
+					<target-pattern>myat_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- UGC 问答的散表配置 -->
+	<catalog id="qa_common">
+		<default-dbname>qa_common</default-dbname>
+		<!-- question 按照 user_id 散表
+         question_del 不散表 -->
+		<table name="question">
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>question_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!--
+			answer 按照 question_user_id 散表，和 question 一致 answer_del 不散表
+		-->
+		<table name="answer">
+			<table-partitions>
+				<hash>
+					<by-column>question_user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>answer_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- profile 按照 id 散表 -->
+		<table name="profile">
+			<table-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>profile_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- user_answer 按照答案的用户 id (answer_user_id) 散表 -->
+		<table name="user_answer">
+			<table-partitions>
+				<hash>
+					<by-column>answer_user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_answer_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!--
+			score_record 按照 user_id 散表，定期导出数据 积分记录分为两个表：score_record_activity,
+			score_record_reputation
+		-->
+		<table name="score_record_activity">
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>score_record_activity_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="score_record_reputation">
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>score_record_reputation_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- question_invitation 按照 receiver_id 散表 -->
+		<table name="question_invitation">
+			<table-partitions>
+				<hash>
+					<by-column>receiver_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>question_invitation_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!--
+			google_id_mapping 按照 id 散表 id 的类型 varchar(64), 是用 id 的后两位转换成数字散表的
+		-->
+		<table name="google_id_mapping">
+			<table-partitions>
+				<hex-hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>google_id_mapping_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- UGC Blog 的散表配置 -->
+	<catalog id="blog">
+
+		<default-dbname>blog</default-dbname>
+		<table name="blog_source">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_source_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- blog 数据表 -->
+		<table name="blog">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- blog 表散成 blog_0~99 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- blog_version 数据表, 与 blog 相同 -->
+		<table name="blog_version">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- blog_version 表散成 blog_version_0~99 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_version_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- entry_comment 数据表 -->
+		<table name="entry_comment">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- entry_comment 表散成 entry_comment_0~99 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- blog_template_module 数据表 -->
+		<table name="blog_template_module">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- blog_template_module 表散成 entry_comment_0~99 -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_template_module_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- blog_del 数据表, 只是散库不散表 -->
+		<table name="blog_del">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+	        <!-- 2012-10-23 add by chao.wang3-->
+		<!-- blog_template_module_del 数据表, 只是散库不散表 -->
+		<table name="blog_template_module_del">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+	        <!-- 2012-10-23 add by chao.wang3-->
+		<!-- entry_comment_del 数据表, 只是散库不散表 -->
+		<table name="entry_comment_del">
+
+			<!-- blog 数据源散成 blog_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+	</catalog>
+
+	<!-- UGC 分享的散表配置 -->
+	<catalog id="share">
+
+		<default-dbname>share</default-dbname>
+
+		<!-- share 数据表 -->
+		<table name="share">
+
+			<!-- share 数据源散成 share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_0 ~ share_99, 按照 owner % 100 散表 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- share_comment 数据表 -->
+		<table name="share_comment">
+
+			<!-- share 数据源散成 share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_0 ~ share_99, 按照 owner % 100 散表 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- share_del 数据表 -->
+		<table name="share_del">
+
+			<!-- share 数据源散成 share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<table name="share_from">
+
+			<!-- share 数据源散成 share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>share_owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_from_0 ~ share_from_99, 按照 share_owner % 100 散表 -->
+			<table-partitions>
+				<hash>
+					<by-column>share_owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_from_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="share_source">
+
+			<!-- share 数据源散成 share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>share_owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_source_0 ~ share_source_99, 按照 share_owner % 100 散表 -->
+			<table-partitions>
+				<hash>
+					<by-column>share_owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_source_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<!-- UGC 分享内容的散表配置 -->
+	<catalog id="share_content">
+
+		<default-dbname>share_content</default-dbname>
+
+		<!-- share_content 数据表 -->
+		<table name="share_content">
+
+			<!-- share_content 数据源散成 share_content_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_content_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_content_0 ~ share_content_99, 按照 user_id % 100 散表 -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_content_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- similarity 数据表 -->
+		<table name="similarity">
+
+			<!-- share_content 数据源散成 share_content_0~99  -->
+			<db-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_content_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+
+			<!-- similarity_0 ~ similarity_99, 按照 user_id % 100 散表 -->
+			<table-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_content_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="share_new">
+
+		<default-dbname>share_new</default-dbname>
+
+		<table name="share">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="url">
+			<db-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>url_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+		<table name="collection">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>collection_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="url_comment">
+			<db-partitions>
+				<hex-hash>
+					<by-column>url_md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>url_md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>url_comment_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+		<table name="share_content">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_content_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="share_comment">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="share_comment_del">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+		<table name="share_map">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_map_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="share_del">
+			<db-partitions>
+				<hash>
+					<by-column>del_userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+        	<!-- 2012.09.11 chao.wang3  -->
+		<table name="collection_del">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2011.10.27 xiaoming.deng  -->
+	<!-- start:share_forward  -->
+	<catalog id="share_forward">
+		<default-dbname>share_forward</default-dbname>
+		
+		<table name="share_forward">
+			<db-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_forward_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_forward_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+	</catalog><!-- end:share_forward  -->
+	
+	<!-- 2011.10.27 xiaoming.deng  -->
+	<!-- start:share_source  -->
+	<catalog id="share_source">
+		<default-dbname>share_source</default-dbname>
+		
+		<table name="share_source">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_source_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_source_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+	</catalog><!-- end:share_source  -->
+
+	<catalog id="biz_doing_info">
+		<default-dbname>biz_doing_info</default-dbname>
+		<table name="doing">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="favourite_doing">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>favourite_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="reply_doing">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>reply_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table>
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_del</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="doing_repeat">
+			<db-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_repeat_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="doing_del">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_del</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="reply_doing_del">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>biz_doing_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>reply_doing_del</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="face_recog">
+		<table name="face_recog">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>owner</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>face_recog_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>owner</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>face_recog_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+	</catalog>
+
+	<catalog id="album">
+
+	<default-dbname>album</default-dbname>
+		<table name="album">
+
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- album 按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="photo_detect">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_detect_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- photo 数据表: 按 owner 字段散 100 张表 -->
+		<table name="photo">
+
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- photo 按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- photo_comment 数据表: 按 owner 字段散 100 张表 -->
+		<table name="photo_comment">
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- photo_comment 按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- album_comment 数据表: 按 owner 字段散 100 张表 -->
+		<table name="album_comment">
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- album_comment 按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- album_comment_del 数据表: 不散表 -->
+		<table name="album_comment_del">
+			<db-name>album_comment</db-name>
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- photo_comment_del 数据表: 不散表 -->
+		<table name="photo_comment_del">
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- photo_del 数据表: 不散表 -->
+		<table name="photo_del">
+
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- album_del 数据表: 不散表 -->
+		<table name="album_del">
+
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- photo_exif 数据表: 按 owner 字段散 100 张表 -->
+		<table name="photo_exif">
+
+			<!-- album 数据源散成 album_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- photo_exif 按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_exif_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<!-- photo_to_save表，2011-11-10添加 -->
+		<table name="photo_to_save">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_to_save_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<!-- album源， photo_ext表， 2011-11-28添加-->
+		<table name="photo_ext">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_ext_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- album源，flash_album表， 2011-11-28添加-->
+		<table name="flash_album">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>flash_album_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	
+	<!-- 照片TAG photo_tag 数据源photo_tag 的散表配置   dxm-->
+	<catalog id="photo_tag">
+		
+		<default-dbname>photo_tag</default-dbname>
+		
+		<!-- photo_tag_owner 数据表: 按 owner_id 字段散 100 张表开始 -->
+		<table name="photo_tag_owner">
+			<!-- photo_tag 数据源散成 photo_tag_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_tag_owner_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<!-- photo_tag_owner 数据表: 按 owner_id 字段散 100 张表 -->
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_tag_owner_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- photo_tag_owner 数据表: 按 owner_id 字段散 100 张表结束 -->
+		
+		
+		<!-- photo_tag_target 数据表: 按 target_id 字段散 100 张表 开始-->
+		<table name="photo_tag_target">
+			<!-- photo_tag 数据源散成 photo_tag_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>target_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_tag_target_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<!-- photo_tag_target 数据表: 按 owner_id 字段散 100 张表 -->
+			<table-partitions>
+				<hash>
+					<by-column>target_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_tag_target_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- photo_tag_target 数据表: 按 target_id 字段散 100 张表结束-->
+	</catalog>
+
+        <!-- 数据源app_topmenu_user的散表配置   -->
+        <catalog id="app_topmenu_user">
+
+                <default-dbname>app_topmenu_user</default-dbname>
+
+                <!-- app_topmenu_user 数据表: 按 user_id 字段散 100 张表 开始-->
+                <table name="app_topmenu_user">
+                        <!--  app_topmenu_user 数据源散成 app_topmenu_user_0~99  -->
+                        <db-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>app_topmenu_user_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <!-- app_topmenu_user 数据表: 按 user_id 字段散 100 张表 -->
+                        <table-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>app_topmenu_user_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <!-- app_topmenu_user 数据表: 按 user_id 字段散 100 张表结束-->
+        </catalog>
+        <!-- 数据源vp_fuji的散表配置   --> 
+        <catalog id="vp_fuji">
+
+                <default-dbname>vp_fuji</default-dbname>
+
+                <!-- vp_fuji 数据表: 按 owner_id 字段散 100 张表 开始--> 
+                <table name="vp_fuji">
+                        <!--  vp_fuji 数据源散成 vp_fuji_0~99  -->
+                        <db-partitions>
+                                <hash>
+                                        <by-column>owner_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>vp_fuji_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <!-- vp_fuji 数据表: 按 owner_id 字段散 100 张表 -->
+                        <table-partitions>
+                                <hash>
+                                        <by-column>owner_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>vp_fuji_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <!-- vp_fuji 数据表: 按 owner_id 字段散 100 张表结束-->
+        </catalog>
+
+        <!-- 数源user_lbs_data_san的散表配置   -->
+        <catalog id="user_lbs_data_san">
+
+                <default-dbname>user_lbs_data_san</default-dbname>
+
+                <!-- lbs_data数据表: 按 userid 字段散 100 张表 开始-->
+                <table name="lbs_data">
+                        <!--  lbs_data 数据源散成 lbs_data_0~99  -->
+                        <db-partitions>
+                                <hash>
+                                        <by-column>userid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>lbs_data_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <!-- lbs_data 数据表: 按 userid 字段散 100 张表 -->
+                        <table-partitions>
+                                <hash>
+                                        <by-column>userid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>lbs_data_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <!-- lbs_data 数据表: 按 userid 字段散 100 张表结束-->
+        </catalog>
+
+        <!-- 数据源connect_user的散表配置   -->
+        <catalog id="connect_user">
+
+                <default-dbname>connect_user</default-dbname>
+
+                <!-- connect_user数据表: 按 app_id 字段散 100 张表 开始-->
+                <table name="connect_user">
+                        <!--  connect_user 数据源散成 connect_user_0~99  -->
+                        <db-partitions>
+                                <hash>
+                                        <by-column>app_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>connect_user_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <!-- connect_user 数据表: 按 app_id 字段散 100 张表 -->
+                        <table-partitions>
+                                <hash>
+                                        <by-column>app_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>connect_user_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <!-- connect_user数据表: 按 app_id 字段散 100 张表结束-->
+        </catalog>
+	
+	<catalog id="sender_photo_tag">
+		
+		<default-dbname>send_photo</default-dbname>
+		
+		<table name="send_photo">
+			<db-partitions>
+				<hash>
+					<by-column>sender</by-column>
+					<partitions>100</partitions>
+					<target-pattern>send_photo_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>sender</by-column>
+					<partitions>100</partitions>
+					<target-pattern>send_photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+  </catalog>
+        <catalog id="app_connect ">
+
+                <default-dbname>app_connect</default-dbname>
+
+                <table name="connect_user">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>app_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>connect_user_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>app_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>connect_user_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+	  </catalog>
+
+        <catalog id="user_ugc_menu">
+                <table name="user_ugc_menu">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_ugc_menu_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_ugc_menu_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="user_menu_sort">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_ugc_menu_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_menu_sort_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+	  </catalog>
+
+        <catalog id="vas_comment">
+
+                <table name="vas_reply_record">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>owner_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>vas_comment_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>owner_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>vas_reply_record_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+          </catalog>
+        <catalog id="music_news_feed">
+
+                <table name="music_news_feed_user">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_news_feed_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_news_feed_user_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="music_news_feed_meta">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>meta_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_news_feed_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>meta_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_news_feed_meta_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+
+          </catalog>
+	
+        <catalog id="user_talk_group">
+                <table name="group_offline_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_group_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>group_offline_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+
+                <table name="talk_offline_user_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_group_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>talk_offline_user_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="talk_offline_group_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_group_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>talk_offline_group_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="talk_offline_system_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_group_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>talk_offline_system_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+          </catalog>
+
+        <catalog id="user_talk_new">
+
+                <table name="media_info">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_new_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>media_info_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+
+                <table name="offline_message_read">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_new_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>offline_message_read_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="offline_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_new_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>offline_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="group_offline_message">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_talk_new_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>group_offline_message_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+
+          </catalog>
+        <!-- UGC Music 数据源 music_replies的散表配置 -->
+        <catalog id="music_replies">
+
+                <!-- music_replies数据表: music_news_feed_replies 按 feed_id字段散 100 张表 -->
+                <table name="music_news_feed_replies">
+
+                        <db-partitions>
+                                <hash>
+                                        <by-column>feed_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_replies_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>feed_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_news_feed_replies_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+        <catalog id="mobile_contact_recommend_friends">
+
+                <table name="mobile_contact_recommend_friends">
+
+                        <db-partitions>
+                                <hash>
+                                        <by-column>host_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_recommend_friends_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>host_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_recommend_friends_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+        <catalog id="mobile_contact_no_recommend_friends">
+        
+                <table name="mobile_contact_no_recommend_friends">
+                
+                        <db-partitions>
+                                <hash>
+                                        <by-column>host_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_no_recommend_friends_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+
+                        <table-partitions>
+                                <hash>
+                                        <by-column>host_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_no_recommend_friends_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+	<!-- UGC KnowABC 数据源 knowabc_send_inv 的散表配置 -->
+	<catalog id="knowabc_send_inv">
+
+		<default-dbname>knowabc_send_inv</default-dbname>
+
+		<!-- send_inv 数据表: 按 friend_member_id 字段散 100 张表 -->
+		<table name="send_inv">
+
+			<!-- knowabc_send_inv 数据源散成 knowabc_send_inv_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>friend_member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>knowabc_send_inv_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- send_inv 按 friend_member_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>friend_member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>send_inv_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- UGC KnowABC 数据源 knowabc_voting_log 的散表配置 -->
+	<catalog id="knowabc_voting_log">
+
+		<default-dbname>knowabc_voting_log</default-dbname>
+
+		<!-- voting_log 数据表: 按 voting_id 字段散 100 张表 -->
+		<table name="voting_log">
+
+			<!-- knowabc_voting_log 数据源散成 knowabc_voting_log_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>voting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>knowabc_voting_log_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- voting_log 按 voting_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>voting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>voting_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- UGC Event 数据源 ugc_event 的散表配置 -->
+	<catalog id="ugc_event">
+
+		<default-dbname>ugc_event</default-dbname>
+
+		<!-- photo 数据表 (owner % 100) -->
+		<table name="photo">
+
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- event_member 数据表 (event_id % 100) -->
+		<table name="event_member">
+
+			<db-partitions>
+				<hash>
+					<by-column>event_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>event_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>event_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- member_event 数据表 (member_id % 100) -->
+		<table name="member_event">
+
+			<db-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_event_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- photo_exif 数据表 (owner %100) -->
+		<table name="photo_exif">
+
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_exif_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- photo_view 数据表 (id %100) -->
+		<table name="photo_view">
+
+			<db-partitions>
+				<hash>
+					<by-column>view_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>view_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_view_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- photo_view_mapping 数据表 (photo_id %100) -->
+		<table name="photo_view_mapping">
+
+			<db-partitions>
+				<hash>
+					<by-column>photo_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>photo_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_view_mapping_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- thread 数据表 (event_id %100) -->
+		<table name="thread">
+
+			<db-partitions>
+				<hash>
+					<by-column>event_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>event_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>thread_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- App 的散表配置 -->
+	<catalog id="user_app">
+
+		<default-dbname>user_app</default-dbname>
+
+		<!-- user_app 数据表: 按 user_id 字段散 100 张表 -->
+		<table name="user_app">
+
+			<!-- user_app 数据源散成 user_app_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_app_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- user_app 数据表按 user_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_app_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<!-- 2011-11-30添加 -->
+		<table name="sync_authorizations">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_app_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sync_authorizations_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="sync_prompt_record">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_app_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sync_prompt_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="app_user">
+
+		<default-dbname>app_user</default-dbname>
+
+		<!-- app_user 数据表: 按 user_id 字段散 100 张表 -->
+		<table name="app_user">
+
+			<!-- app_user 数据源散成 app_user_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>app_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_user_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- app_user 数据表按 app_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>app_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_user_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- App 粉丝的散表配置 -->
+	<catalog id="app_fans">
+
+		<default-dbname>app_fans</default-dbname>
+
+		<!-- app_fans 数据表: 按 app_id 字段散 100 张表 -->
+		<table name="app_fans">
+
+			<!-- app_fans 按 app_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>app_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_fans_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- App 留言版的散表配置 -->
+	<catalog id="app_comments">
+
+		<default-dbname>app_comments</default-dbname>
+
+		<!-- app_comments 数据表: 按 app_id 字段散 100 张表 -->
+		<table name="app_comments">
+
+			<!-- app_comments 按 app_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>app_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_comments_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- SNS 邀请的散表配置 -->
+	<catalog id="invite_url_paras">
+
+		<default-dbname>invite_url_paras</default-dbname>
+
+		<!-- invite_url_paras 数据表: 按 uuid 字段散 256 张表 -->
+		<table name="invite_url_paras">
+
+			<!-- invite_url_paras 按 uuid 字段最后 2 个字节散 256 张表  -->
+			<table-partitions>
+				<hex-hash>
+					<by-column>uuid</by-column>
+					<partitions>256</partitions>
+					<target-pattern>invite_url_paras_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="kx_invite_url_paras">
+
+		<default-dbname>kx_invite_url_paras</default-dbname>
+
+		<!-- invite_url_paras 数据表: 按 uuid 字段散 256 张表 -->
+		<table name="invite_url_paras">
+
+			<!-- invite_url_paras 按 uuid 字段最后 2 个字节散 256 张表  -->
+			<table-partitions>
+				<hex-hash>
+					<by-column>uuid</by-column>
+					<partitions>256</partitions>
+					<target-pattern>invite_url_paras_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 安全中心老罗的项目 -->
+	<catalog id="safecenter_chuang">
+
+		<default-dbname>safecenter_chuang</default-dbname>
+
+		<!-- user_interest 数据表: 根据 user_id 散表 100份 后缀 user_id % 100 -->
+		<table name="user_interest">
+
+			<!-- safecenter_chuang 数据源散成 safecenter_chuang_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safecenter_chuang_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- user_interest 数据表按 user_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_interest_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 新版用户留言 -->
+	<catalog id="gossip_new">
+
+		<default-dbname>gossip_new</default-dbname>
+
+		<!-- gossip_recent 数据表: 根据 owner 散表 100份 后缀 owner % 100 -->
+		<table name="gossip_recent">
+
+			<!-- gossip_new 数据源散成 gossip_new_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- gossip_recent 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_recent_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- gossip_recent_del 数据表: 只散库不散表 -->
+		<table name="gossip_recent_del">
+
+			<!-- gossip_new 数据源散成 gossip_new_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- gossip_body_recent 数据表: 根据 owner 散表 100份 后缀 owner % 100 -->
+		<table name="gossip_body_recent">
+
+			<!-- gossip_new 数据源散成 gossip_new_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- gossip_body_recent 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_body_recent_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- gossip_body_recent_del 数据表: 只散库不散表 -->
+		<table name="gossip_body_recent_del">
+
+			<!-- gossip_new 数据源散成 gossip_new_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+		<!-- gossip_ext 数据表: 根据 owner 散表 100份 后缀 owner % 100 -->
+		<table name="gossip_ext">
+
+			<!-- gossip_new 数据源散成 gossip_new_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- gossip_ext 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gossip_ext_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<!-- 游戏后台统计 -->
+	<catalog id="game_user_info">
+
+		<default-dbname>game_user_info</default-dbname>
+
+		<!-- game_user_info 数据表: 根据 uid 散表 100份 -->
+		<table name="game_user_info">
+
+			<!-- game_user_info 数据源散成 game_user_info_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>game_user_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- game_user_info 数据表按 uid 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>game_user_info_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- adminsearch 数据源 -->
+	<catalog id="adminsearch">
+		<table name="share_map">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_map_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- song.wen, weibo.li -->
+		<table name="album">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="photo">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="blog">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="entry_comment">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="album_comment">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>album_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="photo_comment">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- end of songwen, weibo.li -->
+
+
+
+		<table name="buddyapply_accepter">
+			<db-partitions>
+				<hash>
+					<by-column>accepter</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_accepter_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>accepter</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_accepter_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="buddyapply_applicant">
+			<db-partitions>
+				<hash>
+					<by-column>applicant</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_applicant_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>applicant</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_applicant_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- share 数据表: 据 user_id 散表 100份 -->
+		<table name="share">
+			<!-- 数据源 pattern: share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<!-- share 数据表按 user_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- share_comment 数据表: 根据 user_id 散表 100份 -->
+		<table name="share_comment">
+
+			<!-- 数据源 pattern: share_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- share_comment 数据表按 user_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- doing 数据表: 根据 userid 散表 100份 -->
+		<table name="doing">
+
+			<!-- 数据源 pattern: doing_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- doing 数据表按 userid 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- reply_doing 数据表: 根据 owner_id 散表 100份 -->
+		<table name="reply_doing">
+
+			<!-- 数据源 pattern: reply_doing_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>reply_doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- reply_doing 数据表按 owner_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>reply_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="blog_del">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_del</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="doing_del">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_del</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+		<table name="url">
+			<db-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>share_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>md5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>url_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+		<table name="doing_repeat">
+			<db-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_repeat_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>from_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>doing_repeat_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+
+
+
+	</catalog>
+
+	<!-- 世界杯嘉树的项目 -->
+	<catalog id="world_cup_couple">
+
+		<default-dbname>world_cup_couple</default-dbname>
+
+		<!-- world_cup_couple 数据表: 根据 er_id 散表 100份 后缀 er_id % 100 -->
+		<table name="world_cup_couple">
+
+			<!-- world_cup_couple 数据源散成 world_cup_couple_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>er_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>world_cup_couple_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- world_cup_couple 数据表按 er_id 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>er_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>world_cup_couple_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 站内信改造 -->
+	<catalog id="message">
+
+		<default-dbname>message</default-dbname>
+
+		<!-- message_in 数据表: 根据 owner 散表 100份 -->
+		<table name="message_in">
+
+			<!-- message 数据源散成 message_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- message_in 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_in_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- message_in_body 数据表: 根据 owner 散表 100份 -->
+		<table name="message_in_body">
+
+			<!-- message 数据源散成 message_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- message_in_body 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_in_body_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- message_out 数据表: 根据 owner 散表 100份 -->
+		<table name="message_out">
+
+			<!-- message 数据源散成 message_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- message_out 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_out_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<!-- message_out_body 数据表: 根据 owner 散表 100份 -->
+		<table name="message_out_body">
+
+			<!-- message 数据源散成 message_0~99  -->
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+
+			<!-- message_out_body 数据表按 owner 字段散 100 张表  -->
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_out_body_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- add by zhiliang.wang@opi-corp.com 2010-08-13 -->
+	<catalog id="page_thread">
+		<table name="page_thread">
+			<db-partitions>
+				<hash>
+					<by-column>thread_create_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>page_thread_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>thread_create_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>page_thread_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+		<table name="zhaopin_thread">
+			<db-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zhaopin_thread_{0}
+				</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zhaopin_thread_{0}
+				</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- add by zhiliang.wang@opi-corp.com 2010-08-20 -->
+	<catalog id="music_fav_playlist">
+		<table name="music_fav_playlist">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fav_playlist_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fav_playlist_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="music_faved_playlist">
+		<table name="music_faved_playlist">
+			<db-partitions>
+				<hash>
+					<by-column>favable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_faved_playlist_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>favable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_faved_playlist_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="music_playlist">
+		<table name="music_playlist">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_playlist_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_playlist_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="music_comment_user">
+		<table name="comment_user">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_comment_user_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>comment_user_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<!-- wenjiang.liang 20110824 -->
+	 <catalog id="music">
+                <table name="music_listening_song">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>song_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>song_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_listening_song_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+               <table name="music_listening_user">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>music_listening_user_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+
+        </catalog>
+
+
+
+	<catalog id="music_comment_song">
+		<table name="comment_song">
+			<db-partitions>
+				<hash>
+					<by-column>commentable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_comment_song_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>commentable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>comment_song_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="music_like_user">
+		<table name="music_like_user">
+
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_like_user_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_like_user_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="music_like_song">
+		<table name="music_like_song">
+
+			<db-partitions>
+				<hash>
+					<by-column>likeable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_like_song_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>likeable_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_like_song_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<!-- 2011-10-27 by xiaoming.deng -->
+	<!--  start:人人爱听 增加有关音乐“喜欢”的业务表 -->
+	<catalog id="fav_goods">
+		<table name="fav_goods_feed">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_feed_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_feed_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="fav_goods_meta">
+			<db-partitions>
+				<hash>
+					<by-column>meta_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_meta_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>meta_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_meta_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	
+		<table name="fav_goods_user">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_user_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_goods_user_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog> <!--  end:人人爱听 增加有关音乐“喜欢”的业务表 -->
+	
+
+	<!--2010-08-30 by zhiliang.wang -->
+	<catalog id="forum">
+		<table name="forum_photo">
+			<db-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="user_track">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_track_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="forum_album">
+			<db-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_album_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="forum_member">
+
+			<db-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_member_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+		<table name="my_comment">
+
+			<db-partitions>
+				<hash>
+					<by-column>author_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>author_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>my_comment_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+		<table name="member_forum">
+
+			<db-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_forum_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="forum_attachment">
+			<db-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_attachment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="member_forum_browse">
+			<db-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_forum_browse_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="thread">
+
+			<db-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>forum_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>thread_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="my_thread">
+
+			<db-partitions>
+				<hash>
+					<by-column>create_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_{0}
+                                </target-pattern>
+				</hash>
+			</db-partitions>
+
+			<table-partitions>
+				<hash>
+					<by-column>create_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>my_thread_{0}
+                                </target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="forum_comment">
+			<db-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="fmwidget">
+		<table name="fakemac_widget_record">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fmwidget_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fakemac_widget_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+
+	<catalog id="club_org_fans">
+		<table name="page_fans">
+			<db-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>club_org_fans_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>page_fans_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="fans_club_org">
+		<table name="fans_pages">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fans_club_org_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fans_pages_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="club_org_video_comment">
+		<table name="video_comment">
+			<db-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>club_org_videl_comment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="app_activity">
+		<table name="app_dress_log">
+			<db-partitions>
+				<hash>
+					<by-column>sender_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_activity_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>sender_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_dress_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="app_gift_log">
+			<db-partitions>
+				<hash>
+					<by-column>sender_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_activity_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>sender_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_gift_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="message_in_strange">
+		<table name="message_in_strange">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_in_strange_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_in_strange_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="message_attachment">
+		<table name="session_attachment">
+			<db-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_attachment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_attachment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="user_netspace">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_attachment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_netspace_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="request_center_app">
+		<table name="app_request">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>request_center_app_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_request_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="music_fm_like">
+		<table name="fm_like">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fm_like_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fm_like_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="music_fm_recycle">
+		<table name="fm_recycle">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fm_recycle_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fm_recycle_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="music_fm_trace_recommend">
+		<table name="fm_trace_recommend">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fm_trace_recommend_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fm_trace_recommend_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="message_session_new">
+		<table name="session">
+			<db-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_session_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="session_body">
+			<db-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_session_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_body_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+        <catalog id="like">
+                <table name="like_content">
+                        <db-partitions>
+				<hex-hash>
+                                        <by-column>urlmd5</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>like_{0}</target-pattern>
+				</hex-hash>
+                        </db-partitions>
+                        <table-partitions>
+				<hex-hash>
+                                        <by-column>urlmd5</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>like_content_{0}</target-pattern>
+				</hex-hash>
+                        </table-partitions>
+                </table>
+                <table name="user_like">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>like_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>user_like_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="like_user">
+                        <db-partitions>
+				<hex-hash>
+                                        <by-column>urlmd5</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>like_{0}</target-pattern>
+				</hex-hash>
+                        </db-partitions>
+                        <table-partitions>
+				<hex-hash>
+                                        <by-column>urlmd5</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>like_user_{0}</target-pattern>
+				</hex-hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+	<catalog id="app_like">
+		<table name="user_like_internal">
+
+			<db-partitions>
+
+				<hash>
+
+					<by-column>user_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>app_like_{0}</target-pattern>
+
+				</hash>
+
+			</db-partitions>
+
+			<table-partitions>
+
+				<hash>
+
+					<by-column>user_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>user_like_internal_{0}</target-pattern>
+
+				</hash>
+
+			</table-partitions>
+
+		</table>
+
+
+
+		<table name="like_user_internal">
+
+			<db-partitions>
+
+				<hash>
+
+					<by-column>global_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>app_like_{0}</target-pattern>
+
+				</hash>
+
+			</db-partitions>
+
+			<table-partitions>
+
+				<hash>
+
+					<by-column>global_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>like_user_internal_{0}</target-pattern>
+
+				</hash>
+
+			</table-partitions>
+
+		</table>
+
+
+
+		<table name="like_internal_count_info">
+
+			<db-partitions>
+
+				<hash>
+
+					<by-column>global_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>app_like_{0}</target-pattern>
+
+				</hash>
+
+			</db-partitions>
+
+			<table-partitions>
+
+				<hash>
+
+					<by-column>global_id</by-column>
+
+					<partitions>100</partitions>
+
+					<target-pattern>like_internal_count_info_{0}</target-pattern>
+
+				</hash>
+
+			</table-partitions>
+
+		</table>
+
+
+
+
+
+		<table name="user_like">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_like_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_like_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="like_user">
+			<db-partitions>
+				<hex-hash>
+					<by-column>urlmd5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_like_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>urlmd5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>like_user_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+		<table name="like_count_info">
+			<db-partitions>
+				<hex-hash>
+					<by-column>urlmd5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_like_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>urlmd5</by-column>
+					<partitions>100</partitions>
+					<target-pattern>like_count_info_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+
+		<table name="like_day_count_info">
+			<db-partitions>
+				<direct>
+					<target-pattern>app_like_1</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<date-hash excludeNow="true">
+					<by-column>thedate</by-column>
+					<partitions>yyyyMMdd</partitions>
+					<target-pattern>like_day_count_info_{0}</target-pattern>
+				</date-hash>
+			</table-partitions>
+		</table>
+
+
+		<table name="like_yesterday_count_info">
+			<db-partitions>
+				<direct>
+					<target-pattern>app_like_1</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>like_yesterday_count_info</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+
+		<table name="like_week_count_info">
+			<db-partitions>
+				<direct>
+					<target-pattern>app_like_1</target-pattern>
+				</direct>
+			</db-partitions>
+
+			<table-partitions>
+				<direct>
+					<target-pattern>like_week_count_info</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+
+		<table name="like_month_count_info">
+			<db-partitions>
+				<direct>
+					<target-pattern>app_like_1</target-pattern>
+				</direct>
+			</db-partitions>
+
+			<table-partitions>
+				<direct>
+					<target-pattern>like_month_count_info</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+
+	<!-- jisong.yang -->
+	<catalog id="wan_sheng_attack">
+		<table name="wan_sheng_attack_record">
+			<db-partitions>
+				<hash>
+					<by-column>attack_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wan_sheng_attack_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>attack_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wan_sheng_attack_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="wan_sheng_define">
+		<table name="wan_sheng_define_record">
+			<db-partitions>
+				<hash>
+					<by-column>define_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wan_sheng_define_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>define_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wan_sheng_define_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="short_url">
+		<table name="short_url">
+			<db-partitions>
+				<hashcode>
+					<by-column>encrypted_url</by-column>
+					<partitions>100</partitions>
+					<target-pattern>short_url_{0}</target-pattern>
+				</hashcode>
+			</db-partitions>
+			<table-partitions>
+				<hashcode>
+					<by-column>encrypted_url</by-column>
+					<partitions>100</partitions>
+					<target-pattern>short_url_{0}</target-pattern>
+				</hashcode>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!--2010-12-3 by ugc, db=junhui.hou -->
+	<catalog id="minigroup">
+
+		<table name="minigroup">
+			<db-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+
+		<table name="minigroup_member">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_photo">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_photo_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+
+		<table name="minigroup_feed">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_feed_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_doing">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_album">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_album_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_share">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_share_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_blog">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_blog_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="member_minigroup">
+			<db-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_minigroup_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>member_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_minigroup_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="minigroup_chat_record">
+			<db-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_chat_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>minigroup_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>minigroup_chat_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+
+	</catalog>
+
+	<catalog id="page_lover">
+
+		<table name="tree_score_history">
+			<db-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>tree_score_history_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>page_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>tree_score_history_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="song_book">
+		<table name="song_book_ref_uid">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_ref_uid_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_ref_uid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="song_book_ref_bookid">
+			<db-partitions>
+				<hash>
+					<by-column>bookid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_ref_bookid_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>bookid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_ref_bookid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="song_book_comment_bookid">
+			<db-partitions>
+				<hash>
+					<by-column>bookid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_comment_bookid_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>bookid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_comment_bookid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="song_book_comment_uid">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_comment_uid_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_book_comment_uid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+
+	<catalog id="message_center">
+		<table name="message_center_data">
+			<db-partitions>
+				<hash>
+					<by-column>receiver_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_center_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>receiver_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_center_data_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="wall_doing">
+		<table name="wall">
+			<db-partitions>
+				<direct>
+					<target-pattern>wall</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>wall</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+		<table name="wall_sms_join_way">
+			<db-partitions>
+				<direct>
+					<target-pattern>wall_sms_join_way</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>wall_sms_join_way</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+		<table name="wall_doing">
+			<db-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="wall_member">
+			<db-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="friendfinder_common_friends_sg">
+		<table name="common_friends">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>common_friends_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>common_friends_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!--entry_xxx, zhiliang.wang -->
+	<catalog id="entry_info">
+		<table name="entry_info">
+			<db-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_info_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_body">
+		<table name="entry_body">
+			<db-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_body_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>entry_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_body_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_index_author">
+		<table name="entry_index_author">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_author_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_author_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_index_at">
+		<table name="entry_index_at">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_at_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_at_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_index_tag">
+		<table name="entry_index_tag">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_tag_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_tag_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_index_create_time">
+		<table name="entry_index_create_time">
+			<db-partitions>
+				<direct>
+					<target-pattern>entry_index_create_time</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<date-hash>
+					<by-column>index_value</by-column>
+					<partitions>yyyyMMdd</partitions>
+					<target-pattern>entry_index_create_time_{0}</target-pattern>
+				</date-hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="entry_index_point">
+		<table name="entry_index_point">
+			<db-partitions>
+				<direct>
+					<target-pattern>entry_index_point</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>entry_index_point</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="user_lbs_friend_checkin_statistic">
+		<table name="user_friend_checkin_statistic">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>user_friend_checkin_statistic_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>user_friend_checkin_statistic_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="entries">
+		<table name="entry_index_author">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_author_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="entry_index_master">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_index_master_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="entry_index_create_time">
+			<db-partitions>
+				<direct>
+					<target-pattern>entry_index_create_time</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<date-hash>
+					<by-column>index_value</by-column>
+					<partitions>yyyyMMdd</partitions>
+					<target-pattern>entry_index_create_time_{0}</target-pattern>
+				</date-hash>
+			</table-partitions>
+		</table>
+		<table name="entry_index_tag">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>1000</partitions>
+					<target-pattern>entry_index_tag_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="entry_index_myat">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_index_myat_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="entry_index_atme">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_index_atme_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="entry_index_longitude">
+			<db-name>entry_index_point</db-name>
+			<db-partitions>
+				<direct>
+					<target-pattern>entry_index_longitude</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>entry_index_longitude</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+
+		<table name="entry_index_latitude">
+			<db-name>entry_index_point</db-name>
+			<db-partitions>
+				<direct>
+					<target-pattern>entry_index_latitude</target-pattern>
+				</direct>
+			</db-partitions>
+			<table-partitions>
+				<direct>
+					<target-pattern>entry_index_latitude</target-pattern>
+				</direct>
+			</table-partitions>
+		</table>
+		<table name="entry_index_subtype">
+			<db-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entries_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>index_value</by-column>
+					<partitions>100</partitions>
+					<target-pattern>entry_index_subtype_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+
+		</table>
+	</catalog>
+	<catalog id="icetea_activity">
+		<table name="icetea_gai_record">
+			<db-partitions>
+				<hash>
+					<by-column>zheng_userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>icetea_gai_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>zheng_userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>icetea_gai_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="icetea_beigai_record">
+			<db-partitions>
+				<hash>
+					<by-column>bei_userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>icetea_beigai_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>bei_userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>icetea_beigai_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="blog_draft">
+		<table name="blog_draft">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_draft_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_draft_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	        <!-- 2012-10-23 add by chao.wang3-->
+		<table name="blog_template_module_draft">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_draft_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>blog_template_module_draft_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="video">
+		   
+		<table name="video">
+			         
+			<db-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</db-partitions>
+			         
+			<table-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</table-partitions>
+			       
+		</table>
+		       
+		<table name="video_del">
+			         
+			<db-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</db-partitions>
+			         
+			<table-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_del_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</table-partitions>
+			       
+		</table>
+		       
+		<table name="video_basic">
+			         
+			<db-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</db-partitions>
+			         
+			<table-partitions>
+				                 
+				<hash>
+					                   
+					<by-column>uid</by-column>
+					                   
+					<partitions>100</partitions>
+					                   
+					<target-pattern>video_basic_{0}</target-pattern>
+					                 
+				</hash>
+				         
+			</table-partitions>
+			       
+		</table>
+	</catalog>
+
+
+	<catalog id="music_fav_super_album">
+		<table name="fav_super_album_uid">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fav_super_album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_super_album_uid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="fav_super_album_metaid">
+			<db-partitions>
+				<hash>
+					<by-column>meta_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_fav_super_album_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>meta_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fav_super_album_metaid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="meeting">
+		<table name="member_meeting">
+			<db-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>meeting_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>userid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_meeting_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="meeting_member">
+			<db-partitions>
+				<hash>
+					<by-column>meeting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>meeting_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>meeting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>meeting_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="meeting_chatrecord">
+			<db-partitions>
+				<hash>
+					<by-column>meeting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>meeting_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>meeting_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>meeting_chatrecord_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<catalog id="music_user_songs_store">
+		<table name="user_songs_store_uid">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_user_songs_store_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_songs_store_uid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="artist_similar_artistid">
+			<db-partitions>
+				<hash>
+					<by-column>artist_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_user_songs_store_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>artist_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>artist_similar_artistid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="song_similar_songid">
+			<db-partitions>
+				<hash>
+					<by-column>song_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_user_songs_store_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>song_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>song_similar_songid_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<!-- 用于用户音乐相似度相关业务，2011-10-08添加 -->
+		<table name="user_artists_num">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>music_user_songs_store_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_artists_num_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+	</catalog>
+	<catalog id="vip_tips">
+		<table name="tips">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>tips_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>tips_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="user_news_feed">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>tips_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_news_feed_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- VIP会员签到业务 -->
+	<catalog id="sign_record">
+		<table name="sign_record">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sign_record_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sign_record_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<catalog id="user_lbs">
+		<table name="location_flow">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>lbs_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>location_flow_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!-- yunming.zhu -->
+	<catalog id="user_comments">
+		<table name="user_comments">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_comments_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_comments_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!-- vip wenhui.wang  -->
+	<catalog id="gift_record_sender">
+		<table name="items_record_sender">
+			<table-partitions>
+				<hash>
+					<by-column>sender_uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>items_record_sender_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+			<db-partitions>
+				<hash>
+					<by-column>sender_uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gift_record_sender_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+                <table name="gift_record_sender">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>sender_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>gift_record_sender_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>sender_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>gift_record_sender_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+
+	</catalog>
+	<catalog id="gift_record_receiver">
+		<table name="items_record_receiver">
+			<table-partitions>
+				<hash>
+					<by-column>receiver_uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>items_record_receiver_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+			<db-partitions>
+				<hash>
+					<by-column>receiver_uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>gift_record_receiver_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+                <table name="gift_record_receiver">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>receiver_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>gift_record_receiver_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>receiver_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>gift_record_receiver_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+	</catalog>
+	<catalog id="vip_meili_fans">
+		<table name="vip_meili_fans">
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>vip_meili_fans_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>vip_meili_fans_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+		</table>
+
+	</catalog>
+        <catalog id="social_wiki">
+                <table name="wiki_hot_feed">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>wiki_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>wiki_hot_feed_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>wiki_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>social_wiki_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+                <table name="wiki_user_rank">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>wiki_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>wiki_user_rank_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>wiki_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>social_wiki_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+                <table name="action_comment">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>action_owner</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>action_comment_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>action_owner</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>social_wiki_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+        <catalog id="minisite_follower_site">
+                <table name="minisite_follower_site">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>follower_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_follower_site_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>follower_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_follower_site_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+        <catalog id="minisite_site_follower">
+                <table name="minisite_site_follower">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>site_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_site_follower_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>site_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_site_follower_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+        <catalog id="minisite_comment">
+                <table name="minisite_comment">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>ugc_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_comment_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>ugc_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_comment_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+
+        <catalog id="minisite_comment_db">
+
+                <table name="minisite_comment_db">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>ugc_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_comment_db_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>ugc_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>minisite_comment_db_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+        <catalog id="admin_notify">
+
+                <table name="content">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>OWNER</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>content_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>OWNER</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>content_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+                <table name="index">
+                        <table-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>index_{0}</target-pattern>
+                                </hash> 
+                        </table-partitions>
+                        <db-partitions>
+                                <hash>
+                                        <by-column>to_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>index_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                </table>
+        </catalog>
+
+
+	<catalog id="safe_center">
+		<table name="safeuser_log">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safe_center_new_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safeuser_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="safe_user_tokens">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safe_center_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safe_user_tokens_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="suicide_log">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>safe_center_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>suicide_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+	<catalog id="user_lbs_checkin">
+		<table name="poi_checkin">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>lbs_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>poi_checkin_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	      <table name="location_flow">
+       <db-partitions>
+              <hash>
+                     <by-column>user_id</by-column>
+                     <partitions>100</partitions>
+                     <target-pattern>lbs_{0}</target-pattern>
+              </hash>
+       </db-partitions>
+       <table-partitions>
+              <hash>
+                     <by-column>user_id</by-column>
+                     <partitions>100</partitions>
+                     <target-pattern>location_flow_{0}</target-pattern>
+              </hash>
+       </table-partitions>
+</table>
+	</catalog>
+
+        <catalog id="lbs_my_location">
+                <table name="lbs_my_location">
+                        <db-partitions>
+                                <hash>  
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>lbs_my_location_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>  
+                                        <by-column>user_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>lbs_my_location_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+
+	
+	<!-- 情谊项目使用，记录两个用户在某个资源中互相回复的对话 -->
+	<catalog id="conversation">
+		<table name="conversation">
+			<db-partitions>
+				<hash>
+					<by-column>small_user_id</by-column>
+					<partitions>10000</partitions>
+					<target-pattern>conversation_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>small_user_id</by-column>
+					<partitions>10000</partitions>
+					<target-pattern>conversation_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+        <catalog id="fuck_conversation">
+                <table name="conversation">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>small_user_id</by-column>
+                                        <partitions>10000</partitions>
+                                        <target-pattern>conversation_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>small_user_id</by-column>
+                                        <partitions>10000</partitions>
+                                        <target-pattern>conversation_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+	<!-- tai.wang@renren-inc.com -->
+	<catalog id="buddycore_accepter">
+		<table name="buddyapply_accepter">
+			<db-partitions>
+				<hash>
+					<by-column>accepter</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_accepter_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>accepter</by-column>
+					<partitions>100</partitions>
+					<target-pattern>buddyapply_accepter_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+
+	<!-- 新状态墙使用的数据源
+		联系人hongliang.gao@renren-inc.com, pengpeng.li@renren-inc.com
+	 -->
+	<catalog id="new_wall_doing">
+		<table name="wall_doing">
+			<db-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="wall_member">
+			<db-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_doing_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>wall_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>wall_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+
+	<!-- 用于photo浏览计数的数据源 -->
+	<catalog id="photo_viewcount_new">
+		<table name="photo_viewcount">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_viewcount_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>photo_viewcount_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 用于记录用户每天的登陆情况 -->
+	<catalog id="score_login_log">
+		<table name="score_login_log">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>score_login_log_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>score_login_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="userscore_addscore_log">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>userscore_addscore_log_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>userscore_addscore_log_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table> 
+		
+	</catalog>
+	<catalog id="rr_video">
+		<table name="video">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="video_del">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_del_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+
+		<table name="video_info">
+		    <db-partitions>
+		        <hex-hash>
+		            <by-column>checksum</by-column>
+		            <partitions>100</partitions>
+		            <target-pattern>video_info_{0}</target-pattern>
+		        </hex-hash>
+		    </db-partitions>
+		    <table-partitions>
+		        <hex-hash>
+		            <by-column>checksum</by-column>
+		            <partitions>100</partitions>
+		            <target-pattern>video_info_{0}</target-pattern>
+		        </hex-hash>
+		    </table-partitions>
+		</table>
+		<table name="video_upload">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_upload_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="video_basic">
+			<db-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>video_basic_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2011.10.28 xiaoming.deng@renren-inc.com -->
+	<!--start:手机聊天DB -->
+	<catalog id="user_talk">
+		<table name="media_info">
+			<db-partitions>
+				<hex-hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>media_info_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>uid</by-column>
+					<partitions>100</partitions>
+					<target-pattern>media_info_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+	
+		<table name="offline_message">
+			<db-partitions>
+				<hex-hash>
+					<by-column>to_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>offline_message_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>to_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>offline_message_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+
+		<table name="offline_message_read">
+			<db-partitions>
+				<hex-hash>
+					<by-column>to_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>offline_message_read_{0}</target-pattern>
+				</hex-hash>
+			</db-partitions>
+			<table-partitions>
+				<hex-hash>
+					<by-column>to_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>offline_message_read_{0}</target-pattern>
+				</hex-hash>
+			</table-partitions>
+		</table>
+
+	</catalog>
+	<!--end:手机聊天DB -->
+	
+	
+	<!-- 2011.11.2 add by  xiaoming.deng@renren-inc.com  -->
+	<!--start 与我相关  -->
+	<catalog id="fans_to_ugc">
+		<table name="fans_to_ugc">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fans_to_ugc_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fans_to_ugc_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<catalog id="ugc_info">
+		<table name="ugc_info">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_info_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<catalog id="ugc_to_fans">
+		<table name="ugc_to_fans">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_to_fans_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>ugc_to_fans_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!--end 与我相关  -->
+
+
+	<!-- 2011-11-04添加，用于lbs checkin相关的服务 -->
+	<catalog id="fast_checkin">
+		<table name="poi_data_fast">
+			<db-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>poi_data_fast_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>poi_data_fast_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<table name="fast_checkin">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fast_checkin_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>fast_checkin_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2011-11-09添加，用于通讯平台的附件中心的相关服务 -->
+	<catalog id="msg_attachment">
+		<table name="msg_attachment">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>msg_attachment_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>msg_attachment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2011-11-25添加，用于3G的通讯录项目 -->
+	<catalog id="mobile_contact_item">
+		<table name="mobile_contact_item">
+			<db-partitions>
+				<hash>
+					<by-column>uploader_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_item_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uploader_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_item_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="mobile_contact_phone">
+		<table name="mobile_contact_phone">
+			<db-partitions>
+				<hash>
+					<by-column>uploader_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_phone_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>uploader_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_phone_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+        <catalog id="mobile_contact_recommend_quasi_friend">
+                <table name="mobile_contact_recommend_quasi_friend">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>host_uid</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_recommend_quasi_friend_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>host_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_recommend_quasi_friend_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+        <catalog id="mobile_client">
+                <table name="mobile_contact_sx_item">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>uploader_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_client_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>uploader_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_sx_item_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+                <table name="mobile_contact_sx_phone">
+                        <db-partitions>
+                                <hash>
+                                        <by-column>uploader_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_client_{0}</target-pattern>
+                                </hash>
+                        </db-partitions>
+                        <table-partitions>
+                                <hash>
+                                        <by-column>uploader_id</by-column>
+                                        <partitions>100</partitions>
+                                        <target-pattern>mobile_contact_sx_phone_{0}</target-pattern>
+                                </hash>
+                        </table-partitions>
+                </table>
+        </catalog>
+	<catalog id="phone_contact_mobile">
+		<table name="phone_contact_mobile">
+			<db-partitions>
+				<hash>
+					<by-column>phone_number</by-column>
+					<partitions>100</partitions>
+					<target-pattern>phone_contact_mobile_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>phone_number</by-column>
+					<partitions>100</partitions>
+					<target-pattern>phone_contact_mobile_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2011-11-25添加，用于存储开放平台 Refresh Token 和 MAC Access Token -->
+	<catalog id="platform_token">
+		<table name="persistent_token">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>persistent_token_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>persistent_token_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- 2012-11-01 add by chao.wang3-->
+	<catalog id="forum_info">
+		<!-- 2012-11-01 add by chao.wang3-->
+		<table name="thread_like">
+			<db-partitions>
+				<hash>
+					<by-column>thread_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>forum_info_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>thread_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>thread_like_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 2012-09-07添加 by chao.wang3-->
+	<catalog id="zuji">
+		<!-- 2012-09-07添加 by chao.wang3-->
+		<table name="zuji_ask">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_ask_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-07添加 by chao.wang3-->
+		<table name="zuji_been">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_been_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-07添加 by chao.wang3-->
+		<table name="zuji_content">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_content_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-10-25 add by chao.wang3-->
+		<table name="zuji_comment">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-07添加 by chao.wang3-->
+		<table name="zuji_owner">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_owner_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-11-06 add by chao.wang3-->
+		<table name="zuji_wanna">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>zuji_wanna_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!-- 2012-10-09 add by chao.wang3-->
+	<catalog id="user_lbs_checkin_statistic_shard">
+		<!-- 2012-10-09 add by chao.wang3-->
+		<table name="user_checkin_static">
+			<db-partitions>
+				<hash>
+					<by-column>city_code</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_lbs_checkin_statistic_shard_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>city_code</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_checkin_static_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+
+	<!-- 2012-09-12 add by chao.wang3-->
+	<catalog id="new_timeline_life_event">
+		<!-- 2012-09-05 add by chao.wang3-->
+		<table name="life_event">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>life_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>life_event_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-05 add by chao.wang3-->
+		<table name="love_info">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>life_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>love_info_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-12 add by chao.wang3-->
+		<table name="lifeevent_comment">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>life_event_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>lifeevent_comment_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!-- 2012-09-13 add by chao.wang3-->
+	<catalog id="mobile_contact_quasi">
+		<!-- 2012-09-13 add by chao.wang3-->
+		<table name="mobile_contact_quasi_friend_request">
+			<db-partitions>
+				<hash>
+					<by-column>applicant</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_quasi_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>applicant</by-column>
+					<partitions>100</partitions>
+					<target-pattern>mobile_contact_quasi_friend_request_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<!-- 2012-09-05添加 by chao.wang3-->
+	<catalog id="sixin_account">
+		<!-- 2012-09-05添加 by chao.wang3-->
+		<table name="sx_relation">
+			<db-partitions>
+				<hash>
+					<by-column>host_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sixin_account_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>host_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sx_relation_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-05添加 by chao.wang3-->
+		<table name="sx_contact_thridparty_bound">
+			<db-partitions>
+				<hash>
+					<by-column>contact_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sixin_account_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>contact_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sx_contact_thridparty_bound_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		<!-- 2012-09-05添加 by chao.wang3-->
+		<table name="sx_bound_thridparty_contact">
+			<db-partitions>
+				<hash>
+					<by-column>bound_account_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sixin_account_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>bound_account_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>sx_bound_thridparty_contact_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- start 通信平台 created by xiaoming.deng 2011.12.6 -->
+	<catalog id="chat">
+		<default-dbname>chat</default-dbname>
+		<table name="session_fixed">
+			<db-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>owner</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_fixed_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="session_view">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="session_member">
+			<db-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_member_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="member_session">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>member_session_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="message_body">
+			<db-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>message_body_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="session_attachments">
+			<db-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>session_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_attachments_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="latest_contact_session">
+			<db-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>owner_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>latest_contact_session_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		
+		<table name="unread_session_count">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>session_view_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>unread_session_count_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		
+	</catalog>
+	
+	<!-- end 通信平台 created by xiaoming.deng 2011.12.6 -->
+	
+	
+	<!-- music 推荐  -->
+	<catalog id="user_guess_song_pool">
+		<default-dbname>user_guess_song_pool</default-dbname>
+		
+		<table name="user_guess_song_pool">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_guess_song_pool_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>user_guess_song_pool_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	
+	<!-- game center使用  -->
+	<catalog id="game_center">
+		<default-dbname>game_center</default-dbname>
+		
+		<table name="app_feed_flow">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>game_center_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_feed_flow_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+		
+		<table name="app_feed">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>game_center_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>app_feed_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+	<catalog id="lbs_distance_daily">
+		<default-dbname>lbs_distance_daily</default-dbname>
+		
+		<table name="lbs_distance_daily">
+			<db-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>lbs_distance_daily_{0}</target-pattern>
+				</hash>
+			</db-partitions>
+			
+			<table-partitions>
+				<hash>
+					<by-column>user_id</by-column>
+					<partitions>100</partitions>
+					<target-pattern>lbs_distance_daily_{0}</target-pattern>
+				</hash>
+			</table-partitions>
+		</table>
+	</catalog>
+</jade-config>

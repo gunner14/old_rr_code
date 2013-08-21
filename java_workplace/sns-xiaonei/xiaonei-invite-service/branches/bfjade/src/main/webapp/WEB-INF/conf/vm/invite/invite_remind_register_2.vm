@@ -1,0 +1,10 @@
+<!--
+tip:for invitor who has no send email for her but import her(flag=0)
+
+@author seraph
+-->
+<blockquote>
+	$!{hostname}加入了校内网，你可能认识他，快去打个招呼吧！<br/><a href = "http://click.xiaonei.com/m.jsp?d=$!{mills}&t=$!{t}&u=$!{monitorUrlMain}" target="_blank" style="color:#3b5998;text-decoration:underline;">http://www.xiaonei.com</a>
+	</blockquote>
+<br/>
+$!{hostname}<br/>$!{year}年$!{month}月$!{day}日<br/><br/><br/>

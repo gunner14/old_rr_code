@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<action-mappings>		
+		<action path="/finb" type="com.xiaonei.reg.guide.action.netbarflow.FillinfoInitAction" scope="request" >
+			<forward name="init" path="/pages/guide/091026ForNetbar/fillinfo.jsp"></forward>
+		</action>
+		<action path="/finbs" type="com.xiaonei.reg.guide.action.netbarflow.FillinfoSubmitAction" scope="request" >
+			<forward name="error" path="/finb.do"></forward>
+			<forward name="succ" path="/guide.do" redirect="true"></forward>
+		</action>
+		<action path="/pvnb" type="com.xiaonei.reg.guide.action.netbarflow.PreviewInitAction" scope="request" >
+			<forward name="init" path="/pages/guide/091026ForNetbar/preview.jsp"></forward>
+		</action>
+		<action path="/pvnbs" type="com.xiaonei.reg.guide.action.netbarflow.PreviewSubmitAction" scope="request" >
+			<forward name="init" path="/pvnb.do"></forward>
+			<forward name="succ" path="/guide.do" redirect="true"></forward>
+		</action>
+		<action path="/pvnb-ff"	type="com.xiaonei.reg.guide.action.a090729.AjaxRecommendFriendsSelectAction" scope="request" />
+		<action path="/addp" type="com.xiaonei.reg.guide.action.netbarflow.AjaxAddPageAction" scope="request" />
+		<action path="/autr" type="com.xiaonei.reg.guide.action.netbarflow.AjaxUserTraceAction" scope="request" />
+		
+		<action path="/ponb" type="com.xiaonei.reg.guide.action.netbarflow.PortraitInitAction" scope="request" />
+		<action path="/ponbs" type="com.xiaonei.reg.guide.action.netbarflow.PortraitSubmitAction" scope="request" >
+			<forward name="init" path="/ponb.do"></forward>
+			<forward name="succ" path="/guide.do" redirect="true"></forward>
+		</action>			
+	</action-mappings>
+	<controller locale="false" />
+	<!-- ======= Message Resources Definitions ======= -->
+	<message-resources parameter="application" />
+</struts-config>

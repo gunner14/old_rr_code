@@ -1,0 +1,11 @@
+<aspectj>
+
+	<aspects>
+		<aspect name="com.renren.sns.wiki.xoa.XoaProfilerAspect" />
+	</aspects>
+
+	<weaver options="-verbose">
+	
+		<include within="com.renren.sns.wiki.xoa.*" />
+	</weaver>
+</aspectj> 

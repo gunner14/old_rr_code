@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xiaonei</groupId>
+    <artifactId>xiaonei-root-pom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>com.renren</groupId>
+  <artifactId>renren-sns-wiki-search</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>renren-sns-wiki-search</name>
+  <url>http://maven.sns.d.xiaonei.com/${artifactId}</url>
+  
+  <scm>
+	<connection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-search
+	</connection>
+	<developerConnection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-search
+	</developerConnection>
+	<url>http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-search
+	</url>
+	<tag>HEAD</tag>
+  </scm>
+
+  <developers>
+	<developer>
+		<name>yi.li</name>
+		<email>yi.li@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=242679716</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+	<developer>
+		<name>weiwei.wang</name>
+		<email>weiwei.wang@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=200778561</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+  </developers>
+
+  <issueManagement>
+	<system>jira</system>
+	<url>http://jira.d.xiaonei.com/</url>
+  </issueManagement>
+
+  <distributionManagement>
+	<repository>
+		<id>archiva.snapshots</id>
+		<name>development</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/
+		</url>
+	</repository>
+	<snapshotRepository>
+		<id>archiva.snapshots</id>
+		<name>Internal Snapshot Repository</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/
+		</url>
+	</snapshotRepository>
+  </distributionManagement>
+	
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <!-- Wiki Service包 -->
+    <dependency>
+      <groupId>com.renren</groupId>
+	  <artifactId>renren-sns-wiki-service</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!-- 搜索定时重建索引引入quartz -->
+	<dependency>
+	  <groupId>opensymphony</groupId>
+	  <artifactId>quartz</artifactId>
+	</dependency>
+  	<!-- lucene依赖 -->
+    <dependency>
+	  <groupId>org.apache.lucene</groupId>
+	  <artifactId>lucene-core</artifactId>
+	  <version>3.6.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.lucene</groupId>
+	  <artifactId>lucene-smartcn</artifactId>
+	  <version>3.6.0</version>
+	</dependency>
+	<!-- 用于将汉字转化成拼音以支持拼音搜索 -->
+	<dependency>
+	  <groupId>net.sourceforge.pinyin4j</groupId>
+	  <artifactId>pinyin4j</artifactId>
+	  <version>2.5.0</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+		<configuration>
+			<archive>
+				<manifestEntries>
+					<Rose>*</Rose>
+				</manifestEntries>
+			</archive>
+		</configuration>
+	  </plugin>
+    </plugins>
+  </build>
+  
+</project>

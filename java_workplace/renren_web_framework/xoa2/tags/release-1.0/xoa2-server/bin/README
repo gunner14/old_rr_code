@@ -1,0 +1,10 @@
+为了避免启动的后台服务被意外的终止，应该在使用start命令前，进入screen来执行。
+进入screen的方法：
+1 screen
+2 然后在那个窗口执行sh start
+3 然后可以通过ctrl+a 然后按d来退出当前的screen session
+4 如果要停止该服务，必须重新进入screen，可以通过screen -ls查看目前存在的screen session号
+5 使用screen -r session号进入当前打开服务的screen session
+6 不使用screen 可以通过exit退出screen
+
+具体操作可以通过man screen查看

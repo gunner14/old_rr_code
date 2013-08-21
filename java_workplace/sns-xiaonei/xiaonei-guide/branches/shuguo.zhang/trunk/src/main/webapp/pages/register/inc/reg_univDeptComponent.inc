@@ -1,0 +1,19 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%
+// 注意，在blinfo.jsp中引用了此inc，和/inc目录下的
+//---------------------------------------------------------------------------------------------------
+//-- 大学院系组件-/register/inc/univDeptComponent.inc
+//-- 支持同一个页面显示多个大学院系组件，
+//-- 外部jsp调用此inc可以传入2个参数:
+//-- univDeptComponent_index 可选的，但不要重复，指定是第几个组件，如 1、 2、 3、 4
+//-- univDeptComponent_universityCode 大学id,必须的，如:value="1002";
+//-- 组件中的其他文件
+//-- /js/universityDepartmentComponent.js
+//-- <script type="text/javascript" src="http://s.xnimg.cn/js/universityDepartmentComponent.js?ver=$revxxx$"></script>
+//---------------------------------------------------------------------------------------------------
+%>
+<span id="univDeptComponent_Span${univDeptComponent_index}" class="univDeptComponent_Span_class">
+	<select value="${department}" tabindex="5" class="select" name="department${univDeptComponent_index}" id="department${univDeptComponent_index}" onchange="changeDept()">
+        <option value="">院系</option>
+    </select>
+</span>

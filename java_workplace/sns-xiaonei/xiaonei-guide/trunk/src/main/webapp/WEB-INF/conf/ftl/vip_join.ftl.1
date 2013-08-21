@@ -1,0 +1,18 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<#include "1|4|1">
+	<h3>
+		<#list f_from_name as n>
+			<a target="_blank" href="http://www.renren.com/profile.do?id=${f_from_id[n_index]}&ref=newsfeed" stats="NF_People">${n}</a>
+		</#list> 成为了人人网 <a href="http://i.renren.com/index.action" target="_blank">VIP会员</a>，尊享人人网VIP会员特权
+	</h3>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

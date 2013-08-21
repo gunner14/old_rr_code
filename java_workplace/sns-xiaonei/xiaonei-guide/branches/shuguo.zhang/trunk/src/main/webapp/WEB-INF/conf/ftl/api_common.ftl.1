@@ -1,0 +1,19 @@
+${"\r"}
+<#compress>
+<#include "1|0|0">
+<li id="feed${id[0]}">
+	<#include "1|4|1">
+	<h3>${f_app_title[0]}</h3>
+	<#if f_app_body?? && f_app_body[0] != "">
+		<div class="content">
+			<p>${f_app_body[0]}</p>
+		</div>
+	</#if>
+	<div class="details">
+		<div class="legend">
+			<span class="duration"><@format>${f_time[0]}</@format></span>
+		</div>
+	</div>
+<#include "1|1|1">
+</li>
+</#compress>

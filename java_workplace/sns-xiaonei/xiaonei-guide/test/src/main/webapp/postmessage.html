@@ -1,0 +1,35 @@
+<!doctype>
+<html>
+	<head>
+		<script>
+			document.domain = 'renren.com';
+		</script>
+	</head>
+	<body>
+
+	</body>
+	<script>
+getTransport = function( )
+{
+    try
+    {
+        try
+        {
+            return new ActveXObject( 'Msxml2.XMLHTTP' );
+        }
+        catch( e )
+        {
+            return new ActiveXObject( 'Microsoft.XMLHTTP' );
+        }
+    }
+    catch( e )
+    {
+         return new XMLHttpRequest();
+    }
+};
+
+window.parent.parent.fireEvent('message', {
+	data: window.name
+});
+	</script>
+</html>

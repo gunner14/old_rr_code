@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-app>
+	<services>
+		<service id="main.passport.xoa.renren.com" class="com.renren.passport.service.LoginXoaServiceImpl" port="9090">
+		</service>
+		<service id="configure.passport.xoa.renren.com" class="com.renren.passport.service.LoginXoaConfigureImpl" port="9091">
+		</service>
+	</services>
+</xoa-app>

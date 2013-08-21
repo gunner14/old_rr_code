@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>renren_wiki</display-name>
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.opt.base.action.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<filter-class>com.xiaonei.platform.core.domainIdentified.DomainIdentifiedFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DomainIdentifiedFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<filter>
+	   <filter-name>UrlRewriteFilter</filter-name>
+	   <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	   <filter-name>UrlRewriteFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.xiaonei.platform.core.opt.base.action.InitiateListener</listener-class>
+	</listener>
+
+	<!-- - 这个参数告诉Log4jConfigListener Log4J的属性文件位置。 - Qieqie:我建议我们把log4j的配置文件就按照这样的地址存放，如无必要就保持这种惯例即可。 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.xml</param-value>
+	</context-param>
+	<!-- Log4j配置文件刷新间隔，该参数被用在Spring的Log4j Listener中 -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>5000</param-value>
+	</context-param>
+	
+	<!-- - 这个就是Log4jConfigListener配置，它可以读取上面配置的log4jConfigLocation等信息， - 配置Log4J信息以及进行webapp根地址的暴露(暴露使其成为一个System属性，参见上面的 - log4jExposeWebAppRoot配置) -->
+	<!-- - !!如果您使用JBoss作为应用服务器，请把这个配置注释掉，使它不生效，JBoss已经提供了全局的Log4J配置了。 - 其它情况，您可以打开以下注释(Rose默认为注释掉的)，使它生效。 -->
+	<!-- -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- - RoseFilter是Rose的最主要配置,也是Rose框架本身的唯一配置了，大多少情况下，按照Rose提供web.xml中配置方式拷贝过来即可，不需要修改。 - 默认情况下RoseFilter会过滤所有的请求，对请求进行识别，对应该由Controller处理的进行分派，不应该由Controller - 处理的则让它简单通过，通往它该去的地方。 - 这里最重要的2点就是： - 1)要保持dispatcher含有FORWARD; 
+		- 2)要保证filter-mapping是所有filter-mapping的最后一个 - 另外，从Servlet2.5开始，您可以通过配置多个url-pattern明确只让RoseFilter过滤指定请求，而不是所有请求， - 做的好的情况下，我们觉得这是可行的，但我们不建议这样做(很认真地说)。 - 如果不是一些特殊原因，您坚持配置特有url-mapping(特别是来自‘性能’的考虑)的后果咋舌您将失去(我认为)很大的灵活性， 
+		- 而带来好处基本上等于无(性能不会有任何提升)。 -->
+	<filter>
+		<filter-name>roseFilter</filter-name>
+		<filter-class>net.paoding.rose.RoseFilter</filter-class>
+		<init-param>
+			<param-name>load</param-name>
+			<param-value>com.renren.sns.wiki.controllers</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>roseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500.jsp</location>
+	</error-page>
+</web-app>

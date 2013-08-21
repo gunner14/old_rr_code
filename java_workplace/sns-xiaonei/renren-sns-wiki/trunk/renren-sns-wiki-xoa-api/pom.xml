@@ -1,0 +1,199 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>com.xiaonei</groupId>
+	<artifactId>xiaonei-root-pom</artifactId>
+	<version>1.0-SNAPSHOT</version>	
+  </parent>
+  
+  <groupId>com.renren</groupId>
+  <artifactId>renren-sns-wiki-xoa-api</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <name>renren-sns-wiki-xoa-api</name>
+  <url>http://maven.sns.d.xiaonei.com/${artifactId}/</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <scm>
+	<connection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-xoa-api</connection>
+	<developerConnection>scm:svn:http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-xoa-api</developerConnection>
+	<url>http://svn.d.xiaonei.com/sns/xiaonei/renren-sns-wiki/trunk/renren-sns-wiki-xoa-api</url>
+	<tag>HEAD</tag>
+  </scm>
+  
+  <developers>
+	<developer>
+		<name>yi.li</name>
+		<email>yi.li@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=242679716</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+	<developer>
+		<name>weiwei.wang</name>
+		<email>weiwei.wang@renren-inc.com</email>
+		<organization>renren.com</organization>
+		<organizationUrl>http://www.renren.com</organizationUrl>
+		<url>http://www.renren.com/profile.do?id=200778561</url>
+		<roles>
+			<role>developer</role>
+		</roles>
+		<timezone>+8</timezone>
+	</developer>
+  </developers>
+  
+  <issueManagement>
+	<system>jira</system>
+	<url>http://jira.d.xiaonei.com/</url>
+  </issueManagement>
+  
+  <distributionManagement>
+	<repository>
+		<id>archiva.snapshots</id>
+		<name>development</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots/</url>
+	</repository>
+	<snapshotRepository>
+		<id>archiva.snapshots</id>
+		<name>Internal Snapshot Repository</name>
+		<url>http://repos.d.xiaonei.com/nexus/content/repositories/snapshots/</url>
+	</snapshotRepository>
+  </distributionManagement>
+  
+  <build>
+  	<defaultGoal>package</defaultGoal>
+  	<plugins>
+  	  <!-- thrift代码生成工具 -->
+  	  <plugin>
+          <groupId>org.apache.thrift.tools</groupId>
+          <artifactId>maven-thrift-plugin</artifactId>
+          <version>0.1.12-SNAPSHOT</version>
+          <executions>
+              <execution>
+                  <id>thrift-sources</id>
+                  <phase>generate-sources</phase>
+                  <goals>
+                      <goal>compile</goal>
+                  </goals>
+              </execution>
+              <execution>
+                  <id>thrift-test-sources</id>
+                  <phase>generate-test-sources</phase>
+                  <goals>
+                      <goal>testCompile</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+	  <!-- 编译使用1.6 -->
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<configuration>
+			<source>1.6</source>
+			<target>1.6</target>
+			<fork>true</fork>
+			<verbose>true</verbose>
+			<encoding>UTF-8</encoding>
+			<compilerArguments>
+				<sourcepath>
+					${project.basedir}/src/main/java
+				</sourcepath>
+			</compilerArguments>
+		</configuration>
+	  </plugin>
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+		<configuration>
+			<archive>
+				<manifestEntries>
+					<Rose>*</Rose>
+				</manifestEntries>
+			</archive>
+		</configuration>
+	  </plugin>
+	  <!-- 对资源文件和xml的native2asccii处理 -->
+  	  <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>native2ascii-maven-plugin</artifactId>
+		<executions>
+			<execution>
+				<goals>
+					<goal>native2ascii</goal>
+				</goals>
+				<configuration>
+					<dest>target/classes/resources/</dest>
+					<src>src/main/resources/</src>
+					<encoding>utf-8</encoding>
+					<includes>
+						<param>*.xml</param>
+						<param>*.properties</param>
+					</includes>
+				</configuration>
+			</execution>
+		</executions>
+	  </plugin>
+  	</plugins>
+  	<resources>
+  		<resource>
+			<directory>src/main/java</directory>
+			<excludes>
+				<exclude>.svn</exclude>
+			</excludes>
+		</resource>
+  	</resources>
+  </build>
+  
+  <dependencies>
+  	<!-- thrift生成的代码会依赖commons-lang包 -->
+  	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>1.6.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.6.2</version>
+	</dependency>
+	<!-- thrift生成的代码会依赖commons-lang包  END -->
+	
+	<!-- XOA Client包 -->
+	<dependency>
+		<groupId>com.renren</groupId>
+		<artifactId>xoa2-client</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</dependency>
+	<!-- XCache依赖  -->
+    <dependency>
+	  <groupId>com.xiaonei</groupId>
+	  <artifactId>xiaonei-xcache</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- 通用cache依赖包 -->
+    <dependency>
+	  <groupId>com.renren</groupId>
+	  <artifactId>tripod-cache-client</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	</dependency>
+  </dependencies>
+</project>

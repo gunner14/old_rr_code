@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "Usage: $0 <webapp> <target_ip>";
+  exit 3;
+fi
+
+WEBAPP=$1
+TARGET=$2
+DTFLAG=$(date "+%Y%m%d_%H%M%S")
+
+./stopweb $TARGET
+ssh web@$TARGET "mkdir ~/${DTFLAG} && mkdir ~/${DTFLAG}/{origin,new} && mv ~/apache-tomcat/webapps/ROOT/* ~/${DTFLAG}/origin"
+rsync -rltp --del $WEBAPP/* web@$TARGET:~/${DTFLAG}/new
+ssh web@$TARGET "cp -r ~/${DTFLAG}/new/* ~/apache-tomcat/webapps/ROOT/"
+ssh -f web@$TARGET "cd ~/ && tar jcf ${DTFLAG}.tar.bz2 ${DTFLAG} && rm -rf ${DTFLAG}"
+./startweb $TARGET
+
+#ssh web@$TARGET "tail -f ~/run/logs/catalina.out"

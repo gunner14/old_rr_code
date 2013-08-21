@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Perf4J appenders -->
+	<!--
+		This AsyncCoalescingStatisticsAppender groups StopWatch log messages
+		into GroupedTimingStatistics messages which it sends on the file
+		appender defined below
+	-->
+	<appender name="CoalescingStatistics"
+		class="org.perf4j.log4j.AsyncCoalescingStatisticsAppender">
+		<!--
+			The TimeSlice option is used to determine the time window for which
+			all received StopWatch logs are aggregated to create a single
+			GroupedTimingStatistics log. Here we set it to 10 seconds, overriding
+			the default of 30000 ms
+		-->
+		<param name="TimeSlice" value="60000" />
+		<appender-ref ref="perf4jFileAppender" />
+	</appender>
+
+	<!--
+		This file appender is used to output aggregated performance statistics
+	-->
+	<appender name="perf4jFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xoa-entries/performance.log" />
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="queryAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/data/logs/xoa-entries/queries.log" />
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS}:%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%-5p:%m %n==> %l%n" />
+		</layout>
+	</appender>
+	
+	<!--
+		The Perf4J logger. Note that org.perf4j.TimingLogger is the value of
+		the org.perf4j.StopWatch.DEFAULT_LOGGER_NAME constant. Also, note that
+		additivity is set to false, which is usually what is desired - this
+		means that timing statements will only be sent to this logger and NOT
+		to upstream loggers.
+	-->
+	<logger name="org.perf4j.TimingLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CoalescingStatistics" />
+	</logger>
+	<!-- 以上是perf4j性能统计所使用到的logger，其它logger的配置请在下面添加 -->
+
+	<logger name="com.renren.entries.core.EntryServiceImpl" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="queryAppender" />
+	</logger>
+	<root>
+		<level value="warn" />
+		<appender-ref ref="stdout" />
+	</root>
+
+</log4j:configuration>

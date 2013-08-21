@@ -1,0 +1,21 @@
+guide_log
++----------------------------------+-------------+------+-----+-------------------+----------------+
+| Field                            | Type        | Null | Key | Default           | Extra          |
++----------------------------------+-------------+------+-----+-------------------+----------------+
+| id                               | int(11)     | NO   | PRI | NULL              | auto_increment | 
+| user_id                          | int(11)     | NO   |     | 0                 |                | 
+| insert_time                      | datetime    | NO   |     | NULL              |                | 
+| user_type                        | varchar(8)  | NO   |     |                   |                | 
+| fillinfo_arrive_isornot          | tinyint(1)  | NO   |     | 0                 |                | 
+| fillinfo_arrive_fillinfo_memo    | varchar(32) | NO   |     |                   |                | 
+| fillinfo_action_addfriend        | tinyint(1)  | NO   |     | 0                 |                | 
+| fillinfo_action_addfriend_count  | int(11)     | NO   |     | 0                 |                | 
+| preview_arrive_isornot           | tinyint(1)  | NO   |     | 0                 |                | 
+| preview_result_findfrind_memo    | varchar(32) | NO   |     |                   |                | 
+| preview_result_findfrind_sum     | int(11)     | NO   |     | 0                 |                | 
+| preview_result_findfrind_good    | int(11)     | NO   |     | 0                 |                | 
+| morefriend_result_findfrind_memo | varchar(32) | NO   |     |                   |                | 
+| morefriend_result_findfrind_sum  | int(11)     | NO   |     | 0                 |                | 
+| morefriend_result_findfrind_good | int(11)     | NO   |     | 0                 |                | 
+| last_active_time                 | timestamp   | NO   |     | CURRENT_TIMESTAMP |                | 
++----------------------------------+-------------+------+-----+-------------------+----------------+
