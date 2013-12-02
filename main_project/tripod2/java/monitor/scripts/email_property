@@ -1,0 +1,4 @@
+email.from=TripodMonitor@renren-inc.com
+email.to=xin.huang@renren-inc.com,liyong@renren-inc.com,xiaofeng.liang@renren-inc.com,li.li1@renren-inc.com
+email.subject=TripodMonitor
+content.type=text/html

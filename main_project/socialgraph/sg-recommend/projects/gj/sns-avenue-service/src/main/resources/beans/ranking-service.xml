@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-autowire="byType">
+	<context:annotation-config />
+	
+    <bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/services.properties</value>
+            </list>
+        </property>
+    </bean>
+        <!-- database configure -->
+    <bean id="address" class="com.mongodb.ServerAddress">
+        <constructor-arg value="${db.mongodb.host}"></constructor-arg>
+        <constructor-arg value="${db.mongodb.port}"></constructor-arg>
+    </bean>
+
+    <bean id="options" class="com.renren.ad.sns.dao.impl.mongo.SnsMongoOptions">
+        <property name="slaveOk">
+            <value>true</value>
+        </property>
+        <property name="autoConnectRetry">
+            <value>true</value>
+        </property>
+        <property name="fsync">
+            <value>true</value>
+        </property>     
+        <property name="connectionsPerHost">
+            <value>${db.mongodb.count}</value>
+        </property>         
+    </bean>
+    
+    <bean id="mongo" class="com.mongodb.Mongo">
+        <constructor-arg >
+            <ref bean="address" />
+        </constructor-arg>
+        <constructor-arg >
+            <ref bean="options" />
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="morphia" class="com.google.code.morphia.Morphia">
+    </bean>
+            
+    <bean id="datastore" class="com.google.code.morphia.DatastoreImpl">
+        <constructor-arg>
+            <ref bean="morphia" />
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="mongo" />
+        </constructor-arg>
+        <constructor-arg value="${db.mongodb.db}"></constructor-arg>
+        <constructor-arg value="${db.mongodb.user}"></constructor-arg>
+        <constructor-arg type="char[]" value="${db.mongodb.passwd}"></constructor-arg>
+    </bean>
+	
+	<!--<bean id="reputationBuilder" class="com.renren.ad.sns.services.reputation.ReputationBuilder"
+       init-method="init">
+       <constructor-arg>
+            <value>${index.service.data}</value>
+        </constructor-arg>
+       <constructor-arg>
+            <value>${index.service.data}</value>
+        </constructor-arg>
+    </bean>-->
+    
+    <bean id="simplegoodsFilter" class="com.renren.ad.sns.services.avenue.filter.SimpleGoodsCandidateFilter">
+    </bean>
+     <bean id="reputationFilter" class="com.renren.ad.sns.services.avenue.filter.ReputationFilter">
+    </bean>
+     <bean id="spammersFilter" class="com.renren.ad.sns.services.avenue.filter.SpammersFilter">
+    </bean>
+     <bean id="taobaoShareFilter" class="com.renren.ad.sns.services.avenue.filter.TaobaoShareFilter">
+    </bean>
+     <bean id="keywordGoodsFilter" class="com.renren.ad.sns.services.avenue.filter.KeywordGoodsCandidateFilter">
+     	<property name="datastore" ref="datastore" />
+    </bean>
+     <bean id="auditGoodsCandidateFilter" class="com.renren.ad.sns.services.avenue.filter.AuditGoodsCandidateFilter">
+     	<property name="datastore" ref="datastore" />
+    </bean>
+	<bean id="hammer" class="com.renren.ad.sns.services.avenue.DataHammer" >
+		<property name="datastore" ref="datastore" />
+		<property name="goodsFilters" >
+			<list>
+				<ref bean="simplegoodsFilter"/> 
+				<ref bean="keywordGoodsFilter"/> 
+				<!-- <ref bean="reputationFilter"/> 
+				<ref bean="spammersFilter"/> 
+				<ref bean="taobaoShareFilter"/> 
+				 <ref bean="auditGoodsCandidateFilter"/> -->
+			</list>
+		</property>
+	  	<!-- <property name="builder" ref="reputationBuilder" />-->
+	</bean>
+	
+    <!--<bean id="scorer" class="com.renren.ad.sns.services.avenue.GoodsScorer" >
+    </bean>-->
+    
+    <bean id="goodsScorer" class="com.renren.ad.sns.services.avenue.score.DefaultGoodsScorer">
+    </bean>
+    
+	
+    <bean id="avenueBuilder" class="com.renren.ad.sns.services.avenue.AvenueBuilder">
+    	<property name="hammer" ref="hammer" />
+		<property name="scorer" ref="goodsScorer" />
+    </bean>
+
+    <bean id="server"
+        class="com.renren.ad.sns.services.avenue.AvenueServiceImpl">
+        <property name="avenueBuilder">
+            <ref bean="avenueBuilder" />
+        </property>
+        <property name="port">
+            <value>${index.service.port}</value>
+        </property>
+        <property name="threadNum">
+            <value>${index.service.thread.num}</value>
+        </property>
+        <property name="version">
+            <value>1.0</value>
+        </property>
+        <property name="serverName">
+            <value>Index Server</value>
+        </property>
+    </bean>
+	</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframeword.org/dtd/spring-beans.dtd">
+<beans>
+    
+	<bean id="glReader"	class="com.renren.renrengame.utils.applist.GameListReader" />
+	<bean id="recommendedGames"	class="com.renren.renrengame.utils.applist.LocalRecommendedGames" />
+	<bean id="gameXMLGen"	class="com.renren.renrengame.utils.applist.GameXMLGenerator" />
+	
+	<bean id="localPlayerListReader"	class="com.renren.renrengame.utils.buddy.PlayerListReader" />
+	<bean id="platformPlayerListReader"	class="com.renren.renrengame.utils.buddy.PlatformSocialGameBuddyReader" />
+	<bean id="playerXMLGen"	class="com.renren.renrengame.utils.buddy.PlayerXMLGenerator" />
+	
+	<bean id="cfReader"	class="com.renren.renrengame.utils.config.ConfigFileReader" />
+	<bean id="configXMLGen"	class="com.renren.renrengame.utils.config.ConfigXMLGenerator" />
+	
+	<bean id="sec"	class="com.renren.renrengame.utils.Security" />
+	
+	<bean id="buddyHandler"	class="com.renren.renrengame.utils.buddy.BuddyHandler" />
+	
+	<bean id="platformRecommendedGames"	class="com.renren.renrengame.utils.hot.PlatformRecommendedGames" />
+	<bean id="recentGames"	class="com.renren.renrengame.utils.applist.RecentGames" />
+	
+	<bean id="windowXmlReader"  class="com.renren.renrengame.utils.window.WindowXMLReader"/>
+	<bean id="rankInfo" class="com.renren.renrengame.utils.rank.RankInfo"/>
+	<bean id="spreadInfo" class="com.renren.renrengame.utils.spread.SpreadInfo"/>
+	
+	<bean id="rrGameContainer" class="com.renren.renrengame.services.RRGameContainer" >
+	    <property name="localPlayerListReader" ref="localPlayerListReader" />
+	    <property name="platformPlayerListReader" ref="platformPlayerListReader" />
+	    <property name="recommendedGames" ref="recommendedGames" />
+	    <property name="gameXMLGen" ref="gameXMLGen" />	    	
+	 	<property name="playerXMLGen" ref="playerXMLGen" />
+	 	<property name="cfReader" ref="cfReader" />
+	 	<property name="configXMLGen" ref="configXMLGen" />
+	 	<property name="buddyHandler" ref="buddyHandler" />
+	 	<property name="platformRecommendedGames" ref="platformRecommendedGames" />
+	 	<property name="sec" ref="sec" />
+	 	<property name="recentGames" ref="recentGames" />
+	 	<property name="windowXmlReader" ref="windowXmlReader" />
+	 	<property name="rankInfo" ref="rankInfo"/>
+	 	<property name="spreadInfo" ref="spreadInfo"/>
+	</bean>	
+</beans>

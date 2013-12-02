@@ -1,0 +1,5 @@
+<?cs if:selfzancount ?>
+<a stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="#nogo" class="ilike_icon" id="ILike<?cs var:f.entry.id ?>" onclick="ILike_toggleUserLike('<?cs var:f.entry.type ?>','<?cs var:f.entry.id ?>','<?cs var:userID ?>','<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>','<?cs var:userName ?>')" >取消</a>
+<?cs else ?>
+<a stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="#nogo"  class="ilike_icon" id="ILike<?cs var:f.entry.id ?>" onclick="ILike_toggleUserLike('<?cs var:f.entry.type ?>','<?cs var:f.entry.id ?>','<?cs var:userID ?>','<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>','<?cs var:userName ?>')" >喜欢</a>
+<?cs /if ?>

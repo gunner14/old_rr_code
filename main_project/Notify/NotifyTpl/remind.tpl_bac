@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>提醒</title>
+<script src="http://s.xnimg.cn/a29198/n/core/base-all.js"  type="text/javascript"></script>
+<script type="text/javascript">
+XN.get_check = "{{OLD_TOKEN}}";
+XN.get_check_x = "{{TOKEN}}";
+XN.user.id = '{{USERID}}';
+
+</script>
+<script src="http://s.xnimg.cn/a32003/apps/rmessage/remind.js" type="text/javascript"></script>
+<link href="http://s.xnimg.cn/a32003/apps/rmessage/message-all-min.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<script type="text/javascript">
+  var untreat = {{UNTREAT}},
+   data = {{LI_SEC}};
+</script>
+
+<div id="remind">
+</div>
+
+</body>
+</html>

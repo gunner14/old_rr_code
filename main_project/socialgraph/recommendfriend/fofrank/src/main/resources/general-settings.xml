@@ -1,0 +1,183 @@
+<configuration>
+    <!-- Java VM Settings -->
+    <property>
+        <name>mapred.child.java.opts</name>
+        <value>-Xmx6000m -XX:+UseConcMarkSweepGC -verbose:gc -Xloggc:/tmp/@taskid@.gc</value>
+    </property>
+    <property>
+        <name>mapred.job.reuse.jvm.num.tasks</name>
+        <value>1</value>
+    </property>
+
+    <!-- Job Queue Settings. -->
+    <property>
+        <name>mapred.queue.names</name>
+        <value>default</value>
+    </property>
+    <property>
+        <name>mapred.job.queue.name</name>
+        <value>default</value>
+    </property>
+
+    <!-- MapReduce Optimizations -->
+    <property>
+        <name>mapred.map.tasks.speculative.execution</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.reduce.tasks.speculative.execution</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.map.max.attempts</name>
+        <value>1000000</value>
+    </property>
+    <property>
+        <name>mapred.max.map.failures.percent</name>
+        <value>100</value>
+    </property>
+    <property>
+        <name>mapred.reduce.max.attempts</name>
+        <value>1000000</value>
+    </property>
+    <property>
+        <name>mapred.max.reduce.failures.percent</name>
+        <value>100</value>
+    </property>
+    <property>
+        <name>mapred.task.timeout</name>
+        <value>3600000</value>
+    </property>
+    <property>
+        <name>mapred.max.tracker.failures</name>
+        <value>10000</value>
+    </property>
+    <property>
+        <name>mapred.min.split.size</name>
+        <value>805306368</value>
+    </property>
+
+    <!-- MapReduce Compression Settings -->
+    <property>
+        <name>mapred.compress.map.output</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.map.output.compression.type</name>
+        <value>BLOCK</value>
+    </property>
+    <property>
+        <name>mapred.map.output.compression.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+<!--         <value>org.apache.hadoop.io.compress.LzoCodec</value> -->
+<!--         <value>org.apache.hadoop.io.compress.GzipCodec</value> -->
+    </property>
+    <property>
+        <name>mapred.output.compress</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.output.compression.type</name>
+        <value>BLOCK</value>
+    </property>
+    <property>
+        <name>mapred.output.compression.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+<!--         <value>org.apache.hadoop.io.compress.LzoCodec</value> -->
+<!--         <value>org.apache.hadoop.io.compress.GzipCodec</value> -->
+    </property>
+
+    <!-- HDFS Settings -->
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>100</value>
+    </property>
+    <property>
+        <name>dfs.block.size</name>
+        <value>268435456</value>
+    </property>
+    <property>
+        <name>dfs.replication.interval</name>
+        <value>10</value>
+    </property>
+    <property>
+        <name>tasktracker.http.threads</name>
+        <value>50</value>
+    </property>
+    <property>
+        <name>ipc.client.tcpnodelay</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>ipc.ping.interval</name>
+        <value>3</value>
+    </property>
+
+    <!-- MapReduce Job Optimizations -->
+    <property>
+        <name>mapred.job.shuffle.input.buffer.percent</name>
+        <value>0.85</value>
+    </property>
+    <property>
+        <name>mapred.job.shuffle.merge.percent</name>
+        <value>0.8</value>
+    </property>
+    <property>
+        <name>io.serializations</name>
+        <value>org.apache.hadoop.io.serializer.JavaSerialization,org.apache.hadoop.io.serializer.WritableSerialization</value>
+    </property>
+    <property>
+        <name>io.sort.mb</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>io.sort.factor</name>
+        <value>100</value>
+    </property>
+    <property>
+        <name>io.file.buffer.size</name>
+        <value>262144</value>
+    </property>
+    <property>
+        <name>mapred.reduce.parallel.copies</name>
+        <value>10</value>
+    </property>
+
+    <!-- HBase Optimizations - For write only-->
+    <property>
+        <name>hbase.regionserver.lease.period</name>
+        <value>180000</value>
+    </property>
+    <property>
+        <name>hbase.rpc.timeout</name>
+        <value>180000</value>
+    </property>
+    <property>
+        <name>hbase.client.pause</name>
+        <value>20</value>
+    </property>
+    <property>
+        <name>hbase.client.retries.number</name>
+        <value>5000</value>
+    </property>
+    <property>
+        <name>hbase.hregion.majorcompaction</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>hbase.hregion.max.filesize</name>
+        <value>536870912</value>
+    </property>
+    <property>
+        <name>hfile.block.cache.size</name>
+        <value>0.1</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.global.memstore.upperLimit</name>
+        <value>0.65</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.global.memstore.lowerLimit</name>
+        <value>0.4</value>
+    </property>
+</configuration>

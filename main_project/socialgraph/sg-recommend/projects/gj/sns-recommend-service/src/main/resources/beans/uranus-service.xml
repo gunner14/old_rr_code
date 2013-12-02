@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-autowire="byType">
+	<context:annotation-config />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/services.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- mysql configure -->
+	<bean id="dataSourceFactory" class="com.renren.ad.sns.util.db.PoolingDataSourceFactory" />
+
+	<bean id="dataSource" factory-bean="dataSourceFactory"
+		factory-method="createDataSource">
+		<constructor-arg>
+			<value>${sql_driver}</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>${user_db_url}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- mongodb configure -->
+	<bean id="address" class="com.mongodb.ServerAddress">
+		<constructor-arg value="${db.mongodb.host}"></constructor-arg>
+		<constructor-arg value="${db.mongodb.port}"></constructor-arg>
+	</bean>
+
+	<bean id="options" class="com.renren.ad.sns.dao.impl.mongo.SnsMongoOptions">
+		<property name="slaveOk">
+			<value>true</value>
+		</property>
+		<property name="autoConnectRetry">
+			<value>true</value>
+		</property>
+		<property name="fsync">
+			<value>true</value>
+		</property>
+		<property name="connectionsPerHost">
+			<value>${db.mongodb.count}</value>
+		</property>
+	</bean>
+
+	<bean id="mongo" class="com.mongodb.Mongo">
+		<constructor-arg>
+			<ref bean="address" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="options" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="morphia" class="com.google.code.morphia.Morphia">
+	</bean>
+
+	<bean id="datastore" class="com.google.code.morphia.DatastoreImpl">
+		<constructor-arg>
+			<ref bean="morphia" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="mongo" />
+		</constructor-arg>
+		<constructor-arg value="${db.mongodb.db}"></constructor-arg>
+		<constructor-arg value="${db.mongodb.user}"></constructor-arg>
+		<constructor-arg type="char[]" value="${db.mongodb.passwd}"></constructor-arg>
+	</bean>
+
+	<!-- dataProvide define -->
+	<!--<bean id="dataProvider"
+		class="com.renren.ad.sns.services.uranus.CompositeMetadataProvider"
+		init-method="init">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="datastore">
+			<ref bean="datastore" />
+		</property>
+		<property name="dataPath">
+			<value>${uranus.data.path}</value>
+		</property>
+	</bean>-->
+	
+	<!-- Simple data provider -->
+	<bean id="simpleDataProvider"
+		class="com.renren.ad.sns.services.uranus.SimpleMetadataProvider"
+		init-method="init">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="datastore">
+			<ref bean="datastore" />
+		</property>
+		<property name="dataPath">
+			<value>${uranus.data.path}</value>
+		</property>
+	</bean>
+
+	<bean id="SimilarityTagList2CandidatePicker"
+		class="com.renren.ad.sns.services.uranus.SimilarityTagList2CandidatePicker" />
+
+	<!-- Category candidate picker define -->
+	<bean id="categoryCandidatePicker"
+		class="com.renren.ad.sns.services.uranus.CategoryCandidatePicker"
+		init-method="init">
+		<constructor-arg>
+			<ref bean="datastore" />
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="SimilarityTagList2CandidatePicker" />
+			</list>
+		</constructor-arg>
+		<property name="dataPath">
+			<value>${uranus.data.path}</value>
+		</property>
+	</bean>
+	
+	<!-- CF candidate picker define -->
+	<bean id="cfCandidatePicker"
+		class="com.renren.ad.sns.services.uranus.cf.CFCandidatePicker"
+		init-method="init"
+		scope="singleton">
+		<constructor-arg>
+			<value>${uranus.recommend.result.path}</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Default candidates filter -->
+	<bean id="defaultCandidateFilter"
+		class="com.renren.ad.sns.services.uranus.DefaultCandidatesFilter"
+		scope="singleton">
+		<constructor-arg>
+			<ref bean="datastore" />
+		</constructor-arg>
+	</bean>
+
+	<!-- user preference model -->
+	<bean id="modelHandler" class="com.renren.ad.sns.services.uranus.cpa.ModelHandler"
+		init-method="init">
+		<property name="modelPath">
+			<value>${uranus.data.path}</value>
+		</property>
+		<property name="mapper"> 
+			<map>
+				<entry key="0" value="${uranus.weight.view}" />
+				<entry key="1" value="${uranus.weight.like}" />
+				<entry key="2" value="${uranus.weight.comment}"/>
+				<entry key="3" value="${uranus.weight.click}" />
+			</map>
+		</property>
+		
+		<property name="classIndex">
+			<value>${uranus.model.index}</value>
+		</property>
+	</bean>
+	
+	<!-- recommender engine define -->
+	<bean id="recommendEngine" class="com.renren.ad.sns.services.uranus.RecommendEngine">
+		<constructor-arg>
+			<ref bean="modelHandler" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="simpleDataProvider" />
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="categoryCandidatePicker" />
+				<ref bean="cfCandidatePicker" />
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="defaultCandidateFilter" />
+		</constructor-arg>
+	</bean>
+
+	<!-- rpc server define -->
+	<bean id="server" class="com.renren.ad.sns.services.uranus.UranusServiceImpl">
+		<property name="recommendEngine">
+			<ref bean="recommendEngine" />
+		</property>
+		<property name="port">
+			<value>${uranus.service.port}</value>
+		</property>
+		<property name="threadNum">
+			<value>${uranus.service.thread.num}</value>
+		</property>
+		<property name="version">
+			<value>1.0</value>
+		</property>
+		<property name="serverName">
+			<value>Uranus Server</value>
+		</property>
+	</bean>
+</beans>

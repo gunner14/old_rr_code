@@ -1,0 +1,11 @@
+@relation gj_antispam_goods_like
+
+@attribute hostReputation numeric
+@attribute avgGuestReputation numeric
+@attribute totalLikeCnt numeric
+@attribute maxIpLikeRatio numeric
+@attribute ipCnt numeric
+@attribute avgLikeInterval numeric
+@attribute spamLevel {0,1,2,3}
+
+@data

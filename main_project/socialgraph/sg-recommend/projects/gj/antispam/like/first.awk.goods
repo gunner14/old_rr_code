@@ -1,0 +1,14 @@
+BEGIN{
+	FS=",,"
+}
+{
+    if( $4==ACTION_TO_MODIFY ) {
+        goods[$2"\t"$6] ++;
+    }
+}
+END{
+   for (x in goods) {
+        if (goods[x] >=ACTION_UP_BOUND)
+            printf("%s\t%d\n",x,goods[x])
+   }
+}

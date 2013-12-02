@@ -1,0 +1,110 @@
+<tripod>
+	<cache> 
+		<namespace id="liuwenju_test">
+			<node nickname="tn10" address="10.3.18.139" port="6000"/>
+			<node nickname="tn11" address="10.3.18.139" port="6601"/>
+			<node nickname="tn12" address="10.3.18.140" port="6602"/>
+			<node nickname="tn13" address="10.3.18.139" port="6602"/>
+		</namespace>
+		<namespace id="test_namespace">
+			<node nickname="tn1" address="10.3.18.139" port="6600"/>
+			<node nickname="tn2" address="10.3.18.139" port="6601"/>
+			<node nickname="tn3" address="10.3.18.139" port="6602"/>
+			<node nickname="tn4" address="10.3.18.139" port="6603"/>
+			<node nickname="tn5" address="10.3.18.140" port="6600"/>
+			<node nickname="tn6" address="10.3.18.140" port="6601"/>
+			<node nickname="tn7" address="10.3.18.140" port="6602"/>
+			<node nickname="tn8" address="10.3.18.140" port="6603"/>
+		</namespace>
+		<namespace id="test_namespace2">
+			<node nickname="tn1" address="10.3.18.139" port="6600"/>
+			<node nickname="tn2" address="10.3.18.139" port="6601"/>
+			<node nickname="tn3" address="10.3.18.139" port="6602"/>
+			<node nickname="tn4" address="10.3.18.139" port="6603"/>
+			<node nickname="tn5" address="10.3.18.140" port="6600"/>
+			<node nickname="tn6" address="10.3.18.140" port="6601"/>
+			<node nickname="tn7" address="10.3.18.140" port="6602"/>
+			<node nickname="tn8" address="10.3.18.140" port="6603"/>
+		</namespace>
+		<namespace id="yxg_namespace">
+			<node nickname="tn1" address="10.3.18.139" port="6600"/>
+			<node nickname="tn2" address="10.3.18.139" port="6601"/>
+			<node nickname="tn3" address="10.3.18.139" port="6602"/>
+			<node nickname="tn4" address="10.3.18.139" port="6603"/>
+			<node nickname="tn5" address="10.3.18.140" port="6600"/>
+			<node nickname="tn6" address="10.3.18.140" port="6601"/>
+			<node nickname="tn7" address="10.3.18.140" port="6602"/>
+			<node nickname="tn8" address="10.3.18.140" port="6603"/>
+		</namespace>
+		<namespace id="web_ugc">
+			<node nickname="tn1" address="10.3.18.139" port="6600"/>
+			<node nickname="tn2" address="10.3.18.139" port="6601"/>
+			<node nickname="tn3" address="10.3.18.139" port="6602"/>
+			<node nickname="tn4" address="10.3.18.139" port="6603"/>
+			<node nickname="tn5" address="10.3.18.140" port="6600"/>
+			<node nickname="tn6" address="10.3.18.140" port="6601"/>
+			<node nickname="tn7" address="10.3.18.140" port="6602"/>
+			<node nickname="tn8" address="10.3.18.140" port="6603"/>
+		</namespace>
+	</cache>
+	<cachemanager>
+		<namespace id="liuwenju_test">
+			<node address="10.22.206.32" port="9000"/>
+                        <node address="10.22.206.32" port="9001"/>
+                        <node address="10.22.206.32" port="9002"/>
+                        <node address="10.22.206.32" port="9003"/>
+                        <node address="10.22.206.32" port="9004"/>
+                        <node address="10.22.206.32" port="9005"/>
+                        <node address="10.22.206.32" port="9006"/>
+		</namespace>
+		<namespace id="test_namespace">
+			<node address="10.22.206.32" port="9000"/>
+                        <node address="10.22.206.32" port="9001"/>
+                        <node address="10.22.206.32" port="9002"/>
+                        <node address="10.22.206.32" port="9003"/>
+                        <node address="10.22.206.32" port="9004"/>
+                        <node address="10.22.206.32" port="9005"/>
+                        <node address="10.22.206.32" port="9006"/>
+		</namespace>
+		<namespace id="test_namespace2">
+			<node address="10.22.206.32" port="9145"/>
+                        <node address="10.22.206.32" port="9001"/>
+                        <node address="10.22.206.32" port="9002"/>
+                        <node address="10.22.206.32" port="9003"/>
+                        <node address="10.22.206.32" port="9004"/>
+                        <node address="10.22.206.32" port="9005"/>
+                        <node address="10.22.206.32" port="9006"/>
+		</namespace>
+		<namespace id="yxg_namespace">
+			<node address="10.22.206.32" port="9000"/>
+                        <node address="10.22.206.32" port="9001"/>
+		</namespace>
+		<namespace id="web_ugc">
+			<node address="10.22.206.32" port="9145"/>
+		</namespace>
+	</cachemanager>
+	<producermanager>
+		<namespace id="liuwenju_test">
+			<node address="10.22.206.32" port="8000"/>
+                        <node address="10.22.206.32" port="8001"/>
+		</namespace>
+		<namespace id="test_namespace">
+			<node address="10.22.206.32" port="8144"/>
+                        <node address="10.22.206.32" port="8001"/>
+                        <node address="10.22.206.32" port="8002"/>
+                        <node address="10.22.206.32" port="8003"/>
+                        <node address="10.22.206.32" port="8004"/>
+                        <node address="10.22.206.32" port="8005"/>
+                        <node address="10.22.206.32" port="8006"/>
+		</namespace>
+		<namespace id="test_namespace2">
+			<node address="10.22.206.32" port="8146"/>
+		</namespace>
+		<namespace id="yxg_namespace">
+			<node address="10.22.206.32" port="8000"/>
+		</namespace>
+		<namespace id="web_ugc">
+			<node address="10.22.206.32" port="8146"/>
+		</namespace>
+	</producermanager>
+</tripod>

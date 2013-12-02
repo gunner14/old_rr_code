@@ -1,0 +1,46 @@
+@relation TestData
+
+@attribute visit_day numeric
+@attribute visit_week numeric
+@attribute click_day numeric
+@attribute click_week numeric
+@attribute comment_day numeric
+@attribute comment_week numeric
+@attribute like_day numeric
+@attribute like_week numeric
+@attribute logintimes_day numeric
+@attribute logintimes_week numeric
+@attribute publish_day numeric
+@attribute publish_week numeric
+@attribute fanscount numeric
+@attribute followcount numeric
+@attribute price numeric
+@attribute likecount numeric
+@attribute sharecount numeric
+@attribute commentcount numeric
+@attribute category_click_day numeric
+@attribute category_click_other_week numeric
+@attribute category_click_week numeric
+@attribute category_like_day numeric
+@attribute category_like_other_week numeric
+@attribute category_like_week numeric
+@attribute category_visit_day numeric
+@attribute category_visit_other_week numeric
+@attribute category_visit_week numeric
+@attribute category_comment_day numeric
+@attribute category_comment_week numeric
+@attribute category_comment_other_week numeric
+@attribute category_publish_other_week numeric
+@attribute owner_visit numeric
+@attribute owner_like numeric
+@attribute owner_click numeric
+@attribute owner_comment numeric
+@attribute gender {0,1}
+@attribute stage {1,2,4}
+@attribute isfan {0,1}
+@attribute isfollow {0,1}
+@attribute weekday {0,1,2,3,4,5,6,7}
+@attribute hour {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23}
+@attribute action {1,2,3,4}
+
+@data

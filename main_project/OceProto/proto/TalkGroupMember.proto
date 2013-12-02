@@ -1,0 +1,6 @@
+package xce.talk;
+
+message PbGroupMember{
+  required int64 session_id = 1;
+  required string member_list = 2;
+}

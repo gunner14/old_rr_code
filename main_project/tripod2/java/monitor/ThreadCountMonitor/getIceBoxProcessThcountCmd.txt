@@ -1,0 +1,1 @@
+ps aux | grep icebox | grep -v grep | awk '{print $2" " $12}' | sed "s:^\(.*\) .*servers/\(.*\)/config/config$:\1 \2:" | awk '{system("printf "$1" && printf \" \" && printf "$2" && printf \" \" && thcount=`ps -o thcount "$1" | tail -1` && printf $thcount && echo")}'

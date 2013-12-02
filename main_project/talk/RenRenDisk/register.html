@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<script type="text/javascript">
+$(document).ready(function() {
+	var key = getQueryString("code");
+	$.post("operate/setToken",{code:key},function(resp){
+		if(resp != "fail"){
+			window.location.href = resp;
+		}
+		//window.location.href="index.jsp";
+	},"text");
+});
+
+function getQueryString(name) {
+	var r = window.location.href;
+    var start = r.indexOf(name)+ name.length + 1;
+    var end = r.indexOf("&", start);
+    end = (end == -1 ? r.length : end);
+	return r.substr(start, end);
+}
+</script>
+</html>

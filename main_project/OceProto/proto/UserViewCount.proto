@@ -1,0 +1,6 @@
+package xce.footprint;
+
+message UserViewCountData {
+  required int32 userId = 1;
+  required int32 viewCount = 2;
+}

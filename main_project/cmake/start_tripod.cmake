@@ -1,0 +1,1 @@
+ADD_DC_SERVICE("tripod2/cc/cachemanager" "tripod2cachemanager" TripodCore ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver IceExt OceSliceXceStorm DbCxxPool UtilCxx UtilSlice OceSliceMonitor OceCxxAdapterMonitorAdapter OceSlicetripod2 OceProto Redisc Base breakpad)

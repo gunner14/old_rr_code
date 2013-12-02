@@ -1,0 +1,1276 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+AGE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+ALL	Struct.h	59;"	d
+AREA	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+AbstractBaseIndex	BaseIndex.h	/^class AbstractBaseIndex : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+AbstractResolutionMap	Config.h	/^class AbstractResolutionMap : public CachePool {$/;"	c	namespace:xce::ad	inherits:CachePool
+AbstractResolutionMap::GetCeilWidths	Config.cpp	/^set<short> AbstractResolutionMap::GetCeilWidths(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+AbstractResolutionMap::GetFixedWidth	Config.cpp	/^short AbstractResolutionMap::GetFixedWidth(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+AbstractResolutionMap::GetFloorWidth	Config.cpp	/^short AbstractResolutionMap::GetFloorWidth(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+AbstractResolutionMap::GetFloorWidths	Config.cpp	/^set<short> AbstractResolutionMap::GetFloorWidths(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+AbstractResolutionMap::Print	Config.cpp	/^string AbstractResolutionMap::Print(const int size) {$/;"	f	class:AbstractResolutionMap	signature:(const int size)
+AbstractResolutionMap::Size	Config.cpp	/^size_t AbstractResolutionMap::Size() {$/;"	f	class:AbstractResolutionMap	signature:()
+AbstractStruct	Struct.h	/^class AbstractStruct : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+AbstractStructPtr	Struct.h	/^typedef IceUtil::Handle<AbstractStruct> AbstractStructPtr;$/;"	t	namespace:xce::ad
+AdBidUnit	Struct.h	/^class AdBidUnit : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdBidUnit::ToString	Struct.cpp	/^string AdBidUnit::ToString() const {$/;"	f	class:AdBidUnit	signature:() const
+AdBidUnitPtr	Struct.h	/^typedef IceUtil::Handle<AdBidUnit> AdBidUnitPtr;$/;"	t	namespace:xce::ad
+AdCampaign	Struct.h	/^class AdCampaign : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdCampaign::ToString	Struct.cpp	/^string AdCampaign::ToString() const {$/;"	f	class:AdCampaign	signature:() const
+AdCampaignPtr	Struct.h	/^typedef IceUtil::Handle<AdCampaign> AdCampaignPtr;$/;"	t	namespace:xce::ad
+AdCreative	Struct.h	/^  explicit AdCreative(Ice::Long creative_id, int widget_id, string& widget):$/;"	f	class:xce::ad::AdCreative	access:public	signature:(Ice::Long creative_id, int widget_id, string& widget)
+AdCreative	Struct.h	/^class AdCreative : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdCreative::operator <	Struct.cpp	/^bool AdCreative::operator<( const AdCreative& r) const {$/;"	f	class:AdCreative	signature:( const AdCreative& r) const
+AdCreativeMap	Struct.h	/^typedef map<Ice::Long, AdCreative> AdCreativeMap;$/;"	t	namespace:xce::ad
+AdCreativePtr	Struct.h	/^typedef IceUtil::Handle<AdCreative> AdCreativePtr;$/;"	t	namespace:xce::ad
+AdGroup	Struct.h	/^class AdGroup : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdGroup::Available	Struct.cpp	/^bool AdGroup::Available() {$/;"	f	class:AdGroup	signature:()
+AdGroup::ToString	Struct.cpp	/^string AdGroup::ToString() const {$/;"	f	class:AdGroup	signature:() const
+AdGroup::add_adzone_id	Struct.cpp	/^void AdGroup::add_adzone_id(Ice::Long adzone_id) {$/;"	f	class:AdGroup	signature:(Ice::Long adzone_id)
+AdGroup::add_creative	Struct.cpp	/^void AdGroup::add_creative(AdCreativePtr creative) {$/;"	f	class:AdGroup	signature:(AdCreativePtr creative)
+AdGroup::add_creative_id	Struct.cpp	/^void AdGroup::add_creative_id(Ice::Long creative_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id)
+AdGroup::add_widget_id	Struct.cpp	/^void AdGroup::add_widget_id(Ice::Long creative_id, Ice::Long widget_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id, Ice::Long widget_id)
+AdGroup::adzone_ids	Struct.cpp	/^set<Ice::Long> AdGroup::adzone_ids() {$/;"	f	class:AdGroup	signature:()
+AdGroup::cost	Struct.cpp	/^double AdGroup::cost() {$/;"	f	class:AdGroup	signature:()
+AdGroup::creative_id	Struct.cpp	/^Ice::Long AdGroup::creative_id() {$/;"	f	class:AdGroup	signature:()
+AdGroup::have_creative	Struct.cpp	/^bool AdGroup::have_creative() {$/;"	f	class:AdGroup	signature:()
+AdGroup::operator <	Struct.cpp	/^bool AdGroup::operator<( const AdGroup& r ) const{$/;"	f	class:AdGroup	signature:( const AdGroup& r ) const
+AdGroup::set_target_unit	Struct.cpp	/^void AdGroup::set_target_unit(AdTargetUnitPtr target_unit) {$/;"	f	class:AdGroup	signature:(AdTargetUnitPtr target_unit)
+AdGroup::target_unit	Struct.cpp	/^AdTargetUnitPtr AdGroup::target_unit() {$/;"	f	class:AdGroup	signature:()
+AdGroup::weight	Struct.cpp	/^double AdGroup::weight() {$/;"	f	class:AdGroup	signature:()
+AdGroup::widget	Struct.cpp	/^string AdGroup::widget() {$/;"	f	class:AdGroup	signature:()
+AdGroup::widget	Struct.cpp	/^string AdGroup::widget(Ice::Long creative_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id)
+AdGroup::widget_id	Struct.cpp	/^Ice::Long AdGroup::widget_id() {$/;"	f	class:AdGroup	signature:()
+AdGroupPtr	Struct.h	/^typedef IceUtil::Handle<AdGroup> AdGroupPtr;$/;"	t	namespace:xce::ad
+AdMember	Struct.h	/^class AdMember : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdMember::HaveMoney	Struct.cpp	/^bool AdMember::HaveMoney() {$/;"	f	class:AdMember	signature:()
+AdMemberPtr	Struct.h	/^typedef IceUtil::Handle<AdMember> AdMemberPtr;$/;"	t	namespace:xce::ad
+AdMobEngine	Engine.cpp	/^AdMobEngine::AdMobEngine() {$/;"	f	class:AdMobEngine	signature:()
+AdMobEngine	Engine.h	/^  AdMobEngine();$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:()
+AdMobEngine	Engine.h	/^class AdMobEngine: public AdMob, public MyUtil::Singleton<AdMobEngine> {$/;"	c	namespace:xce::ad	inherits:AdMob,MyUtil::Singleton
+AdMobEngine::AdMobEngine	Engine.cpp	/^AdMobEngine::AdMobEngine() {$/;"	f	class:AdMobEngine	signature:()
+AdMobEngine::GetAds	Engine.cpp	/^AdMobResPara AdMobEngine::GetAds(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&)
+AdMobEngine::GetAdsForTest	Engine.cpp	/^AdMobResPara AdMobEngine::GetAdsForTest(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&)
+AdMobEngine::PvFeedBack	Engine.cpp	/^void AdMobEngine::PvFeedBack(const xce::ad::AdMobFeedback& para, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobFeedback& para, const Ice::Current&)
+AdMobEngine::initOK	Engine.cpp	/^void AdMobEngine::initOK() {$/;"	f	class:AdMobEngine	signature:()
+AdMobIndex	Util.h	/^struct AdMobIndex {$/;"	s	namespace:xce::ad
+AdMobMonitorI	Monitor.cpp	/^AdMobMonitorI::AdMobMonitorI() {$/;"	f	class:AdMobMonitorI	signature:()
+AdMobMonitorI	Monitor.h	/^  AdMobMonitorI();$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:()
+AdMobMonitorI	Monitor.h	/^class AdMobMonitorI: public AdMobMonitor, public MyUtil::Singleton<AdMobMonitorI> {$/;"	c	namespace:xce::ad	inherits:AdMobMonitor,MyUtil::Singleton
+AdMobMonitorI::AdMobMonitorI	Monitor.cpp	/^AdMobMonitorI::AdMobMonitorI() {$/;"	f	class:AdMobMonitorI	signature:()
+AdMobMonitorI::GetBrandCandidateGroups	Monitor.cpp	/^string AdMobMonitorI::GetBrandCandidateGroups(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&)
+AdMobMonitorI::GetBrandIndexInfo	Monitor.cpp	/^string AdMobMonitorI::GetBrandIndexInfo(const int index, const Ice::Long zone, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+AdMobMonitorI::GetPoolAll	Monitor.cpp	/^string AdMobMonitorI::GetPoolAll(const int pool_name, const int size, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const int size, const Ice::Current&)
+AdMobMonitorI::GetPoolSize	Monitor.cpp	/^int AdMobMonitorI::GetPoolSize(const int pool_name, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const Ice::Current&)
+AdMobMonitorI::GetPoolValue	Monitor.cpp	/^string AdMobMonitorI::GetPoolValue(const int pool_name, const long id, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const long id, const Ice::Current&)
+AdMobMonitorI::GetRotateGroups	Monitor.cpp	/^string AdMobMonitorI::GetRotateGroups(const Ice::Long zone_id, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const Ice::Long zone_id, const Ice::Current&)
+AdMobMonitorI::GetSelfCandidateGroups	Monitor.cpp	/^string AdMobMonitorI::GetSelfCandidateGroups(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&)
+AdMobMonitorI::GetSelfIndexInfo	Monitor.cpp	/^string AdMobMonitorI::GetSelfIndexInfo(const int index, const Ice::Long zone, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+AdMobMonitorI::GetTargetGroups	Monitor.cpp	/^AdMobTargetOutputSeq AdMobMonitorI::GetTargetGroups(const xce::ad::AdMobTargetInput& input, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobTargetInput& input, const Ice::Current&)
+AdMobPool	Util.h	/^struct AdMobPool {$/;"	s	namespace:xce::ad
+AdMobRequestFactory	Click.h	/^class AdMobRequestFactory : public RequestFactory {$/;"	c	namespace:xce::ad	inherits:RequestFactory
+AdPlatform	Struct.h	/^class AdPlatform : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdPlatformPtr	Struct.h	/^typedef IceUtil::Handle<AdPlatform> AdPlatformPtr;$/;"	t	namespace:xce::ad
+AdTargetUnit	Struct.cpp	/^AdTargetUnit::AdTargetUnit(const AdBidUnit& bid_unit) {$/;"	f	class:AdTargetUnit	signature:(const AdBidUnit& bid_unit)
+AdTargetUnit	Struct.h	/^  explicit AdTargetUnit(const AdBidUnit& bid_unit);$/;"	p	class:xce::ad::AdTargetUnit	access:public	signature:(const AdBidUnit& bid_unit)
+AdTargetUnit	Struct.h	/^class AdTargetUnit : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdTargetUnit::AdTargetUnit	Struct.cpp	/^AdTargetUnit::AdTargetUnit(const AdBidUnit& bid_unit) {$/;"	f	class:AdTargetUnit	signature:(const AdBidUnit& bid_unit)
+AdTargetUnit::AreaMatch	Struct.cpp	/^bool AdTargetUnit::AreaMatch(uint64_t key, const vector<uint64_t>& area) {$/;"	f	class:AdTargetUnit	signature:(uint64_t key, const vector<uint64_t>& area)
+AdTargetUnit::LbsMatch	Struct.cpp	/^bool AdTargetUnit::LbsMatch(Rectangle rec_key, const vector<Rectangle>& rec_list) {$/;"	f	class:AdTargetUnit	signature:(Rectangle rec_key, const vector<Rectangle>& rec_list)
+AdTargetUnit::Match	Struct.cpp	/^bool AdTargetUnit::Match(const UserProfile& userProfile, const AdMobReqPara& request) {$/;"	f	class:AdTargetUnit	signature:(const UserProfile& userProfile, const AdMobReqPara& request)
+AdTargetUnitPtr	Struct.h	/^typedef IceUtil::Handle<AdTargetUnit> AdTargetUnitPtr;$/;"	t	namespace:xce::ad
+AdType	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	g	namespace:xce::ad
+AdUserBind	Struct.h	/^class AdUserBind : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdUserBind::operator <	Struct.cpp	/^bool AdUserBind::operator <(const AdUserBind& r) const {$/;"	f	class:AdUserBind	signature:(const AdUserBind& r) const
+AdUserBindPtr	Struct.h	/^typedef IceUtil::Handle<AdUserBind> AdUserBindPtr;$/;"	t	namespace:xce::ad
+AdZone	Struct.h	/^class AdZone : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+AdZone::AddGroupToRotateList	Struct.cpp	/^bool AdZone::AddGroupToRotateList(int rotate_index, const AdGroupPtr& group) {$/;"	f	class:AdZone	signature:(int rotate_index, const AdGroupPtr& group)
+AdZone::GetAllRotateGroups	Struct.cpp	/^void AdZone::GetAllRotateGroups(map<AdGroupPtr, int>& result) {$/;"	f	class:AdZone	signature:(map<AdGroupPtr, int>& result)
+AdZone::GetRotateGroups	Struct.cpp	/^AdGroupPtr AdZone::GetRotateGroups(int rotate_index) {$/;"	f	class:AdZone	signature:(int rotate_index)
+AdZone::GetRotateSize	Struct.cpp	/^int AdZone::GetRotateSize() const {$/;"	f	class:AdZone	signature:() const
+AdZone::RandomRotateList	Struct.cpp	/^void AdZone::RandomRotateList() {$/;"	f	class:AdZone	signature:()
+AdZone::ResizeRotateList	Struct.cpp	/^void AdZone::ResizeRotateList(int size) {$/;"	f	class:AdZone	signature:(int size)
+AdZone::ToString	Struct.cpp	/^string AdZone::ToString() const {$/;"	f	class:AdZone	signature:() const
+AdZoneMap	Struct.h	/^typedef map<Ice::Long, AdZonePtr> AdZoneMap;$/;"	t	namespace:xce::ad
+AdZonePtr	Struct.h	/^typedef IceUtil::Handle<AdZone> AdZonePtr;$/;"	t	namespace:xce::ad
+Add	BaseIndex.h	/^  bool Add(KEY_TYPE& key, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(KEY_TYPE& key, const AdGroupPtr& value)
+Add	BaseIndex.h	/^  bool Add(vector<KEY_TYPE>& keys, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(vector<KEY_TYPE>& keys, const AdGroupPtr& value)
+AddGroupToRotateList	Struct.cpp	/^bool AdZone::AddGroupToRotateList(int rotate_index, const AdGroupPtr& group) {$/;"	f	class:AdZone	signature:(int rotate_index, const AdGroupPtr& group)
+AddGroupToRotateList	Struct.h	/^  bool AddGroupToRotateList(int rotate_index, const AdGroupPtr& group);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int rotate_index, const AdGroupPtr& group)
+AgeIndex	InvertedIndex.h	/^typedef BaseIndex<short> AgeIndex;$/;"	t	namespace:xce::ad
+Area	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	e	enum:xce::ad::AdTargetUnit::MatchScope
+AreaIndex	InvertedIndex.h	/^typedef AreaUIntIndex AreaIndex;$/;"	t	namespace:xce::ad
+AreaIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< AreaUIntIndex > AreaIndexPtr;$/;"	t	namespace:xce::ad
+AreaMatch	Struct.cpp	/^bool AdTargetUnit::AreaMatch(uint64_t key, const vector<uint64_t>& area) {$/;"	f	class:AdTargetUnit	signature:(uint64_t key, const vector<uint64_t>& area)
+AreaMatch	Struct.h	/^  static bool AreaMatch(uint64_t area_key, const vector<uint64_t>& area);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(uint64_t area_key, const vector<uint64_t>& area)
+AreaUIntIndex	InvertedIndex.h	/^class AreaUIntIndex : public BaseIndex<uint64_t> {$/;"	c	namespace:xce::ad	inherits:BaseIndex
+AreaUIntIndex::GetWithAll	InvertedIndex.cpp	/^void AreaUIntIndex::GetWithAll(const uint64_t key, set<AdGroupPtr>& result) {$/;"	f	class:AreaUIntIndex	signature:(const uint64_t key, set<AdGroupPtr>& result)
+Available	Struct.cpp	/^bool AdGroup::Available() {$/;"	f	class:AdGroup	signature:()
+Available	Struct.h	/^  bool Available();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+BRAND3G	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+BRAND3G	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+BRAND_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+BRAND_INDEX	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	e	enum:xce::ad::InvertedIndexType
+BaseHandler	Handler.h	/^class BaseHandler : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+BaseIndex	BaseIndex.h	/^class BaseIndex : public AbstractBaseIndex {$/;"	c	namespace:xce::ad	inherits:AbstractBaseIndex
+Brand3GIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> Brand3GIndex;$/;"	t	namespace:xce::ad
+Brand3GMap	Config.h	/^class Brand3GMap : public CachePool, public MyUtil::Singleton<Brand3GMap> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+Brand3GMap::GetBrand3G	Config.cpp	/^Ice::Long Brand3GMap::GetBrand3G(string brand3G) {$/;"	f	class:Brand3GMap	signature:(string brand3G)
+Brand3GMap::Print	Config.cpp	/^string Brand3GMap::Print(const int size) {$/;"	f	class:Brand3GMap	signature:(const int size)
+Brand3GMap::Size	Config.cpp	/^size_t Brand3GMap::Size() {$/;"	f	class:Brand3GMap	signature:()
+Brand3GMap::TotalLoad	Config.cpp	/^void Brand3GMap::TotalLoad() {$/;"	f	class:Brand3GMap	signature:()
+BrandCpmCpcHandler	Handler.h	/^class BrandCpmCpcHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+BrandCpmCpcHandler::handle	Handler.cpp	/^void BrandCpmCpcHandler::handle(HandlerPara& para) {$/;"	f	class:BrandCpmCpcHandler	signature:(HandlerPara& para)
+BrandRotateHandler	Handler.h	/^class BrandRotateHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+BrandRotateHandler::handle	Handler.cpp	/^void BrandRotateHandler::handle(HandlerPara& para) {$/;"	f	class:BrandRotateHandler	signature:(HandlerPara& para)
+BuildClickLog	Handler.cpp	/^inline void LogHandler::BuildClickLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+BuildClickLog	Handler.h	/^  inline void BuildClickLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+BuildCpcChargeLog	Handler.cpp	/^inline void LogHandler::BuildCpcChargeLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+BuildCpcChargeLog	Handler.h	/^  inline void BuildCpcChargeLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+BuildCpmChargeLog	Handler.cpp	/^inline void LogHandler::BuildCpmChargeLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+BuildCpmChargeLog	Handler.h	/^  inline void BuildCpmChargeLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+BuildDefault3GLog	Handler.cpp	/^inline void LogHandler::BuildDefault3GLog(HandlerPara& para, string& log) {$/;"	f	class:LogHandler	signature:(HandlerPara& para, string& log)
+BuildDefault3GLog	Handler.h	/^  inline void BuildDefault3GLog(HandlerPara& para, string& log);$/;"	p	class:xce::ad::LogHandler	access:private	signature:(HandlerPara& para, string& log)
+BuildIndex	InvertedIndex.cpp	/^inline void InvertedIndex::BuildIndex(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index ) {$/;"	f	class:InvertedIndex	signature:(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index )
+BuildIndex	InvertedIndex.h	/^  inline void BuildIndex(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index);$/;"	p	class:xce::ad::InvertedIndex	access:private	signature:(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index)
+BuildPvLog	Handler.cpp	/^inline void LogHandler::BuildPvLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+BuildPvLog	Handler.h	/^  inline void BuildPvLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+CAMPAIGN	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+COUNTRY	Util.h	/^const uint64_t COUNTRY = 86000000000000; $/;"	v
+CPC	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	e	enum:xce::ad::TransType
+CPM	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	e	enum:xce::ad::TransType
+CachePool	CachePool.h	/^class CachePool {$/;"	c	namespace:xce::ad
+CampaignPool	CachePool.h	/^class CampaignPool : public CachePool, public MyUtil::Singleton<CampaignPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+CampaignPool::GetAdCampaign	CampaignPool.cpp	/^AdCampaignPtr CampaignPool::GetAdCampaign(Ice::Long campaign_id) {$/;"	f	class:CampaignPool	signature:(Ice::Long campaign_id)
+CampaignPool::Print	CampaignPool.cpp	/^string CampaignPool::Print(const int size) {$/;"	f	class:CampaignPool	signature:(const int size)
+CampaignPool::Size	CampaignPool.cpp	/^size_t CampaignPool::Size() {$/;"	f	class:CampaignPool	signature:()
+Check	CachePool.h	/^    static bool Check(const string & day_points, const string & hour_points);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & day_points, const string & hour_points)
+Check	GroupPool.cpp	/^bool GroupPool::PointsChecker::Check(const string & day_points, const string & hour_points) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & day_points, const string & hour_points)
+CheckDay	CachePool.h	/^    static bool CheckDay(const string & day_point_str);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & day_point_str)
+CheckDay	GroupPool.cpp	/^bool GroupPool::PointsChecker::CheckDay(const string & day_point_str) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & day_point_str)
+CheckHour	CachePool.h	/^    static bool CheckHour(const string & hour_point_str);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & hour_point_str)
+CheckHour	GroupPool.cpp	/^bool GroupPool::PointsChecker::CheckHour(const string & hour_point_str) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & hour_point_str)
+CheckRequestPara	Handler.cpp	/^inline void ParaCheckHandler::CheckRequestPara(AdMobReqPara& request) {$/;"	f	class:ParaCheckHandler	signature:(AdMobReqPara& request)
+CheckRequestPara	Handler.h	/^  inline void CheckRequestPara(AdMobReqPara& request);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(AdMobReqPara& request)
+ClickRequest	Click.h	/^  ClickRequest(FCGX_Request* r) : Request(r) {}$/;"	f	class:xce::ad::ClickRequest	access:public	signature:(FCGX_Request* r)
+ClickRequest	Click.h	/^class ClickRequest : public Request{$/;"	c	namespace:xce::ad	inherits:Request
+ClickRequest::ProcessCpcLog	Click.cpp	/^inline bool ClickRequest::ProcessCpcLog(string& cpclog) {$/;"	f	class:ClickRequest	signature:(string& cpclog)
+ClickRequest::response	Click.cpp	/^bool ClickRequest::response() {$/;"	f	class:ClickRequest	signature:()
+ClickUrlHead	Handler.h	/^	string ClickUrlHead;$/;"	m	class:xce::ad::FormatHandler	access:public
+Create	Click.h	/^  virtual RequestPtr Create(FCGX_Request * r) {$/;"	f	class:xce::ad::AdMobRequestFactory	access:public	signature:(FCGX_Request * r)
+DBInstance_	InvertedIndex.h	/^  string DBInstance_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+DEFAULT_USER_ID	Util.h	/^const int DEFAULT_USER_ID = 2;               \/\/默认用户ID$/;"	v
+DbInstance_	CachePool.h	/^  string DbInstance_;$/;"	m	class:xce::ad::CachePool	access:protected
+Del	BaseIndex.h	/^  bool Del(vector<KEY_TYPE>& keys, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(vector<KEY_TYPE>& keys, const AdGroupPtr& value)
+DimIndex	InvertedIndex.cpp	/^DimIndex::DimIndex() {$/;"	f	class:DimIndex	signature:()
+DimIndex	InvertedIndex.h	/^  DimIndex();$/;"	p	class:xce::ad::DimIndex	access:public	signature:()
+DimIndex	InvertedIndex.h	/^class DimIndex : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+DimIndex::DimIndex	InvertedIndex.cpp	/^DimIndex::DimIndex() {$/;"	f	class:DimIndex	signature:()
+DimIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle<DimIndex> DimIndexPtr;$/;"	t	namespace:xce::ad
+DisplayType	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	g	namespace:xce::ad
+EngineConfig	Config.h	/^class EngineConfig : public CachePool, public MyUtil::Singleton<EngineConfig> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+EngineConfig::GetProperty	Config.cpp	/^string EngineConfig::GetProperty(string& key) {$/;"	f	class:EngineConfig	signature:(string& key)
+EngineConfig::GetPropertyAsInt	Config.cpp	/^int EngineConfig::GetPropertyAsInt(string& key) {$/;"	f	class:EngineConfig	signature:(string& key)
+EngineConfig::GetPropertyAsIntWithDefault	Config.cpp	/^int EngineConfig::GetPropertyAsIntWithDefault(string& key, int value) {$/;"	f	class:EngineConfig	signature:(string& key, int value)
+EngineConfig::GetPropertyWithDefault	Config.cpp	/^string EngineConfig::GetPropertyWithDefault(string& key, string& value) {$/;"	f	class:EngineConfig	signature:(string& key, string& value)
+EngineConfig::Print	Config.cpp	/^void EngineConfig::Print() {$/;"	f	class:EngineConfig	signature:()
+EngineConfig::Size	Config.cpp	/^size_t EngineConfig::Size() {$/;"	f	class:EngineConfig	signature:()
+ExecuteDelete	Util.h	/^	static void ExecuteDelete(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+ExecuteInsert	Util.h	/^	static void ExecuteInsert(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+ExecuteQuery	Util.h	/^	static void ExecuteQuery(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+ExecuteWrite	Util.h	/^	static void ExecuteWrite(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+FillRotateGroups	CachePool.h	/^  inline void FillRotateGroups();$/;"	p	class:xce::ad::ZonePool	access:private	signature:()
+FillRotateGroups	ZonePool.cpp	/^inline void ZonePool::FillRotateGroups() {$/;"	f	class:ZonePool	signature:()
+FilterGroups	Handler.cpp	/^void Selector::FilterGroups(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected) {$/;"	f	class:Selector	signature:(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected)
+FilterGroups	Handler.cpp	/^void Selector::FilterGroups(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected) {$/;"	f	class:Selector	signature:(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected)
+FilterGroups	Handler.h	/^  virtual void FilterGroups(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected);$/;"	p	class:xce::ad::Selector	access:public	signature:(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected)
+FilterGroups	Handler.h	/^  virtual void FilterGroups(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected);$/;"	p	class:xce::ad::Selector	access:public	signature:(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected)
+FilterNoCreativeAdGroups	CachePool.h	/^  void FilterNoCreativeAdGroups();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+FilterNoCreativeAdGroups	GroupPool.cpp	/^void GroupPool::FilterNoCreativeAdGroups() {$/;"	f	class:GroupPool	signature:()
+FormatHandler	Handler.cpp	/^FormatHandler::FormatHandler() {$/;"	f	class:FormatHandler	signature:()
+FormatHandler	Handler.h	/^	FormatHandler();$/;"	p	class:xce::ad::FormatHandler	access:public	signature:()
+FormatHandler	Handler.h	/^class FormatHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+FormatHandler::FormatHandler	Handler.cpp	/^FormatHandler::FormatHandler() {$/;"	f	class:FormatHandler	signature:()
+FormatHandler::ParseWidget	Handler.cpp	/^bool FormatHandler::ParseWidget(const string& json_str, map<string, string>& json_map) {$/;"	f	class:FormatHandler	signature:(const string& json_str, map<string, string>& json_map)
+FormatHandler::UrlEncode	Handler.cpp	/^void FormatHandler::UrlEncode(const string& input, string& output) {$/;"	f	class:FormatHandler	signature:(const string& input, string& output)
+FormatHandler::handle	Handler.cpp	/^void FormatHandler::handle(HandlerPara& para) {$/;"	f	class:FormatHandler	signature:(HandlerPara& para)
+GENDER	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+GENDER_ALL	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+GENDER_FEMALE	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+GENDER_MALE	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+GRADE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+GROUP	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+GenderIndex	InvertedIndex.h	/^typedef BaseIndex<short> GenderIndex;$/;"	t	namespace:xce::ad
+GenderType	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	g	namespace:xce::ad
+Get	BaseIndex.h	/^  void Get(const KEY_TYPE key, set<AdGroupPtr>& result) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(const KEY_TYPE key, set<AdGroupPtr>& result)
+Get	InvertedIndex.cpp	/^void InvertedIndex::Get(const HandlerPara& para, const Ice::Long zone_id, const InvertedIndexType type, set<AdGroupPtr>& result_set) {$/;"	f	class:InvertedIndex	signature:(const HandlerPara& para, const Ice::Long zone_id, const InvertedIndexType type, set<AdGroupPtr>& result_set)
+Get	InvertedIndex.cpp	/^void RectangleIndex::Get(const Rectangle key, set<AdGroupPtr>& result) {$/;"	f	class:RectangleIndex	signature:(const Rectangle key, set<AdGroupPtr>& result)
+Get	InvertedIndex.h	/^  void Get(const HandlerPara& para, const Ice::Long zone, InvertedIndexType type, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:(const HandlerPara& para, const Ice::Long zone, InvertedIndexType type, set<AdGroupPtr>& groups)
+Get	InvertedIndex.h	/^  void Get(const Rectangle key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::RectangleIndex	access:public	signature:(const Rectangle key, set<AdGroupPtr>& groups)
+GetAdCampaign	CachePool.h	/^  AdCampaignPtr GetAdCampaign(Ice::Long campaign_id);$/;"	p	class:xce::ad::CampaignPool	access:public	signature:(Ice::Long campaign_id)
+GetAdCampaign	CampaignPool.cpp	/^AdCampaignPtr CampaignPool::GetAdCampaign(Ice::Long campaign_id) {$/;"	f	class:CampaignPool	signature:(Ice::Long campaign_id)
+GetAdGroup	CachePool.h	/^  AdGroupPtr GetAdGroup(Ice::Long group_id);$/;"	p	class:xce::ad::GroupPool	access:public	signature:(Ice::Long group_id)
+GetAdGroup	GroupPool.cpp	/^AdGroupPtr GroupPool::GetAdGroup(Ice::Long group_id) {$/;"	f	class:GroupPool	signature:(Ice::Long group_id)
+GetAdMember	CachePool.h	/^  AdMemberPtr GetAdMember(Ice::Long member_id);$/;"	p	class:xce::ad::MemberPool	access:public	signature:(Ice::Long member_id)
+GetAdMember	MemberPool.cpp	/^AdMemberPtr MemberPool::GetAdMember(Ice::Long member_id) {$/;"	f	class:MemberPool	signature:(Ice::Long member_id)
+GetAdZone	CachePool.h	/^  AdZonePtr GetAdZone(Ice::Long);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(Ice::Long)
+GetAdZone	ZonePool.cpp	/^AdZonePtr ZonePool::GetAdZone(Ice::Long adzone_id) {$/;"	f	class:ZonePool	signature:(Ice::Long adzone_id)
+GetAds	Engine.cpp	/^AdMobResPara AdMobEngine::GetAds(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&)
+GetAds	Engine.h	/^  virtual AdMobResPara GetAds(const xce::ad::AdMobReqPara& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobReqPara& para, const Ice::Current&)
+GetAds	Handler.cpp	/^set<AdGroupPtr> Selector::GetAds(HandlerPara& para, InvertedIndexType type) {$/;"	f	class:Selector	signature:(HandlerPara& para, InvertedIndexType type)
+GetAds	Handler.h	/^  virtual set<AdGroupPtr> GetAds(HandlerPara& para, InvertedIndexType type);$/;"	p	class:xce::ad::Selector	access:public	signature:(HandlerPara& para, InvertedIndexType type)
+GetAdsForTest	Engine.cpp	/^AdMobResPara AdMobEngine::GetAdsForTest(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobReqPara& reqPara, const Ice::Current&)
+GetAdsForTest	Engine.h	/^  virtual AdMobResPara GetAdsForTest(const xce::ad::AdMobReqPara& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobReqPara& para, const Ice::Current&)
+GetAllRotateGroups	Struct.cpp	/^void AdZone::GetAllRotateGroups(map<AdGroupPtr, int>& result) {$/;"	f	class:AdZone	signature:(map<AdGroupPtr, int>& result)
+GetAllRotateGroups	Struct.h	/^  void GetAllRotateGroups(map<AdGroupPtr, int>& result);$/;"	p	class:xce::ad::AdZone	access:public	signature:(map<AdGroupPtr, int>& result)
+GetBrand3G	Config.cpp	/^Ice::Long Brand3GMap::GetBrand3G(string brand3G) {$/;"	f	class:Brand3GMap	signature:(string brand3G)
+GetBrand3G	Config.h	/^  Ice::Long GetBrand3G(string brand3G);$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:(string brand3G)
+GetBrandCandidateGroups	Monitor.cpp	/^string AdMobMonitorI::GetBrandCandidateGroups(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&)
+GetBrandCandidateGroups	Monitor.h	/^  virtual string GetBrandCandidateGroups(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&)
+GetBrandIndexInfo	Monitor.cpp	/^string AdMobMonitorI::GetBrandIndexInfo(const int index, const Ice::Long zone, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+GetBrandIndexInfo	Monitor.h	/^  virtual string GetBrandIndexInfo(const int index, const Ice::Long zone, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+GetCeilWidths	Config.cpp	/^set<short> AbstractResolutionMap::GetCeilWidths(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+GetCeilWidths	Config.h	/^  set<short> GetCeilWidths(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+GetDB	CachePool.h	/^  string GetDB() {$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+GetDB	InvertedIndex.h	/^  string GetDB() {$/;"	f	class:xce::ad::InvertedIndex	access:public	signature:()
+GetFixedWidth	Config.cpp	/^short AbstractResolutionMap::GetFixedWidth(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+GetFixedWidth	Config.h	/^  short GetFixedWidth(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+GetFloorWidth	Config.cpp	/^short AbstractResolutionMap::GetFloorWidth(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+GetFloorWidth	Config.h	/^  short GetFloorWidth(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+GetFloorWidths	Config.cpp	/^set<short> AbstractResolutionMap::GetFloorWidths(short width) {$/;"	f	class:AbstractResolutionMap	signature:(short width)
+GetFloorWidths	Config.h	/^  set<short> GetFloorWidths(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+GetForTest	InvertedIndex.h	/^  void GetForTest(const HandlerPara& para, const Ice::Long zone, set<AdGroupPtr>& groups, const int index_flag, const int type_flag);$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:(const HandlerPara& para, const Ice::Long zone, set<AdGroupPtr>& groups, const int index_flag, const int type_flag)
+GetIp	Config.h	/^	string GetIp() {$/;"	f	class:xce::ad::EngineConfig	access:private	signature:()
+GetPlatform	Config.cpp	/^Ice::Long PlatformMap::GetPlatform(string OsVersion) {$/;"	f	class:PlatformMap	signature:(string OsVersion)
+GetPlatform	Config.h	/^  Ice::Long GetPlatform(string OsVersion);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(string OsVersion)
+GetPlatformX	Config.cpp	/^Ice::Long PlatformMap::GetPlatformX(string OsVersion) {$/;"	f	class:PlatformMap	signature:(string OsVersion)
+GetPlatformX	Config.h	/^  Ice::Long GetPlatformX(string OsVersion);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(string OsVersion)
+GetPoolAll	Monitor.cpp	/^string AdMobMonitorI::GetPoolAll(const int pool_name, const int size, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const int size, const Ice::Current&)
+GetPoolAll	Monitor.h	/^  virtual string GetPoolAll(const int pool, const int size, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const int size, const Ice::Current&)
+GetPoolSize	Monitor.cpp	/^int AdMobMonitorI::GetPoolSize(const int pool_name, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const Ice::Current&)
+GetPoolSize	Monitor.h	/^  virtual int GetPoolSize(const int pool, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const Ice::Current&)
+GetPoolValue	Monitor.cpp	/^string AdMobMonitorI::GetPoolValue(const int pool_name, const long id, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int pool_name, const long id, const Ice::Current&)
+GetPoolValue	Monitor.h	/^  virtual string GetPoolValue(const int pool, const long id, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const long id, const Ice::Current&)
+GetProperty	Config.cpp	/^string EngineConfig::GetProperty(string& key) {$/;"	f	class:EngineConfig	signature:(string& key)
+GetProperty	Config.h	/^	string GetProperty(string& key);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key)
+GetPropertyAsInt	Config.cpp	/^int EngineConfig::GetPropertyAsInt(string& key) {$/;"	f	class:EngineConfig	signature:(string& key)
+GetPropertyAsInt	Config.h	/^	int GetPropertyAsInt(string& key);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key)
+GetPropertyAsIntWithDefault	Config.cpp	/^int EngineConfig::GetPropertyAsIntWithDefault(string& key, int value) {$/;"	f	class:EngineConfig	signature:(string& key, int value)
+GetPropertyAsIntWithDefault	Config.h	/^	int GetPropertyAsIntWithDefault(string& key, int value);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key, int value)
+GetPropertyWithDefault	Config.cpp	/^string EngineConfig::GetPropertyWithDefault(string& key, string& value) {$/;"	f	class:EngineConfig	signature:(string& key, string& value)
+GetPropertyWithDefault	Config.h	/^	string GetPropertyWithDefault(string& key, string& value);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key, string& value)
+GetRotateAds	CachePool.h	/^  map<Ice::Long, vector<AdGroupPtr> > GetRotateAds();$/;"	p	class:xce::ad::GroupPool	access:public	signature:()
+GetRotateAds	GroupPool.cpp	/^map<Ice::Long, vector<AdGroupPtr> > GroupPool::GetRotateAds() {$/;"	f	class:GroupPool	signature:()
+GetRotateGroups	Monitor.cpp	/^string AdMobMonitorI::GetRotateGroups(const Ice::Long zone_id, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const Ice::Long zone_id, const Ice::Current&)
+GetRotateGroups	Monitor.h	/^  virtual string GetRotateGroups(const Ice::Long zone_id, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const Ice::Long zone_id, const Ice::Current&)
+GetRotateGroups	Struct.cpp	/^AdGroupPtr AdZone::GetRotateGroups(int rotate_index) {$/;"	f	class:AdZone	signature:(int rotate_index)
+GetRotateGroups	Struct.h	/^  AdGroupPtr GetRotateGroups(int rotate_index);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int rotate_index)
+GetRotateSize	Struct.cpp	/^int AdZone::GetRotateSize() const {$/;"	f	class:AdZone	signature:() const
+GetRotateSize	Struct.h	/^  int GetRotateSize() const;$/;"	p	class:xce::ad::AdZone	access:public	signature:() const
+GetSelfCandidateGroups	Monitor.cpp	/^string AdMobMonitorI::GetSelfCandidateGroups(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobReqPara& request,const int index_flag, const Ice::Current&)
+GetSelfCandidateGroups	Monitor.h	/^  virtual string GetSelfCandidateGroups(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&)
+GetSelfIndexInfo	Monitor.cpp	/^string AdMobMonitorI::GetSelfIndexInfo(const int index, const Ice::Long zone, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+GetSelfIndexInfo	Monitor.h	/^  virtual string GetSelfIndexInfo(const int index, const Ice::Long zone, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+GetTargetGroups	Monitor.cpp	/^AdMobTargetOutputSeq AdMobMonitorI::GetTargetGroups(const xce::ad::AdMobTargetInput& input, const Ice::Current&) {$/;"	f	class:AdMobMonitorI	signature:(const xce::ad::AdMobTargetInput& input, const Ice::Current&)
+GetTargetGroups	Monitor.h	/^  virtual AdMobTargetOutputSeq GetTargetGroups(const xce::ad::AdMobTargetInput& input, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobTargetInput& input, const Ice::Current&)
+GetUserBind	CachePool.h	/^  AdUserBindPtr GetUserBind(const int user_id, const Ice::Long zone_id);$/;"	p	class:xce::ad::UserBindPool	access:public	signature:(const int user_id, const Ice::Long zone_id)
+GetUserBind	UserBindPool.cpp	/^AdUserBindPtr UserBindPool::GetUserBind(const int user_id, const Ice::Long zone_id) {$/;"	f	class:UserBindPool	signature:(const int user_id, const Ice::Long zone_id)
+GetWithAll	BaseIndex.h	/^  void GetWithAll(const KEY_TYPE key, set<AdGroupPtr>& result) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(const KEY_TYPE key, set<AdGroupPtr>& result)
+GetWithAll	InvertedIndex.cpp	/^void AreaUIntIndex::GetWithAll(const uint64_t key, set<AdGroupPtr>& result) {$/;"	f	class:AreaUIntIndex	signature:(const uint64_t key, set<AdGroupPtr>& result)
+GetWithAll	InvertedIndex.cpp	/^void RectangleIndex::GetWithAll(const Rectangle key, set<AdGroupPtr>& result) {$/;"	f	class:RectangleIndex	signature:(const Rectangle key, set<AdGroupPtr>& result)
+GetWithAll	InvertedIndex.h	/^  void GetWithAll(const Rectangle key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::RectangleIndex	access:public	signature:(const Rectangle key, set<AdGroupPtr>& groups)
+GetWithAll	InvertedIndex.h	/^  void GetWithAll(const uint64_t key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::AreaUIntIndex	access:public	signature:(const uint64_t key, set<AdGroupPtr>& groups)
+GetZoneHandler	Handler.h	/^	static ZoneHandlerPtr GetZoneHandler( const Ice::Long zone_id ) {$/;"	f	class:xce::ad::ZoneHandlerFactory	access:public	signature:( const Ice::Long zone_id )
+GradeIndex	InvertedIndex.h	/^typedef BaseIndex<short> GradeIndex;$/;"	t	namespace:xce::ad
+GroupPool	CachePool.h	/^class GroupPool : public CachePool, public MyUtil::Singleton<GroupPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+GroupPool::FilterNoCreativeAdGroups	GroupPool.cpp	/^void GroupPool::FilterNoCreativeAdGroups() {$/;"	f	class:GroupPool	signature:()
+GroupPool::GetAdGroup	GroupPool.cpp	/^AdGroupPtr GroupPool::GetAdGroup(Ice::Long group_id) {$/;"	f	class:GroupPool	signature:(Ice::Long group_id)
+GroupPool::GetRotateAds	GroupPool.cpp	/^map<Ice::Long, vector<AdGroupPtr> > GroupPool::GetRotateAds() {$/;"	f	class:GroupPool	signature:()
+GroupPool::PointsChecker::Check	GroupPool.cpp	/^bool GroupPool::PointsChecker::Check(const string & day_points, const string & hour_points) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & day_points, const string & hour_points)
+GroupPool::PointsChecker::CheckDay	GroupPool.cpp	/^bool GroupPool::PointsChecker::CheckDay(const string & day_point_str) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & day_point_str)
+GroupPool::PointsChecker::CheckHour	GroupPool.cpp	/^bool GroupPool::PointsChecker::CheckHour(const string & hour_point_str) {$/;"	f	class:GroupPool::PointsChecker	signature:(const string & hour_point_str)
+GroupPool::Print	GroupPool.cpp	/^string GroupPool::Print(const int size) {$/;"	f	class:GroupPool	signature:(const int size)
+GroupPool::Size	GroupPool.cpp	/^size_t GroupPool::Size() {$/;"	f	class:GroupPool	signature:()
+GroupPool::TotalLoad	GroupPool.cpp	/^void GroupPool::TotalLoad() {$/;"	f	class:GroupPool	signature:()
+GroupPool::TotalLoadAdCreative	GroupPool.cpp	/^void GroupPool::TotalLoadAdCreative() {$/;"	f	class:GroupPool	signature:()
+GroupPool::TotalLoadAdGroup	GroupPool.cpp	/^void GroupPool::TotalLoadAdGroup() {$/;"	f	class:GroupPool	signature:()
+GroupPool::TotalLoadAdGroupAdZoneRef	GroupPool.cpp	/^void GroupPool::TotalLoadAdGroupAdZoneRef() {$/;"	f	class:GroupPool	signature:()
+HANDLED_BY_BRAND	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+HANDLED_BY_ROTATE	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+HANDLED_BY_SELF	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+HANDLED_BY_USERBIND	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+HandleFlagType	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	g	struct:xce::ad::HandlerPara	access:public
+HandlerPara	Handler.h	/^  explicit HandlerPara( const AdMobReqPara& request ) : request_(request), selected_group_type_(UNKNOWN_AD), handle_flag_( UNHANDLED ) {$/;"	f	struct:xce::ad::HandlerPara	access:public	signature:( const AdMobReqPara& request )
+HandlerPara	Handler.h	/^  explicit HandlerPara() : selected_group_type_(UNKNOWN_AD), handle_flag_( UNHANDLED ) {$/;"	f	struct:xce::ad::HandlerPara	access:public	signature:()
+HandlerPara	Handler.h	/^struct HandlerPara {$/;"	s	namespace:xce::ad
+HandlerPara::set_seleted_group	Handler.cpp	/^inline void HandlerPara::set_seleted_group(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag) {$/;"	f	class:HandlerPara	signature:(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag)
+HandlerPtr	Handler.h	/^typedef IceUtil::Handle<BaseHandler> HandlerPtr;$/;"	t	namespace:xce::ad
+HaveMoney	Struct.cpp	/^bool AdMember::HaveMoney() {$/;"	f	class:AdMember	signature:()
+HaveMoney	Struct.h	/^  bool HaveMoney();$/;"	p	class:xce::ad::AdMember	access:public	signature:()
+ImageSelect	Handler.cpp	/^void TestHandler::ImageSelect(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress) {$/;"	f	class:TestHandler	signature:(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress)
+ImageSelect	Handler.h	/^  inline void ImageSelect(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress);$/;"	p	class:xce::ad::TestHandler	access:private	signature:(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress)
+IncLoad	CachePool.h	/^  virtual void IncLoad() { $/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+IncLoad	InvertedIndex.cpp	/^void InvertedIndex::IncLoad() {$/;"	f	class:InvertedIndex	signature:()
+IncLoad	InvertedIndex.h	/^  void IncLoad();$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:()
+IndexPtr	BaseIndex.h	/^typedef IceUtil::Handle<AbstractBaseIndex> IndexPtr;$/;"	t	namespace:xce::ad
+InitTask	CachePool.h	/^    InitTask(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE ) : updateInterval_(updateInterval) {$/;"	f	class:xce::ad::CachePool::InitTask	access:public	signature:(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE )
+InitTask	CachePool.h	/^  class InitTask : virtual public MyUtil::Task {$/;"	c	class:xce::ad::CachePool	inherits:MyUtil::Task	access:protected
+Initialize	CachePool.cpp	/^void CachePool::Initialize(const string& DbInstance, const Ice::Long updateInterval) {$/;"	f	class:xce::ad::CachePool	signature:(const string& DbInstance, const Ice::Long updateInterval)
+Initialize	CachePool.h	/^  virtual void Initialize(const string& DbInstance, const Ice::Long updateInterval);$/;"	p	class:xce::ad::CachePool	access:public	signature:(const string& DbInstance, const Ice::Long updateInterval)
+Initialize	Config.h	/^	void Initialize(int server_index) {$/;"	f	class:xce::ad::EngineConfig	access:public	signature:(int server_index)
+InvertedIndex	InvertedIndex.h	/^class InvertedIndex : public MyUtil::Singleton<InvertedIndex> {$/;"	c	namespace:xce::ad	inherits:MyUtil::Singleton
+InvertedIndex::BuildIndex	InvertedIndex.cpp	/^inline void InvertedIndex::BuildIndex(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index ) {$/;"	f	class:InvertedIndex	signature:(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index )
+InvertedIndex::Get	InvertedIndex.cpp	/^void InvertedIndex::Get(const HandlerPara& para, const Ice::Long zone_id, const InvertedIndexType type, set<AdGroupPtr>& result_set) {$/;"	f	class:InvertedIndex	signature:(const HandlerPara& para, const Ice::Long zone_id, const InvertedIndexType type, set<AdGroupPtr>& result_set)
+InvertedIndex::IncLoad	InvertedIndex.cpp	/^void InvertedIndex::IncLoad() {$/;"	f	class:InvertedIndex	signature:()
+InvertedIndex::ShowIndexSize	InvertedIndex.cpp	/^void InvertedIndex::ShowIndexSize() {$/;"	f	class:InvertedIndex	signature:()
+InvertedIndex::TotalLoad	InvertedIndex.cpp	/^void InvertedIndex::TotalLoad() {$/;"	f	class:InvertedIndex	signature:()
+InvertedIndexType	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	g	namespace:xce::ad
+IsInRec	Struct.cpp	/^bool Rectangle::IsInRec( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+IsInRec	Struct.h	/^  bool IsInRec( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+IsToReplace	Handler.cpp	/^bool ParaCheckHandler::IsToReplace(char ch) {$/;"	f	class:ParaCheckHandler	signature:(char ch)
+IsToReplace	Handler.h	/^	static bool IsToReplace(char ch);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(char ch)
+IsValid	CachePool.h	/^  bool IsValid(Ice::Long);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(Ice::Long)
+Is_Init_Ok	CachePool.h	/^  bool Is_Init_Ok() {$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+KEY_ITERATOR	BaseIndex.h	/^  typedef typename vector<KEY_TYPE>::const_iterator KEY_ITERATOR;$/;"	t	class:xce::ad::BaseIndex	access:public
+KEY_ITERATOR	InvertedIndex.h	/^  typedef vector<Rectangle>::const_iterator KEY_ITERATOR;$/;"	t	class:xce::ad::RectangleIndex	access:public
+KEY_VALUE_ITERATOR	BaseIndex.h	/^  typedef typename map< KEY_TYPE, set<AdGroupPtr> >::const_iterator KEY_VALUE_ITERATOR;$/;"	t	class:xce::ad::BaseIndex	access:public
+KEY_VALUE_ITERATOR	InvertedIndex.h	/^  typedef map< Rectangle, set<AdGroupPtr> >::const_iterator KEY_VALUE_ITERATOR;$/;"	t	class:xce::ad::RectangleIndex	access:public
+LBS	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+LBSIndex	InvertedIndex.h	/^typedef RectangleIndex LBSIndex;$/;"	t	namespace:xce::ad
+LBSIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< LBSIndex > LBSIndexPtr;$/;"	t	namespace:xce::ad
+LbsMatch	Struct.cpp	/^bool AdTargetUnit::LbsMatch(Rectangle rec_key, const vector<Rectangle>& rec_list) {$/;"	f	class:AdTargetUnit	signature:(Rectangle rec_key, const vector<Rectangle>& rec_list)
+LbsMatch	Struct.h	/^  static bool LbsMatch(Rectangle rec_key, const vector<Rectangle>& rec_list);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(Rectangle rec_key, const vector<Rectangle>& rec_list)
+LogHandler	Handler.h	/^class LogHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+LogHandler::BuildClickLog	Handler.cpp	/^inline void LogHandler::BuildClickLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+LogHandler::BuildCpcChargeLog	Handler.cpp	/^inline void LogHandler::BuildCpcChargeLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+LogHandler::BuildCpmChargeLog	Handler.cpp	/^inline void LogHandler::BuildCpmChargeLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+LogHandler::BuildDefault3GLog	Handler.cpp	/^inline void LogHandler::BuildDefault3GLog(HandlerPara& para, string& log) {$/;"	f	class:LogHandler	signature:(HandlerPara& para, string& log)
+LogHandler::BuildPvLog	Handler.cpp	/^inline void LogHandler::BuildPvLog(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+LogHandler::handle	Handler.cpp	/^void LogHandler::handle(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+MAX	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+MAX	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+MAX_WIDTH	Util.h	/^const int MAX_WIDTH = 960;$/;"	v
+MEDIA_URI	Util.h	/^const string MEDIA_URI = "http:\/\/jebe.xnimg.cn";$/;"	v
+MEMBER	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+MEMBER_BRAND	Util.h	/^enum MemberCategoryType { MEMBER_BRAND=1 };$/;"	e	enum:xce::ad::MemberCategoryType
+MOB_ZONE_BOTTOM	Util.h	/^const long MOB_ZONE_BOTTOM = 100000000099;   \/\/3G广告位ID 底端广告位$/;"	v
+MOB_ZONE_TEST	Util.h	/^const long MOB_ZONE_TEST   = 900000000000;   \/\/3G广告位ID 测试广告位$/;"	v
+MOB_ZONE_TOP	Util.h	/^const long MOB_ZONE_TOP    = 100000000098;   \/\/3G广告位ID 置顶广告位$/;"	v
+Match	Struct.cpp	/^bool AdTargetUnit::Match(const UserProfile& userProfile, const AdMobReqPara& request) {$/;"	f	class:AdTargetUnit	signature:(const UserProfile& userProfile, const AdMobReqPara& request)
+Match	Struct.h	/^  bool Match(const UserProfile& userProfile, const AdMobReqPara& request);$/;"	p	class:xce::ad::AdTargetUnit	access:public	signature:(const UserProfile& userProfile, const AdMobReqPara& request)
+MatchScope	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	g	class:xce::ad::AdTargetUnit	access:private
+MemberCategoryType	Util.h	/^enum MemberCategoryType { MEMBER_BRAND=1 };$/;"	g	namespace:xce::ad
+MemberPool	CachePool.h	/^class MemberPool : public CachePool, public MyUtil::Singleton<MemberPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+MemberPool::GetAdMember	MemberPool.cpp	/^AdMemberPtr MemberPool::GetAdMember(Ice::Long member_id) {$/;"	f	class:MemberPool	signature:(Ice::Long member_id)
+MemberPool::Print	MemberPool.cpp	/^string MemberPool::Print(const int size) {$/;"	f	class:MemberPool	signature:(const int size)
+MemberPool::Size	MemberPool.cpp	/^size_t MemberPool::Size() {$/;"	f	class:MemberPool	signature:()
+MyCallback	Engine.cpp	/^bool MyCallback(const char *dump_path, const char *minidump_id, void *context, bool succeeded) {$/;"	f	signature:(const char *dump_path, const char *minidump_id, void *context, bool succeeded)
+MyUtil::initialize	Engine.cpp	/^void MyUtil::initialize() {$/;"	f	class:MyUtil	signature:()
+NETWORK	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+NORMAL3G	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	e	enum:xce::ad::DisplayType
+NetworkIndex	InvertedIndex.h	/^typedef BaseIndex<short> NetworkIndex;$/;"	t	namespace:xce::ad
+ONE_MINUTE	CachePool.h	/^const long ONE_MINUTE = 60*1000*1000;		 \/\/1min$/;"	v
+OtherRequest	Click.h	/^  OtherRequest(FCGX_Request* r) : Request(r) {}$/;"	f	class:xce::ad::OtherRequest	access:public	signature:(FCGX_Request* r)
+OtherRequest	Click.h	/^class OtherRequest : public Request{$/;"	c	namespace:xce::ad	inherits:Request
+OtherRequest::response	Click.cpp	/^bool OtherRequest::response() {$/;"	f	class:OtherRequest	signature:()
+PLATFORM	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+PLATFORM	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+ParaCheckHandler	Handler.h	/^class ParaCheckHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+ParaCheckHandler::CheckRequestPara	Handler.cpp	/^inline void ParaCheckHandler::CheckRequestPara(AdMobReqPara& request) {$/;"	f	class:ParaCheckHandler	signature:(AdMobReqPara& request)
+ParaCheckHandler::IsToReplace	Handler.cpp	/^bool ParaCheckHandler::IsToReplace(char ch) {$/;"	f	class:ParaCheckHandler	signature:(char ch)
+ParaCheckHandler::PrintPara	Handler.cpp	/^void ParaCheckHandler::PrintPara(AdMobReqPara& request) {$/;"	f	class:ParaCheckHandler	signature:(AdMobReqPara& request)
+ParaCheckHandler::PrintUserProfile	Handler.cpp	/^inline void ParaCheckHandler::PrintUserProfile(UserProfile& profile) {$/;"	f	class:ParaCheckHandler	signature:(UserProfile& profile)
+ParaCheckHandler::handle	Handler.cpp	/^void ParaCheckHandler::handle(HandlerPara& para) {$/;"	f	class:ParaCheckHandler	signature:(HandlerPara& para)
+ParseWidget	Handler.cpp	/^bool FormatHandler::ParseWidget(const string& json_str, map<string, string>& json_map) {$/;"	f	class:FormatHandler	signature:(const string& json_str, map<string, string>& json_map)
+ParseWidget	Handler.h	/^  bool ParseWidget(const string& json_str, map<string, string>& json_map);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(const string& json_str, map<string, string>& json_map)
+PlatformIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> PlatformIndex;$/;"	t	namespace:xce::ad
+PlatformMap	Config.h	/^class PlatformMap : public CachePool, public MyUtil::Singleton<PlatformMap> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+PlatformMap::GetPlatform	Config.cpp	/^Ice::Long PlatformMap::GetPlatform(string OsVersion) {$/;"	f	class:PlatformMap	signature:(string OsVersion)
+PlatformMap::GetPlatformX	Config.cpp	/^Ice::Long PlatformMap::GetPlatformX(string OsVersion) {$/;"	f	class:PlatformMap	signature:(string OsVersion)
+PlatformMap::Print	Config.cpp	/^string PlatformMap::Print(const int size) {$/;"	f	class:PlatformMap	signature:(const int size)
+PlatformMap::Size	Config.cpp	/^size_t PlatformMap::Size() {$/;"	f	class:PlatformMap	signature:()
+PlatformMap::TotalLoad	Config.cpp	/^void PlatformMap::TotalLoad() {$/;"	f	class:PlatformMap	signature:()
+PointsChecker	CachePool.h	/^  class PointsChecker {$/;"	c	class:xce::ad::GroupPool	access:private
+Print	BaseIndex.h	/^  virtual string Print() {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:()
+Print	BaseIndex.h	/^  virtual string Print()=0;$/;"	p	class:xce::ad::AbstractBaseIndex	access:public	signature:()
+Print	CachePool.h	/^	string Print(const int size);$/;"	p	class:xce::ad::UserBindPool	access:public	signature:(const int size)
+Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::CampaignPool	access:public	signature:(const int size)
+Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::GroupPool	access:public	signature:(const int size)
+Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::MemberPool	access:public	signature:(const int size)
+Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(const int size)
+Print	CachePool.h	/^  virtual string Print(int size) {$/;"	f	class:xce::ad::CachePool	access:public	signature:(int size)
+Print	CampaignPool.cpp	/^string CampaignPool::Print(const int size) {$/;"	f	class:CampaignPool	signature:(const int size)
+Print	Config.cpp	/^string AbstractResolutionMap::Print(const int size) {$/;"	f	class:AbstractResolutionMap	signature:(const int size)
+Print	Config.cpp	/^string Brand3GMap::Print(const int size) {$/;"	f	class:Brand3GMap	signature:(const int size)
+Print	Config.cpp	/^string PlatformMap::Print(const int size) {$/;"	f	class:PlatformMap	signature:(const int size)
+Print	Config.cpp	/^void EngineConfig::Print() {$/;"	f	class:EngineConfig	signature:()
+Print	Config.h	/^	void Print();$/;"	p	class:xce::ad::EngineConfig	access:public	signature:()
+Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(int)
+Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:(int)
+Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(int)
+Print	GroupPool.cpp	/^string GroupPool::Print(const int size) {$/;"	f	class:GroupPool	signature:(const int size)
+Print	MemberPool.cpp	/^string MemberPool::Print(const int size) {$/;"	f	class:MemberPool	signature:(const int size)
+Print	UserBindPool.cpp	/^string UserBindPool::Print(const int size) {$/;"	f	class:UserBindPool	signature:(const int size)
+Print	ZonePool.cpp	/^string ZonePool::Print(const int size) {$/;"	f	class:ZonePool	signature:(const int size)
+PrintPara	Handler.cpp	/^void ParaCheckHandler::PrintPara(AdMobReqPara& request) {$/;"	f	class:ParaCheckHandler	signature:(AdMobReqPara& request)
+PrintPara	Handler.h	/^  inline void PrintPara(AdMobReqPara& request);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(AdMobReqPara& request)
+PrintUserProfile	Handler.cpp	/^inline void ParaCheckHandler::PrintUserProfile(UserProfile& profile) {$/;"	f	class:ParaCheckHandler	signature:(UserProfile& profile)
+PrintUserProfile	Handler.h	/^  inline void PrintUserProfile(UserProfile& profile);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(UserProfile& profile)
+ProcessAge	Translator.cpp	/^bool Translator::ProcessAge(const string& age_code, vector<short>& ages) {$/;"	f	class:Translator	signature:(const string& age_code, vector<short>& ages)
+ProcessAge	Translator.h	/^  static bool ProcessAge(const string& age_code, vector<short>& ages);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& age_code, vector<short>& ages)
+ProcessArea	Translator.cpp	/^bool Translator::ProcessArea(const string& area_code, vector<uint64_t>& areas) {$/;"	f	class:Translator	signature:(const string& area_code, vector<uint64_t>& areas)
+ProcessArea	Translator.h	/^  static bool ProcessArea(const string& area_code, vector<uint64_t>& areas);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& area_code, vector<uint64_t>& areas)
+ProcessBrand3G	Translator.cpp	/^bool Translator::ProcessBrand3G(const string& brand_code, vector<uint64_t>& brands) {$/;"	f	class:Translator	signature:(const string& brand_code, vector<uint64_t>& brands)
+ProcessBrand3G	Translator.h	/^  static bool ProcessBrand3G(const string& brand_code, vector<uint64_t>& brands);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& brand_code, vector<uint64_t>& brands)
+ProcessCpcLog	Click.cpp	/^inline bool ClickRequest::ProcessCpcLog(string& cpclog) {$/;"	f	class:ClickRequest	signature:(string& cpclog)
+ProcessCpcLog	Click.h	/^  inline bool ProcessCpcLog(string& cpclog);$/;"	p	class:xce::ad::ClickRequest	access:private	signature:(string& cpclog)
+ProcessGender	Translator.cpp	/^bool Translator::ProcessGender(const int gender_code, vector<short>& genders) {$/;"	f	class:Translator	signature:(const int gender_code, vector<short>& genders)
+ProcessGender	Translator.h	/^  static bool ProcessGender(const int gender_code, vector<short>& genders);$/;"	p	class:xce::ad::Translator	access:public	signature:(const int gender_code, vector<short>& genders)
+ProcessGrade	Translator.cpp	/^bool Translator::ProcessGrade(const string& grade_code, vector<short>& grades) {$/;"	f	class:Translator	signature:(const string& grade_code, vector<short>& grades)
+ProcessGrade	Translator.h	/^  static bool ProcessGrade(const string& grade_code, vector<short>& grades);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& grade_code, vector<short>& grades)
+ProcessLBS	Translator.cpp	/^bool Translator::ProcessLBS(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list) {$/;"	f	class:Translator	signature:(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list)
+ProcessLBS	Translator.h	/^  static bool ProcessLBS(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list)
+ProcessLeadingArea	Translator.cpp	/^bool Translator::ProcessLeadingArea(const string& area_code, vector<uint64_t>& areas) {$/;"	f	class:Translator	signature:(const string& area_code, vector<uint64_t>& areas)
+ProcessLeadingArea	Translator.h	/^  static bool ProcessLeadingArea(const string& area_code, vector<uint64_t>& areas);$/;"	p	class:xce::ad::Translator	access:private	signature:(const string& area_code, vector<uint64_t>& areas)
+ProcessNetwork	Translator.cpp	/^bool Translator::ProcessNetwork(const string& network_code, vector<short>& networks) {$/;"	f	class:Translator	signature:(const string& network_code, vector<short>& networks)
+ProcessNetwork	Translator.h	/^  static bool ProcessNetwork(const string& network_code, vector<short>& networks);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& network_code, vector<short>& networks)
+ProcessPlatform	Translator.cpp	/^bool Translator::ProcessPlatform(const string& platform_code, vector<uint64_t>& platforms) {$/;"	f	class:Translator	signature:(const string& platform_code, vector<uint64_t>& platforms)
+ProcessPlatform	Translator.h	/^  static bool ProcessPlatform(const string& platform_code, vector<uint64_t>& platforms);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& platform_code, vector<uint64_t>& platforms)
+ProcessRealSchool	Translator.cpp	/^bool Translator::ProcessRealSchool(const string& school_code, vector<uint64_t>& schools) {$/;"	f	class:Translator	signature:(const string& school_code, vector<uint64_t>& schools)
+ProcessRealSchool	Translator.h	/^  static bool ProcessRealSchool(const string& school_code, vector<uint64_t>& schools);$/;"	p	class:xce::ad::Translator	access:private	signature:(const string& school_code, vector<uint64_t>& schools)
+ProcessResolution	Translator.cpp	/^bool Translator::ProcessResolution(const string& resolution_code, vector<short>& resolutions) {$/;"	f	class:Translator	signature:(const string& resolution_code, vector<short>& resolutions)
+ProcessResolution	Translator.h	/^  static bool ProcessResolution(const string& resolution_code, vector<short>& resolutions);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& resolution_code, vector<short>& resolutions)
+ProcessSchool	Translator.cpp	/^bool Translator::ProcessSchool(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools) {$/;"	f	class:Translator	signature:(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools)
+ProcessSchool	Translator.h	/^  static bool ProcessSchool(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools)
+ProcessStage	Translator.cpp	/^bool Translator::ProcessStage(const int stage_code, vector<short>& stages) {$/;"	f	class:Translator	signature:(const int stage_code, vector<short>& stages)
+ProcessStage	Translator.h	/^  static bool ProcessStage(const int stage_code, vector<short>& stages);$/;"	p	class:xce::ad::Translator	access:public	signature:(const int stage_code, vector<short>& stages)
+PvFeedBack	Engine.cpp	/^void AdMobEngine::PvFeedBack(const xce::ad::AdMobFeedback& para, const Ice::Current&) {$/;"	f	class:AdMobEngine	signature:(const xce::ad::AdMobFeedback& para, const Ice::Current&)
+PvFeedBack	Engine.h	/^  virtual void PvFeedBack(const xce::ad::AdMobFeedback& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobFeedback& para, const Ice::Current&)
+RESOLUTION	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+RESOLUTION	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+RESOLUTION_WIDGET	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+ROTATE3G	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	e	enum:xce::ad::DisplayType
+RandomRotateList	Struct.cpp	/^void AdZone::RandomRotateList() {$/;"	f	class:AdZone	signature:()
+RandomRotateList	Struct.h	/^  void RandomRotateList();$/;"	p	class:xce::ad::AdZone	access:public	signature:()
+RandomSelect	Handler.cpp	/^void Selector::RandomSelect(const set<AdGroupPtr>& groups, AdGroupPtr& result) {$/;"	f	class:Selector	signature:(const set<AdGroupPtr>& groups, AdGroupPtr& result)
+RandomSelect	Handler.h	/^  virtual void RandomSelect(const set<AdGroupPtr>& groups, AdGroupPtr& result);$/;"	p	class:xce::ad::Selector	access:public	signature:(const set<AdGroupPtr>& groups, AdGroupPtr& result)
+Rectangle	Struct.h	/^	explicit Rectangle(double longitude, double latitude, double radius) {$/;"	f	class:xce::ad::Rectangle	access:public	signature:(double longitude, double latitude, double radius)
+Rectangle	Struct.h	/^  explicit Rectangle(double x_min, double y_min, double x_max, double y_max):$/;"	f	class:xce::ad::Rectangle	access:public	signature:(double x_min, double y_min, double x_max, double y_max)
+Rectangle	Struct.h	/^class Rectangle : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+Rectangle::IsInRec	Struct.cpp	/^bool Rectangle::IsInRec( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+Rectangle::ToString	Struct.cpp	/^string Rectangle::ToString() const {$/;"	f	class:Rectangle	signature:() const
+Rectangle::operator <	Struct.cpp	/^bool Rectangle::operator<( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+Rectangle::operator ==	Struct.cpp	/^bool Rectangle::operator==( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+RectangleIndex	InvertedIndex.h	/^class RectangleIndex : public BaseIndex<Rectangle> {$/;"	c	namespace:xce::ad	inherits:BaseIndex
+RectangleIndex::Get	InvertedIndex.cpp	/^void RectangleIndex::Get(const Rectangle key, set<AdGroupPtr>& result) {$/;"	f	class:RectangleIndex	signature:(const Rectangle key, set<AdGroupPtr>& result)
+RectangleIndex::GetWithAll	InvertedIndex.cpp	/^void RectangleIndex::GetWithAll(const Rectangle key, set<AdGroupPtr>& result) {$/;"	f	class:RectangleIndex	signature:(const Rectangle key, set<AdGroupPtr>& result)
+RectanglePtr	Struct.h	/^typedef IceUtil::Handle<Rectangle> RectanglePtr;$/;"	t	namespace:xce::ad
+ReloadTask	CachePool.h	/^    ReloadTask(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE ) : updateInterval_(updateInterval) {$/;"	f	class:xce::ad::CachePool::ReloadTask	access:public	signature:(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE )
+ReloadTask	CachePool.h	/^  class ReloadTask : virtual public MyUtil::Task {$/;"	c	class:xce::ad::CachePool	inherits:MyUtil::Task	access:protected
+ResizeRotateList	Struct.cpp	/^void AdZone::ResizeRotateList(int size) {$/;"	f	class:AdZone	signature:(int size)
+ResizeRotateList	Struct.h	/^  void ResizeRotateList(int size);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int size)
+ResolutionIndex	InvertedIndex.h	/^typedef BaseIndex<short> ResolutionIndex;$/;"	t	namespace:xce::ad
+ResolutionMap	Config.h	/^class ResolutionMap : public AbstractResolutionMap, public MyUtil::Singleton<ResolutionMap> {$/;"	c	namespace:xce::ad	inherits:AbstractResolutionMap,MyUtil::Singleton
+ResolutionMap::TotalLoad	Config.cpp	/^void ResolutionMap::TotalLoad() {$/;"	f	class:ResolutionMap	signature:()
+ResolutionMatcher	Config.h	/^class ResolutionMatcher : public AbstractResolutionMap, public MyUtil::Singleton<ResolutionMatcher> {$/;"	c	namespace:xce::ad	inherits:AbstractResolutionMap,MyUtil::Singleton
+ResolutionMatcher::TotalLoad	Config.cpp	/^void ResolutionMatcher::TotalLoad() {$/;"	f	class:ResolutionMatcher	signature:()
+SCHOOL	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+SCHOOLAREA	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+SELF_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+SELF_INDEX	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	e	enum:xce::ad::InvertedIndexType
+SETGET_DATA	Util.h	24;"	d
+STAGE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+STAGE_ALL	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+STAGE_COLLEGE	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+STAGE_SENIOR	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+STAGE_STAFF	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+SchoolArea	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	e	enum:xce::ad::AdTargetUnit::MatchScope
+SchoolAreaIndex	InvertedIndex.h	/^typedef AreaUIntIndex SchoolAreaIndex;$/;"	t	namespace:xce::ad
+SchoolAreaMatch	Struct.h	/^  static bool SchoolAreaMatch(uint64_t area_key, const vector<uint64_t>& area);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(uint64_t area_key, const vector<uint64_t>& area)
+SchoolIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> SchoolIndex;$/;"	t	namespace:xce::ad
+Selector	Handler.h	/^class Selector {$/;"	c	namespace:xce::ad
+Selector::FilterGroups	Handler.cpp	/^void Selector::FilterGroups(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected) {$/;"	f	class:Selector	signature:(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected)
+Selector::FilterGroups	Handler.cpp	/^void Selector::FilterGroups(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected) {$/;"	f	class:Selector	signature:(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected)
+Selector::GetAds	Handler.cpp	/^set<AdGroupPtr> Selector::GetAds(HandlerPara& para, InvertedIndexType type) {$/;"	f	class:Selector	signature:(HandlerPara& para, InvertedIndexType type)
+Selector::RandomSelect	Handler.cpp	/^void Selector::RandomSelect(const set<AdGroupPtr>& groups, AdGroupPtr& result) {$/;"	f	class:Selector	signature:(const set<AdGroupPtr>& groups, AdGroupPtr& result)
+SelfHandler	Handler.h	/^class SelfHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+SelfHandler::handle	Handler.cpp	/^void SelfHandler::handle(HandlerPara& para) {$/;"	f	class:SelfHandler	signature:(HandlerPara& para)
+SetDB	CachePool.h	/^  void SetDB(string DbInstance) {$/;"	f	class:xce::ad::CachePool	access:protected	signature:(string DbInstance)
+SetDB	InvertedIndex.h	/^  void SetDB(string DBInstance) {$/;"	f	class:xce::ad::InvertedIndex	access:public	signature:(string DBInstance)
+ShortIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< BaseIndex<short> > ShortIndexPtr;$/;"	t	namespace:xce::ad
+ShowIndexSize	InvertedIndex.cpp	/^void InvertedIndex::ShowIndexSize() {$/;"	f	class:InvertedIndex	signature:()
+ShowIndexSize	InvertedIndex.h	/^  void ShowIndexSize();$/;"	p	class:xce::ad::InvertedIndex	access:private	signature:()
+Size	BaseIndex.h	/^  size_t Size() {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:()
+Size	BaseIndex.h	/^  virtual size_t Size()=0;$/;"	p	class:xce::ad::AbstractBaseIndex	access:public	signature:()
+Size	CachePool.h	/^	size_t Size();$/;"	p	class:xce::ad::UserBindPool	access:public	signature:()
+Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::CampaignPool	access:public	signature:()
+Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::GroupPool	access:public	signature:()
+Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::MemberPool	access:public	signature:()
+Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::ZonePool	access:public	signature:()
+Size	CachePool.h	/^  virtual size_t Size() {$/;"	f	class:xce::ad::CachePool	access:public	signature:()
+Size	CampaignPool.cpp	/^size_t CampaignPool::Size() {$/;"	f	class:CampaignPool	signature:()
+Size	Config.cpp	/^size_t AbstractResolutionMap::Size() {$/;"	f	class:AbstractResolutionMap	signature:()
+Size	Config.cpp	/^size_t Brand3GMap::Size() {$/;"	f	class:Brand3GMap	signature:()
+Size	Config.cpp	/^size_t EngineConfig::Size() {$/;"	f	class:EngineConfig	signature:()
+Size	Config.cpp	/^size_t PlatformMap::Size() {$/;"	f	class:PlatformMap	signature:()
+Size	Config.h	/^	size_t Size();$/;"	p	class:xce::ad::EngineConfig	access:public	signature:()
+Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:()
+Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:()
+Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::PlatformMap	access:public	signature:()
+Size	GroupPool.cpp	/^size_t GroupPool::Size() {$/;"	f	class:GroupPool	signature:()
+Size	MemberPool.cpp	/^size_t MemberPool::Size() {$/;"	f	class:MemberPool	signature:()
+Size	UserBindPool.cpp	/^size_t UserBindPool::Size() {$/;"	f	class:UserBindPool	signature:()
+Size	ZonePool.cpp	/^size_t ZonePool::Size() {$/;"	f	class:ZonePool	signature:()
+StageIndex	InvertedIndex.h	/^typedef BaseIndex<short> StageIndex;$/;"	t	namespace:xce::ad
+StageType	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	g	namespace:xce::ad
+TestHandler	Handler.h	/^  TestHandler() {$/;"	f	class:xce::ad::TestHandler	access:public	signature:()
+TestHandler	Handler.h	/^class TestHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+TestHandler::ImageSelect	Handler.cpp	/^void TestHandler::ImageSelect(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress) {$/;"	f	class:TestHandler	signature:(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress)
+TestHandler::handle	Handler.cpp	/^void TestHandler::handle(HandlerPara& para) {$/;"	f	class:TestHandler	signature:(HandlerPara& para)
+ToString	Struct.cpp	/^string AdBidUnit::ToString() const {$/;"	f	class:AdBidUnit	signature:() const
+ToString	Struct.cpp	/^string AdCampaign::ToString() const {$/;"	f	class:AdCampaign	signature:() const
+ToString	Struct.cpp	/^string AdGroup::ToString() const {$/;"	f	class:AdGroup	signature:() const
+ToString	Struct.cpp	/^string AdZone::ToString() const {$/;"	f	class:AdZone	signature:() const
+ToString	Struct.cpp	/^string Rectangle::ToString() const {$/;"	f	class:Rectangle	signature:() const
+ToString	Struct.cpp	/^string xce::ad::AdMember::ToString() const {$/;"	f	class:xce::ad::AdMember	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdBidUnit	access:public	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdCampaign	access:public	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdGroup	access:public	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdMember	access:public	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdZone	access:public	signature:() const
+ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::Rectangle	access:public	signature:() const
+ToString	Struct.h	/^  virtual string ToString() const  {$/;"	f	class:xce::ad::AbstractStruct	access:public	signature:() const
+TotalLoad	CachePool.h	/^  virtual void TotalLoad(){}$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::CampaignPool	access:private	signature:()
+TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::MemberPool	access:private	signature:()
+TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::UserBindPool	access:private	signature:()
+TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::ZonePool	access:private	signature:()
+TotalLoad	CampaignPool.cpp	/^void xce::ad::CampaignPool::TotalLoad() {$/;"	f	class:xce::ad::CampaignPool	signature:()
+TotalLoad	Config.cpp	/^void Brand3GMap::TotalLoad() {$/;"	f	class:Brand3GMap	signature:()
+TotalLoad	Config.cpp	/^void PlatformMap::TotalLoad() {$/;"	f	class:PlatformMap	signature:()
+TotalLoad	Config.cpp	/^void ResolutionMap::TotalLoad() {$/;"	f	class:ResolutionMap	signature:()
+TotalLoad	Config.cpp	/^void ResolutionMatcher::TotalLoad() {$/;"	f	class:ResolutionMatcher	signature:()
+TotalLoad	Config.h	/^	void TotalLoad();$/;"	p	class:xce::ad::ResolutionMap	access:private	signature:()
+TotalLoad	Config.h	/^	void TotalLoad();$/;"	p	class:xce::ad::ResolutionMatcher	access:private	signature:()
+TotalLoad	Config.h	/^  void TotalLoad();$/;"	p	class:xce::ad::Brand3GMap	access:private	signature:()
+TotalLoad	Config.h	/^  void TotalLoad();$/;"	p	class:xce::ad::PlatformMap	access:private	signature:()
+TotalLoad	GroupPool.cpp	/^void GroupPool::TotalLoad() {$/;"	f	class:GroupPool	signature:()
+TotalLoad	InvertedIndex.cpp	/^void InvertedIndex::TotalLoad() {$/;"	f	class:InvertedIndex	signature:()
+TotalLoad	InvertedIndex.h	/^  void TotalLoad();$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:()
+TotalLoad	MemberPool.cpp	/^void xce::ad::MemberPool::TotalLoad() {$/;"	f	class:xce::ad::MemberPool	signature:()
+TotalLoad	UserBindPool.cpp	/^void xce::ad::UserBindPool::TotalLoad() {$/;"	f	class:xce::ad::UserBindPool	signature:()
+TotalLoad	ZonePool.cpp	/^void xce::ad::ZonePool::TotalLoad() {$/;"	f	class:xce::ad::ZonePool	signature:()
+TotalLoadAdCreative	CachePool.h	/^  void TotalLoadAdCreative();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+TotalLoadAdCreative	GroupPool.cpp	/^void GroupPool::TotalLoadAdCreative() {$/;"	f	class:GroupPool	signature:()
+TotalLoadAdGroup	CachePool.h	/^  void TotalLoadAdGroup();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+TotalLoadAdGroup	GroupPool.cpp	/^void GroupPool::TotalLoadAdGroup() {$/;"	f	class:GroupPool	signature:()
+TotalLoadAdGroupAdZoneRef	CachePool.h	/^  void TotalLoadAdGroupAdZoneRef();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+TotalLoadAdGroupAdZoneRef	GroupPool.cpp	/^void GroupPool::TotalLoadAdGroupAdZoneRef() {$/;"	f	class:GroupPool	signature:()
+TransToPara	Monitor.h	/^  void TransToPara(const xce::ad::AdMobTargetInput& input, AdMobReqPara& para);$/;"	p	class:xce::ad::AdMobMonitorI	access:private	signature:(const xce::ad::AdMobTargetInput& input, AdMobReqPara& para)
+TransType	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	g	namespace:xce::ad
+Translator	Translator.h	/^class Translator : public MyUtil::Singleton<Translator> {$/;"	c	namespace:xce::ad	inherits:MyUtil::Singleton
+Translator::ProcessAge	Translator.cpp	/^bool Translator::ProcessAge(const string& age_code, vector<short>& ages) {$/;"	f	class:Translator	signature:(const string& age_code, vector<short>& ages)
+Translator::ProcessArea	Translator.cpp	/^bool Translator::ProcessArea(const string& area_code, vector<uint64_t>& areas) {$/;"	f	class:Translator	signature:(const string& area_code, vector<uint64_t>& areas)
+Translator::ProcessBrand3G	Translator.cpp	/^bool Translator::ProcessBrand3G(const string& brand_code, vector<uint64_t>& brands) {$/;"	f	class:Translator	signature:(const string& brand_code, vector<uint64_t>& brands)
+Translator::ProcessGender	Translator.cpp	/^bool Translator::ProcessGender(const int gender_code, vector<short>& genders) {$/;"	f	class:Translator	signature:(const int gender_code, vector<short>& genders)
+Translator::ProcessGrade	Translator.cpp	/^bool Translator::ProcessGrade(const string& grade_code, vector<short>& grades) {$/;"	f	class:Translator	signature:(const string& grade_code, vector<short>& grades)
+Translator::ProcessLBS	Translator.cpp	/^bool Translator::ProcessLBS(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list) {$/;"	f	class:Translator	signature:(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list)
+Translator::ProcessLeadingArea	Translator.cpp	/^bool Translator::ProcessLeadingArea(const string& area_code, vector<uint64_t>& areas) {$/;"	f	class:Translator	signature:(const string& area_code, vector<uint64_t>& areas)
+Translator::ProcessNetwork	Translator.cpp	/^bool Translator::ProcessNetwork(const string& network_code, vector<short>& networks) {$/;"	f	class:Translator	signature:(const string& network_code, vector<short>& networks)
+Translator::ProcessPlatform	Translator.cpp	/^bool Translator::ProcessPlatform(const string& platform_code, vector<uint64_t>& platforms) {$/;"	f	class:Translator	signature:(const string& platform_code, vector<uint64_t>& platforms)
+Translator::ProcessRealSchool	Translator.cpp	/^bool Translator::ProcessRealSchool(const string& school_code, vector<uint64_t>& schools) {$/;"	f	class:Translator	signature:(const string& school_code, vector<uint64_t>& schools)
+Translator::ProcessResolution	Translator.cpp	/^bool Translator::ProcessResolution(const string& resolution_code, vector<short>& resolutions) {$/;"	f	class:Translator	signature:(const string& resolution_code, vector<short>& resolutions)
+Translator::ProcessSchool	Translator.cpp	/^bool Translator::ProcessSchool(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools) {$/;"	f	class:Translator	signature:(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools)
+Translator::ProcessStage	Translator.cpp	/^bool Translator::ProcessStage(const int stage_code, vector<short>& stages) {$/;"	f	class:Translator	signature:(const int stage_code, vector<short>& stages)
+Type	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	g	struct:xce::ad::AdMobIndex	access:public
+Type	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	g	struct:xce::ad::AdMobPool	access:public
+UIntIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< BaseIndex<uint64_t> > UIntIndexPtr;$/;"	t	namespace:xce::ad
+UNHANDLED	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+UNKNOWN_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+USERBIND	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+UrlEncode	Handler.cpp	/^void FormatHandler::UrlEncode(const string& input, string& output) {$/;"	f	class:FormatHandler	signature:(const string& input, string& output)
+UrlEncode	Handler.h	/^  void UrlEncode(const string& input, string& output);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(const string& input, string& output)
+UserBindHandler	Handler.h	/^class UserBindHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+UserBindHandler::handle	Handler.cpp	/^void UserBindHandler::handle(HandlerPara& para) {$/;"	f	class:UserBindHandler	signature:(HandlerPara& para)
+UserBindPool	CachePool.h	/^class UserBindPool : public CachePool, public MyUtil::Singleton<UserBindPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+UserBindPool::GetUserBind	UserBindPool.cpp	/^AdUserBindPtr UserBindPool::GetUserBind(const int user_id, const Ice::Long zone_id) {$/;"	f	class:UserBindPool	signature:(const int user_id, const Ice::Long zone_id)
+UserBindPool::Print	UserBindPool.cpp	/^string UserBindPool::Print(const int size) {$/;"	f	class:UserBindPool	signature:(const int size)
+UserBindPool::Size	UserBindPool.cpp	/^size_t UserBindPool::Size() {$/;"	f	class:UserBindPool	signature:()
+Util	Util.h	/^class Util {$/;"	c	namespace:xce::ad
+ZONE	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+ZoneBottomHandler	Handler.h	/^class ZoneBottomHandler : public ZoneHandler , public MyUtil::Singleton<ZoneBottomHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+ZoneHandler	Handler.cpp	/^ZoneHandler::ZoneHandler() {$/;"	f	class:ZoneHandler	signature:()
+ZoneHandler	Handler.h	/^  ZoneHandler();$/;"	p	class:xce::ad::ZoneHandler	access:public	signature:()
+ZoneHandler	Handler.h	/^class ZoneHandler {$/;"	c	namespace:xce::ad
+ZoneHandler::ZoneHandler	Handler.cpp	/^ZoneHandler::ZoneHandler() {$/;"	f	class:ZoneHandler	signature:()
+ZoneHandler::handle	Handler.cpp	/^void ZoneHandler::handle(HandlerPara& para) {$/;"	f	class:ZoneHandler	signature:(HandlerPara& para)
+ZoneHandlerFactory	Handler.h	/^class ZoneHandlerFactory {$/;"	c	namespace:xce::ad
+ZoneHandlerPtr	Handler.h	/^typedef ZoneHandler* ZoneHandlerPtr;$/;"	t	namespace:xce::ad
+ZonePool	CachePool.h	/^class ZonePool : public CachePool, public MyUtil::Singleton<ZonePool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+ZonePool::FillRotateGroups	ZonePool.cpp	/^inline void ZonePool::FillRotateGroups() {$/;"	f	class:ZonePool	signature:()
+ZonePool::GetAdZone	ZonePool.cpp	/^AdZonePtr ZonePool::GetAdZone(Ice::Long adzone_id) {$/;"	f	class:ZonePool	signature:(Ice::Long adzone_id)
+ZonePool::Print	ZonePool.cpp	/^string ZonePool::Print(const int size) {$/;"	f	class:ZonePool	signature:(const int size)
+ZonePool::Size	ZonePool.cpp	/^size_t ZonePool::Size() {$/;"	f	class:ZonePool	signature:()
+ZoneTestHandler	Handler.cpp	/^ZoneTestHandler::ZoneTestHandler() {$/;"	f	class:ZoneTestHandler	signature:()
+ZoneTestHandler	Handler.h	/^  ZoneTestHandler();$/;"	p	class:xce::ad::ZoneTestHandler	access:public	signature:()
+ZoneTestHandler	Handler.h	/^class ZoneTestHandler : public ZoneHandler , public MyUtil::Singleton<ZoneTestHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+ZoneTestHandler::ZoneTestHandler	Handler.cpp	/^ZoneTestHandler::ZoneTestHandler() {$/;"	f	class:ZoneTestHandler	signature:()
+ZoneTopHandler	Handler.h	/^class ZoneTopHandler : public ZoneHandler , public MyUtil::Singleton<ZoneTopHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+__AD_MOB_CACHE_POOL_H__	CachePool.h	10;"	d
+__AD_MOB_CLICK_H__	Click.h	10;"	d
+__AD_MOB_CONFIG_H__	Config.h	11;"	d
+__AD_MOB_ENGINE_H__	Engine.h	11;"	d
+__AD_MOB_HANDLER__	Handler.h	10;"	d
+__AD_MOB_INVERTED_INDEX_H__	InvertedIndex.h	10;"	d
+__AD_MOB_MONITOR_H__	Monitor.h	10;"	d
+__AD_MOB_STRUCT_H__	Struct.h	10;"	d
+__AD_MOB_TRANSLATOR_H__	Translator.h	10;"	d
+__AD_MOB_UTIL_H__	Util.h	10;"	d
+ad	BaseIndex.h	/^namespace ad{$/;"	n	namespace:xce
+ad	CachePool.cpp	/^namespace ad{$/;"	n	namespace:xce	file:
+ad	CachePool.h	/^namespace ad{$/;"	n	namespace:xce
+ad	Click.h	/^namespace ad {$/;"	n	namespace:xce
+ad	Config.h	/^namespace ad{$/;"	n	namespace:xce
+ad	Engine.h	/^namespace ad {$/;"	n	namespace:xce
+ad	Handler.h	/^namespace ad{$/;"	n	namespace:xce
+ad	InvertedIndex.h	/^namespace ad{$/;"	n	namespace:xce
+ad	Monitor.h	/^namespace ad {$/;"	n	namespace:xce
+ad	Struct.h	/^namespace ad {$/;"	n	namespace:xce
+ad	Translator.h	/^namespace ad{$/;"	n	namespace:xce
+ad	Util.h	/^namespace ad {$/;"	n	namespace:xce
+add_adzone_id	Struct.cpp	/^void AdGroup::add_adzone_id(Ice::Long adzone_id) {$/;"	f	class:AdGroup	signature:(Ice::Long adzone_id)
+add_adzone_id	Struct.h	/^  void add_adzone_id(Ice::Long adzone_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long adzone_id)
+add_creative	Struct.cpp	/^void AdGroup::add_creative(AdCreativePtr creative) {$/;"	f	class:AdGroup	signature:(AdCreativePtr creative)
+add_creative	Struct.h	/^  void add_creative(AdCreativePtr creative);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(AdCreativePtr creative)
+add_creative_id	Struct.cpp	/^void AdGroup::add_creative_id(Ice::Long creative_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id)
+add_creative_id	Struct.h	/^  void add_creative_id(Ice::Long creative_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id)
+add_widget_id	Struct.cpp	/^void AdGroup::add_widget_id(Ice::Long creative_id, Ice::Long widget_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id, Ice::Long widget_id)
+add_widget_id	Struct.h	/^  void add_widget_id(Ice::Long creative_id, Ice::Long widget_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id, Ice::Long widget_id)
+adzone_id_set_	Struct.h	/^  set<Ice::Long> adzone_id_set_;$/;"	m	class:xce::ad::AdGroup	access:private
+adzone_ids	Struct.cpp	/^set<Ice::Long> AdGroup::adzone_ids() {$/;"	f	class:AdGroup	signature:()
+adzone_ids	Struct.h	/^  set<Ice::Long> adzone_ids();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+age_	Struct.h	/^  vector<short> age_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+age_index_	InvertedIndex.h	/^  ShortIndexPtr age_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+area_	Struct.h	/^  vector<uint64_t> area_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+area_index_	InvertedIndex.h	/^  AreaIndexPtr area_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+brand3G_index_	InvertedIndex.h	/^  UIntIndexPtr brand3G_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+brand_	Struct.h	/^  vector<uint64_t> brand_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+cache_dict_	Monitor.h	/^  map<int, CachePool*> cache_dict_;$/;"	m	class:xce::ad::AdMobMonitorI	access:private
+click_log_	Handler.h	/^  string click_log_;	   \/\/click log$/;"	m	struct:xce::ad::HandlerPara	access:public
+cost	Struct.cpp	/^double AdGroup::cost() {$/;"	f	class:AdGroup	signature:()
+cost	Struct.h	/^  double cost();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+cpc_charge_log_	Handler.h	/^  string cpc_charge_log_;  \/\/cpc charge$/;"	m	struct:xce::ad::HandlerPara	access:public
+cpm_charge_log_	Handler.h	/^  string cpm_charge_log_;  \/\/cpm charge$/;"	m	struct:xce::ad::HandlerPara	access:public
+creative2widget_	Struct.h	/^  map<Ice::Long,Ice::Long> creative2widget_;$/;"	m	class:xce::ad::AdGroup	access:private
+creative_id	Struct.cpp	/^Ice::Long AdGroup::creative_id() {$/;"	f	class:AdGroup	signature:()
+creative_id	Struct.h	/^  Ice::Long creative_id();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+creative_id_set_	Struct.h	/^  set<Ice::Long> creative_id_set_;$/;"	m	class:xce::ad::AdGroup	access:private
+creative_seq_	Struct.h	/^  vector<AdCreativePtr> creative_seq_;$/;"	m	class:xce::ad::AdGroup	access:private
+gender_	Struct.h	/^  short gender_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+gender_index_	InvertedIndex.h	/^  ShortIndexPtr gender_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+grade_	Struct.h	/^  vector<short> grade_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+grade_index_	InvertedIndex.h	/^  ShortIndexPtr grade_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+handle	CachePool.cpp	/^void CachePool::ReloadTask::handle() {$/;"	f	class:xce::ad::CachePool::ReloadTask	signature:()
+handle	CachePool.h	/^    virtual void handle();$/;"	p	class:xce::ad::CachePool::InitTask	access:public	signature:()
+handle	CachePool.h	/^    virtual void handle();$/;"	p	class:xce::ad::CachePool::ReloadTask	access:public	signature:()
+handle	Handler.cpp	/^void BrandCpmCpcHandler::handle(HandlerPara& para) {$/;"	f	class:BrandCpmCpcHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void BrandRotateHandler::handle(HandlerPara& para) {$/;"	f	class:BrandRotateHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void FormatHandler::handle(HandlerPara& para) {$/;"	f	class:FormatHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void LogHandler::handle(HandlerPara& para) {$/;"	f	class:LogHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void ParaCheckHandler::handle(HandlerPara& para) {$/;"	f	class:ParaCheckHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void SelfHandler::handle(HandlerPara& para) {$/;"	f	class:SelfHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void TestHandler::handle(HandlerPara& para) {$/;"	f	class:TestHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void UserBindHandler::handle(HandlerPara& para) {$/;"	f	class:UserBindHandler	signature:(HandlerPara& para)
+handle	Handler.cpp	/^void ZoneHandler::handle(HandlerPara& para) {$/;"	f	class:ZoneHandler	signature:(HandlerPara& para)
+handle	Handler.h	/^	void handle(HandlerPara& para);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  virtual void handle( HandlerPara& para );$/;"	p	class:xce::ad::ZoneHandler	access:public	signature:( HandlerPara& para )
+handle	Handler.h	/^  virtual void handle(HandlerPara& para) {}$/;"	f	class:xce::ad::BaseHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::BrandCpmCpcHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::BrandRotateHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::ParaCheckHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::SelfHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::TestHandler	access:public	signature:(HandlerPara& para)
+handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::UserBindHandler	access:public	signature:(HandlerPara& para)
+handle_flag_	Handler.h	/^  HandleFlagType handle_flag_;		\/\/处理标记$/;"	m	struct:xce::ad::HandlerPara	access:public
+handler_list_	Handler.h	/^  vector<HandlerPtr> handler_list_;$/;"	m	class:xce::ad::ZoneHandler	access:protected
+have_creative	Struct.cpp	/^bool AdGroup::have_creative() {$/;"	f	class:AdGroup	signature:()
+have_creative	Struct.h	/^  bool have_creative();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+imageWidthSeq_	Handler.h	/^  vector<int> imageWidthSeq_;  \/\/图片大小seq$/;"	m	class:xce::ad::TestHandler	access:private
+index_	BaseIndex.h	/^  map< KEY_TYPE, set<AdGroupPtr> > index_;$/;"	m	class:xce::ad::BaseIndex	access:protected
+index_dict_	InvertedIndex.h	/^  map<int, IndexPtr> index_dict_;$/;"	m	class:xce::ad::DimIndex	access:public
+initOK	Engine.cpp	/^void AdMobEngine::initOK() {$/;"	f	class:AdMobEngine	signature:()
+initOK	Engine.h	/^  void initOK();$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:()
+init_ok_	CachePool.h	/^  bool init_ok_;$/;"	m	class:xce::ad::CachePool	access:protected
+init_ok_	Engine.h	/^  bool init_ok_;$/;"	m	class:xce::ad::AdMobEngine	access:private
+initialize	Engine.cpp	/^void MyUtil::initialize() {$/;"	f	class:MyUtil	signature:()
+lbs_	Struct.h	/^  vector<Rectangle> lbs_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+lbs_index_	InvertedIndex.h	/^  LBSIndexPtr lbs_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+mutex_	BaseIndex.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::BaseIndex	access:protected
+mutex_	CachePool.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::CachePool	access:protected
+mutex_	InvertedIndex.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+mysql_double	Util.h	100;"	d
+mysql_int	Util.h	96;"	d
+mysql_long	Util.h	94;"	d
+mysql_short	Util.h	98;"	d
+mysql_string	Util.h	102;"	d
+network_	Struct.h	/^  vector<short> network_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+network_index_	InvertedIndex.h	/^  ShortIndexPtr network_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+operator <	Struct.cpp	/^bool AdCreative::operator<( const AdCreative& r) const {$/;"	f	class:AdCreative	signature:( const AdCreative& r) const
+operator <	Struct.cpp	/^bool AdGroup::operator<( const AdGroup& r ) const{$/;"	f	class:AdGroup	signature:( const AdGroup& r ) const
+operator <	Struct.cpp	/^bool AdUserBind::operator <(const AdUserBind& r) const {$/;"	f	class:AdUserBind	signature:(const AdUserBind& r) const
+operator <	Struct.cpp	/^bool Rectangle::operator<( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+operator <	Struct.h	/^  bool operator <(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+operator <	Struct.h	/^  bool operator<( const AdCreative& r ) const;$/;"	p	class:xce::ad::AdCreative	access:public	signature:( const AdCreative& r ) const
+operator <	Struct.h	/^  bool operator<( const AdGroup& r ) const;$/;"	p	class:xce::ad::AdGroup	access:public	signature:( const AdGroup& r ) const
+operator <	Struct.h	/^  bool operator<( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+operator <<	Struct.cpp	/^ostream& xce::ad::operator<< (ostream &os, const Rectangle &rec) {$/;"	f	class:xce::ad	signature:(ostream &os, const Rectangle &rec)
+operator <<	Struct.h	/^  friend ostream& operator<< (ostream&, const Rectangle &rec);$/;"	p	class:xce::ad::Rectangle	access:friend	signature:(ostream&, const Rectangle &rec)
+operator ==	Struct.cpp	/^bool Rectangle::operator==( const Rectangle& r ) const{$/;"	f	class:Rectangle	signature:( const Rectangle& r ) const
+operator ==	Struct.h	/^  bool operator ==(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+operator ==	Struct.h	/^  bool operator==( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+operator >	Struct.h	/^  bool operator >(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+parent_	CachePool.h	/^    CachePool* parent_;$/;"	m	class:xce::ad::CachePool::InitTask	access:private
+parent_	CachePool.h	/^    CachePool* parent_;$/;"	m	class:xce::ad::CachePool::ReloadTask	access:private
+per_lati	Struct.h	/^  static const double per_lati = 0.00897;   \/\/1公里的纬度折算$/;"	m	class:xce::ad::Rectangle	access:public
+per_long	Struct.h	/^  static const double per_long = 0.01130;   \/\/1公里的经度折算$/;"	m	class:xce::ad::Rectangle	access:public
+platform_	Struct.h	/^  vector<uint64_t> platform_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+platform_index_	InvertedIndex.h	/^  UIntIndexPtr platform_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+pool_	CachePool.h	/^  map<Ice::Long, AdCampaignPtr> pool_;$/;"	m	class:xce::ad::CampaignPool	access:private
+pool_	CachePool.h	/^  map<Ice::Long, AdGroupPtr> pool_;$/;"	m	class:xce::ad::GroupPool	access:private
+pool_	CachePool.h	/^  map<Ice::Long, AdMemberPtr> pool_;$/;"	m	class:xce::ad::MemberPool	access:private
+pool_	CachePool.h	/^  map<Ice::Long, AdZonePtr> pool_;$/;"	m	class:xce::ad::ZonePool	access:private
+pool_	CachePool.h	/^  set<AdUserBindPtr> pool_;$/;"	m	class:xce::ad::UserBindPool	access:private
+pool_	Config.h	/^  map<string, AdPlatformPtr> pool_;$/;"	m	class:xce::ad::PlatformMap	access:private
+pool_	Config.h	/^  map<string, Ice::Long> pool_;$/;"	m	class:xce::ad::Brand3GMap	access:private
+property_dict_	Config.h	/^	map<string, string> property_dict_;$/;"	m	class:xce::ad::EngineConfig	access:private
+pv_log_	Handler.h	/^  string pv_log_;		   \/\/pv log$/;"	m	struct:xce::ad::HandlerPara	access:public
+request_	Handler.h	/^  AdMobReqPara request_;	  \/\/3G请求$/;"	m	struct:xce::ad::HandlerPara	access:public
+resolution_	Struct.h	/^  vector<short> resolution_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+resolution_index_	InvertedIndex.h	/^  ShortIndexPtr resolution_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+response	Click.cpp	/^bool ClickRequest::response() {$/;"	f	class:ClickRequest	signature:()
+response	Click.cpp	/^bool OtherRequest::response() {$/;"	f	class:OtherRequest	signature:()
+response	Click.h	/^  virtual bool response();$/;"	p	class:xce::ad::ClickRequest	access:public	signature:()
+response	Click.h	/^  virtual bool response();$/;"	p	class:xce::ad::OtherRequest	access:public	signature:()
+response_	Handler.h	/^  AdMobResPara response_;	  \/\/3G返回$/;"	m	struct:xce::ad::HandlerPara	access:public
+rotate_list_	Struct.h	/^  vector<AdGroupPtr> rotate_list_;$/;"	m	class:xce::ad::AdZone	access:private
+school_	Struct.h	/^  vector<uint64_t> school_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+school_area_	Struct.h	/^  vector<uint64_t> school_area_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+school_area_index_	InvertedIndex.h	/^  AreaIndexPtr school_area_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+school_index_	InvertedIndex.h	/^  UIntIndexPtr school_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+selected_creative_id_	Handler.h	/^  Ice::Long selected_creative_id_;           \/\/选到的creative_id$/;"	m	struct:xce::ad::HandlerPara	access:public
+selected_group_ptr_	Handler.h	/^  AdGroupPtr selected_group_ptr_;	\/\/选到的广告指针$/;"	m	struct:xce::ad::HandlerPara	access:public
+selected_group_type_	Handler.h	/^  AdType selected_group_type_;		\/\/广告的类型 0品牌 1自助 -1未知$/;"	m	struct:xce::ad::HandlerPara	access:public
+set_seleted_group	Handler.cpp	/^inline void HandlerPara::set_seleted_group(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag) {$/;"	f	class:HandlerPara	signature:(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag)
+set_seleted_group	Handler.h	/^  inline void set_seleted_group(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag);$/;"	p	struct:xce::ad::HandlerPara	access:public	signature:(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag)
+set_target_unit	Struct.cpp	/^void AdGroup::set_target_unit(AdTargetUnitPtr target_unit) {$/;"	f	class:AdGroup	signature:(AdTargetUnitPtr target_unit)
+set_target_unit	Struct.h	/^  void set_target_unit(AdTargetUnitPtr target_unit);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(AdTargetUnitPtr target_unit)
+sorted_width_seq_	Config.h	/^  vector< pair<short, string> > sorted_width_seq_;$/;"	m	class:xce::ad::AbstractResolutionMap	access:protected
+stage_	Struct.h	/^  short stage_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+stage_index_	InvertedIndex.h	/^  ShortIndexPtr stage_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+target_unit	Struct.cpp	/^AdTargetUnitPtr AdGroup::target_unit() {$/;"	f	class:AdGroup	signature:()
+target_unit	Struct.h	/^  AdTargetUnitPtr target_unit();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+target_unit_	Struct.h	/^  AdTargetUnitPtr target_unit_;$/;"	m	class:xce::ad::AdGroup	access:private
+test_map_	Handler.h	/^  map<int, int> test_map_;	   \/\/3G测试需要$/;"	m	class:xce::ad::TestHandler	access:private
+updateInterval_	CachePool.h	/^    Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool::InitTask	access:private
+updateInterval_	CachePool.h	/^    Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool::ReloadTask	access:private
+updateInterval_	CachePool.h	/^  Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool	access:protected
+userProfile_	Handler.h	/^  UserProfile userProfile_;	  \/\/用户信息$/;"	m	struct:xce::ad::HandlerPara	access:public
+weight	Struct.cpp	/^double AdGroup::weight() {$/;"	f	class:AdGroup	signature:()
+weight	Struct.h	/^  double weight();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+widget	Struct.cpp	/^string AdGroup::widget() {$/;"	f	class:AdGroup	signature:()
+widget	Struct.cpp	/^string AdGroup::widget(Ice::Long creative_id) {$/;"	f	class:AdGroup	signature:(Ice::Long creative_id)
+widget	Struct.h	/^  string widget();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+widget	Struct.h	/^  string widget(Ice::Long creative_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id)
+widget_id	Struct.cpp	/^Ice::Long AdGroup::widget_id() {$/;"	f	class:AdGroup	signature:()
+widget_id	Struct.h	/^  Ice::Long widget_id();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce	BaseIndex.h	/^namespace xce{$/;"	n
+xce	CachePool.cpp	/^namespace xce{$/;"	n	file:
+xce	CachePool.h	/^namespace xce{$/;"	n
+xce	Click.h	/^namespace xce {$/;"	n
+xce	Config.h	/^namespace xce{$/;"	n
+xce	Engine.h	/^namespace xce {$/;"	n
+xce	Handler.h	/^namespace xce{$/;"	n
+xce	InvertedIndex.h	/^namespace xce{$/;"	n
+xce	Monitor.h	/^namespace xce {$/;"	n
+xce	Struct.h	/^namespace xce {$/;"	n
+xce	Translator.h	/^namespace xce{$/;"	n
+xce	Util.h	/^namespace xce {$/;"	n
+xce::ad	BaseIndex.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	CachePool.cpp	/^namespace ad{$/;"	n	namespace:xce	file:
+xce::ad	CachePool.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	Click.h	/^namespace ad {$/;"	n	namespace:xce
+xce::ad	Config.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	Engine.h	/^namespace ad {$/;"	n	namespace:xce
+xce::ad	Handler.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	InvertedIndex.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	Monitor.h	/^namespace ad {$/;"	n	namespace:xce
+xce::ad	Struct.h	/^namespace ad {$/;"	n	namespace:xce
+xce::ad	Translator.h	/^namespace ad{$/;"	n	namespace:xce
+xce::ad	Util.h	/^namespace ad {$/;"	n	namespace:xce
+xce::ad::AbstractBaseIndex	BaseIndex.h	/^class AbstractBaseIndex : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+xce::ad::AbstractBaseIndex::Print	BaseIndex.h	/^  virtual string Print()=0;$/;"	p	class:xce::ad::AbstractBaseIndex	access:public	signature:()
+xce::ad::AbstractBaseIndex::Size	BaseIndex.h	/^  virtual size_t Size()=0;$/;"	p	class:xce::ad::AbstractBaseIndex	access:public	signature:()
+xce::ad::AbstractResolutionMap	Config.h	/^class AbstractResolutionMap : public CachePool {$/;"	c	namespace:xce::ad	inherits:CachePool
+xce::ad::AbstractResolutionMap::GetCeilWidths	Config.h	/^  set<short> GetCeilWidths(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+xce::ad::AbstractResolutionMap::GetFixedWidth	Config.h	/^  short GetFixedWidth(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+xce::ad::AbstractResolutionMap::GetFloorWidth	Config.h	/^  short GetFloorWidth(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+xce::ad::AbstractResolutionMap::GetFloorWidths	Config.h	/^  set<short> GetFloorWidths(short width);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(short width)
+xce::ad::AbstractResolutionMap::Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:(int)
+xce::ad::AbstractResolutionMap::Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::AbstractResolutionMap	access:public	signature:()
+xce::ad::AbstractResolutionMap::sorted_width_seq_	Config.h	/^  vector< pair<short, string> > sorted_width_seq_;$/;"	m	class:xce::ad::AbstractResolutionMap	access:protected
+xce::ad::AbstractStruct	Struct.h	/^class AbstractStruct : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+xce::ad::AbstractStruct::ToString	Struct.h	/^  virtual string ToString() const  {$/;"	f	class:xce::ad::AbstractStruct	access:public	signature:() const
+xce::ad::AbstractStructPtr	Struct.h	/^typedef IceUtil::Handle<AbstractStruct> AbstractStructPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdBidUnit	Struct.h	/^class AdBidUnit : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdBidUnit::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdBidUnit	access:public	signature:() const
+xce::ad::AdBidUnitPtr	Struct.h	/^typedef IceUtil::Handle<AdBidUnit> AdBidUnitPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdCampaign	Struct.h	/^class AdCampaign : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdCampaign::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdCampaign	access:public	signature:() const
+xce::ad::AdCampaignPtr	Struct.h	/^typedef IceUtil::Handle<AdCampaign> AdCampaignPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdCreative	Struct.h	/^class AdCreative : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdCreative::AdCreative	Struct.h	/^  explicit AdCreative(Ice::Long creative_id, int widget_id, string& widget):$/;"	f	class:xce::ad::AdCreative	access:public	signature:(Ice::Long creative_id, int widget_id, string& widget)
+xce::ad::AdCreative::operator <	Struct.h	/^  bool operator<( const AdCreative& r ) const;$/;"	p	class:xce::ad::AdCreative	access:public	signature:( const AdCreative& r ) const
+xce::ad::AdCreativeMap	Struct.h	/^typedef map<Ice::Long, AdCreative> AdCreativeMap;$/;"	t	namespace:xce::ad
+xce::ad::AdCreativePtr	Struct.h	/^typedef IceUtil::Handle<AdCreative> AdCreativePtr;$/;"	t	namespace:xce::ad
+xce::ad::AdGroup	Struct.h	/^class AdGroup : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdGroup::Available	Struct.h	/^  bool Available();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdGroup	access:public	signature:() const
+xce::ad::AdGroup::add_adzone_id	Struct.h	/^  void add_adzone_id(Ice::Long adzone_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long adzone_id)
+xce::ad::AdGroup::add_creative	Struct.h	/^  void add_creative(AdCreativePtr creative);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(AdCreativePtr creative)
+xce::ad::AdGroup::add_creative_id	Struct.h	/^  void add_creative_id(Ice::Long creative_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id)
+xce::ad::AdGroup::add_widget_id	Struct.h	/^  void add_widget_id(Ice::Long creative_id, Ice::Long widget_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id, Ice::Long widget_id)
+xce::ad::AdGroup::adzone_id_set_	Struct.h	/^  set<Ice::Long> adzone_id_set_;$/;"	m	class:xce::ad::AdGroup	access:private
+xce::ad::AdGroup::adzone_ids	Struct.h	/^  set<Ice::Long> adzone_ids();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::cost	Struct.h	/^  double cost();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::creative2widget_	Struct.h	/^  map<Ice::Long,Ice::Long> creative2widget_;$/;"	m	class:xce::ad::AdGroup	access:private
+xce::ad::AdGroup::creative_id	Struct.h	/^  Ice::Long creative_id();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::creative_id_set_	Struct.h	/^  set<Ice::Long> creative_id_set_;$/;"	m	class:xce::ad::AdGroup	access:private
+xce::ad::AdGroup::creative_seq_	Struct.h	/^  vector<AdCreativePtr> creative_seq_;$/;"	m	class:xce::ad::AdGroup	access:private
+xce::ad::AdGroup::have_creative	Struct.h	/^  bool have_creative();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::operator <	Struct.h	/^  bool operator<( const AdGroup& r ) const;$/;"	p	class:xce::ad::AdGroup	access:public	signature:( const AdGroup& r ) const
+xce::ad::AdGroup::set_target_unit	Struct.h	/^  void set_target_unit(AdTargetUnitPtr target_unit);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(AdTargetUnitPtr target_unit)
+xce::ad::AdGroup::target_unit	Struct.h	/^  AdTargetUnitPtr target_unit();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::target_unit_	Struct.h	/^  AdTargetUnitPtr target_unit_;$/;"	m	class:xce::ad::AdGroup	access:private
+xce::ad::AdGroup::weight	Struct.h	/^  double weight();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::widget	Struct.h	/^  string widget();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroup::widget	Struct.h	/^  string widget(Ice::Long creative_id);$/;"	p	class:xce::ad::AdGroup	access:public	signature:(Ice::Long creative_id)
+xce::ad::AdGroup::widget_id	Struct.h	/^  Ice::Long widget_id();$/;"	p	class:xce::ad::AdGroup	access:public	signature:()
+xce::ad::AdGroupPtr	Struct.h	/^typedef IceUtil::Handle<AdGroup> AdGroupPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdMember	Struct.h	/^class AdMember : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdMember::HaveMoney	Struct.h	/^  bool HaveMoney();$/;"	p	class:xce::ad::AdMember	access:public	signature:()
+xce::ad::AdMember::ToString	Struct.cpp	/^string xce::ad::AdMember::ToString() const {$/;"	f	class:xce::ad::AdMember	signature:() const
+xce::ad::AdMember::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdMember	access:public	signature:() const
+xce::ad::AdMemberPtr	Struct.h	/^typedef IceUtil::Handle<AdMember> AdMemberPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdMobEngine	Engine.h	/^class AdMobEngine: public AdMob, public MyUtil::Singleton<AdMobEngine> {$/;"	c	namespace:xce::ad	inherits:AdMob,MyUtil::Singleton
+xce::ad::AdMobEngine::AdMobEngine	Engine.h	/^  AdMobEngine();$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:()
+xce::ad::AdMobEngine::GetAds	Engine.h	/^  virtual AdMobResPara GetAds(const xce::ad::AdMobReqPara& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobReqPara& para, const Ice::Current&)
+xce::ad::AdMobEngine::GetAdsForTest	Engine.h	/^  virtual AdMobResPara GetAdsForTest(const xce::ad::AdMobReqPara& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobReqPara& para, const Ice::Current&)
+xce::ad::AdMobEngine::PvFeedBack	Engine.h	/^  virtual void PvFeedBack(const xce::ad::AdMobFeedback& para, const Ice::Current&);$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:(const xce::ad::AdMobFeedback& para, const Ice::Current&)
+xce::ad::AdMobEngine::initOK	Engine.h	/^  void initOK();$/;"	p	class:xce::ad::AdMobEngine	access:public	signature:()
+xce::ad::AdMobEngine::init_ok_	Engine.h	/^  bool init_ok_;$/;"	m	class:xce::ad::AdMobEngine	access:private
+xce::ad::AdMobIndex	Util.h	/^struct AdMobIndex {$/;"	s	namespace:xce::ad
+xce::ad::AdMobIndex::AGE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::AREA	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::BRAND3G	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::GENDER	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::GRADE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::LBS	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::MAX	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::NETWORK	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::PLATFORM	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::RESOLUTION	Util.h	/^	           BRAND3G = 10, RESOLUTION = 11, LBS = 12, MAX =13};$/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::SCHOOL	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::SCHOOLAREA	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::STAGE	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	e	enum:xce::ad::AdMobIndex::Type
+xce::ad::AdMobIndex::Type	Util.h	/^  enum Type { GENDER = 1, STAGE = 2, AGE = 3, GRADE = 4, SCHOOL = 5, AREA = 6, SCHOOLAREA = 7, PLATFORM = 8, NETWORK = 9, $/;"	g	struct:xce::ad::AdMobIndex	access:public
+xce::ad::AdMobMonitorI	Monitor.h	/^class AdMobMonitorI: public AdMobMonitor, public MyUtil::Singleton<AdMobMonitorI> {$/;"	c	namespace:xce::ad	inherits:AdMobMonitor,MyUtil::Singleton
+xce::ad::AdMobMonitorI::AdMobMonitorI	Monitor.h	/^  AdMobMonitorI();$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:()
+xce::ad::AdMobMonitorI::GetBrandCandidateGroups	Monitor.h	/^  virtual string GetBrandCandidateGroups(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetBrandIndexInfo	Monitor.h	/^  virtual string GetBrandIndexInfo(const int index, const Ice::Long zone, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetPoolAll	Monitor.h	/^  virtual string GetPoolAll(const int pool, const int size, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const int size, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetPoolSize	Monitor.h	/^  virtual int GetPoolSize(const int pool, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetPoolValue	Monitor.h	/^  virtual string GetPoolValue(const int pool, const long id, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int pool, const long id, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetRotateGroups	Monitor.h	/^  virtual string GetRotateGroups(const Ice::Long zone_id, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const Ice::Long zone_id, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetSelfCandidateGroups	Monitor.h	/^  virtual string GetSelfCandidateGroups(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobReqPara& para, const int index_flag, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetSelfIndexInfo	Monitor.h	/^  virtual string GetSelfIndexInfo(const int index, const Ice::Long zone, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const int index, const Ice::Long zone, const Ice::Current&)
+xce::ad::AdMobMonitorI::GetTargetGroups	Monitor.h	/^  virtual AdMobTargetOutputSeq GetTargetGroups(const xce::ad::AdMobTargetInput& input, const Ice::Current&);$/;"	p	class:xce::ad::AdMobMonitorI	access:public	signature:(const xce::ad::AdMobTargetInput& input, const Ice::Current&)
+xce::ad::AdMobMonitorI::TransToPara	Monitor.h	/^  void TransToPara(const xce::ad::AdMobTargetInput& input, AdMobReqPara& para);$/;"	p	class:xce::ad::AdMobMonitorI	access:private	signature:(const xce::ad::AdMobTargetInput& input, AdMobReqPara& para)
+xce::ad::AdMobMonitorI::cache_dict_	Monitor.h	/^  map<int, CachePool*> cache_dict_;$/;"	m	class:xce::ad::AdMobMonitorI	access:private
+xce::ad::AdMobPool	Util.h	/^struct AdMobPool {$/;"	s	namespace:xce::ad
+xce::ad::AdMobPool::BRAND3G	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::CAMPAIGN	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::GROUP	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::MAX	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::MEMBER	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::PLATFORM	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::RESOLUTION	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::RESOLUTION_WIDGET	Util.h	/^		          RESOLUTION =8, RESOLUTION_WIDGET = 9, MAX= 10};$/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::Type	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	g	struct:xce::ad::AdMobPool	access:public
+xce::ad::AdMobPool::USERBIND	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobPool::ZONE	Util.h	/^  enum Type { MEMBER = 1, CAMPAIGN = 2, GROUP = 3, ZONE = 4, USERBIND = 5, PLATFORM = 6, BRAND3G = 7, $/;"	e	enum:xce::ad::AdMobPool::Type
+xce::ad::AdMobRequestFactory	Click.h	/^class AdMobRequestFactory : public RequestFactory {$/;"	c	namespace:xce::ad	inherits:RequestFactory
+xce::ad::AdMobRequestFactory::Create	Click.h	/^  virtual RequestPtr Create(FCGX_Request * r) {$/;"	f	class:xce::ad::AdMobRequestFactory	access:public	signature:(FCGX_Request * r)
+xce::ad::AdPlatform	Struct.h	/^class AdPlatform : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdPlatformPtr	Struct.h	/^typedef IceUtil::Handle<AdPlatform> AdPlatformPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdTargetUnit	Struct.h	/^class AdTargetUnit : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdTargetUnit::AdTargetUnit	Struct.h	/^  explicit AdTargetUnit(const AdBidUnit& bid_unit);$/;"	p	class:xce::ad::AdTargetUnit	access:public	signature:(const AdBidUnit& bid_unit)
+xce::ad::AdTargetUnit::Area	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	e	enum:xce::ad::AdTargetUnit::MatchScope
+xce::ad::AdTargetUnit::AreaMatch	Struct.h	/^  static bool AreaMatch(uint64_t area_key, const vector<uint64_t>& area);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(uint64_t area_key, const vector<uint64_t>& area)
+xce::ad::AdTargetUnit::LbsMatch	Struct.h	/^  static bool LbsMatch(Rectangle rec_key, const vector<Rectangle>& rec_list);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(Rectangle rec_key, const vector<Rectangle>& rec_list)
+xce::ad::AdTargetUnit::Match	Struct.h	/^  bool Match(const UserProfile& userProfile, const AdMobReqPara& request);$/;"	p	class:xce::ad::AdTargetUnit	access:public	signature:(const UserProfile& userProfile, const AdMobReqPara& request)
+xce::ad::AdTargetUnit::MatchScope	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	g	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::SchoolArea	Struct.h	/^  enum MatchScope { Area, SchoolArea };$/;"	e	enum:xce::ad::AdTargetUnit::MatchScope
+xce::ad::AdTargetUnit::SchoolAreaMatch	Struct.h	/^  static bool SchoolAreaMatch(uint64_t area_key, const vector<uint64_t>& area);$/;"	p	class:xce::ad::AdTargetUnit	access:private	signature:(uint64_t area_key, const vector<uint64_t>& area)
+xce::ad::AdTargetUnit::age_	Struct.h	/^  vector<short> age_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::area_	Struct.h	/^  vector<uint64_t> area_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::brand_	Struct.h	/^  vector<uint64_t> brand_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::gender_	Struct.h	/^  short gender_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::grade_	Struct.h	/^  vector<short> grade_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::lbs_	Struct.h	/^  vector<Rectangle> lbs_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::network_	Struct.h	/^  vector<short> network_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::platform_	Struct.h	/^  vector<uint64_t> platform_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::resolution_	Struct.h	/^  vector<short> resolution_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::school_	Struct.h	/^  vector<uint64_t> school_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::school_area_	Struct.h	/^  vector<uint64_t> school_area_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnit::stage_	Struct.h	/^  short stage_;$/;"	m	class:xce::ad::AdTargetUnit	access:private
+xce::ad::AdTargetUnitPtr	Struct.h	/^typedef IceUtil::Handle<AdTargetUnit> AdTargetUnitPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdType	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	g	namespace:xce::ad
+xce::ad::AdUserBind	Struct.h	/^class AdUserBind : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdUserBind::operator <	Struct.h	/^  bool operator <(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+xce::ad::AdUserBind::operator ==	Struct.h	/^  bool operator ==(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+xce::ad::AdUserBind::operator >	Struct.h	/^  bool operator >(const AdUserBind& r) const;$/;"	p	class:xce::ad::AdUserBind	access:public	signature:(const AdUserBind& r) const
+xce::ad::AdUserBindPtr	Struct.h	/^typedef IceUtil::Handle<AdUserBind> AdUserBindPtr;$/;"	t	namespace:xce::ad
+xce::ad::AdZone	Struct.h	/^class AdZone : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::AdZone::AddGroupToRotateList	Struct.h	/^  bool AddGroupToRotateList(int rotate_index, const AdGroupPtr& group);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int rotate_index, const AdGroupPtr& group)
+xce::ad::AdZone::GetAllRotateGroups	Struct.h	/^  void GetAllRotateGroups(map<AdGroupPtr, int>& result);$/;"	p	class:xce::ad::AdZone	access:public	signature:(map<AdGroupPtr, int>& result)
+xce::ad::AdZone::GetRotateGroups	Struct.h	/^  AdGroupPtr GetRotateGroups(int rotate_index);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int rotate_index)
+xce::ad::AdZone::GetRotateSize	Struct.h	/^  int GetRotateSize() const;$/;"	p	class:xce::ad::AdZone	access:public	signature:() const
+xce::ad::AdZone::RandomRotateList	Struct.h	/^  void RandomRotateList();$/;"	p	class:xce::ad::AdZone	access:public	signature:()
+xce::ad::AdZone::ResizeRotateList	Struct.h	/^  void ResizeRotateList(int size);$/;"	p	class:xce::ad::AdZone	access:public	signature:(int size)
+xce::ad::AdZone::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::AdZone	access:public	signature:() const
+xce::ad::AdZone::rotate_list_	Struct.h	/^  vector<AdGroupPtr> rotate_list_;$/;"	m	class:xce::ad::AdZone	access:private
+xce::ad::AdZoneMap	Struct.h	/^typedef map<Ice::Long, AdZonePtr> AdZoneMap;$/;"	t	namespace:xce::ad
+xce::ad::AdZonePtr	Struct.h	/^typedef IceUtil::Handle<AdZone> AdZonePtr;$/;"	t	namespace:xce::ad
+xce::ad::AgeIndex	InvertedIndex.h	/^typedef BaseIndex<short> AgeIndex;$/;"	t	namespace:xce::ad
+xce::ad::AreaIndex	InvertedIndex.h	/^typedef AreaUIntIndex AreaIndex;$/;"	t	namespace:xce::ad
+xce::ad::AreaIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< AreaUIntIndex > AreaIndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::AreaUIntIndex	InvertedIndex.h	/^class AreaUIntIndex : public BaseIndex<uint64_t> {$/;"	c	namespace:xce::ad	inherits:BaseIndex
+xce::ad::AreaUIntIndex::GetWithAll	InvertedIndex.h	/^  void GetWithAll(const uint64_t key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::AreaUIntIndex	access:public	signature:(const uint64_t key, set<AdGroupPtr>& groups)
+xce::ad::BRAND_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+xce::ad::BRAND_INDEX	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	e	enum:xce::ad::InvertedIndexType
+xce::ad::BaseHandler	Handler.h	/^class BaseHandler : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+xce::ad::BaseHandler::handle	Handler.h	/^  virtual void handle(HandlerPara& para) {}$/;"	f	class:xce::ad::BaseHandler	access:public	signature:(HandlerPara& para)
+xce::ad::BaseHandler::~BaseHandler	Handler.h	/^  virtual ~BaseHandler() {}$/;"	f	class:xce::ad::BaseHandler	access:public	signature:()
+xce::ad::BaseIndex	BaseIndex.h	/^class BaseIndex : public AbstractBaseIndex {$/;"	c	namespace:xce::ad	inherits:AbstractBaseIndex
+xce::ad::BaseIndex::Add	BaseIndex.h	/^  bool Add(KEY_TYPE& key, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(KEY_TYPE& key, const AdGroupPtr& value)
+xce::ad::BaseIndex::Add	BaseIndex.h	/^  bool Add(vector<KEY_TYPE>& keys, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(vector<KEY_TYPE>& keys, const AdGroupPtr& value)
+xce::ad::BaseIndex::Del	BaseIndex.h	/^  bool Del(vector<KEY_TYPE>& keys, const AdGroupPtr& value) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(vector<KEY_TYPE>& keys, const AdGroupPtr& value)
+xce::ad::BaseIndex::Get	BaseIndex.h	/^  void Get(const KEY_TYPE key, set<AdGroupPtr>& result) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(const KEY_TYPE key, set<AdGroupPtr>& result)
+xce::ad::BaseIndex::GetWithAll	BaseIndex.h	/^  void GetWithAll(const KEY_TYPE key, set<AdGroupPtr>& result) {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:(const KEY_TYPE key, set<AdGroupPtr>& result)
+xce::ad::BaseIndex::KEY_ITERATOR	BaseIndex.h	/^  typedef typename vector<KEY_TYPE>::const_iterator KEY_ITERATOR;$/;"	t	class:xce::ad::BaseIndex	access:public
+xce::ad::BaseIndex::KEY_VALUE_ITERATOR	BaseIndex.h	/^  typedef typename map< KEY_TYPE, set<AdGroupPtr> >::const_iterator KEY_VALUE_ITERATOR;$/;"	t	class:xce::ad::BaseIndex	access:public
+xce::ad::BaseIndex::Print	BaseIndex.h	/^  virtual string Print() {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:()
+xce::ad::BaseIndex::Size	BaseIndex.h	/^  size_t Size() {$/;"	f	class:xce::ad::BaseIndex	access:public	signature:()
+xce::ad::BaseIndex::index_	BaseIndex.h	/^  map< KEY_TYPE, set<AdGroupPtr> > index_;$/;"	m	class:xce::ad::BaseIndex	access:protected
+xce::ad::BaseIndex::mutex_	BaseIndex.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::BaseIndex	access:protected
+xce::ad::Brand3GIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> Brand3GIndex;$/;"	t	namespace:xce::ad
+xce::ad::Brand3GMap	Config.h	/^class Brand3GMap : public CachePool, public MyUtil::Singleton<Brand3GMap> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::Brand3GMap::GetBrand3G	Config.h	/^  Ice::Long GetBrand3G(string brand3G);$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:(string brand3G)
+xce::ad::Brand3GMap::Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:(int)
+xce::ad::Brand3GMap::Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::Brand3GMap	access:public	signature:()
+xce::ad::Brand3GMap::TotalLoad	Config.h	/^  void TotalLoad();$/;"	p	class:xce::ad::Brand3GMap	access:private	signature:()
+xce::ad::Brand3GMap::pool_	Config.h	/^  map<string, Ice::Long> pool_;$/;"	m	class:xce::ad::Brand3GMap	access:private
+xce::ad::BrandCpmCpcHandler	Handler.h	/^class BrandCpmCpcHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+xce::ad::BrandCpmCpcHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::BrandCpmCpcHandler	access:public	signature:(HandlerPara& para)
+xce::ad::BrandRotateHandler	Handler.h	/^class BrandRotateHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+xce::ad::BrandRotateHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::BrandRotateHandler	access:public	signature:(HandlerPara& para)
+xce::ad::COUNTRY	Util.h	/^const uint64_t COUNTRY = 86000000000000; $/;"	v
+xce::ad::CPC	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	e	enum:xce::ad::TransType
+xce::ad::CPM	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	e	enum:xce::ad::TransType
+xce::ad::CachePool	CachePool.h	/^class CachePool {$/;"	c	namespace:xce::ad
+xce::ad::CachePool::DbInstance_	CachePool.h	/^  string DbInstance_;$/;"	m	class:xce::ad::CachePool	access:protected
+xce::ad::CachePool::GetDB	CachePool.h	/^  string GetDB() {$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+xce::ad::CachePool::IncLoad	CachePool.h	/^  virtual void IncLoad() { $/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+xce::ad::CachePool::InitTask	CachePool.h	/^  class InitTask : virtual public MyUtil::Task {$/;"	c	class:xce::ad::CachePool	inherits:MyUtil::Task	access:protected
+xce::ad::CachePool::InitTask::InitTask	CachePool.h	/^    InitTask(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE ) : updateInterval_(updateInterval) {$/;"	f	class:xce::ad::CachePool::InitTask	access:public	signature:(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE )
+xce::ad::CachePool::InitTask::handle	CachePool.h	/^    virtual void handle();$/;"	p	class:xce::ad::CachePool::InitTask	access:public	signature:()
+xce::ad::CachePool::InitTask::parent_	CachePool.h	/^    CachePool* parent_;$/;"	m	class:xce::ad::CachePool::InitTask	access:private
+xce::ad::CachePool::InitTask::updateInterval_	CachePool.h	/^    Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool::InitTask	access:private
+xce::ad::CachePool::Initialize	CachePool.cpp	/^void CachePool::Initialize(const string& DbInstance, const Ice::Long updateInterval) {$/;"	f	class:xce::ad::CachePool	signature:(const string& DbInstance, const Ice::Long updateInterval)
+xce::ad::CachePool::Initialize	CachePool.h	/^  virtual void Initialize(const string& DbInstance, const Ice::Long updateInterval);$/;"	p	class:xce::ad::CachePool	access:public	signature:(const string& DbInstance, const Ice::Long updateInterval)
+xce::ad::CachePool::Is_Init_Ok	CachePool.h	/^  bool Is_Init_Ok() {$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+xce::ad::CachePool::Print	CachePool.h	/^  virtual string Print(int size) {$/;"	f	class:xce::ad::CachePool	access:public	signature:(int size)
+xce::ad::CachePool::ReloadTask	CachePool.h	/^  class ReloadTask : virtual public MyUtil::Task {$/;"	c	class:xce::ad::CachePool	inherits:MyUtil::Task	access:protected
+xce::ad::CachePool::ReloadTask::ReloadTask	CachePool.h	/^    ReloadTask(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE ) : updateInterval_(updateInterval) {$/;"	f	class:xce::ad::CachePool::ReloadTask	access:public	signature:(CachePool* parent, Ice::Long updateInterval = ONE_MINUTE )
+xce::ad::CachePool::ReloadTask::handle	CachePool.cpp	/^void CachePool::ReloadTask::handle() {$/;"	f	class:xce::ad::CachePool::ReloadTask	signature:()
+xce::ad::CachePool::ReloadTask::handle	CachePool.h	/^    virtual void handle();$/;"	p	class:xce::ad::CachePool::ReloadTask	access:public	signature:()
+xce::ad::CachePool::ReloadTask::parent_	CachePool.h	/^    CachePool* parent_;$/;"	m	class:xce::ad::CachePool::ReloadTask	access:private
+xce::ad::CachePool::ReloadTask::updateInterval_	CachePool.h	/^    Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool::ReloadTask	access:private
+xce::ad::CachePool::SetDB	CachePool.h	/^  void SetDB(string DbInstance) {$/;"	f	class:xce::ad::CachePool	access:protected	signature:(string DbInstance)
+xce::ad::CachePool::Size	CachePool.h	/^  virtual size_t Size() {$/;"	f	class:xce::ad::CachePool	access:public	signature:()
+xce::ad::CachePool::TotalLoad	CachePool.h	/^  virtual void TotalLoad(){}$/;"	f	class:xce::ad::CachePool	access:protected	signature:()
+xce::ad::CachePool::init_ok_	CachePool.h	/^  bool init_ok_;$/;"	m	class:xce::ad::CachePool	access:protected
+xce::ad::CachePool::mutex_	CachePool.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::CachePool	access:protected
+xce::ad::CachePool::updateInterval_	CachePool.h	/^  Ice::Long updateInterval_;$/;"	m	class:xce::ad::CachePool	access:protected
+xce::ad::CachePool::~CachePool	CachePool.h	/^  virtual ~CachePool(){}$/;"	f	class:xce::ad::CachePool	access:public	signature:()
+xce::ad::CampaignPool	CachePool.h	/^class CampaignPool : public CachePool, public MyUtil::Singleton<CampaignPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::CampaignPool::GetAdCampaign	CachePool.h	/^  AdCampaignPtr GetAdCampaign(Ice::Long campaign_id);$/;"	p	class:xce::ad::CampaignPool	access:public	signature:(Ice::Long campaign_id)
+xce::ad::CampaignPool::Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::CampaignPool	access:public	signature:(const int size)
+xce::ad::CampaignPool::Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::CampaignPool	access:public	signature:()
+xce::ad::CampaignPool::TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::CampaignPool	access:private	signature:()
+xce::ad::CampaignPool::TotalLoad	CampaignPool.cpp	/^void xce::ad::CampaignPool::TotalLoad() {$/;"	f	class:xce::ad::CampaignPool	signature:()
+xce::ad::CampaignPool::pool_	CachePool.h	/^  map<Ice::Long, AdCampaignPtr> pool_;$/;"	m	class:xce::ad::CampaignPool	access:private
+xce::ad::ClickRequest	Click.h	/^class ClickRequest : public Request{$/;"	c	namespace:xce::ad	inherits:Request
+xce::ad::ClickRequest::ClickRequest	Click.h	/^  ClickRequest(FCGX_Request* r) : Request(r) {}$/;"	f	class:xce::ad::ClickRequest	access:public	signature:(FCGX_Request* r)
+xce::ad::ClickRequest::ProcessCpcLog	Click.h	/^  inline bool ProcessCpcLog(string& cpclog);$/;"	p	class:xce::ad::ClickRequest	access:private	signature:(string& cpclog)
+xce::ad::ClickRequest::response	Click.h	/^  virtual bool response();$/;"	p	class:xce::ad::ClickRequest	access:public	signature:()
+xce::ad::DEFAULT_USER_ID	Util.h	/^const int DEFAULT_USER_ID = 2;               \/\/默认用户ID$/;"	v
+xce::ad::DimIndex	InvertedIndex.h	/^class DimIndex : public IceUtil::Shared {$/;"	c	namespace:xce::ad	inherits:IceUtil::Shared
+xce::ad::DimIndex::DimIndex	InvertedIndex.h	/^  DimIndex();$/;"	p	class:xce::ad::DimIndex	access:public	signature:()
+xce::ad::DimIndex::age_index_	InvertedIndex.h	/^  ShortIndexPtr age_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::area_index_	InvertedIndex.h	/^  AreaIndexPtr area_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::brand3G_index_	InvertedIndex.h	/^  UIntIndexPtr brand3G_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::gender_index_	InvertedIndex.h	/^  ShortIndexPtr gender_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::grade_index_	InvertedIndex.h	/^  ShortIndexPtr grade_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::index_dict_	InvertedIndex.h	/^  map<int, IndexPtr> index_dict_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::lbs_index_	InvertedIndex.h	/^  LBSIndexPtr lbs_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::network_index_	InvertedIndex.h	/^  ShortIndexPtr network_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::platform_index_	InvertedIndex.h	/^  UIntIndexPtr platform_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::resolution_index_	InvertedIndex.h	/^  ShortIndexPtr resolution_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::school_area_index_	InvertedIndex.h	/^  AreaIndexPtr school_area_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::school_index_	InvertedIndex.h	/^  UIntIndexPtr school_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndex::stage_index_	InvertedIndex.h	/^  ShortIndexPtr stage_index_;$/;"	m	class:xce::ad::DimIndex	access:public
+xce::ad::DimIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle<DimIndex> DimIndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::DisplayType	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	g	namespace:xce::ad
+xce::ad::EngineConfig	Config.h	/^class EngineConfig : public CachePool, public MyUtil::Singleton<EngineConfig> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::EngineConfig::GetIp	Config.h	/^	string GetIp() {$/;"	f	class:xce::ad::EngineConfig	access:private	signature:()
+xce::ad::EngineConfig::GetProperty	Config.h	/^	string GetProperty(string& key);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key)
+xce::ad::EngineConfig::GetPropertyAsInt	Config.h	/^	int GetPropertyAsInt(string& key);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key)
+xce::ad::EngineConfig::GetPropertyAsIntWithDefault	Config.h	/^	int GetPropertyAsIntWithDefault(string& key, int value);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key, int value)
+xce::ad::EngineConfig::GetPropertyWithDefault	Config.h	/^	string GetPropertyWithDefault(string& key, string& value);$/;"	p	class:xce::ad::EngineConfig	access:public	signature:(string& key, string& value)
+xce::ad::EngineConfig::Initialize	Config.h	/^	void Initialize(int server_index) {$/;"	f	class:xce::ad::EngineConfig	access:public	signature:(int server_index)
+xce::ad::EngineConfig::Print	Config.h	/^	void Print();$/;"	p	class:xce::ad::EngineConfig	access:public	signature:()
+xce::ad::EngineConfig::Size	Config.h	/^	size_t Size();$/;"	p	class:xce::ad::EngineConfig	access:public	signature:()
+xce::ad::EngineConfig::property_dict_	Config.h	/^	map<string, string> property_dict_;$/;"	m	class:xce::ad::EngineConfig	access:private
+xce::ad::FormatHandler	Handler.h	/^class FormatHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+xce::ad::FormatHandler::ClickUrlHead	Handler.h	/^	string ClickUrlHead;$/;"	m	class:xce::ad::FormatHandler	access:public
+xce::ad::FormatHandler::FormatHandler	Handler.h	/^	FormatHandler();$/;"	p	class:xce::ad::FormatHandler	access:public	signature:()
+xce::ad::FormatHandler::ParseWidget	Handler.h	/^  bool ParseWidget(const string& json_str, map<string, string>& json_map);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(const string& json_str, map<string, string>& json_map)
+xce::ad::FormatHandler::UrlEncode	Handler.h	/^  void UrlEncode(const string& input, string& output);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(const string& input, string& output)
+xce::ad::FormatHandler::handle	Handler.h	/^	void handle(HandlerPara& para);$/;"	p	class:xce::ad::FormatHandler	access:public	signature:(HandlerPara& para)
+xce::ad::GENDER_ALL	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+xce::ad::GENDER_FEMALE	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+xce::ad::GENDER_MALE	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	e	enum:xce::ad::GenderType
+xce::ad::GenderIndex	InvertedIndex.h	/^typedef BaseIndex<short> GenderIndex;$/;"	t	namespace:xce::ad
+xce::ad::GenderType	Util.h	/^enum GenderType { GENDER_FEMALE=0, GENDER_MALE=1, GENDER_ALL=2};$/;"	g	namespace:xce::ad
+xce::ad::GradeIndex	InvertedIndex.h	/^typedef BaseIndex<short> GradeIndex;$/;"	t	namespace:xce::ad
+xce::ad::GroupPool	CachePool.h	/^class GroupPool : public CachePool, public MyUtil::Singleton<GroupPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::GroupPool::FilterNoCreativeAdGroups	CachePool.h	/^  void FilterNoCreativeAdGroups();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+xce::ad::GroupPool::GetAdGroup	CachePool.h	/^  AdGroupPtr GetAdGroup(Ice::Long group_id);$/;"	p	class:xce::ad::GroupPool	access:public	signature:(Ice::Long group_id)
+xce::ad::GroupPool::GetRotateAds	CachePool.h	/^  map<Ice::Long, vector<AdGroupPtr> > GetRotateAds();$/;"	p	class:xce::ad::GroupPool	access:public	signature:()
+xce::ad::GroupPool::PointsChecker	CachePool.h	/^  class PointsChecker {$/;"	c	class:xce::ad::GroupPool	access:private
+xce::ad::GroupPool::PointsChecker::Check	CachePool.h	/^    static bool Check(const string & day_points, const string & hour_points);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & day_points, const string & hour_points)
+xce::ad::GroupPool::PointsChecker::CheckDay	CachePool.h	/^    static bool CheckDay(const string & day_point_str);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & day_point_str)
+xce::ad::GroupPool::PointsChecker::CheckHour	CachePool.h	/^    static bool CheckHour(const string & hour_point_str);$/;"	p	class:xce::ad::GroupPool::PointsChecker	access:public	signature:(const string & hour_point_str)
+xce::ad::GroupPool::Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::GroupPool	access:public	signature:(const int size)
+xce::ad::GroupPool::Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::GroupPool	access:public	signature:()
+xce::ad::GroupPool::TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+xce::ad::GroupPool::TotalLoadAdCreative	CachePool.h	/^  void TotalLoadAdCreative();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+xce::ad::GroupPool::TotalLoadAdGroup	CachePool.h	/^  void TotalLoadAdGroup();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+xce::ad::GroupPool::TotalLoadAdGroupAdZoneRef	CachePool.h	/^  void TotalLoadAdGroupAdZoneRef();$/;"	p	class:xce::ad::GroupPool	access:private	signature:()
+xce::ad::GroupPool::pool_	CachePool.h	/^  map<Ice::Long, AdGroupPtr> pool_;$/;"	m	class:xce::ad::GroupPool	access:private
+xce::ad::GroupPool::zone2rotate_	CachePool.h	/^  map<Ice::Long, vector<AdGroupPtr> > zone2rotate_;$/;"	m	class:xce::ad::GroupPool	access:private
+xce::ad::HandlerPara	Handler.h	/^struct HandlerPara {$/;"	s	namespace:xce::ad
+xce::ad::HandlerPara::HANDLED_BY_BRAND	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+xce::ad::HandlerPara::HANDLED_BY_ROTATE	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+xce::ad::HandlerPara::HANDLED_BY_SELF	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+xce::ad::HandlerPara::HANDLED_BY_USERBIND	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+xce::ad::HandlerPara::HandleFlagType	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	g	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::HandlerPara	Handler.h	/^  explicit HandlerPara( const AdMobReqPara& request ) : request_(request), selected_group_type_(UNKNOWN_AD), handle_flag_( UNHANDLED ) {$/;"	f	struct:xce::ad::HandlerPara	access:public	signature:( const AdMobReqPara& request )
+xce::ad::HandlerPara::HandlerPara	Handler.h	/^  explicit HandlerPara() : selected_group_type_(UNKNOWN_AD), handle_flag_( UNHANDLED ) {$/;"	f	struct:xce::ad::HandlerPara	access:public	signature:()
+xce::ad::HandlerPara::UNHANDLED	Handler.h	/^  enum HandleFlagType { UNHANDLED=0,HANDLED_BY_USERBIND=1,HANDLED_BY_ROTATE=2,HANDLED_BY_BRAND=3,HANDLED_BY_SELF=4 };$/;"	e	enum:xce::ad::HandlerPara::HandleFlagType
+xce::ad::HandlerPara::click_log_	Handler.h	/^  string click_log_;	   \/\/click log$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::cpc_charge_log_	Handler.h	/^  string cpc_charge_log_;  \/\/cpc charge$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::cpm_charge_log_	Handler.h	/^  string cpm_charge_log_;  \/\/cpm charge$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::handle_flag_	Handler.h	/^  HandleFlagType handle_flag_;		\/\/处理标记$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::pv_log_	Handler.h	/^  string pv_log_;		   \/\/pv log$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::request_	Handler.h	/^  AdMobReqPara request_;	  \/\/3G请求$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::response_	Handler.h	/^  AdMobResPara response_;	  \/\/3G返回$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::selected_creative_id_	Handler.h	/^  Ice::Long selected_creative_id_;           \/\/选到的creative_id$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::selected_group_ptr_	Handler.h	/^  AdGroupPtr selected_group_ptr_;	\/\/选到的广告指针$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::selected_group_type_	Handler.h	/^  AdType selected_group_type_;		\/\/广告的类型 0品牌 1自助 -1未知$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPara::set_seleted_group	Handler.h	/^  inline void set_seleted_group(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag);$/;"	p	struct:xce::ad::HandlerPara	access:public	signature:(Ice::Long group_id, AdGroupPtr group, AdType type, HandleFlagType handle_flag)
+xce::ad::HandlerPara::userProfile_	Handler.h	/^  UserProfile userProfile_;	  \/\/用户信息$/;"	m	struct:xce::ad::HandlerPara	access:public
+xce::ad::HandlerPtr	Handler.h	/^typedef IceUtil::Handle<BaseHandler> HandlerPtr;$/;"	t	namespace:xce::ad
+xce::ad::IndexPtr	BaseIndex.h	/^typedef IceUtil::Handle<AbstractBaseIndex> IndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::InvertedIndex	InvertedIndex.h	/^class InvertedIndex : public MyUtil::Singleton<InvertedIndex> {$/;"	c	namespace:xce::ad	inherits:MyUtil::Singleton
+xce::ad::InvertedIndex::BuildIndex	InvertedIndex.h	/^  inline void BuildIndex(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index);$/;"	p	class:xce::ad::InvertedIndex	access:private	signature:(const AdBidUnit& bid_unit, AdGroupPtr group, map<Ice::Long, DimIndexPtr>& zone_index)
+xce::ad::InvertedIndex::DBInstance_	InvertedIndex.h	/^  string DBInstance_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+xce::ad::InvertedIndex::Get	InvertedIndex.h	/^  void Get(const HandlerPara& para, const Ice::Long zone, InvertedIndexType type, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:(const HandlerPara& para, const Ice::Long zone, InvertedIndexType type, set<AdGroupPtr>& groups)
+xce::ad::InvertedIndex::GetDB	InvertedIndex.h	/^  string GetDB() {$/;"	f	class:xce::ad::InvertedIndex	access:public	signature:()
+xce::ad::InvertedIndex::GetForTest	InvertedIndex.h	/^  void GetForTest(const HandlerPara& para, const Ice::Long zone, set<AdGroupPtr>& groups, const int index_flag, const int type_flag);$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:(const HandlerPara& para, const Ice::Long zone, set<AdGroupPtr>& groups, const int index_flag, const int type_flag)
+xce::ad::InvertedIndex::IncLoad	InvertedIndex.h	/^  void IncLoad();$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:()
+xce::ad::InvertedIndex::SetDB	InvertedIndex.h	/^  void SetDB(string DBInstance) {$/;"	f	class:xce::ad::InvertedIndex	access:public	signature:(string DBInstance)
+xce::ad::InvertedIndex::ShowIndexSize	InvertedIndex.h	/^  void ShowIndexSize();$/;"	p	class:xce::ad::InvertedIndex	access:private	signature:()
+xce::ad::InvertedIndex::TotalLoad	InvertedIndex.h	/^  void TotalLoad();$/;"	p	class:xce::ad::InvertedIndex	access:public	signature:()
+xce::ad::InvertedIndex::mutex_	InvertedIndex.h	/^  IceUtil::RWRecMutex mutex_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+xce::ad::InvertedIndex::zone_brand_index_	InvertedIndex.h	/^  map<Ice::Long, DimIndexPtr> zone_brand_index_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+xce::ad::InvertedIndex::zone_self_index_	InvertedIndex.h	/^  map<Ice::Long, DimIndexPtr> zone_self_index_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+xce::ad::InvertedIndexType	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	g	namespace:xce::ad
+xce::ad::LBSIndex	InvertedIndex.h	/^typedef RectangleIndex LBSIndex;$/;"	t	namespace:xce::ad
+xce::ad::LBSIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< LBSIndex > LBSIndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::LogHandler	Handler.h	/^class LogHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+xce::ad::LogHandler::BuildClickLog	Handler.h	/^  inline void BuildClickLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+xce::ad::LogHandler::BuildCpcChargeLog	Handler.h	/^  inline void BuildCpcChargeLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+xce::ad::LogHandler::BuildCpmChargeLog	Handler.h	/^  inline void BuildCpmChargeLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+xce::ad::LogHandler::BuildDefault3GLog	Handler.h	/^  inline void BuildDefault3GLog(HandlerPara& para, string& log);$/;"	p	class:xce::ad::LogHandler	access:private	signature:(HandlerPara& para, string& log)
+xce::ad::LogHandler::BuildPvLog	Handler.h	/^  inline void BuildPvLog(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+xce::ad::LogHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::LogHandler	access:public	signature:(HandlerPara& para)
+xce::ad::MAX_WIDTH	Util.h	/^const int MAX_WIDTH = 960;$/;"	v
+xce::ad::MEDIA_URI	Util.h	/^const string MEDIA_URI = "http:\/\/jebe.xnimg.cn";$/;"	v
+xce::ad::MEMBER_BRAND	Util.h	/^enum MemberCategoryType { MEMBER_BRAND=1 };$/;"	e	enum:xce::ad::MemberCategoryType
+xce::ad::MOB_ZONE_BOTTOM	Util.h	/^const long MOB_ZONE_BOTTOM = 100000000099;   \/\/3G广告位ID 底端广告位$/;"	v
+xce::ad::MOB_ZONE_TEST	Util.h	/^const long MOB_ZONE_TEST   = 900000000000;   \/\/3G广告位ID 测试广告位$/;"	v
+xce::ad::MOB_ZONE_TOP	Util.h	/^const long MOB_ZONE_TOP    = 100000000098;   \/\/3G广告位ID 置顶广告位$/;"	v
+xce::ad::MemberCategoryType	Util.h	/^enum MemberCategoryType { MEMBER_BRAND=1 };$/;"	g	namespace:xce::ad
+xce::ad::MemberPool	CachePool.h	/^class MemberPool : public CachePool, public MyUtil::Singleton<MemberPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::MemberPool::GetAdMember	CachePool.h	/^  AdMemberPtr GetAdMember(Ice::Long member_id);$/;"	p	class:xce::ad::MemberPool	access:public	signature:(Ice::Long member_id)
+xce::ad::MemberPool::Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::MemberPool	access:public	signature:(const int size)
+xce::ad::MemberPool::Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::MemberPool	access:public	signature:()
+xce::ad::MemberPool::TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::MemberPool	access:private	signature:()
+xce::ad::MemberPool::TotalLoad	MemberPool.cpp	/^void xce::ad::MemberPool::TotalLoad() {$/;"	f	class:xce::ad::MemberPool	signature:()
+xce::ad::MemberPool::pool_	CachePool.h	/^  map<Ice::Long, AdMemberPtr> pool_;$/;"	m	class:xce::ad::MemberPool	access:private
+xce::ad::NORMAL3G	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	e	enum:xce::ad::DisplayType
+xce::ad::NetworkIndex	InvertedIndex.h	/^typedef BaseIndex<short> NetworkIndex;$/;"	t	namespace:xce::ad
+xce::ad::ONE_MINUTE	CachePool.h	/^const long ONE_MINUTE = 60*1000*1000;		 \/\/1min$/;"	v
+xce::ad::OtherRequest	Click.h	/^class OtherRequest : public Request{$/;"	c	namespace:xce::ad	inherits:Request
+xce::ad::OtherRequest::OtherRequest	Click.h	/^  OtherRequest(FCGX_Request* r) : Request(r) {}$/;"	f	class:xce::ad::OtherRequest	access:public	signature:(FCGX_Request* r)
+xce::ad::OtherRequest::response	Click.h	/^  virtual bool response();$/;"	p	class:xce::ad::OtherRequest	access:public	signature:()
+xce::ad::ParaCheckHandler	Handler.h	/^class ParaCheckHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+xce::ad::ParaCheckHandler::CheckRequestPara	Handler.h	/^  inline void CheckRequestPara(AdMobReqPara& request);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(AdMobReqPara& request)
+xce::ad::ParaCheckHandler::IsToReplace	Handler.h	/^	static bool IsToReplace(char ch);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(char ch)
+xce::ad::ParaCheckHandler::PrintPara	Handler.h	/^  inline void PrintPara(AdMobReqPara& request);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(AdMobReqPara& request)
+xce::ad::ParaCheckHandler::PrintUserProfile	Handler.h	/^  inline void PrintUserProfile(UserProfile& profile);$/;"	p	class:xce::ad::ParaCheckHandler	access:private	signature:(UserProfile& profile)
+xce::ad::ParaCheckHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::ParaCheckHandler	access:public	signature:(HandlerPara& para)
+xce::ad::PlatformIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> PlatformIndex;$/;"	t	namespace:xce::ad
+xce::ad::PlatformMap	Config.h	/^class PlatformMap : public CachePool, public MyUtil::Singleton<PlatformMap> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::PlatformMap::GetPlatform	Config.h	/^  Ice::Long GetPlatform(string OsVersion);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(string OsVersion)
+xce::ad::PlatformMap::GetPlatformX	Config.h	/^  Ice::Long GetPlatformX(string OsVersion);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(string OsVersion)
+xce::ad::PlatformMap::Print	Config.h	/^  string Print(int);$/;"	p	class:xce::ad::PlatformMap	access:public	signature:(int)
+xce::ad::PlatformMap::Size	Config.h	/^  size_t Size();$/;"	p	class:xce::ad::PlatformMap	access:public	signature:()
+xce::ad::PlatformMap::TotalLoad	Config.h	/^  void TotalLoad();$/;"	p	class:xce::ad::PlatformMap	access:private	signature:()
+xce::ad::PlatformMap::pool_	Config.h	/^  map<string, AdPlatformPtr> pool_;$/;"	m	class:xce::ad::PlatformMap	access:private
+xce::ad::ROTATE3G	Util.h	/^enum DisplayType { NORMAL3G=9, ROTATE3G=10 };$/;"	e	enum:xce::ad::DisplayType
+xce::ad::Rectangle	Struct.h	/^class Rectangle : public AbstractStruct {$/;"	c	namespace:xce::ad	inherits:AbstractStruct
+xce::ad::Rectangle::IsInRec	Struct.h	/^  bool IsInRec( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+xce::ad::Rectangle::Rectangle	Struct.h	/^	explicit Rectangle(double longitude, double latitude, double radius) {$/;"	f	class:xce::ad::Rectangle	access:public	signature:(double longitude, double latitude, double radius)
+xce::ad::Rectangle::Rectangle	Struct.h	/^  explicit Rectangle(double x_min, double y_min, double x_max, double y_max):$/;"	f	class:xce::ad::Rectangle	access:public	signature:(double x_min, double y_min, double x_max, double y_max)
+xce::ad::Rectangle::ToString	Struct.h	/^  string ToString() const ;$/;"	p	class:xce::ad::Rectangle	access:public	signature:() const
+xce::ad::Rectangle::operator <	Struct.h	/^  bool operator<( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+xce::ad::Rectangle::operator <<	Struct.h	/^  friend ostream& operator<< (ostream&, const Rectangle &rec);$/;"	p	class:xce::ad::Rectangle	access:friend	signature:(ostream&, const Rectangle &rec)
+xce::ad::Rectangle::operator ==	Struct.h	/^  bool operator==( const Rectangle& r ) const;$/;"	p	class:xce::ad::Rectangle	access:public	signature:( const Rectangle& r ) const
+xce::ad::Rectangle::per_lati	Struct.h	/^  static const double per_lati = 0.00897;   \/\/1公里的纬度折算$/;"	m	class:xce::ad::Rectangle	access:public
+xce::ad::Rectangle::per_long	Struct.h	/^  static const double per_long = 0.01130;   \/\/1公里的经度折算$/;"	m	class:xce::ad::Rectangle	access:public
+xce::ad::RectangleIndex	InvertedIndex.h	/^class RectangleIndex : public BaseIndex<Rectangle> {$/;"	c	namespace:xce::ad	inherits:BaseIndex
+xce::ad::RectangleIndex::Get	InvertedIndex.h	/^  void Get(const Rectangle key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::RectangleIndex	access:public	signature:(const Rectangle key, set<AdGroupPtr>& groups)
+xce::ad::RectangleIndex::GetWithAll	InvertedIndex.h	/^  void GetWithAll(const Rectangle key, set<AdGroupPtr>& groups);$/;"	p	class:xce::ad::RectangleIndex	access:public	signature:(const Rectangle key, set<AdGroupPtr>& groups)
+xce::ad::RectangleIndex::KEY_ITERATOR	InvertedIndex.h	/^  typedef vector<Rectangle>::const_iterator KEY_ITERATOR;$/;"	t	class:xce::ad::RectangleIndex	access:public
+xce::ad::RectangleIndex::KEY_VALUE_ITERATOR	InvertedIndex.h	/^  typedef map< Rectangle, set<AdGroupPtr> >::const_iterator KEY_VALUE_ITERATOR;$/;"	t	class:xce::ad::RectangleIndex	access:public
+xce::ad::RectanglePtr	Struct.h	/^typedef IceUtil::Handle<Rectangle> RectanglePtr;$/;"	t	namespace:xce::ad
+xce::ad::ResolutionIndex	InvertedIndex.h	/^typedef BaseIndex<short> ResolutionIndex;$/;"	t	namespace:xce::ad
+xce::ad::ResolutionMap	Config.h	/^class ResolutionMap : public AbstractResolutionMap, public MyUtil::Singleton<ResolutionMap> {$/;"	c	namespace:xce::ad	inherits:AbstractResolutionMap,MyUtil::Singleton
+xce::ad::ResolutionMap::TotalLoad	Config.h	/^	void TotalLoad();$/;"	p	class:xce::ad::ResolutionMap	access:private	signature:()
+xce::ad::ResolutionMatcher	Config.h	/^class ResolutionMatcher : public AbstractResolutionMap, public MyUtil::Singleton<ResolutionMatcher> {$/;"	c	namespace:xce::ad	inherits:AbstractResolutionMap,MyUtil::Singleton
+xce::ad::ResolutionMatcher::TotalLoad	Config.h	/^	void TotalLoad();$/;"	p	class:xce::ad::ResolutionMatcher	access:private	signature:()
+xce::ad::SELF_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+xce::ad::SELF_INDEX	Util.h	/^enum InvertedIndexType {BRAND_INDEX=0, SELF_INDEX=1};$/;"	e	enum:xce::ad::InvertedIndexType
+xce::ad::STAGE_ALL	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+xce::ad::STAGE_COLLEGE	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+xce::ad::STAGE_SENIOR	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+xce::ad::STAGE_STAFF	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	e	enum:xce::ad::StageType
+xce::ad::SchoolAreaIndex	InvertedIndex.h	/^typedef AreaUIntIndex SchoolAreaIndex;$/;"	t	namespace:xce::ad
+xce::ad::SchoolIndex	InvertedIndex.h	/^typedef BaseIndex<uint64_t> SchoolIndex;$/;"	t	namespace:xce::ad
+xce::ad::Selector	Handler.h	/^class Selector {$/;"	c	namespace:xce::ad
+xce::ad::Selector::FilterGroups	Handler.h	/^  virtual void FilterGroups(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected);$/;"	p	class:xce::ad::Selector	access:public	signature:(set<AdGroupPtr>& selected, const set<Ice::Long>& last_selected)
+xce::ad::Selector::FilterGroups	Handler.h	/^  virtual void FilterGroups(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected);$/;"	p	class:xce::ad::Selector	access:public	signature:(set<AdGroupPtr>& selected, const vector<Ice::Long>& last_selected)
+xce::ad::Selector::GetAds	Handler.h	/^  virtual set<AdGroupPtr> GetAds(HandlerPara& para, InvertedIndexType type);$/;"	p	class:xce::ad::Selector	access:public	signature:(HandlerPara& para, InvertedIndexType type)
+xce::ad::Selector::RandomSelect	Handler.h	/^  virtual void RandomSelect(const set<AdGroupPtr>& groups, AdGroupPtr& result);$/;"	p	class:xce::ad::Selector	access:public	signature:(const set<AdGroupPtr>& groups, AdGroupPtr& result)
+xce::ad::Selector::~Selector	Handler.h	/^  virtual ~Selector(){}$/;"	f	class:xce::ad::Selector	access:public	signature:()
+xce::ad::SelfHandler	Handler.h	/^class SelfHandler : public BaseHandler, public Selector {$/;"	c	namespace:xce::ad	inherits:BaseHandler,Selector
+xce::ad::SelfHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::SelfHandler	access:public	signature:(HandlerPara& para)
+xce::ad::ShortIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< BaseIndex<short> > ShortIndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::StageIndex	InvertedIndex.h	/^typedef BaseIndex<short> StageIndex;$/;"	t	namespace:xce::ad
+xce::ad::StageType	Util.h	/^enum StageType { STAGE_SENIOR=1, STAGE_COLLEGE=2, STAGE_STAFF=4, STAGE_ALL=6 };$/;"	g	namespace:xce::ad
+xce::ad::TestHandler	Handler.h	/^class TestHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+xce::ad::TestHandler::ImageSelect	Handler.h	/^  inline void ImageSelect(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress);$/;"	p	class:xce::ad::TestHandler	access:private	signature:(const AdMobReqPara& request, int& imageSize, int& imageRealSize, bool& needCompress)
+xce::ad::TestHandler::TestHandler	Handler.h	/^  TestHandler() {$/;"	f	class:xce::ad::TestHandler	access:public	signature:()
+xce::ad::TestHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::TestHandler	access:public	signature:(HandlerPara& para)
+xce::ad::TestHandler::imageWidthSeq_	Handler.h	/^  vector<int> imageWidthSeq_;  \/\/图片大小seq$/;"	m	class:xce::ad::TestHandler	access:private
+xce::ad::TestHandler::test_map_	Handler.h	/^  map<int, int> test_map_;	   \/\/3G测试需要$/;"	m	class:xce::ad::TestHandler	access:private
+xce::ad::TransType	Util.h	/^enum TransType { CPC=10, CPM=20 };$/;"	g	namespace:xce::ad
+xce::ad::Translator	Translator.h	/^class Translator : public MyUtil::Singleton<Translator> {$/;"	c	namespace:xce::ad	inherits:MyUtil::Singleton
+xce::ad::Translator::ProcessAge	Translator.h	/^  static bool ProcessAge(const string& age_code, vector<short>& ages);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& age_code, vector<short>& ages)
+xce::ad::Translator::ProcessArea	Translator.h	/^  static bool ProcessArea(const string& area_code, vector<uint64_t>& areas);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& area_code, vector<uint64_t>& areas)
+xce::ad::Translator::ProcessBrand3G	Translator.h	/^  static bool ProcessBrand3G(const string& brand_code, vector<uint64_t>& brands);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& brand_code, vector<uint64_t>& brands)
+xce::ad::Translator::ProcessGender	Translator.h	/^  static bool ProcessGender(const int gender_code, vector<short>& genders);$/;"	p	class:xce::ad::Translator	access:public	signature:(const int gender_code, vector<short>& genders)
+xce::ad::Translator::ProcessGrade	Translator.h	/^  static bool ProcessGrade(const string& grade_code, vector<short>& grades);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& grade_code, vector<short>& grades)
+xce::ad::Translator::ProcessLBS	Translator.h	/^  static bool ProcessLBS(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& lbs_code, const double radius, vector<Rectangle>& lbs_list)
+xce::ad::Translator::ProcessLeadingArea	Translator.h	/^  static bool ProcessLeadingArea(const string& area_code, vector<uint64_t>& areas);$/;"	p	class:xce::ad::Translator	access:private	signature:(const string& area_code, vector<uint64_t>& areas)
+xce::ad::Translator::ProcessNetwork	Translator.h	/^  static bool ProcessNetwork(const string& network_code, vector<short>& networks);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& network_code, vector<short>& networks)
+xce::ad::Translator::ProcessPlatform	Translator.h	/^  static bool ProcessPlatform(const string& platform_code, vector<uint64_t>& platforms);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& platform_code, vector<uint64_t>& platforms)
+xce::ad::Translator::ProcessRealSchool	Translator.h	/^  static bool ProcessRealSchool(const string& school_code, vector<uint64_t>& schools);$/;"	p	class:xce::ad::Translator	access:private	signature:(const string& school_code, vector<uint64_t>& schools)
+xce::ad::Translator::ProcessResolution	Translator.h	/^  static bool ProcessResolution(const string& resolution_code, vector<short>& resolutions);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& resolution_code, vector<short>& resolutions)
+xce::ad::Translator::ProcessSchool	Translator.h	/^  static bool ProcessSchool(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools);$/;"	p	class:xce::ad::Translator	access:public	signature:(const string& school_code, vector<uint64_t>& areas, vector<uint64_t>& schools)
+xce::ad::Translator::ProcessStage	Translator.h	/^  static bool ProcessStage(const int stage_code, vector<short>& stages);$/;"	p	class:xce::ad::Translator	access:public	signature:(const int stage_code, vector<short>& stages)
+xce::ad::UIntIndexPtr	InvertedIndex.h	/^typedef IceUtil::Handle< BaseIndex<uint64_t> > UIntIndexPtr;$/;"	t	namespace:xce::ad
+xce::ad::UNKNOWN_AD	Util.h	/^enum AdType {UNKNOWN_AD=-1,BRAND_AD=0, SELF_AD=1};$/;"	e	enum:xce::ad::AdType
+xce::ad::UserBindHandler	Handler.h	/^class UserBindHandler : public BaseHandler {$/;"	c	namespace:xce::ad	inherits:BaseHandler
+xce::ad::UserBindHandler::handle	Handler.h	/^  void handle(HandlerPara& para);$/;"	p	class:xce::ad::UserBindHandler	access:public	signature:(HandlerPara& para)
+xce::ad::UserBindPool	CachePool.h	/^class UserBindPool : public CachePool, public MyUtil::Singleton<UserBindPool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::UserBindPool::GetUserBind	CachePool.h	/^  AdUserBindPtr GetUserBind(const int user_id, const Ice::Long zone_id);$/;"	p	class:xce::ad::UserBindPool	access:public	signature:(const int user_id, const Ice::Long zone_id)
+xce::ad::UserBindPool::Print	CachePool.h	/^	string Print(const int size);$/;"	p	class:xce::ad::UserBindPool	access:public	signature:(const int size)
+xce::ad::UserBindPool::Size	CachePool.h	/^	size_t Size();$/;"	p	class:xce::ad::UserBindPool	access:public	signature:()
+xce::ad::UserBindPool::TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::UserBindPool	access:private	signature:()
+xce::ad::UserBindPool::TotalLoad	UserBindPool.cpp	/^void xce::ad::UserBindPool::TotalLoad() {$/;"	f	class:xce::ad::UserBindPool	signature:()
+xce::ad::UserBindPool::pool_	CachePool.h	/^  set<AdUserBindPtr> pool_;$/;"	m	class:xce::ad::UserBindPool	access:private
+xce::ad::Util	Util.h	/^class Util {$/;"	c	namespace:xce::ad
+xce::ad::Util::ExecuteDelete	Util.h	/^	static void ExecuteDelete(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+xce::ad::Util::ExecuteInsert	Util.h	/^	static void ExecuteInsert(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+xce::ad::Util::ExecuteQuery	Util.h	/^	static void ExecuteQuery(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+xce::ad::Util::ExecuteWrite	Util.h	/^	static void ExecuteWrite(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res) {$/;"	f	class:xce::ad::Util	access:public	signature:(const Statement& sql, const string& db, const string& pattern, mysqlpp::StoreQueryResult& res)
+xce::ad::ZoneBottomHandler	Handler.h	/^class ZoneBottomHandler : public ZoneHandler , public MyUtil::Singleton<ZoneBottomHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+xce::ad::ZoneHandler	Handler.h	/^class ZoneHandler {$/;"	c	namespace:xce::ad
+xce::ad::ZoneHandler::ZoneHandler	Handler.h	/^  ZoneHandler();$/;"	p	class:xce::ad::ZoneHandler	access:public	signature:()
+xce::ad::ZoneHandler::handle	Handler.h	/^  virtual void handle( HandlerPara& para );$/;"	p	class:xce::ad::ZoneHandler	access:public	signature:( HandlerPara& para )
+xce::ad::ZoneHandler::handler_list_	Handler.h	/^  vector<HandlerPtr> handler_list_;$/;"	m	class:xce::ad::ZoneHandler	access:protected
+xce::ad::ZoneHandler::~ZoneHandler	Handler.h	/^  virtual ~ZoneHandler(){}$/;"	f	class:xce::ad::ZoneHandler	access:public	signature:()
+xce::ad::ZoneHandlerFactory	Handler.h	/^class ZoneHandlerFactory {$/;"	c	namespace:xce::ad
+xce::ad::ZoneHandlerFactory::GetZoneHandler	Handler.h	/^	static ZoneHandlerPtr GetZoneHandler( const Ice::Long zone_id ) {$/;"	f	class:xce::ad::ZoneHandlerFactory	access:public	signature:( const Ice::Long zone_id )
+xce::ad::ZoneHandlerPtr	Handler.h	/^typedef ZoneHandler* ZoneHandlerPtr;$/;"	t	namespace:xce::ad
+xce::ad::ZonePool	CachePool.h	/^class ZonePool : public CachePool, public MyUtil::Singleton<ZonePool> {$/;"	c	namespace:xce::ad	inherits:CachePool,MyUtil::Singleton
+xce::ad::ZonePool::FillRotateGroups	CachePool.h	/^  inline void FillRotateGroups();$/;"	p	class:xce::ad::ZonePool	access:private	signature:()
+xce::ad::ZonePool::GetAdZone	CachePool.h	/^  AdZonePtr GetAdZone(Ice::Long);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(Ice::Long)
+xce::ad::ZonePool::IsValid	CachePool.h	/^  bool IsValid(Ice::Long);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(Ice::Long)
+xce::ad::ZonePool::Print	CachePool.h	/^  string Print(const int size);$/;"	p	class:xce::ad::ZonePool	access:public	signature:(const int size)
+xce::ad::ZonePool::Size	CachePool.h	/^  size_t Size();$/;"	p	class:xce::ad::ZonePool	access:public	signature:()
+xce::ad::ZonePool::TotalLoad	CachePool.h	/^  void TotalLoad();$/;"	p	class:xce::ad::ZonePool	access:private	signature:()
+xce::ad::ZonePool::TotalLoad	ZonePool.cpp	/^void xce::ad::ZonePool::TotalLoad() {$/;"	f	class:xce::ad::ZonePool	signature:()
+xce::ad::ZonePool::pool_	CachePool.h	/^  map<Ice::Long, AdZonePtr> pool_;$/;"	m	class:xce::ad::ZonePool	access:private
+xce::ad::ZoneTestHandler	Handler.h	/^class ZoneTestHandler : public ZoneHandler , public MyUtil::Singleton<ZoneTestHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+xce::ad::ZoneTestHandler::ZoneTestHandler	Handler.h	/^  ZoneTestHandler();$/;"	p	class:xce::ad::ZoneTestHandler	access:public	signature:()
+xce::ad::ZoneTopHandler	Handler.h	/^class ZoneTopHandler : public ZoneHandler , public MyUtil::Singleton<ZoneTopHandler> {$/;"	c	namespace:xce::ad	inherits:ZoneHandler,MyUtil::Singleton
+xce::ad::operator <<	Struct.cpp	/^ostream& xce::ad::operator<< (ostream &os, const Rectangle &rec) {$/;"	f	class:xce::ad	signature:(ostream &os, const Rectangle &rec)
+zone2rotate_	CachePool.h	/^  map<Ice::Long, vector<AdGroupPtr> > zone2rotate_;$/;"	m	class:xce::ad::GroupPool	access:private
+zone_brand_index_	InvertedIndex.h	/^  map<Ice::Long, DimIndexPtr> zone_brand_index_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+zone_self_index_	InvertedIndex.h	/^  map<Ice::Long, DimIndexPtr> zone_self_index_;$/;"	m	class:xce::ad::InvertedIndex	access:private
+~BaseHandler	Handler.h	/^  virtual ~BaseHandler() {}$/;"	f	class:xce::ad::BaseHandler	access:public	signature:()
+~CachePool	CachePool.h	/^  virtual ~CachePool(){}$/;"	f	class:xce::ad::CachePool	access:public	signature:()
+~Selector	Handler.h	/^  virtual ~Selector(){}$/;"	f	class:xce::ad::Selector	access:public	signature:()
+~ZoneHandler	Handler.h	/^  virtual ~ZoneHandler(){}$/;"	f	class:xce::ad::ZoneHandler	access:public	signature:()

@@ -1,0 +1,26 @@
+import "tripod_options.proto";
+
+package xce.tripod;
+
+message UserConfigData 
+{
+    option (.tripod.options.business_id) = "UserConfig";
+    option (.tripod.options.table_name) = "user_config";
+    option (.tripod.options.database_source) = "user_config";
+
+	required int64 id = 1;
+	optional int64 email_config = 2;
+	optional int32 basic_config = 3;
+	optional int32 poke_config = 4;
+	optional int32 request_friend_config = 5;
+	optional int32 photo_config = 6;
+	optional int32 message_config = 7;
+	optional int32 browse_config = 8;
+	optional string display_menu_list = 9;
+	optional string more_menu_list = 10;
+	optional int32 want_see_css = 11;
+	optional string send_feed_config = 12;
+	optional string recv_feed_config = 13;
+	optional string profile_privacy = 14;
+	optional int32 status_config = 15;
+}

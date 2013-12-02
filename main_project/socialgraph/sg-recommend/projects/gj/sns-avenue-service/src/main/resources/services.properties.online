@@ -1,0 +1,14 @@
+#db
+db.mongodb.host=db1.jie.d.xiaonei.com
+db.mongodb.port=62166
+db.mongodb.db=sns_online
+db.mongodb.user=gj
+db.mongodb.passwd=dec2011online4nb
+db.mongodb.count=5
+
+#avnue index
+index.service.port=9630
+index.service.thread.num=2
+index.service.data=/data/ranking/data
+
+

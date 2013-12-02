@@ -1,0 +1,145 @@
+package xce.feed;
+
+message KeyValueProto {
+  required string key = 1;
+  required string value  = 2;
+}
+
+message MapProto {
+  repeated KeyValueProto items = 1;
+}
+
+message VecIntItem {
+  required int32 item = 1; 
+}
+
+message VecInt {
+  repeated VecIntItem items = 1; 
+}
+
+enum DispatchOP {
+  DISPATCH = 0;
+  DISPATCH_EDM = 1;
+  DISPATCH_WITH_REPLY = 2;
+}
+
+message FeedDispatchProto {
+ required DispatchOP op = 1;
+ required int64 feed = 2;
+ required int64 miniMerge = 3;
+ required int64 newsMerge = 4;
+ required int64 source = 5;
+ required int64 psource = 6; //更高
+ required int32 actor = 7;
+ required int32 type = 8; // 包含 NewsMergeType(2位), MiniMergeType(2位), ReplyType(2位), 空两位，其余24位为type 和 Stype通过mod 100确定大类和小类
+ required int32 ptype = 9;
+ required int32 time = 10;
+ required int32 baseWeight = 11; //高8位为 friendrank,次高8位为baseWeightId, 低16位为weight
+ required string xml = 12;
+ required MapProto extraProps = 13;
+
+ optional int64 oldReplyId = 14 [default = -1];
+ optional string oldReply = 15;
+ optional int64 newReplyId = 16 [default = -1];
+ optional string newReply= 17;
+ optional int32 count = 18 [default = -1]; 
+}
+
+enum ReplyOP {
+  ADD_REPLY = 0;
+  ADD_REPLY_BY_ID = 1;
+  ADD_REPLY_WITH_CONFIG = 2;
+}
+
+message FeedReplyProto {
+  required ReplyOP op = 1;
+  required int64 oldReplyId = 2;
+  required string oldReply = 3;
+  required int64 newReplyId = 4;
+  required string newReply= 5;
+  required int32 count = 6; 
+
+  required int32 stype = 7; 
+  optional int32 actor = 8 [default = -1]; 
+  optional int64 source = 9 [default = -1]; 
+  optional int64 feedid = 10 [default = -1]; 
+  optional MapProto config = 11;
+
+}
+
+enum ReadOP {
+  READ_NEWS = 0;
+  READ_ALL_NEWS = 1;
+  READ_MINI = 2;
+  READ_ALL_MINI =3;
+}
+
+message ReadProto {
+  required ReadOP op = 1; 
+  required int32 user = 2;
+  optional int64 feedid = 3  [default = -1];
+}
+
+enum RemoveOP {
+  REMOVE_BY_SOURCE = 0;
+  REMOVE_BY_SOURCE_HS =1 ;
+  REMOVE_BY_PARENT = 2;
+  REMOVE_FEED = 3;
+  REMOVE_REPLY = 4;
+  REMOVE_REPLY_BY_ID =5;
+  REMOVE_BY_ID = 6;
+}
+
+message RemoveFeedProto {
+  required RemoveOP op = 1; 
+  optional int64 source = 2  [default = -1];
+  optional int32 type = 3  [default = 0];
+  optional int32 actor = 4  [default = -1];
+  optional int64 feedid = 5  [default = -1];
+
+  optional int64 replyid = 6 [default = -1];
+  optional int64 oldReplyId = 7 [default = -1];
+  optional string oldReply = 8;
+  optional int64 newReplyId = 9 [default = -1];
+  optional string newReply= 10;
+  optional int32 count = 11 [default = 0]; 
+}
+
+message RemoveFeedReplyProto {
+  required int32 op = 1; 
+  required int32 type = 2; 
+  required int64 replyid = 3;
+  required int64 oldReplyId = 4;
+  required string oldReply = 5;
+  required int64 newReplyId = 6;
+  required string newReply= 7;
+  required int32 count = 8; 
+
+  optional int64 source = 9  [default = -1];
+  optional int32 actor = 10  [default = -1];
+  optional int64 feedid = 11  [default = -1];
+}
+
+
+enum OtherOP {
+  MARK_FEED = 0;
+  DIRECTED_SEND = 1;
+  REPLACE_XML = 2;
+  DISPATCH_AGAIN = 3;
+  ADD_LOW = 4;
+  DEL_LOW = 5;
+}
+
+message OtherFeedProto {
+  required OtherOP op = 1; 
+  required int64 source = 2;
+  required int32 stype = 3;
+  required int32 actor = 4;
+
+  optional int32 uid = 5  [default = -1];
+  optional int64 feedid = 6  [default = -1];
+  optional bool mark = 7  [default = false];
+  optional string xml = 8; 
+  optional VecInt targets = 9; 
+}
+

@@ -1,0 +1,16 @@
+BEGIN{
+	FS=",,"
+}
+{
+    if( $4==ACTION_TO_MODIFY ) {
+    	ips[$2] ++ ;
+        user[$3] ++;
+        goods[$6] ++;
+    }
+}
+END{
+   for (ip in ips) {
+        if (ips[ip] >=ACTION_UP_BOUND)
+            printf("ips[\"%s\"]=%d\n",ip,ips[ip])
+   }
+}

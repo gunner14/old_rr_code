@@ -1,0 +1,48 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.vipinfo;
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "VipInfoProto";
+
+message PbVipIconUrl {
+  option (tripod.options.business_id) = "vip_icon_url";
+  option (tripod.options.database_source) = "vipmember";
+  option (tripod.options.table_name) = "icon_url";
+
+  optional int64 id = 1;
+  optional string url = 2;
+}
+
+message PbVipHatUrl {
+  option (tripod.options.business_id) = "vip_hat_url";
+  option (tripod.options.database_source) = "vipmember";
+  option (tripod.options.table_name) = "feed_icon_url";
+
+  optional int64 id = 1;
+  optional string url = 2;
+  optional int32 status = 3;
+}
+
+message PbVipMemberInfo {
+  option (tripod.options.business_id) = "vip_member_info";
+  option (tripod.options.primary_key) = "uid";
+  option (tripod.options.repeated_field) = "member_infos";
+  option (tripod.options.database_source) = "vipmember";
+  option (tripod.options.table_name) = "user_member_info";
+
+  message PbMemberInfo {
+    optional int32 type = 1;
+    optional int32 status = 2;
+    optional int32 level = 3;
+    optional int32 icon_id = 4;
+    optional int32 int_info1 = 5 [default = 0];
+    optional int32 int_info2 = 6 [default = 0];
+    optional string char_info1 = 7 [default = ""]; 
+    optional string char_info2 = 8 [default = ""];
+    optional int32 hat_id = 9;
+  }
+
+  optional int64 uid = 1;
+  repeated PbMemberInfo member_infos = 2;
+}

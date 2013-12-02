@@ -1,0 +1,32 @@
+package xce.xntalk.groupchat;
+message GroupChatMessageAttachment {
+  required int64 attachment_id = 1;
+  optional int64 msgid = 2;
+  optional int64 session_id = 3;
+  optional int64 type = 4;
+  optional int64 attach_key = 5;
+  optional string info = 6; 
+}
+message GroupChatMessageBody {
+  required int64 message_id = 1;
+  optional int64 session_id = 2;
+  optional string content =3;
+  optional string content_info =4;
+  optional string source = 5;
+  optional int32 source_type = 6;
+  optional string link = 7;
+  optional int32 uid = 8;
+  optional int32 attach_flag = 9;
+  optional string create_time = 10;
+  repeated GroupChatMessageAttachment attachments = 11;
+}
+
+
+message SessionBody {
+  repeated GroupChatMessageBody msg_body= 1;
+}
+
+
+message UserSession {
+  required int64 session_id = 1;
+};

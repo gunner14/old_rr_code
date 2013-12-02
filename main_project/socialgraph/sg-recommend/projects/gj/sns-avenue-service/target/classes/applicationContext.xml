@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-autowire="byType">
+	<context:annotation-config />
+	<bean class="com.renren.ad.sns.services.rabbitmq.ZoieConfiguration" />
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:services.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="goodsDataprovider"
+		class="com.renren.ad.sns.services.search.MongoDBDataProvider">
+		<constructor-arg index="0" value="GOODS" />
+		<constructor-arg index="1" ref="versionComparator" />
+		<property name="dataConsumer" ref="consumer" />
+	</bean>
+
+	<bean id="mqGoodsDataprovider"
+		class="com.renren.ad.sns.services.search.MQDataProvider" init-method="start">
+		<constructor-arg index="0" value="GOODS" />
+		<constructor-arg index="1" ref="versionComparator" />
+		<property name="dataConsumer" ref="consumer" />
+	</bean>
+
+
+    <bean id="indexLoader"
+        class="com.renren.ad.sns.services.search.MetaData4IndexLoader" >
+    </bean>
+	<bean id="goods-dataprovider-mbean" class="proj.zoie.mbean.DataProviderAdmin">
+		<constructor-arg ref="goodsDataprovider" />
+	</bean>
+
+	<bean id="mq-goods-dataprovider-mbean" class="proj.zoie.mbean.DataProviderAdmin">
+		<constructor-arg ref="mqGoodsDataprovider" />
+	</bean>
+
+
+	<bean id="mbeanServer" class="java.lang.management.ManagementFactory"
+		factory-method="getPlatformMBeanServer" />
+
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="zoie-sns-search:name=goods-data-provider"
+					value-ref="goods-dataprovider-mbean" />
+				<entry key="zoie-sns-search:name=mq-goods-data-provider"
+					value-ref="mq-goods-dataprovider-mbean" />
+
+				<entry key="zoie-sns-search:name=optimize-scheduler"
+					value-ref="optimize-scheduler-mbean" />
+				<entry key="zoie-sns-search:name=index-stat" value-ref="zoie-index-stat-mbean" />
+				<entry key="zoie-sns-search:name=zoie-system" value-ref="zoie-system-mbean" />
+				<!-- <entry key="zoie-example:name=HttpAdaptor" value-ref="httpAdaptor" 
+					/> -->
+			</map>
+		</property>
+		<property name="server" ref="mbeanServer" />
+	</bean>
+	<bean id="fileInterpreter" class="proj.zoie.impl.indexing.FileIndexableInterpreter" />
+	<bean id="goodsInterpreter"
+		class="com.renren.ad.sns.services.search.GoodsIndexableInterpreter" />
+	<bean id="versionComparator"
+		class="proj.zoie.impl.indexing.ZoieConfig$DefaultVersionComparator" />
+	<bean id="idxDecorator" class="proj.zoie.impl.indexing.DefaultIndexReaderDecorator" />
+
+	<bean id="indexingSystem" class="proj.zoie.impl.indexing.ZoieSystem"
+		init-method="start" destroy-method="shutdown">
+		<!-- disk index directory 索引文件夹 -->
+		<constructor-arg index="0" value="file:${goods.index.dir}" />
+		<!-- sets the interpreter 设置翻译器 -->
+		<constructor-arg index="1" ref="goodsInterpreter" />
+		<!-- sets the decorator 设置装饰器 -->
+		<constructor-arg index="2">
+			<ref bean="idxDecorator" />
+		</constructor-arg>
+		<!-- set the Analyzer, if null is passed, Lucene's StandardAnalyzer is 
+			used -->
+		<constructor-arg index="3">
+			<null />
+		</constructor-arg>
+		<!-- sets the Similarity, if null is passed, Lucene's DefaultSimilarity 
+			is used -->
+		<constructor-arg index="4">
+			<null />
+		</constructor-arg>
+		<!-- the following parameters indicate how often to triggered batched indexing, 
+			whichever the first of the following two event happens will triggered indexing 
+			Batch size: how many items to put on the queue before indexing is triggered -->
+		<constructor-arg index="5" value="1000" />
+		<!-- Batch delay, how long to wait before indxing is triggered -->
+		<constructor-arg index="6" value="10000" />
+		<!-- flag turning on/off real time indexing -->
+		<constructor-arg index="7" value="true" />
+		<constructor-arg index="8">
+			<ref bean="versionComparator" />
+		</constructor-arg>
+	</bean>
+	<bean id="zoie-system-mbean" class="proj.zoie.mbean.ZoieSystemAdmin">
+		<constructor-arg ref="indexingSystem" />
+	</bean>
+
+	<bean id="zoie-index-stat-mbean" class="proj.zoie.mbean.ZoieIndexingStatusAdmin">
+		<constructor-arg ref="indexingSystem" />
+	</bean>
+	<bean id="defaultOptScheduler" class="proj.zoie.api.indexing.DefaultOptimizeScheduler"
+		factory-bean="indexingSystem" factory-method="getOptimizeScheduler" />
+
+	<bean id="optimize-scheduler-mbean" class="proj.zoie.mbean.ZoieOptimizeSchedulerAdmin">
+		<constructor-arg ref="defaultOptScheduler" />
+	</bean>
+
+	<alias name="indexingSystem" alias="index-reader-factory" />
+	<alias name="indexingSystem" alias="consumer" />
+
+	<bean id="searchService"
+		class="com.renren.ad.sns.services.search.ZoieSearchServiceImpl">
+		<constructor-arg ref="index-reader-factory" />
+	</bean>
+	
+	<context:annotation-config />
+</beans>

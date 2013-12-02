@@ -1,0 +1,12 @@
+package xce.notify;
+
+message PbNotifyContent {
+  required int64 notify_id = 1;
+  required int64 source = 2;
+  required int32 owner = 3;
+  required int32 from = 4;
+  required int32 type = 5;
+  required int32 time = 6;
+  required int32 isreply = 7;
+  required string props = 8;
+}

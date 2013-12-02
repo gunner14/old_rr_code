@@ -1,0 +1,16 @@
+diff -r hadoop/sqoop-1.4.1/src/java/org/apache/sqoop/hbase/HBasePutProcessor.java workspace/sqoop-1.4.1/src/java/org/apache/sqoop/hbase/HBasePutProcessor.java
+95a96
+>       this.table.setWriteBufferSize(5 * 1024 * 1024);
+119a121
+>         put.setWriteToWAL(false);
+diff -r hadoop/sqoop-1.4.1/src/java/org/apache/sqoop/mapreduce/db/DataDrivenDBInputFormat.java workspace/sqoop-1.4.1/src/java/org/apache/sqoop/mapreduce/db/DataDrivenDBInputFormat.java
+29a30
+> import java.util.Collections;
+164c165
+<       return splitter.split(job.getConfiguration(), results,
+---
+>       List<InputSplit> res = splitter.split(job.getConfiguration(), results,
+165a167,169
+>       Collections.shuffle(res);
+>       LOG.info("Boundary has been shuffled");
+>       return res;

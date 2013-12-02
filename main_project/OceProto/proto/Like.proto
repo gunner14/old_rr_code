@@ -1,0 +1,10 @@
+package xce.tripodlike;
+
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "ILikeIt";
+
+message PbLikeData {
+  required int64 gid = 1;
+  repeated int32 userid = 2;
+}

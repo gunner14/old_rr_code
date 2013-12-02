@@ -1,0 +1,30 @@
+# Your project name here
+PROJECT(HelloWorld)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+## compile options
+# release mode 
+SET(COMMON_RELEASE_FLAGS "-g -O2 -Wall")
+SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${COMMON_RELEASE_FLAGS}")
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${COMMON_RELEASE_FLAGS}")
+# debug mode
+SET(COMMON_DEBUG_FLAG "-g -O0 -Wall -W -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ${COMMON_DEBUG_FLAG}")
+SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${COMMON_DEBUG_FLAG}")
+
+## link options
+SET(LDFLAGS, "-fprofile-arcs -ftest-coverage")
+
+## Write your own configure here
+ADD_LIBRARY(hello_world hello_world.cc)
+# TARGET_LINK_LIBRARIES(hello_world YOUR_LIB)
+
+## test
+INCLUDE(CTest)
+INCLUDE(Dart)
+ENABLE_TESTING()
+ADD_SUBDIRECTORY(test)
+# test name
+SET(CTEST_PROJECT_NAME "${CMAKE_PROJECT_NAME}")
+MESSAGE("CTEST name: ${CTEST_PROJECT_NAME}")

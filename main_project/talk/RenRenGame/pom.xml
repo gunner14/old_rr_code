@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.renren</groupId>
+	<artifactId>RenRenGame</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>RenRenGame Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<artifactId>xiaonei-root-pom</artifactId>
+		<groupId>com.xiaonei</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.paoding</groupId>
+			<artifactId>paoding-rose</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-admin-util</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+    <dependency>
+      <groupId>com.xiaonei</groupId>
+      <artifactId>music-xoa-api</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+   <dependency>
+     <groupId>com.xiaonei</groupId>
+     <artifactId>xoa-jebe-api</artifactId>
+     <version>1.0-SNAPSHOT</version>
+   </dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-commons-menu</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zeroc</groupId>
+			<artifactId>Ice</artifactId>
+			<version>3.3.1-PATCHED</version>
+		</dependency>
+		<!-- 申请加好友 -->
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-adapter</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-friend-api</artifactId>
+			<version>1.0-sns-SNAPSHOT</version>
+		</dependency>
+		<!-- 取好友列表 -->
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-buddy</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 验票 -->
+		<dependency>
+			<groupId>com.xiaonei.xce</groupId>
+			<artifactId>oce-passport</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 获取用户信息 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 验证信息 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>icode-verify</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<classifier>client</classifier>
+		</dependency>
+		<!-- 热门游戏推荐 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-api-component</artifactId>
+			<version>1.0-sns-SNAPSHOT</version>
+		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		<!-- jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- 社区游戏 -->
+		<dependency>
+			<groupId>com.xiaonei</groupId>
+			<artifactId>xiaonei-api-component</artifactId>
+			<version>1.0-sns-SNAPSHOT</version>
+		</dependency>
+		<!-- httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+			<classifier>sources</classifier>
+		</dependency>
+		<!-- 最近玩过好友 -->
+		<dependency>
+		  <groupId>com.xiaonei</groupId>
+		  <artifactId>xiaonei-api-component-basic</artifactId>
+		  <version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 取100*100 icon -->
+   <dependency>
+     <groupId>com.xiaonei</groupId>
+     <artifactId>xiaonei-openplatform-biz-model</artifactId>
+     <version>1.0-SNAPSHOT</version>
+   </dependency>
+  <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-ext</artifactId>
+    <version>1.6.6</version>
+  </dependency>
+
+<dependency>
+  <groupId>org.perf4j</groupId>
+  <artifactId>perf4j</artifactId>
+  <version>0.9.16</version>
+</dependency>
+
+
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.8</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>renrengame</finalName>
+	</build>
+</project>

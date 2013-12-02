@@ -1,0 +1,15 @@
+xoa的XCS模块编译注意事项：
+1. cmake版本号为2.8。
+2. 需要下载gtest模块，并且设置环境变量GTEST_DIR指向gtest存放位置。
+3. XCS模块自己提供相应的cmake文件进行代码管理，其中融合了编译，
+   单元测试为一体。可以方便的进行代码覆盖率和内存泄漏检测。
+   以后还要融合codereview。
+
+使用方法：
+1. 执行sh autorun.sh
+2. 将生成的include目录添加到编译依赖的头文件目录中。
+   将生成的lib目录添加到编译依赖的库文件目录中。
+   将生成的静态库(libxcs.a)添加到编译依赖的库文件中。
+3. 将zookeeper头文件，库文件的所在目录和zookeeper的库文件添加到依赖中。
+
+有问题可以联系：shiqiang.ding@renren-inc.com或者dinggangyilang@gmail.com

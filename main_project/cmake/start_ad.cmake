@@ -1,0 +1,92 @@
+INCLUDE_DIRECTORIES(/usr/local/xce/include/mysql++)
+INCLUDE_DIRECTORIES(~/include/thrift/)
+ADD_STATIC_LIB("ad/util/src" "AdUtil")
+ADD_STATIC_LIB("ad/enginejclient/src/" "AdEngineJClient" thrift )
+ADD_STATIC_LIB("ad/gj_cache/src" "GjCacheClient" thrift)
+ADD_STATIC_LIB_FEED("ad/gj_cache/src" "GjCacheClientFeed" ${XNS_ROOT_DIR}/third-party/thrift/lib/libthrift.a)
+ADD_STATIC_LIB("ad/indexService/TIndex/src" "TIndex")
+ADD_STATIC_LIB("ad/Degrade/src" "Degrade")
+ADD_STATIC_LIB("ad/indexService/lower_ad_send_speed/src" "AdSendSpeedLower" breakpad DbCxxPool UtilCxx boost_system json_linux-gcc-4.1.2_libmt xerces-c curl ldap idn ssl)
+
+ADD_STATIC_LIB("ad/ping_client/src" "AdPingClient" OceSlicePingReceiver OceCxxAdapterPingReceiverReplicaAdapter)
+ADD_SERVICE("ad/ping_server/src" "PingReceiver" OceSlicePingReceiver ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver IceExt OceSliceXceStorm   DbCxxPool OceSlice UtilCxx UtilSlice breakpad curl ldap idn ssl jwsmtp)
+
+ADD_SERVICE("ad/mob/AdMobEngine/src" "AdMobEngine" DbCxxPool breakpad OceSliceAdMob AdPingClient OceSliceAdMobLog OceSliceAdMobLogR OceSliceAdUserCache UtilSlice UtilCxx OceCxxAdapterAdMobLogBAdapter OceCxxAdapterAdMobLogSAdapter OceCxxAdapterAdMobLogRAdapter OceCxxAdapterPassportAdapter OceCxxAdapterAdUserCacheLoaderAdapter fcgi ctemplate NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system json_linux-gcc-4.1.2_libmt curl ldap idn ssl)
+
+ADD_SERVICE("ad/indexService/common/src" "IndexService"  Degrade AdUtil TIndex ReplicaCluster OceCxxAdapterAdDemoQualityAdapter OceSliceAdDemoQuality OceSliceReplicaCluster OceSliceSubjectObserver IceExt OceSliceXceStorm DbCxxPool OceSlice mysqlpp UtilCxx UtilSlice breakpad curl ldap idn ssl AdSendSpeedLower)
+
+ADD_SERVICE("ad/mob/AdMobLog/src" "AdMobLogB" DbCxxPool breakpad OceSliceAdMob OceSliceAdMobLog OceSliceAdUserCache UtilSlice UtilCxx OceCxxAdapterPassportAdapter NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system ldap idn ssl)
+
+ADD_SERVICE("ad/mob/AdMobLog/src" "AdMobLogS" DbCxxPool breakpad OceSliceAdMob OceSliceAdMobLog OceSliceAdUserCache UtilSlice UtilCxx OceCxxAdapterPassportAdapter NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system ldap idn ssl)
+
+ADD_SERVICE("ad/mob/AdMobLogR/src" "AdMobLogR" DbCxxPool breakpad OceSliceAdMob OceSliceAdMobLogR OceSliceAdUserCache UtilSlice UtilCxx  OceCxxAdapterPassportAdapter NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system ldap idn ssl)
+
+ADD_SERVICE("ad/edm/edm_log_cache/src" "EdmLogCache" OceCxxAdapterAdEdmLogAdapter OceCxxAdapterAdEdmLogLeftAdapter IceExt DbCxxPool ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm OceSlice UtilCxx UtilSlice breakpad fcgi)
+
+ADD_SERVICE("AdLog/src" "AdLog" ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/log/src" "AdLogS" ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/edm/edm_monitor/src" "AdEdmMonitor" breakpad OceSlice OceSliceAdEdmMonitor IceExt DbCxxPool UtilCxx UtilSlice ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm xerces-c curl ldap idn ssl AdUtil)
+
+ADD_SERVICE("ad/user_feature_cache/src" "AdUserFeatureCache" breakpad OceSlice OceSliceAdUserFeatureCache IceExt DbCxxPool UtilCxx UtilSlice ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm)
+
+ADD_SERVICE("AdUserCache/loader" "AdUserCacheLoader" ReplicaCluster FeedMemcClient OceSliceReplicaCluster OceSliceSubjectObserver IceExt OceSliceXceStorm DbCxxPool OceSlice TalkUtil OceSliceAdUserCache UtilCxx UtilSlice protobuf memcached OceProto)
+
+ADD_DC_SERVICE("AdHot/notify" "AdNotify" OceSliceBuddyByIdCache OceSliceUserCount OceSliceAdNotify ReplicaCluster FeedMemcClient OceCxxAdapterBuddyByIdReplicaAdapter OceCxxAdapterUserCountAdapter IceExt OceSliceReplicaCluster OceProto OceSliceSubjectObserver OceSliceXceStorm DbCxxPool UtilCxx UtilSlice memcached protobuf)
+
+ADD_DC_SERVICE("AdHot/gate" "AdHotGate" OceSliceUserCache OceSliceAdHot OceSliceUserCount OceSliceAdNotify OceCxxAdapterUserCacheAdapter OceCxxAdapterUserCountAdapter OceCxxAdapterAdNotifyAdapter OceCxxAdapterDistUserCacheReloaderAdapter OceCxxAdapterPassportAdapter FeedMemcClient NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm DbCxxPool UtilCxx UtilSlice fcgi ctemplate boost_system protobuf)
+
+ADD_SERVICE("AdHot/admin" "AdHotAdmin" OceSliceAdHot OceSliceAdNotify OceCxxAdapterAdNotifyAdapter OceCxxAdapterAdHotGateAdapter OceCxxAdapterPassportAdapter NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm DbCxxPool UtilCxx UtilSlice fcgi ctemplate)
+
+ADD_SERVICE("AdUnion/gate" "AdUnionGate" OceSliceAdUnion OceCxxAdapterPassportAdapter fcgi ctemplate NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm DbCxxPool UtilCxx UtilSlice)
+
+ADD_SERVICE("AdUnion/admin" "AdUnionAdmin" OceSliceAdUnion OceCxxAdapterAdUnionGateAdapter OceCxxAdapterPassportAdapter fcgi ctemplate NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm DbCxxPool UtilCxx UtilSlice)
+
+# 使用 FeedMemcClient
+
+ADD_SERVICE("AdGateN/src" "AdGateN" Degrade breakpad OceSliceAdGate OceSliceAdUserCache OceSliceAdEngine OceCxxAdapterAdTwSAdapter OceCxxAdapterAdEngineBReplicaAdapter OceCxxAdapterAdEngineUReplicaAdapter OceSliceIndexService OceCxxAdapterIndexServiceReplicaAdapter OceCxxAdapterAdUserCacheLoaderReplicaAdapter OceCxxAdapterPassportAdapter AdPingClient AdEngineJClient fcgi ctemplate NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice breakpad boost_system)
+
+ADD_SERVICE("ad/ad_mini/src" "AdMini" OceSliceAdEngine OceSliceAdMini AdPingClient AdEngineJClient fcgi ctemplate NotifyUtil IceExt OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice ReplicaCluster OceSliceReplicaCluster boost_system)
+
+ADD_SERVICE("ad/demo_loader/src" "AdDemoLoaderCache" OceCxxAdapterAdLogSAdapter OceCxxAdapterAdDemoQualityAdapter OceSliceAdDemoQuality ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/creativequality/src" "AdCreativeQuality" OceCxxAdapterAdLogSAdapter OceSliceAdCreativeQuality ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/experiment_loader/src" "AdExperimentLoaderCache" OceCxxAdapterAdExperimentAdapter  OceSliceAdExperiment ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/engine_u/src" "AdEngineU" AdPingClient AdEngineJClient OceCxxAdapterIndexServiceReplicaAdapter OceCxxAdapterAdLogSReplicaAdapter OceCxxAdapterAdDemoQualityAdapter OceSliceAdDemoQuality OceCxxAdapterAdExperimentAdapter OceSliceAdExperiment ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/edm/edm_sender/src" "AdEdmSender" Degrade AdPingClient AdEngineJClient OceCxxAdapterFeedAssistantReplicaAdapter OceCxxAdapterEdmDemoQualityReplicaAdapter OceCxxAdapterAdEdmLogLeftAdapter OceCxxAdapterEdmLogCacheAdapter OceCxxAdapterAdEdmMonitorAdapter OceCxxAdapterAdEdmUserTargetCacheAdapter OceCxxAdapterFeedCreatorAdapter OceCxxAdapterAdUserCacheLoaderReplicaAdapter OceCxxAdapterAdEdmLogAdapter OceCxxAdapterUserStateAdapter OceSlice  FeedMemcClient IceExt OceSliceXceStorm ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver  DbCxxPool  UtilCxx UtilSlice breakpad curl fcgi ldap idn ssl json_linux-gcc-4.1.2_libmt NotifyUtil)
+
+ADD_SERVICE("ad/edm/log/src" "AdEdmLog" ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/edm/edm_demo_loader/src" "EdmDemoLoaderCache" OceCxxAdapterAdLogSAdapter  OceSliceEdmDemoQuality ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+ADD_SERVICE("ad/edm/log_left/src" "AdEdmLogLeft" OceSlice breakpad OceCxxAdapterPassportAdapter NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system ldap idn ssl)
+
+ADD_SERVICE("ad/edm/user_target_cache/src" "AdEdmUserTargetCache" protobuf breakpad OceSlice OceSliceAdEdmUserTargetCache IceExt DbCxxPool UtilCxx UtilSlice ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver OceSliceXceStorm)
+
+ADD_SERVICE("AdAnalysis/src" "AdAnalysis" OceCxxAdapterAdMatchAdapter OceCxxAdapterAdGateAdapter OceCxxAdapterAdAnalysisAdapter ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice TalkUtil OceSliceAdAnalysis OceCxxAdapterAdAnalysisAdapter UtilCxx UtilSlice protobuf memcached)
+
+ADD_SERVICE("ad/gate/src" "AdGateS" ctemplate OceSliceAdGate OceSliceAdUserCache OceSliceAdEngine OceCxxAdapterAdTwSAdapter OceCxxAdapterAdEngineUReplicaAdapter OceCxxAdapterAdUserCacheLoaderReplicaAdapter OceCxxAdapterPassportAdapter fcgi NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system)
+
+ADD_SERVICE("ad/gate_m/src" "AdGateM" OceSliceAdGateM OceSliceAdUserCache OceCxxAdapterAdTwSAdapter OceSliceAdEngine OceCxxAdapterAdEngineBReplicaAdapter OceCxxAdapterAdEngineUAdapter OceCxxAdapterAdEngineSAdapter OceCxxAdapterAdUserCacheLoaderReplicaAdapter OceCxxAdapterPassportAdapter fcgi ctemplate NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice libboost_system-gcc41-mt-1_38.so breakpad)
+
+ADD_SERVICE("ad/engine_b/src" "AdEngineB" Degrade OceCxxAdapterAdLogReplicaAdapter OceCxxAdapterAdCreativeQualityReplicaAdapter OceSliceAdCreativeQuality  OceCxxAdapterAdEngineBReplicaAdapter AdUtil ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice mysqlpp UtilCxx UtilSlice breakpad curl ldap idn ssl)
+
+ADD_SERVICE("ad/tw/src" "AdTwS" AdEngineJClient OceCxxAdapterAdLogSReplicaAdapter OceCxxAdapterAdRecommendIAdapter OceCxxAdapterAdRecommendAdapter  OceCxxAdapterAdDemoQualityAdapter OceSliceAdDemoQuality ReplicaCluster OceSliceAdEngine OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice curl ldap idn ssl breakpad)
+
+ADD_SERVICE("ad/FeedEdmSender3G/src" "FeedEdmSender3G" OceCxxAdapterUserUrlAdapter OceCxxAdapterDistUserCacheReloaderAdapter OceCxxAdapterUserCacheAdapter OceCxxAdapterDistUserCacheReloaderAdapter OceCxxAdapterWriteReconnectWorkerAdapter SocialGraphUtil SocialGraphProto Base json_linux-gcc-4.1.2_libmt ReplicaCluster OceCxxAdapterFeedEdmCacheAdapter OceCxxAdapterUserBaseAdapter OceCxxAdapterUserStateAdapter OceCxxAdapterUserNetworkAdapter OceCxxAdapterUserNetworkReaderAdapter OceCxxAdapterUserNetworkWriterAdapter OceCxxAdapterFeedFocusAdapter OceCxxAdapterFriendRankCacheAdapter OceCxxAdapterSocialFeedCacheAdapter  OceCxxAdapterPUKFeedCacheAdapter OceCxxAdapterFeedAssistantAdapter  OceCxxAdapterAdNotifyAdapter OceCxxAdapterFeedNewsAdapter OceCxxAdapterBuddyByIdReplicaAdapter OceCxxAdapterFeedEdmSenderAdapter OceSliceFeedEdmSender OceSliceRFeed IceExt  OceSliceXceStorm DbCxxPool  OceSlice TalkUtil UtilCxx UtilSlice mysqlpp libprotobuf.a libmemcached.so libzookeeper_mt.a libboost_system-gcc41-mt-1_38.so breakpad curl ldap idn ssl)
+
+ADD_SERVICE("ad/FeedEdmCache3G/src" "FeedEdmCache3G" OceCxxAdapterAdNotifyAdapter json_linux-gcc-4.1.2_libmt ReplicaCluster OceCxxAdapterUserBaseAdapter OceCxxAdapterAdEdmMatcherAdapter  OceSliceFeedEdmCache OceSliceRFeed IceExt  OceSliceXceStorm DbCxxPool OceSlice TalkUtil UtilCxx UtilSlice mysqlpp breakpad)
+
+#ADD_SERVICE("AdLog/src" "AdLog" ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient IceExt OceSliceXceStorm DbCxxPool OceSlice UtilCxx UtilSlice breakpad  curl ldap idn ssl)
+
+#ADD_SERVICE("ad/ip_test" "IpTest" ctemplate OceSliceAdGate OceSliceRFeed OceCxxAdapterFeedMiniAdapter OceSliceRFeed OceCxxAdapterFeedMiniAdapter OceSliceAdUserCache OceSliceAdEngine OceSliceFeedEdmSender OceCxxAdapterFeedEdmSenderAdapter OceCxxAdapterAdTwSAdapter OceCxxAdapterAdEngineSAdapter OceCxxAdapterAdUserCacheLoaderAdapter OceCxxAdapterPassportAdapter fcgi NotifyUtil IceExt ReplicaCluster OceSliceReplicaCluster OceSliceSubjectObserver FeedMemcClient OceSliceXceStorm DbCxxPool UtilCxx UtilSlice boost_system)
+
+#TARGET_LINK_LIBRARIES(AdGateN "/opt/google-breakpad/src/client/linux/libbreakpad.a" )
+TARGET_LINK_LIBRARIES(AdGateS "/opt/google-breakpad/src/client/linux/libbreakpad.a" )
+#TARGET_LINK_LIBRARIES(IpTest "/opt/google-breakpad/src/client/linux/libbreakpad.a" )
+
+

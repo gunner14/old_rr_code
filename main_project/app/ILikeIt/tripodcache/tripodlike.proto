@@ -1,0 +1,5 @@
+package xce.tripodlike;
+
+message TripodLikeShip {
+  repeated int32 userIds = 1;
+}

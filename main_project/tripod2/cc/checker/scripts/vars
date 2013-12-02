@@ -1,0 +1,20 @@
+#Aa=(UserRegion UserNetwork UserWorkplace UserElementarySchool UserJuniorHighSchool UserHighSchool UserCollege UserUniversity)
+#a_a=(user_network_region user_network_network user_network_workplace user_network_elementary_school user_network_junior_high_school user_network_high_school user_network_college user_network_university)
+
+
+#Aa=(UserState UserName UserBorn UserDoing UserPassport UserStage UserRight UserUrl)
+#a_a=(user_state user_name user_born user_doing user_passport user_stage user_right user_url)
+
+#Aa=(UserState UserRegion)
+#a_a=(user_state user_network_region)
+
+#Aa=(UserState UserLoginCount)
+#a_a=(user_state user_logincount)
+
+Aa=(UserState UserConfig)
+a_a=(user_state user_config)
+
+#Aa=(UserUrl UserPassport UserName UserRight UserState UserLoginCount UserBorn UserStage UserDoing)
+#a_a=(user_url user_passport user_name user_right user_state user_logincount user_born user_stage user_doing)
+#aa=(userurl userpassport username userright userstate userlogincount userborn userstage userdoing)
+#AA=(USERURL USERPASSPORT USERNAME USERRIGHT USERSTATE USERLOGINCOUNT USERBORN USERSTAGE USERDOING)

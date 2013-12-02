@@ -1,0 +1,225 @@
+diff -r --new-file hbase-0.92.1_original/src/main/java/org/apache/hadoop/hbase/filter/TrimValueFilter.java workspace/hbase-0.92.1/src/main/java/org/apache/hadoop/hbase/filter/TrimValueFilter.java
+0a1,64
+> /**
+>  * Author: Qu Zhi
+>  */
+> package org.apache.hadoop.hbase.filter;
+> 
+> import java.io.DataInput;
+> import java.io.DataOutput;
+> import java.io.IOException;
+> import java.util.ArrayList;
+> 
+> import org.apache.hadoop.hbase.KeyValue;
+> 
+> /**
+>  * A filter that will return part of the value
+>  */
+> 
+> public class TrimValueFilter extends FilterBase {
+>   private int start;
+>   private int length;
+> 
+>   public TrimValueFilter(int start, int length) {
+>     this.start = start;
+>     this.length = length;
+>   }
+>   
+>   public TrimValueFilter(int start) {
+>     this(start, Integer.MAX_VALUE);
+>   }
+>   
+>   public TrimValueFilter() {
+>     this(0);
+>   }
+> 
+>   @Override
+>   public KeyValue transform(KeyValue kv) {
+>     return kv.createTrimmedKV(this.start, this.length);
+>   }
+> 
+>   public static Filter createFilterFromArguments(ArrayList<byte []> filterArguments) {
+>     switch (filterArguments.size()) {
+>       case 0:
+>         return new TrimValueFilter();
+>       case 1:
+>         return new TrimValueFilter(
+>           ParseFilter.convertByteArrayToInt(filterArguments.get(0)));
+>       case 2:
+>         return new TrimValueFilter(
+>           ParseFilter.convertByteArrayToInt(filterArguments.get(0)),
+>           ParseFilter.convertByteArrayToInt(filterArguments.get(1)));
+>       default:
+>         return null;
+>     }
+>   }
+> 
+>   public void write(DataOutput out) throws IOException {
+>     out.writeInt(this.start);
+>     out.writeInt(this.length);
+>   }
+> 
+>   public void readFields(DataInput in) throws IOException {
+>     this.start = in.readInt();
+>     this.length = in.readInt();
+>   }
+> }
+diff -r --new-file hbase-0.92.1_original/src/main/java/org/apache/hadoop/hbase/io/HbaseObjectWritable.java workspace/hbase-0.92.1/src/main/java/org/apache/hadoop/hbase/io/HbaseObjectWritable.java
+79a80
+> import org.apache.hadoop.hbase.filter.TrimValueFilter;
+240a242
+>     addToMap(TrimValueFilter.class, code++);
+diff -r --new-file hbase-0.92.1_original/src/main/java/org/apache/hadoop/hbase/KeyValue.java workspace/hbase-0.92.1/src/main/java/org/apache/hadoop/hbase/KeyValue.java
+1249a1250,1275
+>   /**
+>    * Create a new KeyValue that only contains specified part of the value,
+>    * ranging [start, start + length). If the range is out of bound, only
+>    * valid part is returned.
+>    * @param start
+>    * @param length
+>    * @return trimmed KeyValue.
+>    */
+>   public KeyValue createTrimmedKV(int start, int length) {
+>     // KV format:  <keylen:4><valuelen:4><key:keylen><value:valuelen>
+>     // Rebuild as: <keylen:4><valuelen:4><key:keylen><value:length>
+>     
+>     int vlen = getValueLength();
+>     int nvlen = length;
+>     if (start >= vlen || length <= 0)
+>       nvlen = 0;
+>     else if (start + length > vlen)
+>       nvlen = vlen - start;
+>     int header = getKeyLength() + 2 * Bytes.SIZEOF_INT;
+>     byte [] newBuffer = new byte[header + nvlen];
+>     System.arraycopy(this.bytes, this.offset, newBuffer, 0, header);
+>     Bytes.putInt(newBuffer, Bytes.SIZEOF_INT, nvlen);
+>     if (nvlen > 0)
+>       System.arraycopy(this.bytes, getValueOffset() + start, newBuffer, header, nvlen);
+>     return new KeyValue(newBuffer);
+>   }
+diff -r --new-file hbase-0.92.1_original/src/test/java/org/apache/hadoop/hbase/filter/TestFilter.java workspace/hbase-0.92.1/src/test/java/org/apache/hadoop/hbase/filter/TestFilter.java
+1367a1368,1404
+>   
+>   private void verifyTrimScanFull(Scan s, KeyValue [] kvs, int start, int length) throws IOException {
+>     InternalScanner scanner = this.region.getScanner(s);
+>     List<KeyValue> results = new ArrayList<KeyValue>();
+>     int row = 0;
+>     int idx = 0;
+>     for (boolean done = true; done; row++) {
+>       done = scanner.next(results);
+>       Arrays.sort(results.toArray(new KeyValue[results.size()]),
+>           KeyValue.COMPARATOR);
+>       if(results.isEmpty()) break;
+>       assertTrue("Scanned too many keys! Only expected " + kvs.length +
+>           " total but already scanned " + (results.size() + idx) +
+>           (results.isEmpty() ? "" : "(" + results.get(0).toString() + ")"),
+>           kvs.length >= idx + results.size());
+>       for(KeyValue kv : results) {
+>         LOG.info("row=" + row + ", result=" + kv.toString() +
+>             ", match=" + kvs[idx].toString());
+>         assertTrue("Row mismatch",
+>             Bytes.equals(kv.getRow(), kvs[idx].getRow()));
+>         assertTrue("Family mismatch",
+>             Bytes.equals(kv.getFamily(), kvs[idx].getFamily()));
+>         assertTrue("Qualifier mismatch",
+>             Bytes.equals(kv.getQualifier(), kvs[idx].getQualifier()));
+>         byte [] tmp = new byte[length];
+>         System.arraycopy(kvs[idx].getValue(), start, tmp, 0, length);
+>         assertTrue("Value mismatch",
+>             Bytes.equals(kv.getValue(), tmp));
+>         idx++;
+>       }
+>       results.clear();
+>     }
+>     LOG.info("Looked at " + row + " rows with " + idx + " keys");
+>     assertEquals("Expected " + kvs.length + " total keys but scanned " + idx,
+>         kvs.length, idx);
+>   }
+>   
+1516a1554,1615
+>     }
+>   }
+>   
+>   
+>   public void testTrimValueFilter() throws Exception {
+> 
+>     // KVs in first 6 rows
+>     KeyValue [] expectedKVs = {
+>       // testRowOne-0
+>       new KeyValue(ROWS_ONE[0], FAMILIES[0], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[0], FAMILIES[0], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[0], FAMILIES[0], QUALIFIERS_ONE[3], VALUES[0]),
+>       new KeyValue(ROWS_ONE[0], FAMILIES[1], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[0], FAMILIES[1], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[0], FAMILIES[1], QUALIFIERS_ONE[3], VALUES[0]),
+>       // testRowOne-2
+>       new KeyValue(ROWS_ONE[2], FAMILIES[0], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[2], FAMILIES[0], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[2], FAMILIES[0], QUALIFIERS_ONE[3], VALUES[0]),
+>       new KeyValue(ROWS_ONE[2], FAMILIES[1], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[2], FAMILIES[1], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[2], FAMILIES[1], QUALIFIERS_ONE[3], VALUES[0]),
+>       // testRowOne-3
+>       new KeyValue(ROWS_ONE[3], FAMILIES[0], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[3], FAMILIES[0], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[3], FAMILIES[0], QUALIFIERS_ONE[3], VALUES[0]),
+>       new KeyValue(ROWS_ONE[3], FAMILIES[1], QUALIFIERS_ONE[0], VALUES[0]),
+>       new KeyValue(ROWS_ONE[3], FAMILIES[1], QUALIFIERS_ONE[2], VALUES[0]),
+>       new KeyValue(ROWS_ONE[3], FAMILIES[1], QUALIFIERS_ONE[3], VALUES[0]),
+>       // testRowTwo-0
+>       new KeyValue(ROWS_TWO[0], FAMILIES[0], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[0], FAMILIES[0], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[0], FAMILIES[0], QUALIFIERS_TWO[3], VALUES[1]),
+>       new KeyValue(ROWS_TWO[0], FAMILIES[1], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[0], FAMILIES[1], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[0], FAMILIES[1], QUALIFIERS_TWO[3], VALUES[1]),
+>       // testRowTwo-2
+>       new KeyValue(ROWS_TWO[2], FAMILIES[0], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[2], FAMILIES[0], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[2], FAMILIES[0], QUALIFIERS_TWO[3], VALUES[1]),
+>       new KeyValue(ROWS_TWO[2], FAMILIES[1], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[2], FAMILIES[1], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[2], FAMILIES[1], QUALIFIERS_TWO[3], VALUES[1]),
+>       // testRowTwo-3
+>       new KeyValue(ROWS_TWO[3], FAMILIES[0], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[3], FAMILIES[0], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[3], FAMILIES[0], QUALIFIERS_TWO[3], VALUES[1]),
+>       new KeyValue(ROWS_TWO[3], FAMILIES[1], QUALIFIERS_TWO[0], VALUES[1]),
+>       new KeyValue(ROWS_TWO[3], FAMILIES[1], QUALIFIERS_TWO[2], VALUES[1]),
+>       new KeyValue(ROWS_TWO[3], FAMILIES[1], QUALIFIERS_TWO[3], VALUES[1])
+>     };
+> 
+>     // Grab all 6 rows
+>     long expectedRows = 6;
+>     long expectedKeys = this.colsPerRow;
+>     for (boolean useLen : new boolean[]{false,true}) {
+>       Scan s = new Scan();
+>       int start = 2;
+>       int length = 2;
+>       s.setFilter(new TrimValueFilter(start, length));
+>       verifyScan(s, expectedRows, expectedKeys);
+>       verifyTrimScanFull(s, expectedKVs, start, length);
+diff -r --new-file hbase-0.92.1_original/src/test/java/org/apache/hadoop/hbase/TestKeyValue.java workspace/hbase-0.92.1/src/test/java/org/apache/hadoop/hbase/TestKeyValue.java
+387a388,409
+>   
+>   public void testCreateTrimValue() {
+>     byte [] value = Bytes.toBytes("a real value");
+>     KeyValue kv = new KeyValue(rowA, family, qualA, 1, value);
+>     KeyValue kv1 = kv.createTrimmedKV(0, Integer.MAX_VALUE);
+>     assertTrue(kv1.equals(kv));
+>     kv1 = kv.createTrimmedKV(0, 1);
+>     assertTrue(kv1.getValueLength() == 1);
+>     assertTrue(Bytes.toString(kv1.getValue()).equals("a"));
+>     assertTrue(kv1.getValueLength() == 1);
+>     kv1 = kv.createTrimmedKV(2, 4);
+>     assertTrue(Bytes.toString(kv1.getValue()).equals("real"));
+>     assertTrue(kv1.getValueLength() == 4);
+>     kv1 = kv.createTrimmedKV(value.length, 1);
+>     assertTrue(kv1.getValueLength() == 0);
+>     kv1 = kv.createTrimmedKV(7, 10);
+>     assertTrue(kv1.getValueLength() == 5);
+>     assertTrue(Bytes.toString(kv1.getValue()).equals("value"));
+>     kv1 = kv.createTrimmedKV(7, 2);
+>     assertTrue(kv1.getValueLength() == 2);
+>     assertTrue(Bytes.toString(kv1.getValue()).equals("va"));
+>   }

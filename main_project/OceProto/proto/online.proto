@@ -1,0 +1,22 @@
+package com.xiaonei.talk.online;
+
+
+message McJid{
+	required int32 userId = 1;
+	required string endpoint = 2;
+	required int64 index = 3;
+}
+
+message McAvatar{
+	required McJid jid = 1;
+	required int32 hearttimestamp = 2;
+	required int32 type = 3;
+	required int32 state = 4;
+	optional string ver = 5;
+	optional string ext = 6;
+}
+
+message McOnlineInfo{
+	repeated McAvatar avatar = 1;
+}
+

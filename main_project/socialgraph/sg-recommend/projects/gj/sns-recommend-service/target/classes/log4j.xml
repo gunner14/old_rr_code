@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="dailyFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="./logs/sns-recommend-service.log" />
+		<param name="encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<!--<appender name="debugFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="./logs/sns-recommend-service-debug.log" />
+		<param name="encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p %c:%L - %m%n" />
+		</layout>
+	</appender>-->
+
+	<!--<logger name="com.renren.ad.sns.services.uranus.CategoryCandidatePicker"
+		additivity="false">
+		<level value="debug" />
+		<appender-ref ref="debugFile" /> 
+	</logger>-->
+	
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="dailyFile" />
+	</root>
+</log4j:configuration>

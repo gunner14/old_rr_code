@@ -1,0 +1,14 @@
+buddy相关服务的GYP编译说明
+
+global_vars.gyp中定义了通用的路径变量
+其中main_project_path定义了项目的根目录，该变量将作为定义其他与项目相关的路径变量的基础
+
+buddy/buddy_common.gyp包含了所有buddy服务共用的编译设置,在编写新的服务GYP文件时需要包含该文件
+
+使用方法:
+  1. gyp --depth . buddy_all.gyp -D library=static_library
+  2. make [target_name]
+
+增加新服务的编译:
+  1. 编写相应服务的GYP文件。可以参考buddy/template/buddy_template.gyp和其他服务的GYP文件。注意包含buddy_common.gyp
+  2. 将编写好的GYP文件放在buddy目录下, 并在release-gyp目录下的buddy_all.gyp文件中的dependencies项中添加对服务GYP文件的依赖

@@ -1,0 +1,42 @@
+<?cs if:f.from.0.id ?>
+<?cs set:count = #0 ?>
+<?cs set:names = "," ?>
+<?cs loop:i = #0, subcount(f.from), #1 ?>
+<?cs if:string.find(names, "," + f.from[i].id + ",") == #-1 && count < #5 ?>
+<?cs set:count = count + #1 ?>
+<a target="_blank" namecard="<?cs var:f.from[i].id ?>" href="<?cs if:f.from[i].url ?><?cs if:string.find(f.from[i].url, "?") == #-1 ?><?cs var:f.from[i].url ?>?ref=<?cs var:vType ?><?cs else ?><?cs var:f.from[i].url ?>&ref=<?cs var:vType ?><?cs /if ?><?cs else ?>http://www.renren.com/profile.do?id=<?cs var:f.from[i].id ?>&ref=<?cs var:vType ?><?cs /if ?>" stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs var:f.from[0].id ?>">
+  <?cs var:f.from[i].name ?>
+</a>&nbsp;
+<?cs if:i == #0 ?>
+<?cs if:actorVipIconId ?>
+<a target="_blank" href="http://i.renren.com/icon"><img style="margin-bottom:4px" src="http://a.xnimg.cn/n/core/feed/cssimg/feed-vip-<?cs var:actorVipIconId ?>-<?cs var:actorVipLevel ?>.png" alt="vip" /></a>&nbsp;
+<?cs /if ?>
+<?cs if:actorAmbIconId ?>
+<a target="_blank" href="http://page.renren.com/600002899/note/440313806"><img alt="推广大使" src="http://a.xnimg.cn/imgpro/icons/ambassador.png" title="推广大使"/></a>&nbsp;
+<?cs /if ?>
+<?cs if:schoolAmbIcon ?>
+<img src="http://a.xnimg.cn/imgpro/icons/school-channel.gif" title="校园代言人" />&nbsp;
+<?cs /if ?>
+<?cs /if ?>
+<?cs set:names = names + f.from[i].id + "," ?>
+<?cs /if ?>
+<?cs /loop ?>
+
+<?cs else ?>
+
+<a target="_blank" namecard="<?cs var:f.from.id ?>" href="<?cs if:f.from.url ?><?cs if:string.find(f.from.url, "?") == #-1 ?><?cs var:f.from.url ?>?ref=<?cs var:vType ?><?cs else ?><?cs var:f.from.url ?>&ref=<?cs var:vType ?><?cs /if ?><?cs else ?>http://www.renren.com/profile.do?id=<?cs var:f.from.id ?>&ref=<?cs var:vType ?><?cs /if ?>" stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs var:f.from.id ?>">
+  <?cs var:f.from.name ?>
+</a>&nbsp;
+<?cs if:actorVipIconId ?>
+<a target="_blank" href="http://i.renren.com/icon"><img style="margin-bottom:4px" src="http://a.xnimg.cn/n/core/feed/cssimg/feed-vip-<?cs var:actorVipIconId ?>-<?cs var:actorVipLevel ?>.png" alt="vip" /></a>&nbsp;
+<?cs /if ?>
+<?cs if:actorAmbIconId ?>
+<a target="_blank" href="http://page.renren.com/600002899/note/440313806"><img alt="推广大使" src="http://a.xnimg.cn/imgpro/icons/ambassador.png" title="推广大使"/></a>&nbsp;
+<?cs /if ?>
+<?cs if:schoolAmbIcon ?>
+<img src="http://a.xnimg.cn/imgpro/icons/school-channel.gif" title="校园代言人" />&nbsp;
+<?cs /if ?>
+<?cs if:f.from.certifyIcon ?>
+<img src="<?cs var:f.from.certifyIcon ?>" title="<?cs var:f.from.certifyTitle ?>"/>
+<?cs /if ?>
+<?cs /if ?>

@@ -1,0 +1,16 @@
+UserLoginCount修改以往没有通知UserLogic，而TripodCache的同步是在UserLogic中完成的，
+由于UserBase服务更新比较麻烦，所以取巧实施一个临时的方案：
+以前在做热备的时候会把更新消息通知到UserBaseReader服务，但这个服务实际没上，
+所以可以启一个这样的服务，做代理来通知UserLogic。
+在以后UserBase服务修改的时候请再添加对UserLogic的通知并去掉对UserBaseReader的通知。
+
+xiaofeng.liang@renren-inc.com
+2011-05-28
+
+
+现在线上只有oldwr被使用到，其他目录是热备所用到的，请无视之。
+由于很久没用热备了，在这期间修改oldwr代码的时候，热备没有被同步修改。
+如果以后需要用到热备，需要重新写代码。
+
+xiaofeng.liang@renren-inc.com
+2011-04-20

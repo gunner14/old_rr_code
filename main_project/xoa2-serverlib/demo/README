@@ -1,0 +1,2 @@
+
+运行autorun脚本，就会自动对serverlib里的源文件进行编译和连接，然后在demo里生成可执行文件.server

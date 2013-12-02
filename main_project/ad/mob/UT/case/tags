@@ -1,0 +1,82 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+AdMobUTEnvironment	main.cpp	/^class AdMobUTEnvironment : public testing::Environment {$/;"	c	file:	inherits:testing::Environment
+AdMobUTEnvironment::SetUp	main.cpp	/^		virtual void SetUp() {$/;"	f	class:AdMobUTEnvironment	access:public	signature:()
+AdMobUTEnvironment::TearDown	main.cpp	/^		virtual void TearDown() {$/;"	f	class:AdMobUTEnvironment	access:public	signature:()
+BrandRotateHandlerTest	BrandRotateHandlerTest.h	/^class BrandRotateHandlerTest : public ::testing::Test {$/;"	c	inherits:::testing::Test
+BrandRotateHandlerTest::SetUp	BrandRotateHandlerTest.h	/^	virtual void SetUp() {$/;"	f	class:BrandRotateHandlerTest	access:protected	signature:()
+DbInstance_Ads	main.cpp	/^const string DbInstance_Ads = "ads_db";$/;"	v
+DbInstance_Main	main.cpp	/^const string DbInstance_Main = "ads_db";$/;"	v
+DbInstance_Wr	main.cpp	/^const string DbInstance_Wr = "ads_db";$/;"	v
+GetAdGroupPtr	SelectorTest.h	/^	AdGroupPtr GetAdGroupPtr(Ice::Long id, int trans_type, int max_price) {$/;"	f	class:SelectorTestParas	access:private	signature:(Ice::Long id, int trans_type, int max_price)
+ParaCheckHandlerTestParas	ParaCheckHandlerTest.h	/^	ParaCheckHandlerTestParas() {$/;"	f	class:ParaCheckHandlerTestParas	access:public	signature:()
+ParaCheckHandlerTestParas	ParaCheckHandlerTest.h	/^class ParaCheckHandlerTestParas {$/;"	c
+ParaCheckHandlerTestParas::ParaCheckHandlerTestParas	ParaCheckHandlerTest.h	/^	ParaCheckHandlerTestParas() {$/;"	f	class:ParaCheckHandlerTestParas	access:public	signature:()
+ParaCheckHandlerTestParas::ipArea_list	ParaCheckHandlerTest.h	/^	IpArea_List ipArea_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::net_list	ParaCheckHandlerTest.h	/^	Net_List net_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::os_list	ParaCheckHandlerTest.h	/^	OS_List os_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::para_list_req_fail	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_req_fail;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::para_list_req_pass	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_req_pass;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::para_list_uid_fail	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_uid_fail;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::para_list_uid_pass	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_uid_pass;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::screen_list	ParaCheckHandlerTest.h	/^	Screen_List screen_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::uid_list	ParaCheckHandlerTest.h	/^	Uid_List uid_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandlerTestParas::zone_list	ParaCheckHandlerTest.h	/^	Zone_List zone_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+ParaCheckHandler_Test_Req_Fail	ParaCheckHandlerTest.h	/^class ParaCheckHandler_Test_Req_Fail : public ::testing::TestWithParam<AdMobReqPara> {$/;"	c	inherits:::testing::TestWithParam
+ParaCheckHandler_Test_Req_Pass	ParaCheckHandlerTest.h	/^class ParaCheckHandler_Test_Req_Pass : public ::testing::TestWithParam<AdMobReqPara> {$/;"	c	inherits:::testing::TestWithParam
+ParaCheckHandler_Test_Uid_Fail	ParaCheckHandlerTest.h	/^class ParaCheckHandler_Test_Uid_Fail : public ::testing::TestWithParam<AdMobReqPara> {$/;"	c	inherits:::testing::TestWithParam
+ParaCheckHandler_Test_Uid_Pass	ParaCheckHandlerTest.h	/^class ParaCheckHandler_Test_Uid_Pass : public ::testing::TestWithParam<AdMobReqPara> {$/;"	c	inherits:::testing::TestWithParam
+SelectorTestParas	SelectorTest.h	/^	SelectorTestParas() {$/;"	f	class:SelectorTestParas	access:public	signature:()
+SelectorTestParas	SelectorTest.h	/^class SelectorTestParas {$/;"	c
+SelectorTestParas::GetAdGroupPtr	SelectorTest.h	/^	AdGroupPtr GetAdGroupPtr(Ice::Long id, int trans_type, int max_price) {$/;"	f	class:SelectorTestParas	access:private	signature:(Ice::Long id, int trans_type, int max_price)
+SelectorTestParas::SelectorTestParas	SelectorTest.h	/^	SelectorTestParas() {$/;"	f	class:SelectorTestParas	access:public	signature:()
+SelectorTestParas::cpm_asc	SelectorTest.h	/^	set<AdGroupPtr> cpm_asc;$/;"	m	class:SelectorTestParas	access:public
+SelectorTestParas::cpm_cpc_asc	SelectorTest.h	/^	set<AdGroupPtr> cpm_cpc_asc;$/;"	m	class:SelectorTestParas	access:public
+SelectorTestParas::cpm_cpc_eq	SelectorTest.h	/^	set<AdGroupPtr> cpm_cpc_eq;$/;"	m	class:SelectorTestParas	access:public
+SelectorTestParas::cpm_eq	SelectorTest.h	/^	set<AdGroupPtr> cpm_eq;$/;"	m	class:SelectorTestParas	access:public
+SelectorTestParas::filter_groups_seq	SelectorTest.h	/^	vector<AdGroupPtr> filter_groups_seq;$/;"	m	class:SelectorTestParas	access:public
+SelectorTestParas::filter_groups_set	SelectorTest.h	/^	set<AdGroupPtr> filter_groups_set;$/;"	m	class:SelectorTestParas	access:public
+Selector_Test_RandomSelect_Cpm_Eq	SelectorTest.h	/^class Selector_Test_RandomSelect_Cpm_Eq : public ::testing::TestWithParam< set<AdGroupPtr> > {$/;"	c	inherits:::testing::TestWithParam
+Selector_Test_RandomSelect_Set_Filter	SelectorTest.h	/^class Selector_Test_RandomSelect_Set_Filter : public ::testing::TestWithParam< set<AdGroupPtr> > {$/;"	c	inherits:::testing::TestWithParam
+SetUp	BrandRotateHandlerTest.h	/^	virtual void SetUp() {$/;"	f	class:BrandRotateHandlerTest	access:protected	signature:()
+SetUp	TargetUnit.h	/^	virtual void SetUp() {$/;"	f	class:TargetUnitTest	access:protected	signature:()
+SetUp	main.cpp	/^		virtual void SetUp() {$/;"	f	class:AdMobUTEnvironment	access:public	signature:()
+TEST_F	BrandRotateHandlerTest.h	/^TEST_F(BrandRotateHandlerTest, 1) {$/;"	f	signature:(BrandRotateHandlerTest, 1)
+TEST_F	BrandRotateHandlerTest.h	/^TEST_F(BrandRotateHandlerTest, 2) {$/;"	f	signature:(BrandRotateHandlerTest, 2)
+TEST_F	TargetUnit.h	/^TEST_F(TargetUnitTest, 1) {$/;"	f	signature:(TargetUnitTest, 1)
+TEST_P	ParaCheckHandlerTest.h	/^TEST_P(ParaCheckHandler_Test_Req_Fail, TEST_FAIL) {$/;"	f	signature:(ParaCheckHandler_Test_Req_Fail, TEST_FAIL)
+TEST_P	ParaCheckHandlerTest.h	/^TEST_P(ParaCheckHandler_Test_Req_Pass, TEST_PASS) {$/;"	f	signature:(ParaCheckHandler_Test_Req_Pass, TEST_PASS)
+TEST_P	ParaCheckHandlerTest.h	/^TEST_P(ParaCheckHandler_Test_Uid_Fail, TEST_FAIL) {$/;"	f	signature:(ParaCheckHandler_Test_Uid_Fail, TEST_FAIL)
+TEST_P	ParaCheckHandlerTest.h	/^TEST_P(ParaCheckHandler_Test_Uid_Pass, TEST_PASS) {$/;"	f	signature:(ParaCheckHandler_Test_Uid_Pass, TEST_PASS)
+TEST_P	SelectorTest.h	/^TEST_P(Selector_Test_RandomSelect_Cpm_Eq, TEST) {$/;"	f	signature:(Selector_Test_RandomSelect_Cpm_Eq, TEST)
+TEST_P	SelectorTest.h	/^TEST_P(Selector_Test_RandomSelect_Set_Filter, TEST) {$/;"	f	signature:(Selector_Test_RandomSelect_Set_Filter, TEST)
+TargetUnitTest	TargetUnit.h	/^class TargetUnitTest : public ::testing::Test {$/;"	c	inherits:::testing::Test
+TargetUnitTest::SetUp	TargetUnit.h	/^	virtual void SetUp() {$/;"	f	class:TargetUnitTest	access:protected	signature:()
+TearDown	main.cpp	/^		virtual void TearDown() {$/;"	f	class:AdMobUTEnvironment	access:public	signature:()
+__BRADN_ROTATE_HANDLER_TEST__	BrandRotateHandlerTest.h	2;"	d
+__PARACHECK_HANDLER_TEST__	ParaCheckHandlerTest.h	2;"	d
+__SELECTOR_TEST__	SelectorTest.h	2;"	d
+__TARGET_UNIT_TEST__	TargetUnit.h	2;"	d
+cpm_asc	SelectorTest.h	/^	set<AdGroupPtr> cpm_asc;$/;"	m	class:SelectorTestParas	access:public
+cpm_cpc_asc	SelectorTest.h	/^	set<AdGroupPtr> cpm_cpc_asc;$/;"	m	class:SelectorTestParas	access:public
+cpm_cpc_eq	SelectorTest.h	/^	set<AdGroupPtr> cpm_cpc_eq;$/;"	m	class:SelectorTestParas	access:public
+cpm_eq	SelectorTest.h	/^	set<AdGroupPtr> cpm_eq;$/;"	m	class:SelectorTestParas	access:public
+filter_groups_seq	SelectorTest.h	/^	vector<AdGroupPtr> filter_groups_seq;$/;"	m	class:SelectorTestParas	access:public
+filter_groups_set	SelectorTest.h	/^	set<AdGroupPtr> filter_groups_set;$/;"	m	class:SelectorTestParas	access:public
+ipArea_list	ParaCheckHandlerTest.h	/^	IpArea_List ipArea_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+main	main.cpp	/^int main(int argc, char** argv){$/;"	f	signature:(int argc, char** argv)
+net_list	ParaCheckHandlerTest.h	/^	Net_List net_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+os_list	ParaCheckHandlerTest.h	/^	OS_List os_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+para_list_req_fail	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_req_fail;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+para_list_req_pass	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_req_pass;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+para_list_uid_fail	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_uid_fail;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+para_list_uid_pass	ParaCheckHandlerTest.h	/^	vector<AdMobReqPara> para_list_uid_pass;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+para_para_check_handler	ParaCheckHandlerTest.h	/^const ParaCheckHandlerTestParas para_para_check_handler; $/;"	v
+screen_list	ParaCheckHandlerTest.h	/^	Screen_List screen_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+select_test_para	SelectorTest.h	/^const SelectorTestParas select_test_para; $/;"	v
+uid_list	ParaCheckHandlerTest.h	/^	Uid_List uid_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public
+zone_list	ParaCheckHandlerTest.h	/^	Zone_List zone_list;$/;"	m	class:ParaCheckHandlerTestParas	access:public

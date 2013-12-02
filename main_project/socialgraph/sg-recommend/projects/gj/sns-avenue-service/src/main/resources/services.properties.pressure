@@ -1,0 +1,16 @@
+
+db.mongodb.host=10.7.18.50
+db.mongodb.port=30000
+db.mongodb.db=sns_presure_test
+
+#所有data service 列表(必须在spring中配置),用','分隔
+data.service.list=starChannelService,
+
+#数据服务启动时间
+data.service.starchannel.delay=1000
+#数据服务任务间隔
+data.service.starchannel.interval=86400000
+#top n
+data.service.starchannel.topuser=5
+#获取全部用户时的分段数
+data.service.starchannel.stepsize=10000

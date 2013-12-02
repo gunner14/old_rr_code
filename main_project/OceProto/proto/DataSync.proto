@@ -1,0 +1,13 @@
+package com.renren.datasync;
+
+message SyncMessage
+{
+  optional string dbSource = 1; 
+  optional string dbPattern = 2;
+  optional string dbTable = 4; 
+  optional bool isRouter = 3; 
+  optional int64 version = 5; 
+  repeated string keys = 6;
+  optional int64 expire = 7 [default = 2147483647]; 
+  optional bool isDel = 8 [default = false]; 
+}

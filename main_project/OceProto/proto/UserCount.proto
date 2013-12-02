@@ -1,0 +1,33 @@
+import "tripod_options.proto";
+
+package xce.tripod;
+
+message UserCountInfo {
+  option (.tripod.options.business_id) = "UserCount";
+  option (.tripod.options.table_name) = "user_count_";
+  option (.tripod.options.database_source) = "user_count";
+  option (.tripod.options.table_mod) = 100;
+  option (.tripod.options.pattern_prefix) = "user_count_";
+  option (.tripod.options.repeated_field) = "values";
+
+  required int32 id = 1;
+  repeated ValueMap values = 2;
+
+
+  message ValueMap {
+    required int32 type = 1;
+    optional int32 count = 2;
+  }
+}
+
+
+message NotifyCountInfo {
+  option (.tripod.options.business_id) = "NotifyCount";
+  option (.tripod.options.database_source) = "notify_count";
+  option (.tripod.options.table_name) = "notify_count_";
+  option (.tripod.options.table_mod) = 100;
+  option (.tripod.options.pattern_prefix) = "notify_count_";
+
+  required int64 id = 1;
+  optional int32 count = 2;
+}

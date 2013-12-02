@@ -1,0 +1,3 @@
+FILE( GLOB BUILD_SRC_CPP_SOURCE "${XNS_ROOT_DIR}/tripod2/cc/core/*.cc" )
+INCLUDE_DIRECTORIES( "${XNS_ROOT_DIR}/tripod2/cc/core" )
+ADD_LIBRARY( "TripodCore" ${BUILD_SRC_CPP_SOURCE})

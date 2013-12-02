@@ -1,0 +1,49 @@
+<li class=* id=* uid=* onmouseover=* onmouseout=*>
+	<a logtype=* uid=* class=* href=* title=* onclick=*>
+	</a>
+	<span class=*>
+		<a logtype=* uid=* target=* href=*>
+			<img logtype=* uid=* src=* width=* height=* onload=* />
+		</a>
+	</span>
+	<span>
+		<a logtype=* uid=* class=* target=* href=*>*
+		</a>
+		<p>
+			<a logtype=* uid=* class=* href=* onclick=*>
+				<img src=* />*
+			</a>
+		</p>
+		<p>
+			<a logtype=* uid=* href=* onclick=*>*
+			</a>
+			<span class=*>(*)
+			</span>
+		</p>
+	</span>
+	<div style=* class=* id=*>
+		<div id=*>
+		</div>
+		<p>
+			<span class=*>*</span>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+			<a href=* target=*>*</a>&nbsp;
+		</p>
+	</div>
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+	<input type=* id=* value=* />
+</li>

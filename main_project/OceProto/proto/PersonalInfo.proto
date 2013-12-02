@@ -1,0 +1,24 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.personalinfo;
+
+message PbPerInfoFromId {
+  option (tripod.options.business_id) = "PerInfoFromId";
+  option (tripod.options.database_source) = "common";
+  option (tripod.options.table_name) = "user_personalinfo";
+
+  required int64 id = 1;
+  optional int32 linkstatus = 2;
+  optional string link = 3;
+}
+
+message PbPerInfoFromLink {
+  option (tripod.options.business_id) = "PerInfoFromLink";
+  option (tripod.options.database_source) = "common";
+  option (tripod.options.table_name) = "user_personalinfo";
+  option (tripod.options.primary_key) = "link";
+
+  required string link = 1;
+  optional int64 id = 2;
+  optional int32 linkstatus = 3;
+}

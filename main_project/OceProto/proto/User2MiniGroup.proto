@@ -1,0 +1,7 @@
+package xce.distcache.user2minigroup;
+
+message User2MiniGroupData
+{
+   required int32 userid = 1;
+   repeated int64 groupids = 2;
+}

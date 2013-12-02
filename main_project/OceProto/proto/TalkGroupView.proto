@@ -1,0 +1,21 @@
+package com.xiaonei.talk.groupview;
+
+
+message McGroupView{
+	required int32 userId = 1;
+	required int64 sessionId = 2;
+	required int32 isVisible = 3;
+	required int32 hasRead = 4;
+	required int32 sessionType = 5;
+	required int32 affiliation = 6;
+	required string updateTime = 7;
+	required int32 saveonline = 8;
+	required string notify = 9;
+  required int64 msgid = 10;
+}
+
+message McGroups{
+	repeated McGroupView solidgroup = 1;
+	repeated McGroupView discussgroup = 2;
+	repeated McGroupView conversationgroup = 3;
+}

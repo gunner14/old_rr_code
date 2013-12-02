@@ -1,0 +1,526 @@
+.wrapper{
+width:775px;
+margin:0 auto;
+margin-top:10px;
+}
+
+.border-conners-left-top{
+position:absolute;
+left:-1px;
+top:-1px;
+width:3px;
+height:3px;
+font-size:1px;
+background: url(../images/border_conners_left_top.png) left top no-repeat;
+}
+
+.border-conners-right-top{
+position:absolute;
+right:-1px;
+top:-1px;
+_right:-2px;
+width:3px;
+height:3px;
+font-size:1px;
+background: url(../images/border_conners_right_top.png) left top no-repeat;
+}
+
+.border-conners-left-bottom{
+position:absolute;
+left:-1px;
+bottom:-1px;
+width:3px;
+height:3px;
+font-size:1px;
+background: url(../images/border_conners_left_bottom.png) left top no-repeat;
+}
+
+.border-conners-right-bottom{
+position:absolute;
+right:-1px;
+_right:-2px;
+bottom:-1px;
+width:3px;
+height:3px;
+font-size:1px;
+background: url(../images/border_conners_right_bottom.png) left top no-repeat;
+}
+
+
+.appShow{
+width:507px;
+float:left;
+padding:10px;
+position:relative;
+border:#c4eafa solid 1px;
+}
+
+#appImg{
+width:506px;
+height:180px;
+background:url("rrnc.jpg") no-repeat left top;
+cursor:pointer;
+/*background-color:#00CCCC;*/
+position:relative;
+}
+
+.appNum{
+position:absolute;
+right:5px;
+bottom:5px;
+width:70px;
+height:14px;
+}
+
+.appNum a{
+float:left;
+text-align:center;
+width:14px;
+text-decoration:none;
+color:#000;
+background-color:#fff;
+margin-right:2px;
+opacity:0.7;
+filter:alpha(opacity=70);
+}
+
+.appNum a:hover{
+color:orange;
+}
+
+.appNum .cur{
+color:red;
+}
+
+.recommend{
+width:211px;
+position:relative;
+border:#c4eafa solid 1px;
+padding: 10px 10px 26px 13px;
+float:right;
+margin-left:10px;
+height:164px;
+}
+
+.recommend .border-conners-left-bottom{
+left:-1px;
+bottom:-2px;
+}
+
+
+.recommend .border-conners-right-bottom{
+right:-1px;
+bottom:-2px;
+}
+
+.recommend ul{
+margin-top:10px;
+}
+
+.recommend ul li.recommend_icon{
+margin-bottom:10px;
+margin-bottom:14px/9;
+margin-left:24px;
+position:relative;
+}
+
+.recommend ul li.recommend_icon img{
+position:absolute;
+left: -27px;
+top:-5px;
+}
+
+.recommend ul li{
+margin-bottom:6px;
+}
+
+.games{
+width:507px;
+float:left;
+border: 1px solid #C4EAFA;
+padding:10px;
+margin-top:10px;
+position:relative;
+}
+
+.games-header .games-header-title{
+color:#525252;
+font-weight:bold;
+float:left;
+margin-left:5px;
+}
+
+.games-header .more{
+float:right;
+margin-right:5px;
+}
+
+.games-body{
+margin-left:1px;
+}
+
+.game{
+width:162px;
+float:left;
+margin-top:33px;
+text-align:left;
+margin-right:10px;
+position: relative;
+}
+
+.lastgame {
+margin-right:  0px;
+}
+
+.game .game-cover{
+float:left;
+}
+
+.game ul{
+float:left;
+margin-left:5px;
+width:78px;
+}
+
+.game ul .game-name{
+margin-top:10px;
+margin-bottom:4px;
+color: #525252;
+font-weight:bold;
+}
+
+.game ul .game-tip{
+margin-top:10px;
+margin-bottom:4px;
+color:#999;
+}
+
+.game ul .game-style{
+margin-top:10px;
+margin-bottom:4px;
+color:#333;
+}
+.game .app-round-corner {
+display: block;
+width: 75px;
+height: 75px;
+position: absolute;
+top: 0;
+left: 0;
+background: url(http://a.xnimg.cn/imgpro/app/mask75.png) no-repeat top left;
+margin-top: 0px;
+float: left;
+}
+
+.lastGame{
+margin-right:0;
+}
+
+.games .border-conners-left-bottom{
+_left:-1px;
+_bottom:-2px;
+}
+
+.games .border-conners-right-bottom{
+_right:-2px;
+_bottom:-2px;
+}
+
+.num {
+height: 16px;
+width: 18px;
+margin-right: 10px;
+background: url("http://a.xnimg.cn/imgpro/app/components_3.png") no-repeat -999px 0;
+float: left;
+vertical-align: middle;
+color: #CCC;
+display: inline-block;
+line-height: 16px;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+}
+
+.top1 .num, .top2 .num, .top3 .num {
+color: white;
+}
+
+.top1 .hover .num {
+height: 25px;
+margin-top: 0;
+background-position: 0 -492px;
+}
+
+.top1 .num{
+color: white;
+}
+
+.top2 .num {
+color: #EB8828;
+}
+
+.top3 .num {
+color: #72B054;
+}
+
+.hover .num{
+vertical-align: middle;
+margin-right: 10px;
+background-repeat: no-repeat;
+}
+
+.nor .name {
+white-space: nowrap;
+width: 8em;
+overflow: hidden;
+height: 16px;
+vertical-align: middle;
+}
+
+.hotgames-body .num, .hotgames-body .icon, .hotgames-body .name {
+vertical-align: middle;
+}
+.hotgames-body .num, .hotgames-body .icon {
+margin-right: 10px;
+}
+
+.hotgames-per-day{
+width:211px;
+position:relative;
+border:#c4eafa solid 1px;
+padding: 10px 10px 0px 13px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+
+.hotgames-header .more{
+float:right;
+margin-right:5px;
+}
+
+.hotgames-header .hotgames-header-title{
+color:#525252;
+font-weight:bold;
+float:left;
+margin-left:5px;
+}
+
+.hotgames-body{
+float: left;
+width: 100%;
+padding-top: 15px;
+}
+
+.hover{
+margin-top: 0px;
+position: relative;
+zoom: 1;
+margin: 0 0 10px 0px;
+}
+
+.hover .app{
+width: 80px;
+float: left;
+}
+
+.app-pic {
+margin-right: 10px;
+padding: 0;
+width: 50px;
+height: 50px;
+float: left;
+}
+
+.app-pica{
+position: relative;
+display: block;
+height: 50px;
+width: 50px;
+float: left;
+}
+
+.hover .wrapper{
+height: 14px;
+width: 80px;
+float: right;
+position: static!important;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+.hover .star-wrap{
+background: url(http://a.xnimg.cn/imgpro/app/star/stars.png) repeat-y 0 14px;
+height: 14px;
+overflow: hidden;
+width: 95px;
+list-style-type: none;
+float: none;
+margin: 0px;
+}
+
+.hover .star-wrap li {
+border: 0 none;
+background: url(http://a.xnimg.cn/imgpro/app/star/stars.png) repeat-y 0px 28px ;
+display: block;
+height: 14px;
+overflow: hidden;
+padding: 0;
+margin: 0;
+float: none;
+box-shadow: none;
+}
+
+.hover .score{
+font-weight: bold;
+color: #F59C1C;
+width: 20px;
+overflow: hidden;
+height: 15px;
+float: left;
+display: block;
+margin-left: 90px;
+margin-top: -14px;
+cursor: pointer;
+}
+
+.app-pic .mask{
+display: block;
+width: 50px;
+height: 50px;
+position: absolute;
+top: 0;
+left: 0;
+background: url(http://a.xnimg.cn/imgpro/app/mask50.png) no-repeat top left;
+margin-top: 0px;
+}
+
+.hotgames-body li {
+margin-bottom: 12px;
+position: relative;
+}
+
+.hotgames-body .arrow {
+width: 11px;
+height: 11px;
+display: inline-block;
+position: absolute;
+right: 0;
+top: 2px;
+background: url("http://a.xnimg.cn/imgpro/app/components_3.png") no-repeat -999px 0;
+}
+
+.hotgames-body .up {
+background-position: -150px -174px;
+}
+
+.hotgames-body .down {
+background-position: -161px -174px;
+}
+
+.hotgames-body .border-conners-left-bottom{
+_left:-1px;
+_bottom:-2px;
+}
+
+.hotgames-body .border-conners-right-bottom{
+_right:-2px;
+_bottom:-2px;
+}
+
+.hotgames-body .winner-game{
+margin-left: 10px;
+font-weight: bold;
+float: left;
+}
+
+.hotgames-body .other-game{
+
+}
+
+
+
+.maybeLike{
+width:753px;
+float:left;
+border: 1px solid #c4eafa;
+padding:10px;
+margin-top:10px;
+position:relative;
+}
+
+.maybeLike-header .maybeLike-header-title{
+color:#525252;
+font-weight:bold;
+float:left;
+margin-left:5px;
+}
+
+.maybeLike-header .more{
+float:right;
+margin-right:30px;
+}
+
+.maybeLike-body{
+margin-left:3px;
+}
+
+.maybeLike-body .game{
+width:355px;
+float:left;
+margin-top:15px;
+text-align:left;
+margin-right:40px;
+}
+
+.maybeLike-body .game .game-name{
+text-align:left;
+}
+
+.maybeLike-body .lastGame{
+margin-right:0;
+}
+
+.maybeLike-body .game .game-cover{
+float:left;
+}
+
+.maybeLike-body .game ul{
+float:left;
+margin-left:20px;
+width:98px;
+}
+
+.maybeLike-body .game ul li{
+margin-bottom:3px;
+zoom:1;
+}
+
+.maybeLike-body .game ul .game-name{
+margin-bottom:7px;
+}
+
+.maybeLike-body .game .game-name{
+margin-top:10px;
+margin-bottom:3px;
+margin-top:0;
+}
+
+
+.maybeLike-body .lastGame{
+margin-right:0;
+}
+
+.maybeLike .border-conners-left-bottom{
+_left:-1px;
+_bottom:-2px;
+}
+
+.maybeLike .border-conners-right-bottom{
+_right:-2px;
+_bottom:-2px;
+}
+
+
+
+

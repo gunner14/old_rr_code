@@ -1,0 +1,61 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.userscore;
+
+message PbScoreLogin {
+  option (tripod.options.business_id) = "UserScoreLogin";
+  option (tripod.options.database_source) = "user_score";
+  option (tripod.options.table_name) = "score_login_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "user_score_";
+
+
+  required int64 user_id = 1;
+  optional int32 history_days = 2;
+  optional int32 continue_days = 3;
+  optional int32 active_days = 4;
+  optional int64 last_time = 5  [(tripod.options.mysql_type) = "datetime"];
+  optional int32 login_type = 6;
+}
+
+message PbUserScore {
+  option (tripod.options.business_id) = "UserScore";
+  option (tripod.options.database_source) = "user_score";
+  option (tripod.options.table_name) = "score_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "user_score_";
+
+  required int64 user_id = 1;
+  optional int32 score = 2;
+}
+
+message PbScoreAwardCount {
+  option (tripod.options.business_id) = "UserScoreAwardCount";
+  option (tripod.options.database_source) = "user_score";
+  option (tripod.options.table_name) = "score_award_count_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "user_score_";
+
+  required int64 user_id = 1;
+  optional int32 award_count = 2;
+}
+
+message PbScoreSign {
+  option (tripod.options.business_id) = "UserScoreSign";
+  option (tripod.options.database_source) = "user_score";
+  option (tripod.options.table_name) = "score_sign_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "user_score_";
+
+  required int64 user_id = 1;
+  optional int64 sign = 2;
+}
+
+message PbScoreVip {
+  required int64 user_id = 1;
+  optional int32 vip = 2;
+}

@@ -1,0 +1,11 @@
+package xce.tripoddata.ticket;
+
+option java_package = "com.renren.tripod.client.model";
+option java_outer_classname = "TicketProto";
+
+message TicketData {
+  required fixed64 id = 1;
+  required fixed64 real_id = 2;
+  required uint32 type = 3;
+  required string ip = 4;
+}

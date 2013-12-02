@@ -1,0 +1,19 @@
+Version: 2.1
+bugs:
+
+
+fixed:
+1.修复了tripod-new即tripod#1.0中，进程异常退出
+  原因是我们Zk使用的问题，对子线程没有正确中断
+  fixed by liyong@renren-inc.com
+
+2.修复consistency hashing中由于别名配置，可能会导致虚拟节点被复写的问题
+  fixed by liyong@renren-inc.com
+===========================
+2012-04-16
+bugs:
+1. RedisClient.Set方法,如何value中有分隔符,则失败
+
+fixed:
+1. redisClient.Set方法,修复! by liyong@renren-inc.com
+2. redisClient.SetList SetHash 方法修复 by li.li1@renren-inc.com

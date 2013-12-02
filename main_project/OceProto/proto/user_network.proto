@@ -1,0 +1,181 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.usernetwork;
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "UserNetworkProto";
+
+message PbNetworkHistory {
+
+    option (.tripod.options.repeated_field) = "networks";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "network_history";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "NetworkHistory";
+
+    required int32 userid=1;
+
+    message PbNetwork {
+        optional int32 network_id = 1; 
+        optional string network_name = 2;
+        optional int32 stage = 3;
+        optional int32 info_id = 4;
+        optional int64 join_time = 5 [(tripod.options.mysql_type) = "datetime"];
+        optional int32 status = 6;
+        optional int32 id = 7;
+    }
+    repeated PbNetwork networks = 2; 
+}
+
+message PbHighSchoolInfo {
+
+    option (.tripod.options.repeated_field) = "highschools";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "high_school_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "HighSchoolInfo";
+
+    required int32 userid = 1;
+
+    message PbHighSchool {
+        optional int32 high_school_id = 1;
+        optional string high_school_name = 2;
+        optional int32 enroll_year = 3;
+        optional string h_class1 = 4;
+        optional string h_class2 = 5;
+        optional string h_class3 = 6; 
+        optional int32 id = 7;
+    }
+    repeated PbHighSchool highschools = 2;
+}
+
+message PbUniversityInfo {
+
+    option (.tripod.options.repeated_field) = "universities";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "university_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "UniversityInfo";
+
+    required int32 userid = 1;
+
+    message PbUniversity {
+        optional int32 university_id = 1;
+        optional string university_name = 2;
+        optional string dorm = 3;
+        optional string department = 4;
+        optional string type_of_course = 5;
+        optional int32 enroll_year = 6;
+        optional int32 id = 7;
+    }
+    repeated PbUniversity universities = 2;
+}
+
+message PbWorkplaceInfo {
+
+    option (.tripod.options.repeated_field) = "workplaces";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "workplace_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "WorkplaceInfo";
+
+    required int32 userid = 1;
+
+    message PbWorkplace {
+        optional int32 workplace_id = 1;
+        optional string workplace_name = 2;
+        optional string address = 3;
+        optional string province = 4;
+        optional int32 city_id = 5;
+        optional string city_name = 6;
+        optional string description = 7;
+        optional int32 join_year = 8;
+        optional int32 join_month = 9;
+        optional int32 quit_year = 10;
+        optional int32 quit_month = 11;
+        optional int32 type = 12;
+        optional int32 job_title_id = 13;
+        optional int32 position_id = 14;
+        optional int32 id = 15;
+    }
+    repeated PbWorkplace workplaces = 2;
+}
+
+message PbCollegeInfo {
+
+    option (.tripod.options.repeated_field) = "colleges";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "college_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "CollegeInfo";
+    
+    required int32 userid = 1;
+
+    message PbCollege {
+        optional int32 college_id = 1;
+        optional string college_name = 2;
+        optional string department = 3;
+        optional int32 enroll_year = 4;
+        optional int32 id = 5;
+    }
+
+    repeated PbCollege colleges = 2;
+}
+
+message PbElementarySchoolInfo {
+
+    option (.tripod.options.repeated_field) = "elementaryschools";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "elementary_school_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "ElementarySchoolInfo";
+
+    required int32 userid = 1;
+    
+    message PbElementarySchool {
+        optional int32 elementary_school_id = 1;
+        optional string elementary_school_name = 2;
+        optional int32 elementary_school_year = 3;
+        optional int32 id = 4;
+    }
+    repeated PbElementarySchool elementaryschools = 2;
+}
+
+message PbJuniorHighSchoolInfo {
+
+    option (.tripod.options.repeated_field) = "juniorhighschools";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "junior_high_school_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "JuniorHighSchoolInfo";
+
+    required int32 userid = 1;
+    
+    message PbJuniorHighSchool {
+        optional int32 junior_high_school_id = 1;
+        optional string junior_high_school_name = 2;
+        optional int32 junior_high_school_year = 3;
+        optional int32 id = 4;
+    }
+    repeated PbJuniorHighSchool juniorhighschools = 2;
+}
+
+message PbRegionInfo {
+
+    option (.tripod.options.repeated_field) = "regions";
+    option (.tripod.options.primary_key) = "userid";
+    option (.tripod.options.table_name) = "region_info";
+    option (.tripod.options.database_source) = "common";
+    option (.tripod.options.business_id) = "RegionInfo";
+
+    required int32 userid = 1;
+
+    message PbRegion {
+        optional int32 region_id = 1;
+        optional string province_name = 2;
+        optional string city_name = 3;
+        optional int32 id = 4;
+    }
+    repeated PbRegion regions = 2;
+}
+

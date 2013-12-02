@@ -1,0 +1,27 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.usermenu;
+
+message PbRecentMenu {
+  option (tripod.options.business_id) = "UserRecentMenu";
+  option (tripod.options.database_source) = "menucache_recent_menu";
+  option (tripod.options.table_name) = "recent_menu_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "menucache_recent_menu_";
+
+  required int64 user_id = 1;
+  repeated int32 app_ids = 2;
+}
+
+message PbFavoriteMenu {
+  option (tripod.options.business_id) = "UserFavoriteMenu";
+  option (tripod.options.database_source) = "menucache_favorite_menu";
+  option (tripod.options.table_name) = "favorite_menu_";
+  option (tripod.options.table_mod) = 100;
+  option (tripod.options.primary_key) = "user_id";
+  option (tripod.options.pattern_prefix) = "menucache_favorite_menu_";
+ 
+  required int64 user_id = 1;
+  repeated int32 app_ids = 2; 
+}

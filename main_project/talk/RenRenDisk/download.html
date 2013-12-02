@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="http://s.xnimg.cn/a31310/n/core/global-all-min.css" rel="stylesheet" type="text/css" />
+<link href="http://s.xnimg.cn/actimg/12skydrive/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- script type="text/javascript" src="js/download.js"></script-->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var down = 0;
+	var url = window.location.href;
+	var id = url.substr(url.lastIndexOf("=") + 1);
+	$.post("operate/get/" + id, null ,function(resp){
+		if(resp.charAt(0) == "h"){
+			window.location.href = resp;
+		}else if(resp.charAt(0) == "{"){
+			var data = eval("[" + resp + "]")[0];
+			var obj = $(".down_file_info").children();
+			obj.eq(0).text(getName(data.path));
+			obj.eq(1).text("文件大小：" + data.size);
+			obj.eq(2).text("下载次数：" + data.downloads);
+			obj.eq(3).text("发布时间：" + data.time);
+			$(".download_btn_click").attr("path",data.path);
+			down = parseInt(data.downloads);
+		}else{
+			alert(resp);
+		}
+	},"text");
+	
+	$(".dialog_checkbox").click(function(){
+		if($(this).hasClass("dialog_checkbox_checked")){
+			$(this).removeClass("dialog_checkbox_checked");
+		}else{
+			$(this).addClass("dialog_checkbox_checked");
+		}
+	});
+	
+	$(".download_btn_click").click(function(){
+		$.post("operate/down",{path : $(this).attr("path")},function(resp){
+			if(resp.charAt(0) == "{"){
+		    	 data = eval("[" + resp + "]");
+		    	 window.location.href = data[0].list;
+		    	 var obj = $(".down_file_info").children(":eq(2)");
+		    	 obj.text("下载次数：" + (down + 1));
+		    	 down += 1;
+		     }else{
+		    	 alert(resp);
+		     }
+		},"text");
+	})
+})
+
+function getName(path){
+	return path.substr(path.lastIndexOf("/") + 1);
+}
+</script>
+</head>
+<body>
+<div class="down_container">
+	<div class="renren_header">
+		<a class="renren_logo" href=""></a>
+	</div>
+	<div class="down_main">
+		<div class="login">
+			<!-- span><label for="username">用户名</label><input id="username" type="text"/></span>
+			<span><label for="password">密码</label><input id="password" type="text"/></span>
+			<a href="#" class="register_btn">注册</a -->
+		</div>
+		<div class="down_main_sub">
+			<div class="down_left">
+				<div class="down_file_info">
+					<h2 class="down_file_name">文件名</h2>
+					<p>文件大小：</p>
+					<p>下载次数：</p>
+					<p>发布时间：</p>
+				</div>
+				<div class="download_btns clearfix">
+					<a class="download_btn download_btn_click"></a>
+					<!-- a href="#" class="download_btn download_btn_save"></a-->
+				</div>
+				<p class="publish_to clearfix">
+					<a class="dialog_icons dialog_checkbox"><a>同时发布一条新鲜事到人人网</a></a>
+				</p>
+				<p class="warning">严禁上传包括反动、暴力、色情、等违法内容，或侵犯版权的文件。<a href="#">举报</a></p>
+			</div>
+			<div class="down_right"></div>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>

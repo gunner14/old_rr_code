@@ -1,0 +1,25 @@
+<div class="feed-toolbar">
+  <menu type="toolbar">
+    <?cs if:isNewsFeed ?>
+      <?cs if:!isSelf && ! ?notNeedFocusAndBlock ?>
+        <li><menu class="feed-dropmenu">
+            <label></label>
+            <menu>
+                 <li><a class="feed-focus-user" href="#nogo">关注<?cs if:f.from.name ?><?cs var:f.from.name ?><?cs else ?><?cs var:f.from.0.name ?><?cs /if ?></a></li>
+                 <li><a class="feed-block-user" href="#nogo">忽略<?cs if:f.from.name ?><?cs var:f.from.name ?><?cs else ?><?cs var:f.from.0.name ?><?cs /if ?></a></li>
+            </menu>
+            </menu>
+        </li>
+      <?cs /if ?>
+    <?cs else ?>
+      <?cs if:isSelf ?>
+        <li><a stats="NF_NEWSDEL_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="#nogo" class="delete">删除</a></li>
+      <?cs /if ?>
+    <?cs /if ?>
+
+    <?cs if:isNewsFeed ?>
+      <li><a stats="NF_NEWSDEL_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="#nogo" class="delete">删除</a></li>
+    <?cs /if ?>
+  </menu>
+</div>
+

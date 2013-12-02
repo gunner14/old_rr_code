@@ -1,0 +1,19 @@
+package xce.xntalk.groupchat;
+
+message GroupChatGroupInfo{
+  required int64 id = 1;
+  required string name = 2;
+  required string  head = 3;
+  required int32  creator = 4;
+  required string create_time = 5;
+  required string  introduction = 6;
+  required int32  type = 7;
+  required string  last_content = 8;
+  required string  last_time = 9;
+  required string  announcement = 10;
+  required string  authentication = 11;
+  required string  notify = 12;
+  required int32  saveonline = 13;
+  required int32  level = 14;
+  required int32  toplimit = 15;
+}

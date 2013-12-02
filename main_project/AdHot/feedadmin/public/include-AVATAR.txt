@@ -1,0 +1,45 @@
+<aside>
+<?cs if:unread ?>
+<a class="<?cs var:isfouce ?>" onmouseout="var e = this;setTimeout(function(){Sizzle('.unread-tip',e.parentNode)[0].style.display='none'},500)" onmouseover="var e = this;setTimeout(function(){Sizzle('.unread-tip',e.parentNode)[0].style.display='block'},500)" href="#nogo"><?cs var:attention ?>关注</a>
+<div class="unread-tip" style="display: none;">
+<span class="tip-arrow-top"></span>
+<div class="tip-content"><?cs var:tipcontent ?></div>
+</div>
+<?cs /if ?>
+  <figure class="newsfeed-user" data-id="<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" data-name="<?cs if:f.from.name ?><?cs var:f.from.name ?><?cs else ?><?cs var:f.from.0.name ?><?cs /if ?>" data-mark="<?cs var:mark ?>" data-source="<?cs var:source ?>" data-stype="<?cs var:stype ?>" data-fid="<?cs var:id ?>">
+    <a stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="
+        <?cs if:f.from.url ?>
+           <?cs var:f.from.url ?>
+        <?cs elif:f.from.0.url ?>
+           <?cs var:f.from.0.url ?>
+        <?cs else ?>
+           http://www.renren.com/profile.do?id=<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>&ref=<?cs var:vType ?>
+        <?cs /if ?>"
+       namecard="<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" title="<?cs if:f.from.name ?><?cs var:f.from.name ?><?cs else ?><?cs var:f.from.0.name ?><?cs /if ?>" target="_blank">
+
+       <img src="<?cs if:f.from.fullimg ?>
+                   <?cs var:f.from.fullimg ?>
+                 <?cs elif:f.from.0.fullimg ?>
+                   <?cs var:f.from.0.fullimg ?>
+                 <?cs elif:f.from.tinyimg ?>
+                   <?cs var:f.from.tinyimg ?>
+                 <?cs else ?>
+                   <?cs var:f.from.0.tinyimg ?>
+                 <?cs /if ?>" width="50" alt="头像" title="<?cs if:f.from.name ?><?cs var:f.from.name ?><?cs else ?><?cs var:f.from.0.name ?><?cs /if ?>" />
+
+       <?cs if:actorVipHatId ?>
+       <div style="display:block;width:58px;height:33px;position:absolute;top:-8px;left:0px;background:url('http://s.xnimg.cn/xnapp/vip/resimg/viphat/<?cs var:actorVipHatId ?>/hat.png') no-repeat;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src='http://s.xnimg.cn/xnapp/vip/resimg/viphat/<?cs var:actorVipHatId ?>/hat.png');" class="hats"> </div>
+       <?cs /if ?>
+    </a>
+
+    <?cs if:f.publisher.id ?>
+      <a target="_blank" title="<?cs var:f.publisher.name ?>" namecard="<?cs var:f.publisher.id ?>" href="<?cs var:f.publisher.url ?>&ref=<?cs var:vType ?>" stats="<?cs var:vType ?>" class="mini-avatar">
+        <img width="30" title="<?cs var:f.publisher.name ?>" alt="头像" src="<?cs var:f.publisher.tinyimg ?>">
+      </a>
+    <?cs /if ?>
+
+    <?cs if:actorVipHatId ?>
+    <a href=" http://i.renren.com/store/hat/home" title="点击美化小头像" style="cursor:pointer;position:absolute;left:25px;top:-8px;display:block;width:33px;height:33px;text-indent:-9999em;outline:0 none;">点击美化小头像</a>
+    <?cs /if ?>
+  </figure>
+</aside>

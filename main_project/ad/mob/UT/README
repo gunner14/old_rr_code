@@ -1,0 +1,15 @@
+CODE SVN INFO:
+
+URL: http://svn.d.xiaonei.com/oce/main_project/trunk/ad/mob/AdMobEngine/src
+版本库根: http://svn.d.xiaonei.com/oce
+版本库 UUID: af73f130-47e4-488c-b0c4-0212a1e08574
+版本: 28666
+节点种类: 目录
+调度: 正常
+最后修改的作者: yongjun.yin@XIAONEI.OPI.COM
+最后修改的版本: 28659
+最后修改的时间: 2012-06-12 14:33:06 +0800 (二, 2012-06-12)
+
+源代码：   mob/UT/code
+测试代码： mob/UT/case
+桩函数：   mob/UT/stub

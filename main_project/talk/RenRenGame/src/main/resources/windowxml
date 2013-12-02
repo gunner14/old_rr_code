@@ -1,0 +1,12 @@
+<root>
+      <window>
+		  <url>http://www.renren.com</url>
+		  <config>
+			   <timeout> 10</timeout> 
+			   <title> </title> 
+			   <width> </width> 
+			   <height> </height> 
+		  </config>
+      </window>
+</root>
+

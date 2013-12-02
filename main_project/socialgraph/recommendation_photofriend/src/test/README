@@ -1,0 +1,7 @@
+SocialGraph相关单元测试说明
+
+config_parser_test.cc测试trunk/socialgraph/friendrecommendmanager/common下config_parser2.h、config_parser2.cc 读取配置文件
+测试时需要将test2.conf拷贝到二进制文件生成目录
+
+id_filter_test.cc测试trunk/socialgraph/friendrecommendmanager/common下id_filter.h id_filter.cc 读取黑、白名单过滤列表
+测试时需要将zn_badtest_whitelist、zn_test_blacklist、zn_test_whitelist 三个文件拷贝到二进制文件生成目录

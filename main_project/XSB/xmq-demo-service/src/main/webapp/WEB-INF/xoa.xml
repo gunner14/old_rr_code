@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xoa-app>
+  <services>
+    <service type="xmq" id="xmqDemo" class="com.renren.xmq.XmqDemoImpl" port="0">
+      <worker-thread-pool core-size="20" max-size="60" />
+    </service>
+  </services>
+</xoa-app>

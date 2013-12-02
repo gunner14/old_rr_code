@@ -1,0 +1,36 @@
+TODO list:
+
+1. c++:RedisClient.GeneratorTempKey() method should generate random string value.
+
+2. c++ & java:CacheProxy subclass should be implemented Expire Time for List and Hash data structure
+by li.li1@renren-inc.com     Done
+C++: 修改RedisClient,支持SetList SetHash 方法的expire time java:修改CacheProxy 实现getHash, getHash, size方法, 删除set,remove系列方法 
+
+2.1 c++ cachemanager rpc supports list and hash.
+
+3. c++: ProducerManager should implement dynamic load producer
+
+4. c++:多桶多锁工具,好让CacheManagerServer使用,目的是:防守多个客户端线程Set导致的数据错误, 感谢超哥分享的宝贵经验! by liyong@renren-inc.com
+   DONE!!!
+
+5. java: tripod-core CacheProxy Set相关接口，不应该是public作用域，应该为package, 需要修改
+li.li1@renren-inc.com    Done
+TripodClient set remove调用是通过C++版本的CacheManager服务，C++版CacheManager调用C++的CacheProxy来set remove，java版CacheProxy不再需要set remove接口，删除java版CacheProxy的set接口。此外，无法改变接口访问权限，CacheProxy实现了接口CacheClient，interface方法访问权限是public的，如果在实现继承的过程中降低方法的访问权限，编译器会报错
+
+6. ConfigWeb:通过Web可以配置我们的tripod2相关,希望有人生动来搞这个web,个人推荐技术: Python tornado !
+
+7. ZkAddress通过优先从env和argc中获取，如果失败，走DefaultZkAddress!  by li.li1@renren-inc.com   Done
+
+8. CacheManager supports multi interface.  by xiaofeng.liang@renren-inc.com
+
+9. Producer supports CreateKey method. by xiaofeng.liang@renren-inc.com
+
+10. java producer manager. ProducerFactory Timed Thread loads producer.json conf!  by li.li1@renren-inc.com  Done
+
+11. C++ CacheManagerImpl 析构函数释放CacheProxyMap和ProducerMangerProxyMap 
+by li.li1@renren-inc.com
+
+12. Monitor, 实时的监控服务,对Cache, CacheManager, ProducerManager
+    要求:1. 有email和手机短信的报警 2. 对三个组件做成自动可下线, ps:未来再做自动可上线!
+         
+13. TripodClient java and c++  try Ice exception and AddRemoteLog for stat!

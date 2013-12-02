@@ -1,0 +1,22 @@
+<li id=* class=* onmouseover=* onmouseout=*>
+	<a class=* style=* href=* title=* onclick=*>
+	</a>
+	<span class=*>
+		<a href=* target=* onclick=*>
+			<img width=* height=* src=*>
+		</a>
+	</span>
+	<span>
+		<a class=* target=* href=* onclick=*>*
+		</a>
+		<p>
+			<a class=* target=* href=* onclick=*>
+				<img src=*>*
+			</a>
+		</p>
+		<p>
+			<span class=*>*</span>
+		</p>
+	</span>
+	<input id=* type=* value=*>
+</li>

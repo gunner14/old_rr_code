@@ -1,0 +1,16 @@
+<?cs if:merge_feed.count ?>
+<div class="similar-feed">
+  <p><a stats="NF_<?cs var:id ?>_<?cs var:stype ?>_<?cs if:f.from.id ?><?cs var:f.from.id ?><?cs else ?><?cs var:f.from.0.id ?><?cs /if ?>" href="#nogo" data-similar-feeds="
+       <?cs each:item=merge_feed.fid ?>
+          <?cs var:item ?>,
+       <?cs /each ?>
+     ">查看另外<?cs var:merge_feed.count ?>
+       <?cs if:typeText ?>
+          <?cs var:typeText ?>
+       <?cs else ?>
+          条相似的新鲜事
+       <?cs /if ?>
+  </a></p>
+</div>
+<?cs /if ?>
+

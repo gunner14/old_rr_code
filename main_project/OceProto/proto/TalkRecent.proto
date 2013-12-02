@@ -1,0 +1,14 @@
+package com.xiaonei.talk.recent.contact;
+
+message McRecentUser{
+  required int32 id = 1;
+  optional string subject = 2;
+	optional string info = 3;
+  required int32 type = 4;
+}
+
+
+message McRecentContact{
+	repeated McRecentUser recentcontact = 1;
+}
+

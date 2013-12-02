@@ -1,0 +1,2 @@
+#include "AdMemcProxyAdapter.h"
+

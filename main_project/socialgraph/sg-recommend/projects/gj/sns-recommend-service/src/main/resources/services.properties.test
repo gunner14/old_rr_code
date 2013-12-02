@@ -1,0 +1,26 @@
+
+#db
+db.mongodb.host=10.3.24.72
+db.mongodb.port=44167
+db.mongodb.db=sns_online_test
+db.mongodb.user=gj_test
+db.mongodb.passwd=dec2011test4nb
+db.mongodb.count=20
+
+
+#uranus service
+uranus.service.port=9635
+uranus.service.thread.num=100
+uranus.header.train=/data/uranus/uranus-service/target/classes/context/uranus/train.header
+uranus.header.test=/data/uranus/uranus-service/target/classes/context/uranus/test.header
+uranus.data.path=/data/uranus/data/
+uranus.model.index=41
+uranus.weight.view=0.002
+uranus.weight.like=0.01
+uranus.weight.comment=1
+uranus.weight.click=0.004
+uranus.recommend.result.path=/data/uranus/offline/cf
+
+#mysql
+sql_driver=com.mysql.jdbc.Driver
+user_db_url=jdbc:mysql://db.jie.d.xiaonei.com:3306/uranus?user=gj&password=mysql@gj

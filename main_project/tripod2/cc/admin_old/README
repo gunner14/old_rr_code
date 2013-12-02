@@ -1,0 +1,17 @@
+//完成日期 : 2012.4.19 16:40
+//by xce wenju.liu
+
+说明：在admin文件夹下有一个my.xml的文件例子
+cd to:
+[yourname@SJSWT45-75 release-gyp]$
+
+1.gyp编译
+gyp --depth . -D library=static_library tripod2.gyp
+make tripod_zk_admin V=1 -j10
+
+2.执行
+./out/Default/tripod_zk_admin 10.2.132.214:2181 ../tripod2/cc/admin/my.xml
+
+
+3.察看zk的xml文件
+vi copyOfZookeeperConfig.xml

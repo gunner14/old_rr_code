@@ -1,0 +1,31 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.userdesc;
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "UserDescProto";
+
+message PbUserContact {
+  option (tripod.options.business_id) = "UserContact";
+  option (tripod.options.database_source) = "user_contact";
+  option (tripod.options.table_name) = "user_contact";
+
+  required int64 id = 1;
+  optional int64 qq = 2;
+  optional string msn = 3;
+  optional string mobilephone = 4;
+  optional string fixphone = 5;
+  optional string homepage = 6;
+}
+
+message PbUserTime {
+  option (tripod.options.business_id) = "UserTime";
+  option (tripod.options.database_source) = "user_time";
+  option (tripod.options.table_name) = "user_time";
+
+  required int64 id = 1;
+  optional int64 registertime = 2 [(tripod.options.mysql_type) = "datetime"];
+  optional int64 activatetime = 3 [(tripod.options.mysql_type) = "datetime"];
+  optional int64 lastlogintime = 4 [(tripod.options.mysql_type) = "datetime"];
+  optional int64 lastlogouttime = 5 [(tripod.options.mysql_type) = "datetime"];
+}

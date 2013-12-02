@@ -1,0 +1,14 @@
+package xce.footprint;
+
+message HomeStepData {
+  required int32 visitor = 1;
+  required int32 timestamp = 2;
+  required int64 gid = 3;
+}
+
+message HomeFootprintSetData {
+  repeated HomeStepData footprints = 1;
+  required int32 viewCountLimit = 2;
+  required int32 viewCountTime = 3;
+  required int64 ownerId = 4;
+}

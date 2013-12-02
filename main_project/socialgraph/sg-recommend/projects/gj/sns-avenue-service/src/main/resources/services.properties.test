@@ -1,0 +1,13 @@
+
+db.mongodb.host=10.3.24.73
+db.mongodb.port=27017
+db.mongodb.db=sns_online_test
+db.mongodb.user=gj_test
+db.mongodb.passwd=dec2011test4nb
+db.mongodb.count=10
+
+#avnue index
+index.service.port=9630
+index.service.thread.num=100
+index.service.data=/data/ranking/data
+

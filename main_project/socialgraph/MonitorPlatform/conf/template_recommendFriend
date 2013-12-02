@@ -1,0 +1,13 @@
+<li class=* id=* data-type=*>
+	<a href=* namecard=* data-fromrcd=* class=* target=*>
+		<img src=* width=* height=* title=*>
+	</a>
+	<p>
+		<a href=* namecard=* data-fromrcd=* class=* data-id=* data-type=* target=*>*
+		</a>
+		<a href=* class=* data-id=* data-type=* data-name=*  data-url=*>
+			<img src=*>*
+		</a>
+	</p>
+	<a href=* class=* title=*></a>
+/li>

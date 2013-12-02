@@ -1,0 +1,20 @@
+xoa的serverlib框架：这里是一个demo。
+
+在serverlib文件夹里:
+idl存在于thrift-idl文件夹。renren.thrift是一个基类的idl定义。
+然后在test文件夹中有demo中方法的具体实现。
+
+
+直接在当前目录下运行cmake . 然后运行make可以进行编译和链接.
+最后运行make install 产生serverlib的include文件和lib文件
+
+
+conf文件夹里的文件有:
+service_registry_demo.conf  这个文件里面包括了注册的路径、zk集群地址和服务所使用的用户名和密码。
+xoa.xml   xoa.xml包含了启动服务的基本信息
+
+
+然后在demo文件夹里thrift idl是twitter.thrift的定义
+可以运行cmake . make 和 make install 
+然后会生成可执行文件server。
+最后可以通过运行./server 来启动服务。

@@ -1,0 +1,12 @@
+1. config
+用于向客户端提供配置信息
+2. webgamelist
+用于向客户端提供网页游戏列表
+3. socialgamelist
+用于向客户端提供社区游戏列表
+4. playerlist
+用于向客户端提供前一天玩过指定app的游戏用户
+5. recommendedgames
+用于向客户端提供推荐的游戏，在游戏大厅左侧列表栏显示
+6. maybelikegamelist 
+用于向客户端提供可能喜欢的网页游戏， 在游戏大厅下侧随机显示两个

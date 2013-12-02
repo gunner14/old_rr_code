@@ -1,0 +1,57 @@
+#[ServiceName1_Prefix]
+#type1 email_threshold sms_threshold
+#type2 email_threshold sms_threshold
+#...
+#[ServiceName2_Prefix]
+#...
+#
+[AdEngineB]
+warn 0.02 0.04
+ice_timeout 0.02 0.04
+connect_timeout 0.02 0.04
+fatal 0 5
+[AdEngineU]
+warn 0.8 1.5
+ice_timeout 0.12 0.24
+connect_timeout 0.12 0.24
+fatal 0 5
+[AdGateM]
+warn 0.04 0.08
+ice_timeout 0.01 0.02
+connect_timeout 0.01 0.02
+fatal 0 5
+[AdGateN]
+warn 7 14
+ice_timeout 0.94 1.9
+connect_timeout 0.94 1.9
+fatal 0 5
+[AdGateS]
+warn 8.3 16.6
+ice_timeout 1.04 2
+connect_timeout 1.04 2
+fatal 0 5
+[AdLog]
+warn 0.4 0.8
+ice_timeout 0.4 0.8
+connect_timeout 0.4 0.8
+fatal 0 5
+[AdLogS]
+warn 1.5 3
+ice_timeout 4 8
+connect_timeout 4 8
+fatal 0 5
+[AdTwS]
+warn 5 10
+ice_timeout 0.7 1.4
+connect_timeout 0.7 1.4
+fatal 0 5
+[AdUserFeatureCache]
+warn 1.5 3
+ice_timeout 4 8
+connect_timeout 4 8
+fatal 0 5
+[AdDemoLoaderCache]
+warn 0.6 1.2 
+ice_timeout 0.12 0.24
+connect_timeout 0.12 0.24
+fatal 0 5

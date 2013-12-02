@@ -1,0 +1,8 @@
+package xce.tripoddata.account;
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "AccountConnectProto";
+
+message PbAccountConnect {
+  optional int64 uid = 1;
+}

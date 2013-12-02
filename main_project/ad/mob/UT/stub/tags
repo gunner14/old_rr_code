@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+AdGroupId_List	Data.h	/^	AdGroupId_List() {$/;"	f	class:AdGroupId_List	access:public	signature:()
+AdGroupId_List	Data.h	/^class AdGroupId_List {$/;"	c
+AdGroupId_List::AdGroupId_List	Data.h	/^	AdGroupId_List() {$/;"	f	class:AdGroupId_List	access:public	signature:()
+AdGroupId_List::fail	Data.h	/^	set<Ice::Long> fail;$/;"	m	class:AdGroupId_List	access:public
+AdGroupId_List::pass	Data.h	/^	set<Ice::Long> pass;$/;"	m	class:AdGroupId_List	access:public
+GetAdZoneFail	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZoneFail(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+GetAdZoneFail	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZoneFail(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+GetAdZoneNull	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZoneNull(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+GetAdZoneNull	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZoneNull(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+GetAdZonePass	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZonePass(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+GetAdZonePass	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZonePass(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+IpArea_List	Data.h	/^	IpArea_List() {$/;"	f	class:IpArea_List	access:public	signature:()
+IpArea_List	Data.h	/^class IpArea_List {$/;"	c
+IpArea_List::IpArea_List	Data.h	/^	IpArea_List() {$/;"	f	class:IpArea_List	access:public	signature:()
+IpArea_List::fail	Data.h	/^	set<std::string> fail;$/;"	m	class:IpArea_List	access:public
+IpArea_List::pass	Data.h	/^	set<std::string> pass;$/;"	m	class:IpArea_List	access:public
+Net_List	Data.h	/^	Net_List() {$/;"	f	class:Net_List	access:public	signature:()
+Net_List	Data.h	/^class Net_List {$/;"	c
+Net_List::Net_List	Data.h	/^	Net_List() {$/;"	f	class:Net_List	access:public	signature:()
+Net_List::fail	Data.h	/^	set<std::string> fail;$/;"	m	class:Net_List	access:public
+Net_List::pass	Data.h	/^	set<std::string> pass;$/;"	m	class:Net_List	access:public
+OS_List	Data.h	/^	OS_List() {$/;"	f	class:OS_List	access:public	signature:()
+OS_List	Data.h	/^class OS_List {$/;"	c
+OS_List::OS_List	Data.h	/^	OS_List() {$/;"	f	class:OS_List	access:public	signature:()
+OS_List::fail	Data.h	/^	set<std::string> fail;$/;"	m	class:OS_List	access:public
+OS_List::pass	Data.h	/^	set<std::string> pass;$/;"	m	class:OS_List	access:public
+Screen_List	Data.h	/^	Screen_List() {$/;"	f	class:Screen_List	access:public	signature:()
+Screen_List	Data.h	/^class Screen_List {$/;"	c
+Screen_List::Screen_List	Data.h	/^	Screen_List() {$/;"	f	class:Screen_List	access:public	signature:()
+Screen_List::fail	Data.h	/^	set<std::string> fail;$/;"	m	class:Screen_List	access:public
+Screen_List::pass	Data.h	/^	set<std::string> pass;$/;"	m	class:Screen_List	access:public
+Uid_List	Data.h	/^	Uid_List() {$/;"	f	class:Uid_List	access:public	signature:()
+Uid_List	Data.h	/^class Uid_List {$/;"	c
+Uid_List::Uid_List	Data.h	/^	Uid_List() {$/;"	f	class:Uid_List	access:public	signature:()
+Uid_List::fail	Data.h	/^	set<int> fail;$/;"	m	class:Uid_List	access:public
+Uid_List::pass	Data.h	/^	set<int> pass;$/;"	m	class:Uid_List	access:public
+ZonePoolStub	PoolStub.cpp	/^ZonePoolStub::ZonePoolStub() {$/;"	f	class:ZonePoolStub	signature:()
+ZonePoolStub	PoolStub.h	/^	ZonePoolStub();$/;"	p	class:ZonePoolStub	access:public	signature:()
+ZonePoolStub	PoolStub.h	/^class ZonePoolStub : public MyUtil::Singleton<ZonePoolStub> {$/;"	c	inherits:MyUtil::Singleton
+ZonePoolStub::GetAdZoneFail	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZoneFail(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+ZonePoolStub::GetAdZoneFail	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZoneFail(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+ZonePoolStub::GetAdZoneNull	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZoneNull(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+ZonePoolStub::GetAdZoneNull	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZoneNull(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+ZonePoolStub::GetAdZonePass	PoolStub.cpp	/^AdZonePtr ZonePoolStub::GetAdZonePass(Ice::Long zone_id) {$/;"	f	class:ZonePoolStub	signature:(Ice::Long zone_id)
+ZonePoolStub::GetAdZonePass	PoolStub.h	/^	xce::ad::AdZonePtr GetAdZonePass(Ice::Long);$/;"	p	class:ZonePoolStub	access:public	signature:(Ice::Long)
+ZonePoolStub::ZonePoolStub	PoolStub.cpp	/^ZonePoolStub::ZonePoolStub() {$/;"	f	class:ZonePoolStub	signature:()
+ZonePoolStub::ZonePoolStub	PoolStub.h	/^	ZonePoolStub();$/;"	p	class:ZonePoolStub	access:public	signature:()
+ZonePoolStub::pool_fail_	PoolStub.h	/^	std::vector<xce::ad::AdZonePtr> pool_fail_;$/;"	m	class:ZonePoolStub	access:public
+ZonePoolStub::pool_pass_	PoolStub.h	/^	std::vector<xce::ad::AdZonePtr> pool_pass_;$/;"	m	class:ZonePoolStub	access:public
+Zone_List	Data.h	/^	Zone_List() {$/;"	f	class:Zone_List	access:public	signature:()
+Zone_List	Data.h	/^class Zone_List {$/;"	c
+Zone_List::Zone_List	Data.h	/^	Zone_List() {$/;"	f	class:Zone_List	access:public	signature:()
+Zone_List::fail	Data.h	/^	set<Ice::Long> fail;$/;"	m	class:Zone_List	access:public
+Zone_List::pass	Data.h	/^	set<Ice::Long> pass;$/;"	m	class:Zone_List	access:public
+__DATA_H__	Data.h	2;"	d
+__POOL_STUB_H__	PoolStub.h	2;"	d
+fail	Data.h	/^	set<Ice::Long> fail;$/;"	m	class:AdGroupId_List	access:public
+fail	Data.h	/^	set<Ice::Long> fail;$/;"	m	class:Zone_List	access:public
+fail	Data.h	/^	set<int> fail;$/;"	m	class:Uid_List	access:public
+fail	Data.h	/^	set<std::string> fail;$/;"	m	class:IpArea_List	access:public
+fail	Data.h	/^	set<std::string> fail;$/;"	m	class:Net_List	access:public
+fail	Data.h	/^	set<std::string> fail;$/;"	m	class:OS_List	access:public
+fail	Data.h	/^	set<std::string> fail;$/;"	m	class:Screen_List	access:public
+pass	Data.h	/^	set<Ice::Long> pass;$/;"	m	class:AdGroupId_List	access:public
+pass	Data.h	/^	set<Ice::Long> pass;$/;"	m	class:Zone_List	access:public
+pass	Data.h	/^	set<int> pass;$/;"	m	class:Uid_List	access:public
+pass	Data.h	/^	set<std::string> pass;$/;"	m	class:IpArea_List	access:public
+pass	Data.h	/^	set<std::string> pass;$/;"	m	class:Net_List	access:public
+pass	Data.h	/^	set<std::string> pass;$/;"	m	class:OS_List	access:public
+pass	Data.h	/^	set<std::string> pass;$/;"	m	class:Screen_List	access:public
+pool_fail_	PoolStub.h	/^	std::vector<xce::ad::AdZonePtr> pool_fail_;$/;"	m	class:ZonePoolStub	access:public
+pool_pass_	PoolStub.h	/^	std::vector<xce::ad::AdZonePtr> pool_pass_;$/;"	m	class:ZonePoolStub	access:public

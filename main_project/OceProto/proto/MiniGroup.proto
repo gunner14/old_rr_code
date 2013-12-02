@@ -1,0 +1,8 @@
+package xce.distcache.minigroup;
+
+message GroupData
+{
+  required int64 id = 1;
+  optional string name = 2;
+  optional string icon = 3;
+}

@@ -1,0 +1,109 @@
+import "tripod_options.proto";
+
+package xce.tripoddata.userbase;
+
+option java_package = "com.renren.tripod.proto";
+option java_outer_classname = "UserBaseProto";
+
+message PbUserPassport {
+  option (tripod.options.business_id) = "UserPassport";
+  option (tripod.options.database_source) = "user_passport";
+  option (tripod.options.table_name) = "user_passport";
+
+  required int64 id = 1;
+  optional string account = 2;
+  optional string password_md5 = 3;
+  optional string domain = 4 [default = "renren.com"];
+  optional int32 status = 5;
+  optional int32 safe_status = 6;
+}
+
+message PbUserName {
+  option (tripod.options.business_id) = "UserName";
+  option (tripod.options.database_source) = "user_names";
+  option (tripod.options.table_name) = "user_names";
+
+  required int64 id = 1;
+  optional string name = 2;
+  optional string nickname = 3;
+}
+
+message PbUserRight {
+  option (tripod.options.business_id) = "UserRight";
+  option (tripod.options.database_source) = "user_right";
+  option (tripod.options.table_name) = "user_right";
+
+  required int64 id = 1;
+  optional int32 auth = 2;
+  optional int32 common_rights = 3 [default = 63];
+}
+
+message PbUserState {
+  option (tripod.options.business_id) = "UserState";
+  option (tripod.options.database_source) = "user_state";
+  option (tripod.options.table_name) = "user_state";
+
+  required int64 id = 1;
+  optional int64 state = 2; //这个字段将要升级为long
+  optional int32 level = 3;
+  optional int32 star = 4;
+}
+
+message PbUserLoginCount {
+  option (tripod.options.business_id) = "UserLoginCount";
+  option (tripod.options.database_source) = "user_logincount";
+  option (tripod.options.table_name) = "user_logincount";
+
+  required int64 id = 1;
+  optional int32 logincount = 2;
+}
+
+message PbUserBorn {
+  option (tripod.options.business_id) = "UserBorn";
+  option (tripod.options.database_source) = "user_born";
+  option (tripod.options.table_name) = "user_born";
+
+  required int64 id = 1;
+  optional int32 birth_day = 2;
+  optional int32 birth_month = 3;
+  optional int32 birth_year = 4;
+  optional string astrology = 5;
+  optional string gender = 6;
+  optional string home_province = 7;
+  optional string home_city = 8;
+  optional string city_code = 9;
+  optional int32 is_lunar_birth = 10;
+}
+
+message PbUserStage {
+  option (tripod.options.business_id) = "UserStage";
+  option (tripod.options.database_source) = "user_stage";
+  option (tripod.options.table_name) = "user_stage";
+
+  required int64 id = 1;
+  optional int32 univ = 2;
+  optional int32 stage = 3 [default = 20];
+}
+
+message PbUserDoing {
+  option (tripod.options.business_id) = "UserDoing";
+  option (tripod.options.database_source) = "user_doing";
+  option (tripod.options.table_name) = "user_doing";
+
+  required int64 id = 1;
+  optional int64 doingtime = 2 [(tripod.options.mysql_type) = "datetime"];
+  optional string doing = 3;
+}
+
+message PbUserUrl {
+  option (tripod.options.business_id) = "UserUrl";
+  option (tripod.options.database_source) = "user_url";
+  option (tripod.options.table_name) = "user_url";
+
+  required int64 id = 1;
+  optional string largeurl = 2;
+  optional string mainurl = 3;
+  optional string headurl = 4;
+  optional string tinyurl = 5;
+  optional string flexurl = 6;
+}

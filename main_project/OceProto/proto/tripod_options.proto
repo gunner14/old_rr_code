@@ -1,0 +1,22 @@
+import "google/protobuf/descriptor.proto";
+
+package tripod.options;
+
+extend google.protobuf.MessageOptions {
+    optional string repeated_field = 50001;
+    optional string primary_key = 50002 [default = "id"]; 
+    optional string table_name = 50003;
+    optional string select_fields = 50005 [default = "*"];
+    optional string database_source = 50006;
+    optional string business_id = 50007;
+    
+    //table_mod != 1, real table_name = table_name + id % table_mod;
+    optional int32 table_mod = 50008 [default = 1];
+
+    //for constructing QueryRunner, currently only support pattern = pattern_prefix + id % table_mod;
+    optional string pattern_prefix = 50009 [default = " "]; 
+}
+
+extend google.protobuf.FieldOptions {
+  optional string mysql_type = 50001;
+}

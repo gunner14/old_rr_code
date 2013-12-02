@@ -1,0 +1,159 @@
+<?cs # author:刘群 test:加上处理liefeevent回复的请求 ?>
+
+<?cs if:(?selfzancount || ?totalzancount) && ! ?notNeedLike ?>
+<div class="ilike-body" id="feedbody<?cs var:source ?>">
+  <div class="min-cmtbox statustab">
+    <div class="mincmt-body">
+      <div class="mincmt-diggers statuscmtitem">
+        <p>
+          <?cs if:?totalzancount ?><a href="#nogo" onclick="ILike_toggleShow('<?cs var:replyType ?>','<?cs var:source ?>', '<?cs var:userID ?>');return false;"><?cs /if ?>
+            <?cs if:?selfzancount && ?totalzancount ?>我和<?cs var:totalzancount ?>个人很喜欢！
+            <?cs elif:?selfzancount && ! ?totalzancount ?>我很喜欢！
+            <?cs elif:! ?selfzancount && ?totalzancount ?><?cs var:totalzancount ?>个人很喜欢！<?cs /if ?>
+          <?cs if:?totalzancount ?></a><?cs /if ?>
+        </p>
+        <ul id="diggers<?cs var:source ?>" class="digger"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+<?cs /if ?>
+
+<?cs if:! ?notNeedReply ?>
+<?cs if:!?actorID ?><?cs if:?f.from.id ?><?cs set:actorID = f.from.id ?><?cs else ?><?cs set:actorID = f.from.0.id ?><?cs /if ?><?cs /if ?>
+<div class="feed-replies" id="feedbody<?cs var:id ?>">
+  <?cs if:?f.reply.0.id ?>
+  <div class="a-reply">
+    <a href="http://www.renren.com/profile.do?id=<?cs var:f.reply.0.from.id ?>&ref=<?cs var:vType ?>" class="avatar" target="_blank" namecard="<?cs var:f.reply.0.from.id ?>">
+      <img src="<?cs var:f.reply.0.from.tinyimg ?>" />
+    </a>
+    <div class="reply-content">
+      <?cs if:f.wikiWord ?>
+      <p class="text" data-wiki="<?cs var:f.wikiWord ?>">
+      <?cs else ?>
+      <p class="text">
+      <?cs /if ?>
+        <a href="http://www.renren.com/profile.do?id=<?cs var:f.reply.0.from.id ?>&ref=<?cs var:vType ?>" namecard="<?cs var:f.reply.0.from.id ?>" class="name" target="_blank"><?cs var:f.reply.0.from.name ?></a>:&nbsp;<?cs var:x_js_escape(f.reply.0.body) ?>
+      </p>
+      <div class="bottom-bar">
+        <span class="time"><?cs var:f.reply.0.time ?></span>
+        <div class="action">
+          <?cs if:userID != f.reply.0.from.id ?>
+          <a data-fid="<?cs var:id ?>" data-uid="<?cs var:f.reply.0.from.id ?>" data-uname="<?cs var:f.reply.0.from.name ?>" data-rid="<?cs var:f.reply.0.id ?>"
+            href="#nogo" onclick="return false;" class="reply">回复</a>&nbsp;
+          <?cs /if ?>
+          <?cs if:userID == f.reply.0.from.id || userID == actorID ?>
+          <a data-fid="<?cs var:id ?>" data-uid="<?cs var:f.reply.0.from.id ?>" data-uname="<?cs var:f.reply.0.from.name ?>" data-rid="<?cs var:f.reply.0.id ?>"
+            href="#nogo" onclick="return false;" class="delet">删除</a>&nbsp;
+          <?cs /if ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?cs /if ?>
+  <?cs if:#reply_count > #2 ?>
+  <div class="more-reply">
+    <a data-fid="<?cs var:id ?>" href="#nogo" onclick="return false;" class="more">还有<?cs var:#reply_count - #2 ?>条回复</a>
+  </div>
+  <?cs /if ?>
+  <?cs if:?f.reply.1.id ?>
+  <div class="a-reply">
+    <a href="http://www.renren.com/profile.do?id=<?cs var:f.reply.1.from.id ?>&ref=<?cs var:vType ?>" class="avatar" target="_blank" namecard="<?cs var:f.reply.1.from.id ?>">
+      <img src="<?cs var:f.reply.1.from.tinyimg ?>" />
+    </a>
+    <div class="reply-content">
+      <?cs if:f.wikiWord ?>
+      <p class="text" data-wiki="<?cs var:f.wikiWord ?>">
+      <?cs else ?>
+      <p class="text">
+      <?cs /if ?>
+        <a href="http://www.renren.com/profile.do?id=<?cs var:f.reply.1.from.id ?>&ref=<?cs var:vType ?>" namecard="<?cs var:f.reply.1.from.id ?>" class="name" target="_blank"><?cs var:f.reply.1.from.name ?></a>:&nbsp;<?cs var:x_js_escape(f.reply.1.body) ?>
+      </p>
+      <div class="bottom-bar">
+        <span class="time"><?cs var:f.reply.1.time ?></span>
+        <div class="action">
+          <?cs if:userID != f.reply.1.from.id ?>
+          <a data-fid="<?cs var:id ?>" data-uid="<?cs var:f.reply.1.from.id ?>" data-uname="<?cs var:f.reply.1.from.name ?>" data-rid="<?cs var:f.reply.1.id ?>"
+            href="#nogo" onclick="return false;" class="reply">回复</a>&nbsp;
+          <?cs /if ?>
+          <?cs if:userID == f.reply.1.from.id || userID == actorID ?>
+          <a data-fid="<?cs var:id ?>" data-uid="<?cs var:f.reply.1.from.id ?>" data-uname="<?cs var:f.reply.1.from.name ?>" data-rid="<?cs var:f.reply.1.id ?>"
+            href="#nogo" onclick="return false;" class="delet">删除</a>&nbsp;
+          <?cs /if ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?cs /if ?>
+</div>
+
+<div class="feed-comment">
+  <span class="avatar">
+    <img src="http://a.xnimg.cn/a.gif" />
+  </span>
+  <div class="comment-box">
+    <textarea data-fid="<?cs var:id ?>" autocomplete="off">评论...</textarea>
+    <div class="action">
+      <div class="action-l">
+        <?cs if:?replyTextArea_showEmotionBtn ?>
+        <a href="#nogo" onclick="return false;" class="emotion">表情<span class="tip"><span class="arrow"></span>表情</span></a>
+        <?cs /if ?>
+        <?cs if:?replyTextArea_showAtBtn ?>
+        <a href="#nogo" onclick="return false;" class="mention">@<span class="tip"><span class="arrow"></span>点名</span></a>
+        <?cs /if ?>
+        <?cs if:?replyTextArea_showShareBtn ?>
+        <span class="share">
+          <input id="shareThis_<?cs var:id ?>" type="checkbox" /><label for="shareThis_<?cs var:id ?>">同时分享</label>
+        </span>
+        <?cs /if ?>
+      </div>
+      <div class="action-r">
+        <a href="#nogo" onclick="return false;" class="submit submit-disabled">回复</a>
+        <?cs if:(userID%10 == #6 || userID == #253857677) && #reply_count > #2 ?>
+          <a href="#newsfeed-<?cs var:id ?>" class="fold-reply-disabled" onfocus="this.blur();">收起回复</a>
+        <?cs /if ?>
+        <span class="count"><span class="inputed">0</span>/<span class="maxlength"><?cs var:replyTextArea_maxLen ?></span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<?cs /if ?>
+
+<div id="get-params-for-ilike-<?cs var:source ?>" style="display:none;">
+<div id="reply-params-<?cs var:id ?>" style="display:none;">
+{
+  "cid": "<?cs var:source ?>",
+  "oid": "<?cs var:actorID ?>",
+  "type": "<?cs var:replyType ?>",
+  "typeNum": "<?cs var:replyTypeId ?>",
+  "rpLength": "<?cs var:reply_count ?>",
+  "userDigged":"<?cs var:selfzancount ?>",
+  "digged":"<?cs var:totalzancount ?>",
+  <?cs if:?replyURI_common ?>
+  "loadURI": "http://status.renren.com/feedcommentretrieve.do",
+  "sendURI": "http://status.renren.com/feedcommentreply.do?fin=<?cs var:feedIndex ?>&ft=<?cs var:replyType ?>&ff_id=<?cs var:actorID ?>",
+  "delURI": "http://status.renren.com/feedcommentdelete.do"
+  <?cs elif:?replyURI_pageBlog ?>
+  "loadURI": "http://page.renren.com/<?cs var:actorID ?>/note/replyList",
+  "sendURI": "http://page.renren.com/<?cs var:actorID ?>/note/reply",
+  "delURI": "http://page.renren.com/<?cs var:actorID ?>/note/replyDelete"
+  <?cs elif:?replyURI_pageAlbum ?>
+  "loadURI": "http://page.renren.com/<?cs var:actorID ?>/album/replyList",
+  "sendURI": "http://page.renren.com/<?cs var:actorID ?>/album/reply",
+  "delURI": "http://page.renren.com/<?cs var:actorID ?>/album/replyDelete"
+  <?cs elif:?replyURI_pageDoing ?>
+  "loadURI": "http://page.renren.com/doing/replyList",
+  "sendURI": "http://page.renren.com/doing/reply",
+  "delURI": "http://page.renren.com/doing/delReply"
+  <?cs elif:?replyURI_zhan ?>
+  "loadURI": "http://zhan.renren.com/<?cs var:siteUrl ?>/<?cs var:source ?>/comment/list/top?count=100",
+  "sendURI": "http://zhan.renren.com/<?cs var:siteUrl ?>/<?cs var:source ?>/comment",
+  "delURI":  "http://zhan.renren.com/<?cs var:siteUrl ?>/<?cs var:source ?>/comment/{{commentId}}/delete"
+  <?cs elif:stype == "1205" ?>
+  "loadURI": "http://www.renren.com/lifeevent/getcomment?source=<?cs var:source ?>&owner=<?cs var:actorID ?>",
+  "sendURI": "http://www.renren.com/lifeevent/addcomment",
+  "delURI":  "http://www.renren.com/lifeevent/deletecomment"
+  <?cs /if ?>
+}
+</div>
+</div>

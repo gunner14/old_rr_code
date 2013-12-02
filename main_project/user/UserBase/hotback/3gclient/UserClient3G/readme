@@ -1,0 +1,5 @@
+需要先配置CMakeList.txt中的ICE目录，设成Icexxx/lib的目录
+示例代码编译运行：
+$ cmake . && make UserNameClientTest && ./UserNameClientTest
+
+其中log4cplus被用到，但是默认没有打开log，可以忽略报错

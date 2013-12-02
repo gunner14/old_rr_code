@@ -1,0 +1,12 @@
+#<role>:<service>:<id>:<pwd>
+
+[operator]
+operator:op:pwd
+
+[server]
+server:test.xcs.renren.com:test:test
+server:ping.xoa.renren.com:test:test
+
+[client1]
+client:redis.search:cuser1:cpwd1
+client:redis.matter:cuser1:cpwd1

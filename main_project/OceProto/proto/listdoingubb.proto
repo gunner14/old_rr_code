@@ -1,0 +1,16 @@
+package xce.tripod;
+
+message ListDoingUbb {
+  message DoingUbb {
+    required int32 id = 1;
+    required string ubb = 2;
+    required string src = 3;
+    required string alt = 4;
+    required string ubbDescription = 5;
+    required int32 position = 6;
+    optional string className = 7;
+    optional string last_time = 8;
+    optional string img = 9;
+  }
+  repeated DoingUbb doingUbb = 1;
+}
